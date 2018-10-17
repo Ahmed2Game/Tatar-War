@@ -1,0 +1,214 @@
+{function="load_lang('ui/build')"}
+{if="(!$buildProperties['emptyPlace'])"}
+<div id="build" class="gid{$buildProperties.building.item_id}">
+  <a href="" onclick="return showManual(4, {$buildProperties.building.item_id});" class="build_logo">
+    <img class="building g{$buildProperties.building.item_id}" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{function="constant('item_' . $buildProperties['building']['item_id'])"}" title="{function="constant('item_' . $buildProperties['building']['item_id'])"}">
+  </a>
+  <h1>
+    {function="constant('item_' . $buildProperties['building']['item_id'])"}
+    <span class="level">
+      {#level_lang} 
+      {$buildProperties.building.level}
+    </span>
+  </h1>
+  <p class="build_desc"></p>
+  <p>
+    {function="constant('item_desc_' . $buildProperties['building']['item_id'])"}
+  </p>
+  <p></p>
+    {if="(4 < $buildProperties['building']['item_id'] && 0 < $buildProperties['building']['update_state'] && $buildProperties['building']['level'] == 0)"}
+      <p></p>
+      <br />
+      <p></p>
+      <p class="none">
+        {#LANGUI_BUILD_T1} .
+      </p>
+      <p></p>
+      <br/>
+      <p></p>
+      {else}
+      {if="($productionPane)"}
+      <table cellpadding="1" cellspacing="1" id="build_value">
+        <tbody>
+          <tr>
+            <th>
+              {function="constant('item_curprod_' . $buildProperties['building']['item_id'])"} :
+            </th>
+            <td>
+              <b>{$buildProperties.level.current_value}</b>
+              {function="constant('item_unit_' . $buildProperties['building']['item_id'])"}
+            </td>
+          </tr>
+          {if="($buildProperties['building']['level'] < $buildProperties['maxLevel'])"}
+            <tr>
+              <th>
+                {function="constant('item_nextprod_' . $buildProperties['building']['item_id'])"}
+                {$buildProperties.nextLevel} :
+              </th>
+              <td>
+                <b>{$buildProperties.level.value}</b>
+                {function="constant('item_unit_' . $buildProperties['building']['item_id'])"}
+              </td>
+            </tr>
+            {/if}
+          </tbody>
+      </table>
+        {/if}
+          {if="($buildingView != '')"}
+            {$buildingTemplateContent}
+          {/if}
+      {/if}
+      
+      {if="($buildProperties['maxLevel'] <= $buildProperties['building']['level'])"}
+          <p class="none">
+            {#LANGUI_BUILD_T2}
+              {function="constant('item_' . $buildProperties['building']['item_id'])"}
+            {#LANGUI_BUILD_T3}
+          </p>
+
+      {elseif="($buildProperties['maxLevel'] <= $buildProperties['upgradeToLevel'] && 0 < $buildProperties['building']['update_state'])"}
+              <p class="none">
+                {#LANGUI_BUILD_T4}
+                  {function="constant('item_' . $buildProperties['building']['item_id'])"}
+                {#LANGUI_BUILD_T3}
+              </p>
+              {else}
+              <p id="contract">
+                <b>{#LANGUI_BUILD_T5}</b>
+                {#LANGUI_BUILD_T6}
+                {$buildProperties.nextLevel}:
+                <br />
+                <img class="r1" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#item_title_1}" title="{#item_title_1}">
+                {$buildProperties.level.resources.1} |
+                <img class="r2" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#item_title_2}" title="{#item_title_2}">
+                {$buildProperties.level.resources.2} |
+                <img class="r3" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#item_title_3}" title="{#item_title_3}">
+                {$buildProperties.level.resources.3} |
+                <img class="r4" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#item_title_4}" title="{#item_title_4}">
+                {$buildProperties.level.resources.4} |
+                <img class="r5" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#LANGUI_BUILD_T7}" title="{#LANGUI_BUILD_T7}">
+                {$buildProperties.level.people_inc} |
+                <img class="clock" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#text_period_lang}" title="{#text_period_lang}">
+                {$buildProperties.level.calc_consume|secondstostring}
+          
+                {$resource_gold_exchange}
+                <br />
+                {$get_action_text} | {if="$buildProperties['building']['item_id'] != 40"}<a class="build" href="village{if="$buildProperties['building']['item_id']>4"}2{else}1{/if}?id={$buildProperties['building']['index']}&k={$data['update_key']}&max=1">{#LANGUI_BUILD_T6} {$buildProperties['maxLevel']}</a> 
+				<img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="gold" alt="{#text_gold_lang}" title="{#text_gold_lang}">{$buildProperties['maxLevel'] - $buildProperties['upgradeToLevel']}{/if}
+                </p>
+                {/if}
+              </div>
+              {else}
+              <script language="JavaScript" type="text/javascript">
+                function showPane(list)
+                {
+                  var build_list = _('build_list_'+list);
+                  var link = _(list+'_link');
+                  if (build_list.className == 'hide')
+                  {
+                      build_list.className = '';
+                      link.innerHTML = '{#LANGUI_BUILD_T8}';
+                  }
+                  else
+                  {
+                      build_list.className = 'hide';
+                      link.innerHTML = '{#LANGUI_BUILD_T9}';
+                    }
+                  }
+              </script>
+              <div id="build" class="gid0">
+                <h1>{#LANGUI_BUILD_T10}</h1>
+
+                {loop="$availableBuildings"}
+                  <h2>{function="constant('item_' . $value['item_id'])"}</h2>
+                  <table class="new_building" cellpadding="1" cellspacing="1">
+                    <tbody>
+                      <tr>
+                        <td class="desc">
+                          <p>{function="constant('item_desc_' . $value['item_id'])"}</p>
+                        </td>
+                        <td rowspan="3" class="bimg">
+                          <a href="#" onclick="return showManual(4, {$value.item_id});">
+                            <img class="building g{$value.item_id}" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{function="constant('item_' . $value['item_id'])"}" title="{function="constant('item_' . $value['item_id'])"}">
+                          </a>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="res">
+                          <img class="r1" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#item_title_1}" title="{#item_title_1}">
+                          {$value.neededResources.1} |
+                          <img class="r2" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#item_title_2}" title="{#item_title_2}">
+                          {$value.neededResources.2} |
+                          <img class="r3" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#item_title_3}" title="{#item_title_3}">
+                          {$value.neededResources.3} |
+                          <img class="r4" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#item_title_4} " title="{#item_title_4}">
+                          {$value.neededResources.4} |
+                          <img class="r5" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#LANGUI_BUILD_T7}" title="{#LANGUI_BUILD_T7}">
+                          {$value.build.levels.0.people_inc} |
+                          <img class="clock" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#text_period_lang}" title="{#text_period_lang}">
+                          {$value.time}
+                          {$value.getResourceGoldExchange}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="link">
+                          {$value.getActionText}
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                {/loop}
+      
+              {if="($_GET['id'] != 39 && $_GET['id'] != 40 && !($data['is_special_village'] && ($_GET['id'] == 25 || $_GET['id'] == 26 || $_GET['id'] == 29 || $_GET['id'] == 30 || $_GET['id'] == 33)))"}
+                <p class="switch">
+                  <a id="soon_link" href="javascript:showPane('soon');">{#LANGUI_BUILD_T9}</a>
+                </p>
+              <div id="build_list_soon" class="hide">
+                {loop="$soonBuildings"}
+                    {loop="$value"}
+                      <h2>{function="constant('item_' . $key2)"}</h2> 
+                      <table class="new_building" cellpadding="1" cellspacing="1">
+                        <tbody>
+                          <tr>
+                            <td class="desc">
+                              <p>{function="constant('item_desc_' . $key2)"}</p>
+                            </td>
+                            <td rowspan="3" class="bimg">
+                              <a href="#" onclick="return showManual(4, {$key2});">
+                                <img class="building g{$key2}" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{function="constant('item_' . $key2)"}" title="{function="constant('item_' . $key2)"}">
+                              </a>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td class="requ">
+                              {#LANGUI_BUILD_T11} :
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                                {$flag = FALSE}
+                                {loop="$value2['pre_requests']"}                                    
+                                    {if="($flag)"} , {/if}
+                                  <a href="#" onclick="return showManual(4,{$key3});">
+                                    {if="($value3 == NULL)"} <strike> {/if}
+                                      {function="constant('item_' . $key3)"}
+                                    {if="($value3 == NULL)"}</strike>{/if}
+                                  </a>
+                                  {if="($value3 != NULL)"}
+                                    <span title="{if="$value2['pre_requests_dependencyCount'][$key3] < 0"}>{else}+{/if}{$value2.pre_requests_dependencyCount.$key3}"> 
+                                    {#level_lang}
+                                    {$value3}
+                                    </span>
+                                  {/if}
+                                  {$flag = TRUE}
+                                {/loop}
+                          </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                  {/loop}
+                {/loop}
+              </div>
+              {/if}
+            </div>
+            {/if}

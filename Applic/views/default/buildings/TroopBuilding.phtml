@@ -1,0 +1,131 @@
+{function="load_lang('ui/custbuilds')"}
+  <p></p>
+  {if="$if_building_id_36"}
+      <p>
+      {#LANGUI_CUSTBU_TRP_t1}
+       <b>
+      {$troops.99}
+      </b>
+      {#LANGUI_CUSTBU_TRP_t2}
+       <b>
+      {$data.troops_trapped_num}
+      </b>
+      {#LANGUI_CUSTBU_TRP_t3}
+      .</p>
+      <p></p>
+  {/if}
+  <form method="post" name="snd" action="build?id={$buildingIndex}">
+    <table cellpadding="1" cellspacing="1" class="build_details">
+      <thead>
+        <tr>
+          <td>{#LANGUI_CUSTBU_TRP_t4}</td>
+          <td>{#LANGUI_CUSTBU_TRP_t5}</td>
+          <td>{#LANGUI_CUSTBU_TRP_t6}</td>
+        </tr>
+      </thead>
+      <tbody>
+        {loop="$troopsUpgrade"}
+              <tr>
+                <td class="desc">
+                  <div class="tit">
+                    <img class="unit u{$key}" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{function="constant('troop_' . $key)"}" title="{function="constant('troop_' . $key)"}" >
+                    <a href="#" onclick="return showManual({$value.manual});">{function="constant('troop_' . $key)"}</a>
+                    <span class="info">( {#LANGUI_CUSTBU_TRP_t7}:  {$value.troop_name} )</span>
+                  </div>
+                  <div class="details">
+                    <img class="r1" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#item_title_1}" title="{#item_title_1}"><span class="little_res">{$value.training_resources_1}</span>|<img class="r2" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#item_title_2}" title="{#item_title_2}"><span class="little_res">{$value.training_resources_2}</span>|<img class="r3" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#item_title_3}" title="{#item_title_3}"><span class="little_res">{$value.training_resources_3}</span>|<img class="r4" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#item_title_4}" title="{#item_title_4}"><span class="little_res">{$value.training_resources_4}</span>|<img class="clock" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#text_period_lang}" title="{#text_period_lang}">{$value.lvlTime}{$value.neededResources}
+              </div>
+              </td>
+              <td class="val">
+                <input type="text" class="text" id="_tf{$key}" name="tf[{$key}]" value="0" maxlength="7">
+              </td>
+              <td class="max">
+                <a href="#" onclick="_('_tf{$key}').value={$value.maxNumber}; return false;">({$value.maxNumber})</a>
+              </td>
+              </tr>
+        {/loop}
+
+  {if="($_ac == 0)"}
+      <tr>
+        <td colspan="3">
+          <span class="none">
+            {#LANGUI_CUSTBU_TRP_t8}
+          </span>
+        </td>
+      </tr>
+  {/if}
+  </tbody>
+</table>
+
+{if="(0 < $_ac)"}
+      <p>
+        <input type="image" id="btn_train" class="dynamic_img" value="ok" name="s1" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#LANGUI_CUSTBU_TRP_t9}">
+      </p>
+{/if}
+</form>
+
+
+  {if="$isset_tasksInQueue"}
+      <table cellpadding="1" cellspacing="1" class="under_progress">
+      {if="(!$data['is_special_village'] && $gameMetadata['plusTable'][7]['cost'] <= $data['gold_num'])"}
+          <thead>
+            <tr>
+              <th colspan="2">
+              {$costTip = sprintf(LANGUI_CUSTBU_TRP_t15, $gameMetadata['plusTable'][7]['cost'])}
+              {#LANGUI_CUSTBU_TRP_t16} :
+              <a href="?id={$_GET['id']}&bfs=7&k={$data.update_key}" title="{$costTip}">
+                <img class="clock" alt="{$costTip}" src="{function="add_style('x.gif', ASSETS_DIR)"}">
+              </a>
+              </th>
+            </tr>
+      </thead>
+      {/if}
+      <thead>
+        <tr>
+          <td>
+              {if="($buildProperties['building']['item_id'] == 36)"}
+                  {#LANGUI_CUSTBU_TRP_t10}
+              {else}
+                  {#LANGUI_CUSTBU_TRP_t11}
+              {/if}
+        </td>
+      <td>
+        {#text_period_lang}
+      </td>
+    </tr>
+  </thead>
+  <tbody>
+      {$nextTroopTime = 0}
+      {$_f            = TRUE}
+      {loop="$qts"}
+          {$tid       = $value['proc_params']}
+          {$troopTime = $value['execution_time'] - ($value['execution_time'] * $value['threads'] - $value['remainingSeconds'])}
+          {if="($troopTime < $nextTroopTime || $_f)"}
+              {$_f            = FALSE}
+              {$nextTroopTime = $troopTime}
+          {/if}
+          <tr>
+            <td class="desc">
+              <img class="unit u{$tid}" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{function="constant('troop_' . $tid)"}" title="{function="constant('troop_' . $tid)"}">
+                {$value.threads}
+                {function="constant('troop_' . $tid)"}
+            </td>
+          <td class="dur">
+            <span id="timer1">
+              {$value.remainingSeconds|secondstostring}
+            </span>
+          </td>
+        </tr>
+      {/loop}
+      <tr class="next">
+        <td colspan="2">
+          {if="$buildProperties['building']['item_id'] == 36"} {#LANGUI_CUSTBU_TRP_t13} {else} {#LANGUI_CUSTBU_TRP_t14} {/if}
+          {#LANGUI_CUSTBU_TRP_t12}
+          <span id="timer1">
+            {$nextTroopTime|secondstostring}
+          </span>
+        </td>
+  </tr>
+</tbody>
+</table>
+{/if}

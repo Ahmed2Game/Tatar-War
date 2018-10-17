@@ -1,0 +1,1152 @@
+{function="load_lang('ui/manual')"}
+        <link rel="stylesheet" type="text/css" href="{function="add_style('un_main2_'.$lang.'.css', ASSETS_DIR)"}" />
+        <br/>
+        <br/>
+        <div id="lmid1">
+        <div id="lmid2">
+        <div class="headline">
+        <h1>{#LANGUI_MANUAL_T109}</h1>
+        </div>
+        <div class="wholebox">
+        <a href="manual">{#LANGUI_MANUAL_T1}</a>
+        |
+        <a href="manual?t=1">{#LANGUI_MANUAL_T2}</a>
+        |
+        <a href="manual?t=2">{#LANGUI_MANUAL_T3}</a>
+        </div>
+        <div class="wholebox">
+        <div id="ce"></div>
+        {if="!isset($tab)"}
+        <p class="f9">
+        {#LANGUI_MANUAL_T4}
+        .
+        </p>
+        <div id="roemer" style="color:black}">
+        <div id="desc">
+          <h2>{#tribe_7}</h2>
+          <p class="f9">
+            <img align="right" src="{function="add_style('arab.png', ASSETS_DIR.'/default/img/un/h/')"}" width="102" height="118" border="0" alt="R?mer">
+            {#LANGUI_MANUAL_T21} .
+          </p>
+          <br clear="all"/>
+        </div>
+        <div id="tab">
+          <table cellspacing="1" cellpadding="2" class="tbg">
+            <tr class="rbg">
+              <td colspan="12">{#LANGUI_MANUAL_T22}</td>
+            </tr>
+            <tr class="cbg1">
+              <td colspan="2">&nbsp;</td>
+              <td>
+                <img src="{function="add_style('att_all.gif', ASSETS_DIR.'/default/img/un/h/')"}" width="16" height="16" border="0" alt="{#LANGUI_MANUAL_T7}" title="{#LANGUI_MANUAL_T7}"/>
+              </td>
+              <td>
+                <img src="{function="add_style('def_i.gif', ASSETS_DIR.'/default/img/un/h/')"}" width="16" height="16" border="0" alt="{#LANGUI_MANUAL_T8}" title="{#LANGUI_MANUAL_T8}"/>
+              </td>
+              <td>
+                <img src="{function="add_style('def_c.gif', ASSETS_DIR.'/default/img/un/h/')"}" width="16" height="16" border="0" alt="{#LANGUI_MANUAL_T9}" title="{#LANGUI_MANUAL_T9}"/>
+              </td>
+              <td>
+                <img src="{function="add_style('1.gif', ASSETS_DIR.'/default/img/un/res/')"}" width="18" height="12" border="0" alt="{#item_title_1}"/>
+              </td>
+              <td>
+                <img src="{function="add_style('2.gif', ASSETS_DIR.'/default/img/un/res/')"}" width="18" height="12" border="0" alt="{#item_title_2}"/>
+              </td>
+              <td>
+                <img src="{function="add_style('3.gif', ASSETS_DIR.'/default/img/un/res/')"}" width="18" height="12" border="0" alt="{#item_title_3}"/>
+              </td>
+              <td>
+                <img src="{function="add_style('4.gif', ASSETS_DIR.'/default/img/un/res/')"}" width="18" height="12" border="0" alt="{#item_title_4}"/>
+              </td>
+              <td title="{#LANGUI_MANUAL_T11}">{#LANGUI_MANUAL_T10}</td>
+            </tr>
+            {loop="gameMetadata.troops"}
+              {if="$value.for_tribe_id == '7' && $value.is_cavalry !== NULL"}
+              <tr>
+                <td width="25" align="center">
+                  <img src="{function="add_style($key.'.gif', ASSETS_DIR.'/default/img/u/')"}" width="16" height="16" border="0" alt=""></td>
+                <td class="s7" width="135">
+                  <span class="f9" nowrap>{function="merge_manual_text('troop',$key)"}</span>
+                </td>
+                <td width="25">{$value.attack_value}</td>
+                <td>{$value.defense_infantry}</td>
+                <td>{$value.defense_cavalry}</td>
+                <td>{$value.training_resources.1}</td>
+                <td>{$value.training_resources.2}</td>
+                <td>{$value.training_resources.3}</td>
+                <td>{$value.training_resources.4}</td>
+                <td>{$value.velocity * $gameMetadata.game_speed}</td>
+              </tr>
+              {/if}
+            {/loop}
+          </table>
+          <br/>
+        </div>
+        <div class="f9"  style="color:black} width:100%">
+          <strong>{#LANGUI_MANUAL_T12}</strong>
+          <br/>
+        </div>
+        <div class="lbox" style="color:black} font-weight:normal} width:100%}">
+          <ul>
+            <li>{#LANGUI_MANUAL_T14}</li>
+            <li>{#LANGUI_MANUAL_T15}</li>
+            <li>
+              {#LANGUI_MANUAL_T16}
+              {$gameMetadata.tribes.7.merchants_capacity * $gameMetadata.game_speed}
+              {#LANGUI_MANUAL_T19}({#LANGUI_MANUAL_T10}: {$gameMetadata.tribes.7.merchants_velocity * $gameMetadata.game_speed}
+              {#LANGUI_MANUAL_T20})
+            </li>
+            <li>
+              {#LANGUI_MANUAL_T17}.
+            </li>
+            <li>
+              {#LANGUI_MANUAL_T18}.
+            </li>
+          </ul>
+          <br/>
+        </div>
+        </div>
+        <div id="roemer" style="color:black}">
+        <div id="desc">
+          <h2>{#tribe_1}</h2>
+          <p class="f9">
+            <img align="right" src="{function="add_style('roemer.jpg', ASSETS_DIR.'/default/img/un/h/')"}" width="128" height="156" border="0" alt="R?mer">
+            {#LANGUI_MANUAL_T23}.
+          </p>
+          <br clear="all"/>
+        </div>
+        <div id="tab">
+          <table cellspacing="1" cellpadding="2" class="tbg">
+            <tr class="rbg">
+              <td colspan="12">{#LANGUI_MANUAL_T24}</td>
+            </tr>
+            <tr class="cbg1">
+              <td colspan="2">&nbsp;</td>
+              <td>
+                <img src="{function="add_style('att_all.gif', ASSETS_DIR.'/default/img/un/h/')"}" width="16" height="16" border="0" alt="{#LANGUI_MANUAL_T7}" title="{#LANGUI_MANUAL_T7}"/>
+              </td>
+              <td>
+                <img src="{function="add_style('def_i.gif', ASSETS_DIR.'/default/img/un/h/')"}" width="16" height="16" border="0" alt="{#LANGUI_MANUAL_T8}" title="{#LANGUI_MANUAL_T8}"/>
+              </td>
+              <td>
+                <img src="{function="add_style('def_c.gif', ASSETS_DIR.'/default/img/un/h/')"}" width="16" height="16" border="0" alt="{#LANGUI_MANUAL_T9}" title="{#LANGUI_MANUAL_T9}"/>
+              </td>
+              <td>
+                <img src="{function="add_style('1.gif', ASSETS_DIR.'/default/img/un/res/')"}" width="18" height="12" border="0" alt="{#item_title_1}"/>
+              </td>
+              <td>
+                <img src="{function="add_style('2.gif', ASSETS_DIR.'/default/img/un/res/')"}" width="18" height="12" border="0" alt="{#item_title_2}"/>
+              </td>
+              <td>
+                <img src="{function="add_style('3.gif', ASSETS_DIR.'/default/img/un/res/')"}" width="18" height="12" border="0" alt="{#item_title_3}"/>
+              </td>
+              <td>
+                <img src="{function="add_style('4.gif', ASSETS_DIR.'/default/img/un/res/')"}" width="18" height="12" border="0" alt="{#item_title_4}"/>
+              </td>
+              <td title="{#LANGUI_MANUAL_T11}">{#LANGUI_MANUAL_T10}</td>
+            </tr>
+            {loop="gameMetadata.troops"}
+              {if="$value.for_tribe_id == '1' && $value.is_cavalry !== NULL"}
+              <tr>
+                <td width="25" align="center">
+                  <img src="{function="add_style($key.'.gif', ASSETS_DIR.'/default/img/u/')"}" width="16" height="16" border="0" alt=""></td>
+                <td class="s7" width="135">
+                  <span class="f9" nowrap>{function="merge_manual_text('troop',$key)"}</span>
+                </td>
+                <td width="25">{$value.attack_value}</td>
+                <td>{$value.defense_infantry}</td>
+                <td>{$value.defense_cavalry}</td>
+                <td>{$value.training_resources.1}</td>
+                <td>{$value.training_resources.2}</td>
+                <td>{$value.training_resources.3}</td>
+                <td>{$value.training_resources.4}</td>
+                <td>{$value.velocity * $gameMetadata.game_speed}</td>
+              </tr>
+              {/if}
+            {/loop}
+          </table>
+          <br/>
+        </div>
+        <div class="f9"  style="color:black} width:100%">
+          <strong>{#LANGUI_MANUAL_T12}</strong>
+          <br/>
+        </div>
+        <div class="lbox" style="color:black} font-weight:normal} width:100%}">
+          <ul>
+            <li>{#LANGUI_MANUAL_T14}</li>
+            <li>{#LANGUI_MANUAL_T15}</li>
+            <li>
+              {#LANGUI_MANUAL_T16}
+              {$gameMetadata.tribes.1.merchants_capacity * $gameMetadata.game_speed}
+              {#LANGUI_MANUAL_T19}
+              ({#LANGUI_MANUAL_T10}: {$gameMetadata.tribes.1.merchants_velocity * $gameMetadata.game_speed} {#LANGUI_MANUAL_T20})
+            </li>
+            <li>
+              {#LANGUI_MANUAL_T25},
+            </li>
+            <li>
+              {#LANGUI_MANUAL_T18}.
+            </li>
+          </ul>
+          <br/>
+        </div>
+        </div>
+        <div id="gallier" style="color:black}">
+        <div id="desc">
+          <h2>{#tribe_3}</h2>
+          <p class="f9">
+            <img align="right" src="{function="add_style('gallier.jpg', ASSETS_DIR.'/default/img/un/h/')"}" width="96" height="156" border="0" alt="Gallier">{#LANGUI_MANUAL_T27}</p>
+          <br clear="all"/>
+        </div>
+        <div id="tab">
+          <table cellspacing="1" cellpadding="2" class="tbg">
+            <tr class="rbg">
+              <td colspan="12">{#LANGUI_MANUAL_T28}</td>
+            </tr>
+            <tr class="cbg1">
+              <td colspan="2">&nbsp;</td>
+              <td>
+                <img src="{function="add_style('att_all.gif', ASSETS_DIR.'/default/img/un/h/')"}" width="16" height="16" border="0" alt="{#LANGUI_MANUAL_T7}" title="{#LANGUI_MANUAL_T7}"/>
+              </td>
+              <td>
+                <img src="{function="add_style('def_i.gif', ASSETS_DIR.'/default/img/un/h/')"}" width="16" height="16" border="0" alt="{#LANGUI_MANUAL_T8}" title="{#LANGUI_MANUAL_T8}"/>
+              </td>
+              <td>
+                <img src="{function="add_style('def_c.gif', ASSETS_DIR.'/default/img/un/h/')"}" width="16" height="16" border="0" alt="{#LANGUI_MANUAL_T9}" title="{#LANGUI_MANUAL_T9}"/>
+              </td>
+              <td>
+                <img src="{function="add_style('1.gif', ASSETS_DIR.'/default/img/un/res/')"}" width="18" height="12" border="0" alt="{#item_title_1}"/>
+              </td>
+              <td>
+                <img src="{function="add_style('2.gif', ASSETS_DIR.'/default/img/un/res/')"}"  width="18" height="12" border="0" alt="{#item_title_2}"/>
+              </td>
+              <td>
+                <img src="{function="add_style('3.gif', ASSETS_DIR.'/default/img/un/res/')"}"  width="18" height="12" border="0" alt="{#item_title_3}"/>
+              </td>
+              <td>
+                <img src="{function="add_style('4.gif', ASSETS_DIR.'/default/img/un/res/')"}"  width="18" height="12" border="0" alt="{#item_title_4}"/>
+              </td>
+              <td title="{#LANGUI_MANUAL_T11}">{#LANGUI_MANUAL_T10}</td>
+            </tr>
+            {loop="gameMetadata.troops"}
+              {if="$value.for_tribe_id == '3' && $value.is_cavalry !== NULL"}
+              <tr>
+                <td width="25" align="center">
+                  <img src="{function="add_style($key.'.gif', ASSETS_DIR.'/default/img/u/')"}" width="16" height="16" border="0" alt=""></td>
+                <td class="s7" width="135">
+                  <span class="f9" nowrap>{function="merge_manual_text('troop',$key)"}</span>
+                </td>
+                <td width="25">{$value.attack_value}</td>
+                <td>{$value.defense_infantry}</td>
+                <td>{$value.defense_cavalry}</td>
+                <td>{$value.training_resources.1}</td>
+                <td>{$value.training_resources.2}</td>
+                <td>{$value.training_resources.3}</td>
+                <td>{$value.training_resources.4}</td>
+                <td>{$value.velocity * $gameMetadata.game_speed}</td>
+              </tr>
+              {/if}
+            {/loop}
+          </table>
+          <br/>
+        </div>
+        <div class="f9" style="color:black} width:100%"> <b>{#LANGUI_MANUAL_T12}</b>
+          <br/>
+        </div>
+        <div class="lbox" style="color:black} font-weight:normal} width:100%}">
+          <ul>
+            <li>{#LANGUI_MANUAL_T29}</li>
+            <li>{#LANGUI_MANUAL_T30}</li>
+            <li> {#LANGUI_MANUAL_T16}
+              {$gameMetadata.tribes.3.merchants_capacity * $gameMetadata.game_speed}
+              {#LANGUI_MANUAL_T19}({#LANGUI_MANUAL_T10}:
+              {$gameMetadata.tribes.3.merchants_velocity * $gameMetadata.game_speed}
+              {#LANGUI_MANUAL_T20} )
+            </li>
+            <li>{#LANGUI_MANUAL_T31}</li>
+            <li>{#LANGUI_MANUAL_T32}</li>
+            <li>{#LANGUI_MANUAL_T33}</li>
+          </ul>
+          <br/>
+        </div>
+        </div>
+        <div id="germanen"  style="color:black}">
+        <div id="desc">
+          <h2>{#tribe_2}</h2>
+          <p class="f9">
+            <img align="left" src="{function="add_style('germane.jpg', ASSETS_DIR.'/default/img/un/h/')"}" width="104" height="151" border="0" alt="Germane">{#LANGUI_MANUAL_T34}</p>
+          <br clear="all"></div>
+        <div id="tab">
+          <table cellspacing="1" cellpadding="2" class="tbg">
+            <tr class="rbg">
+              <td colspan="12">{#LANGUI_MANUAL_T35}</td>
+            </tr>
+            <tr class="cbg1">
+              <td colspan="2">&nbsp;</td>
+              <td>
+                <img src="{function="add_style('att_all.gif', ASSETS_DIR.'/default/img/un/h/')"}" width="16" height="16" border="0" alt="{#LANGUI_MANUAL_T7}" title="{#LANGUI_MANUAL_T7}"/>
+              </td>
+              <td>
+                <img src="{function="add_style('def_i.gif', ASSETS_DIR.'/default/img/un/h/')"}" width="16" height="16" border="0" alt="{#LANGUI_MANUAL_T8}" title="{#LANGUI_MANUAL_T8}"/>
+              </td>
+              <td>
+                <img src="{function="add_style('def_c.gif', ASSETS_DIR.'/default/img/un/h/')"}" width="16" height="16" border="0" alt="{#LANGUI_MANUAL_T9}" title="{#LANGUI_MANUAL_T9}"/>
+              </td>
+              <td>
+                <img src="{function="add_style('1.gif', ASSETS_DIR.'/default/img/un/res/')"}"  width="18" height="12" border="0" alt="{#item_title_1}"/>
+              </td>
+              <td>
+                <img src="{function="add_style('2.gif', ASSETS_DIR.'/default/img/un/res/')"}" width="18" height="12" border="0" alt="{#item_title_2}"/>
+              </td>
+              <td>
+                <img src="{function="add_style('3.gif', ASSETS_DIR.'/default/img/un/res/')"}" width="18" height="12" border="0" alt="{#item_title_3}"/>
+              </td>
+              <td>
+                <img src="{function="add_style('4.gif', ASSETS_DIR.'/default/img/un/res/')"}" width="18" height="12" border="0" alt="{#item_title_4}"/>
+              </td>
+              <td title="{#LANGUI_MANUAL_T11}">{#LANGUI_MANUAL_T10}</td>
+            </tr>
+            {loop="gameMetadata.troops"}
+              {if="$value.for_tribe_id == '2' && $value.is_cavalry !== NULL"}
+              <tr>
+                <td width="25" align="center">
+                  <img src="{function="add_style($key.'.gif', ASSETS_DIR.'/default/img/u/')"}" width="16" height="16" border="0" alt=""></td>
+                <td class="s7" width="135">
+                  <span class="f9" nowrap>{function="merge_manual_text('troop',$key)"}</span>
+                </td>
+                <td width="25">{$value.attack_value}</td>
+                <td>{$value.defense_infantry}</td>
+                <td>{$value.defense_cavalry}</td>
+                <td>{$value.training_resources.1}</td>
+                <td>{$value.training_resources.2}</td>
+                <td>{$value.training_resources.3}</td>
+                <td>{$value.training_resources.4}</td>
+                <td>{$value.velocity * $gameMetadata.game_speed}</td>
+              </tr>
+              {/if}
+            {/loop}
+          </table>
+          <br/>
+        </div>
+        <div class="f9" style="color:black;width:100%"> <b>{#LANGUI_MANUAL_T12}</b>
+          <br/>
+        </div>
+        <div class="lbox" style="color:black;font-weight:normal;width:100%;">
+          <ul>
+            <li>
+              {#LANGUI_MANUAL_T13}
+              {$gameMetadata.tribes.2.crannyFactor|round:2}
+            </li>
+            <li>{#LANGUI_MANUAL_T37}</li>
+            <li>
+              {#LANGUI_MANUAL_T16}
+              {$gameMetadata.tribes.2.merchants_capacity * $gameMetadata.game_speed}
+              {#LANGUI_MANUAL_T19}({#LANGUI_MANUAL_T10}:
+              {$gameMetadata.tribes.2.merchants_velocity * $gameMetadata.game_speed}
+              {#LANGUI_MANUAL_T20} )
+            </li>
+            <li>{#LANGUI_MANUAL_T38}</li>
+            <li>{#LANGUI_MANUAL_T39}</li>
+          </ul>
+          <br/>
+        </div>
+        </div>
+        {elseif="($tab == 1)"}
+        <div class="wholebox">
+        <p class="f9">{#LANGUI_MANUAL_T40}</p>
+        <h1>{#LANGUI_MANUAL_T41}</h1>
+        <br>
+        <img src="{function="add_style('gid15.gif', ASSETS_DIR.'/default/img/un/h/')"}" width="166" height="150" border="0" alt="{#LANGUI_MANUAL_T41}" title="{#LANGUI_MANUAL_T41}" align="left"/>
+        <p class="f9">
+          {#LANGUI_MANUAL_T42}.
+          <br>
+          <br>
+          <b>{#LANGUI_MANUAL_T43}:</b>
+          <br>
+          {#LANGUI_MANUAL_T44}.
+          <br>
+          <br>
+            {#LANGUI_MANUAL_T45}:
+          <br>
+          <img src="{function="add_style('1.gif', ASSETS_DIR.'/default/img/un/res/')"}" width="18" height="12" alt="{#item_title_1}" title="{#item_title_1}">
+          {$gameMetadata.items.15.levels.0.resources.1} |
+          <img src="{function="add_style('2.gif', ASSETS_DIR.'/default/img/un/res/')"}" width="18" height="12" alt="{#item_title_2}" title="{#item_title_2}">
+          {$gameMetadata.items.15.levels.0.resources.2} |
+          <img src="{function="add_style('3.gif', ASSETS_DIR.'/default/img/un/res/')"}" width="18" height="12" alt="{#item_title_3}" title="{#item_title_3}">
+          {$gameMetadata.items.15.levels.0.resources.3} |
+          <img src="{function="add_style('4.gif', ASSETS_DIR.'/default/img/un/res/')"}" width="18" height="12" alt="{#item_title_4}" title="{#item_title_4}">
+          {$gameMetadata.items.15.levels.0.resources.4} |
+          <img src="{function="add_style('5.gif', ASSETS_DIR.'/default/img/un/res/')"}" alt="{#LANGUI_MANUAL_T107}" title="{#LANGUI_MANUAL_T107}" width="18" height="12">
+          {$gameMetadata.items.15.levels.0.people_inc} |
+          <span class="dur">
+            <img alt="{#text_period_lang}" title="{#text_period_lang}" src="{function="add_style('clock.gif', ASSETS_DIR.'/default/img/un/h/')"}" width="18" height="12">
+            {function="secondstostring($gameMetadata.items.15.levels.0.time_consume / $gameMetadata.game_speed)"}
+          </span>
+          <br>
+          <b>{#LANGUI_MANUAL_T46}:</b>
+          <br>
+          {$flag = FALSE}
+          {loop="$gameMetadata.items.15.pre_requests"}
+            {if="$flag"},{/if}
+            {if="$value == NULL"}<strike>{/if}
+            {function="merge_manual_text('item', $key)"}
+            {if="$value == NULL"}</strike>{/if}
+            {if="$value != NULL"}
+              {#level_lang}{$value}
+            {/if}
+            {$flag = TRUE}
+          {/loop}
+          {if="!$flag"}{#LANGUI_MANUAL_T47}{/if}
+          <br>
+          <br>
+          <h1>{#LANGUI_MANUAL_T48}</h1>
+          <br>
+          <img src="{function="add_style('gid10.gif', ASSETS_DIR.'/default/img/un/h/')"}" width="166" height="150" border="0" alt="{#LANGUI_MANUAL_T48}" title="{#LANGUI_MANUAL_T48}" align="right"/>
+          <p class="f9">
+            {#LANGUI_MANUAL_T49}.
+            <br>
+            <br>
+            {#LANGUI_MANUAL_T45}:
+            <br>
+            <img src="{function="add_style('1.gif', ASSETS_DIR.'/default/img/un/res/')"}" width="18" height="12" alt="{#item_title_1}" title="{#item_title_1}">
+            {$gameMetadata.items.10.levels.0.resources.1} |
+            <img src="{function="add_style('2.gif', ASSETS_DIR.'/default/img/un/res/')"}" width="18" height="12" alt="{#item_title_2}" title="{#item_title_2}">
+            {$gameMetadata.items.10.levels.0.resources.2} |
+            <img src="{function="add_style('3.gif', ASSETS_DIR.'/default/img/un/res/')"}" width="18" height="12" alt="{#item_title_3}" title="{#item_title_3}">
+            {$gameMetadata.items.10.levels.0.resources.3} |
+            <img src="{function="add_style('4.gif', ASSETS_DIR.'/default/img/un/res/')"}" width="18" height="12" alt="{#item_title_4}" title="{#item_title_4}">
+            {$gameMetadata.items.10.levels.0.resources.4} |
+            <img src="{function="add_style('5.gif', ASSETS_DIR.'/default/img/un/res/')"}" alt="{#LANGUI_MANUAL_T107}" title="{#LANGUI_MANUAL_T107}" width="18" height="12">
+            {$gameMetadata.items.10.levels.0.people_inc} |
+            <span class="dur">
+              <img alt="{#text_period_lang}" title="{#text_period_lang}" src="{function="add_style('clock.gif', ASSETS_DIR.'/default/img/un/h/')"}" width="18" height="12">
+              {function="secondstostring($gameMetadata.items.10.levels.0.time_consume / $gameMetadata.game_speed)"}
+            </span>
+            <br>
+            <b>
+              {#LANGUI_MANUAL_T46} :
+            </b>
+            <br>
+            {$flag = FALSE}
+            {loop="$gameMetadata.items.10.pre_requests"}
+              {if="$flag"},{/if}
+
+              {if="$value == NULL"}<strike>{/if}
+              {function="merge_manual_text('item', $key)"}
+              {if="$value == NULL"}</strike>{/if}
+              {if="$value != NULL"}
+                {#level_lang}{$value}
+              {/if}
+              {$flag = TRUE}
+            {/loop}
+            {if="!$flag"}{#LANGUI_MANUAL_T47}{/if}
+            <br>
+            <br>
+            <h1>{#LANGUI_MANUAL_T50}</h1>
+            <br>
+            <img src="{function="add_style('gid11.gif', ASSETS_DIR.'/default/img/un/h/')"}" width="166" height="150" border="0" alt="{#LANGUI_MANUAL_T50}" title="{#LANGUI_MANUAL_T50}" align="right"/>
+            <p class="f9">
+              {#LANGUI_MANUAL_T51}.
+              <br>
+              <br>
+              {#LANGUI_MANUAL_T45}:
+              <br>
+              <img src="{function="add_style('1.gif', ASSETS_DIR.'/default/img/un/res/')"}" width="18" height="12" alt="{#item_title_1}" title="{#item_title_1}">
+              {$gameMetadata.items.11.levels.0.resources.1} |
+              <img src="{function="add_style('2.gif', ASSETS_DIR.'/default/img/un/res/')"}" width="18" height="12" alt="{#item_title_2}" title="{#item_title_2}">
+              {$gameMetadata.items.11.levels.0.resources.2} |
+              <img src="{function="add_style('3.gif', ASSETS_DIR.'/default/img/un/res/')"}" width="18" height="12" alt="{#item_title_3}" title="{#item_title_3}">
+              {$gameMetadata.items.11.levels.0.resources.3} |
+              <img src="{function="add_style('4.gif', ASSETS_DIR.'/default/img/un/res/')"}" width="18" height="12" alt="{#item_title_4}" title="{#item_title_4}">
+              {$gameMetadata.items.11.levels.0.resources.4} |
+              <img src="{function="add_style('5.gif', ASSETS_DIR.'/default/img/un/res/')"}" alt="{#LANGUI_MANUAL_T107}" title="{#LANGUI_MANUAL_T107}" width="18" height="12">
+              {$gameMetadata.items.11.levels.0.people_inc} |
+              <span class="dur">
+                <img alt="{#text_period_lang}" title="{#text_period_lang}" src="{function="add_style('clock.gif', ASSETS_DIR.'/default/img/un/h/')"}" width="18" height="12">
+                {function="secondstostring($gameMetadata.items.11.levels.0.time_consume / $gameMetadata.game_speed)"}
+              </span>
+              <br>
+              <b>
+                {#LANGUI_MANUAL_T46}:
+              </b>
+              <br>
+              {$flag = FALSE}
+              {loop="$gameMetadata.items.11.pre_requests"}
+
+                {if="$flag"},{/if}
+                {if="$value == NULL"}<strike>{/if}
+                {function="merge_manual_text('item', $key)"}
+                {if="$value == NULL"}</strike>{/if}
+                {if="$value != NULL"}
+                  {#level_lang}{$value}
+                {/if}
+                {$flag = TRUE}
+              {/loop}
+              {if="!$flag"}{#LANGUI_MANUAL_T47}{/if}
+              <br>
+              <br>
+              <h1>{#LANGUI_MANUAL_T52}</h1>
+              <br>
+              <img src="{function="add_style('gid23.gif', ASSETS_DIR.'/default/img/un/h/')"}" width="166" height="150" border="0" alt="{#LANGUI_MANUAL_T52}" title="{#LANGUI_MANUAL_T52} " align="left"/>
+              <p class="f9">
+                {#LANGUI_MANUAL_T53}.
+                <br>
+                <br>
+                <b>
+                  {#LANGUI_MANUAL_T108}:
+                </b>
+                <br>
+                {#LANGUI_MANUAL_T54}.
+                <br>
+                {#LANGUI_MANUAL_T55}.
+                <br>
+                <br>
+                {#LANGUI_MANUAL_T45}:
+                <br>
+                <img src="{function="add_style('1.gif', ASSETS_DIR.'/default/img/un/res/')"}" width="18" height="12" alt="{#item_title_1}" title="{#item_title_1}">
+                {$gameMetadata.items.23.levels.0.resources.1} |
+                <img src="{function="add_style('2.gif', ASSETS_DIR.'/default/img/un/res/')"}" width="18" height="12" alt="{#item_title_2}" title="{#item_title_2}">
+                {$gameMetadata.items.23.levels.0.resources.2} |
+                <img src="{function="add_style('3.gif', ASSETS_DIR.'/default/img/un/res/')"}" width="18" height="12" alt="{#item_title_3}" title="{#item_title_3}">
+                {$gameMetadata.items.23.levels.0.resources.3} |
+                <img src="{function="add_style('4.gif', ASSETS_DIR.'/default/img/un/res/')"}" width="18" height="12" alt="{#item_title_4}" title="{#item_title_4}">
+                {$gameMetadata.items.23.levels.0.resources.4} |
+                <img src="{function="add_style('5.gif', ASSETS_DIR.'/default/img/un/res/')"}" alt="{#LANGUI_MANUAL_T107}" title="{#LANGUI_MANUAL_T107}" width="18" height="12">
+                {$gameMetadata.items.23.levels.0.people_inc} |
+                <span class="dur">
+                  <img alt="{#text_period_lang}" title="{#text_period_lang}" src="{function="add_style('clock.gif', ASSETS_DIR.'/default/img/un/h/')"}" width="18" height="12">
+                  {function="secondstostring($gameMetadata.items.23.levels.0.time_consume / $gameMetadata.game_speed)"}
+                </span>
+                <br>
+                <b>
+                  {#LANGUI_MANUAL_T46} :
+                </b>
+                <br>
+                {$flag = FALSE}
+                {loop="$gameMetadata.items.23.pre_requests"}
+
+                  {if="$flag"},{/if}
+                  {if="$value == NULL"}<strike>{/if}
+                  {function="merge_manual_text('item', $key)"}
+                  {if="$value == NULL"}</strike>{/if}
+                  {if="$value != NULL"}
+                    {#level_lang}{$value}
+                  {/if}
+                  {$flag = TRUE}
+                {/loop}
+                {if="!$flag"}{#LANGUI_MANUAL_T47}{/if}
+                <br>
+                <br>
+                <h1>{#LANGUI_MANUAL_T56}</h1>
+                <br>
+                <img src="{function="add_style('gid18.gif', ASSETS_DIR.'/default/img/un/h/')"}" width="166" height="150" border="0" alt="{#LANGUI_MANUAL_T56}" title="{#LANGUI_MANUAL_T56}" align="right"/>
+                <p class="f9">
+                  {#LANGUI_MANUAL_T57}
+                  <br>
+                  <br>
+                  {#LANGUI_MANUAL_T45}
+                   :
+                  <br>
+                  <img src="{function="add_style('1.gif', ASSETS_DIR.'/default/img/un/res/')"}" width="18" height="12" alt="{#item_title_1}" title="{#item_title_1}">
+                  {$gameMetadata.items.18.levels.0.resources.1} |
+                  <img src="{function="add_style('2.gif', ASSETS_DIR.'/default/img/un/res/')"}" width="18" height="12" alt="{#item_title_2}" title="{#item_title_2}">
+                  {$gameMetadata.items.18.levels.0.resources.2} |
+                  <img src="{function="add_style('3.gif', ASSETS_DIR.'/default/img/un/res/')"}" width="18" height="12" alt="{#item_title_3}" title="{#item_title_3}">
+                  {$gameMetadata.items.18.levels.0.resources.3} |
+                  <img src="{function="add_style('4.gif', ASSETS_DIR.'/default/img/un/res/')"}" width="18" height="12" alt="{#item_title_4}" title="{#item_title_4}">
+                  {$gameMetadata.items.18.levels.0.resources.4} |
+                  <img src="{function="add_style('5.gif', ASSETS_DIR.'/default/img/un/res/')"}" alt="{#LANGUI_MANUAL_T107}" title="{#LANGUI_MANUAL_T107}" width="18" height="12">
+                  {$gameMetadata.items.18.levels.0.people_inc} |
+                  <span class="dur">
+                    <img alt="{#text_period_lang}" title="{#text_period_lang}" src="{function="add_style('clock.gif', ASSETS_DIR.'/default/img/un/h/')"}" width="18" height="12">
+                    {function="secondstostring($gameMetadata.items.18.levels.0.time_consume / $gameMetadata.game_speed)"}
+                  </span>
+                  <br>
+                  <b>
+                    {#LANGUI_MANUAL_T46}:
+                  </b>
+                  <br>
+                    {$flag = FALSE}
+                    {loop="$gameMetadata.items.18.pre_requests"}
+
+                      {if="$flag"},{/if}
+                      {if="$value == NULL"}<strike>{/if}
+                      {function="merge_manual_text('item', $key)"}
+                      {if="$value == NULL"}</strike>{/if}
+                      {if="$value != NULL"}
+                        {#level_lang}{$value}
+                      {/if}
+                      {$flag = TRUE}
+                    {/loop}
+                    {if="!$flag"}{#LANGUI_MANUAL_T47}{/if}
+                  <br>
+                  <br>
+                  <h1>{#LANGUI_MANUAL_T58}</h1>
+                  <br>
+                  <img src="{function="add_style('gid16.gif', ASSETS_DIR.'/default/img/un/h/')"}" width="166" height="150" border="0" alt="{#LANGUI_MANUAL_T58}" title="{#LANGUI_MANUAL_T58}" align="right"/>
+                  <p class="f9">
+                    {#LANGUI_MANUAL_T59}.
+                    <br>
+                    <br>
+                    {#LANGUI_MANUAL_T45}:
+                    <br>
+                      <img src="{function="add_style('1.gif', ASSETS_DIR.'/default/img/un/res/')"}" width="18" height="12" alt="{#item_title_1}" title="{#item_title_1}">
+                      {$gameMetadata.items.16.levels.0.resources.1} |
+                      <img src="{function="add_style('2.gif', ASSETS_DIR.'/default/img/un/res/')"}" width="18" height="12" alt="{#item_title_2}" title="{#item_title_2}">
+                      {$gameMetadata.items.16.levels.0.resources.2} |
+                      <img src="{function="add_style('3.gif', ASSETS_DIR.'/default/img/un/res/')"}" width="18" height="12" alt="{#item_title_3}" title="{#item_title_3}">
+                      {$gameMetadata.items.16.levels.0.resources.3} |
+                      <img src="{function="add_style('4.gif', ASSETS_DIR.'/default/img/un/res/')"}" width="18" height="12" alt="{#item_title_4}" title="{#item_title_4}">
+                      {$gameMetadata.items.16.levels.0.resources.4} |
+                      <img src="{function="add_style('5.gif', ASSETS_DIR.'/default/img/un/res/')"}" alt="{#LANGUI_MANUAL_T107}" title="{#LANGUI_MANUAL_T107}" width="18" height="12">
+                      {$gameMetadata.items.16.levels.0.people_inc} |
+                      <span class="dur">
+                        <img alt="{#text_period_lang}" title="{#text_period_lang}" src="{function="add_style('clock.gif', ASSETS_DIR.'/default/img/un/h/')"}" width="18" height="12">
+                        {function="secondstostring($gameMetadata.items.16.levels.0.time_consume / $gameMetadata.game_speed)"}
+                      </span>
+                    <br>
+                    <b>
+                      {#LANGUI_MANUAL_T46}:
+                    </b>
+                    <br>
+                      {$flag = FALSE}
+                      {loop="$gameMetadata.items.16.pre_requests"}
+
+                        {if="$flag"},{/if}
+                        {if="$value == NULL"}<strike>{/if}
+                        {function="merge_manual_text('item', $key)"}
+                        {if="$value == NULL"}</strike>{/if}
+                        {if="$value != NULL"}
+                          {#level_lang}{$value}
+                        {/if}
+                        {$flag = TRUE}
+                      {/loop}
+                      {if="!$flag"}{#LANGUI_MANUAL_T47}{/if}
+                    <br>
+                    <br>
+                    <h1>{#LANGUI_MANUAL_T60}</h1>
+                    <br>
+                    <img src="{function="add_style('gid17.gif', ASSETS_DIR.'/default/img/un/h/')"}" width="166" height="150" border="0" alt="{#LANGUI_MANUAL_T60}" title="{#LANGUI_MANUAL_T60}" align="left"/>
+                    <p class="f9">
+                      {#LANGUI_MANUAL_T61}.
+                      <br>
+                      <br>
+                      <b>
+                        {#LANGUI_MANUAL_T108}:
+                      </b>
+                      <br>
+                      {function="merge_manual_text('tribe', 7)"}
+                      {#LANGUI_MANUAL_T16}
+                      {$gameMetadata.tribes.7.merchants_capacity * $gameMetadata.game_speed}
+                      {#LANGUI_MANUAL_T19}({#LANGUI_MANUAL_T10}:
+                      {$gameMetadata.tribes.7.merchants_velocity * $gameMetadata.game_speed}
+                      {#LANGUI_MANUAL_T20} )
+                      <br>
+                      {function="merge_manual_text('tribe', 1)"}
+                      {#LANGUI_MANUAL_T16}
+                      {$gameMetadata.tribes.1.merchants_capacity * $gameMetadata.game_speed}
+                      {#LANGUI_MANUAL_T19}({#LANGUI_MANUAL_T10}:
+                      {$gameMetadata.tribes.1.merchants_velocity * $gameMetadata.game_speed}
+                      {#LANGUI_MANUAL_T20} )
+                      <br>
+                      {function="merge_manual_text('tribe', 2)"}
+                      {#LANGUI_MANUAL_T16}
+                      {$gameMetadata.tribes.2.merchants_capacity * $gameMetadata.game_speed}
+                      {#LANGUI_MANUAL_T19}({#LANGUI_MANUAL_T10}:
+                      {$gameMetadata.tribes.2.merchants_velocity * $gameMetadata.game_speed}
+                      {#LANGUI_MANUAL_T20} )
+                      <br>
+                      {function="merge_manual_text('tribe', 3)"}
+                      {#LANGUI_MANUAL_T16}
+                      {$gameMetadata.tribes.3.merchants_capacity * $gameMetadata.game_speed}
+                      {#LANGUI_MANUAL_T19}({#LANGUI_MANUAL_T10}:
+                      {$gameMetadata.tribes.3.merchants_velocity * $gameMetadata.game_speed}
+                      {#LANGUI_MANUAL_T20} )
+                      <br>
+                      <br>
+                      {#LANGUI_MANUAL_T45}:
+                      <br>
+                        <img src="{function="add_style('1.gif', ASSETS_DIR.'/default/img/un/res/')"}" width="18" height="12" alt="{#item_title_1}" title="{#item_title_1}">
+                        {$gameMetadata.items.17.levels.0.resources.1} |
+                        <img src="{function="add_style('2.gif', ASSETS_DIR.'/default/img/un/res/')"}" width="18" height="12" alt="{#item_title_2}" title="{#item_title_2}">
+                        {$gameMetadata.items.17.levels.0.resources.2} |
+                        <img src="{function="add_style('3.gif', ASSETS_DIR.'/default/img/un/res/')"}" width="18" height="12" alt="{#item_title_3}" title="{#item_title_3}">
+                        {$gameMetadata.items.17.levels.0.resources.3} |
+                        <img src="{function="add_style('4.gif', ASSETS_DIR.'/default/img/un/res/')"}" width="18" height="12" alt="{#item_title_4}" title="{#item_title_4}">
+                        {$gameMetadata.items.17.levels.0.resources.4} |
+                        <img src="{function="add_style('5.gif', ASSETS_DIR.'/default/img/un/res/')"}" alt="{#LANGUI_MANUAL_T107}" title="{#LANGUI_MANUAL_T107}" width="18" height="12">
+                        {$gameMetadata.items.17.levels.0.people_inc} |
+                        <span class="dur">
+                          <img alt="{#text_period_lang}" title="{#text_period_lang}" src="{function="add_style('clock.gif', ASSETS_DIR.'/default/img/un/h/')"}" width="18" height="12">
+                          {function="secondstostring($gameMetadata.items.17.levels.0.time_consume / $gameMetadata.game_speed)"}
+                        </span>
+                      <br>
+                      <b>
+                        {#LANGUI_MANUAL_T46}:
+                      </b>
+                      <br>
+                        {$flag = FALSE}
+                        {loop="$gameMetadata.items.17.pre_requests"}
+                          {if="$flag"},{/if}
+                          {if="$value == NULL"}<strike>{/if}
+                          {function="merge_manual_text('item', $key)"}
+                          {if="$value == NULL"}</strike>{/if}
+                          {if="$value != NULL"}
+                            {#level_lang}{$value}
+                          {/if}
+                          {$flag = TRUE}
+                        {/loop}
+                        {if="!$flag"}{#LANGUI_MANUAL_T47}{/if}
+                      <br>
+                      <br>
+                      <h1>{#LANGUI_MANUAL_T64}</h1>
+                      <br>
+                      <img src="{function="add_style('gid19.gif', ASSETS_DIR.'/default/img/un/h/')"}" width="166" height="150" border="0" alt="{#LANGUI_MANUAL_T64}" title="{#LANGUI_MANUAL_T64}" align="left"/>
+                      <p class="f9">
+                        {#LANGUI_MANUAL_T65}.
+                        <br>
+                        <br>{#LANGUI_MANUAL_T45}:
+                        <br>
+                        <img src="{function="add_style('1.gif', ASSETS_DIR.'/default/img/un/res/')"}" width="18" height="12" alt="{#item_title_1}" title="{#item_title_1}">
+                        {$gameMetadata.items.19.levels.0.resources.1} |
+                        <img src="{function="add_style('2.gif', ASSETS_DIR.'/default/img/un/res/')"}" width="18" height="12" alt="{#item_title_2}" title="{#item_title_2}">
+                        {$gameMetadata.items.19.levels.0.resources.2} |
+                        <img src="{function="add_style('3.gif', ASSETS_DIR.'/default/img/un/res/')"}" width="18" height="12" alt="{#item_title_3}" title="{#item_title_3}">
+                        {$gameMetadata.items.19.levels.0.resources.3} |
+                        <img src="{function="add_style('4.gif', ASSETS_DIR.'/default/img/un/res/')"}" width="18" height="12" alt="{#item_title_4}" title="{#item_title_4}">
+                        {$gameMetadata.items.19.levels.0.resources.4} |
+                        <img src="{function="add_style('5.gif', ASSETS_DIR.'/default/img/un/res/')"}" alt="{#LANGUI_MANUAL_T107}" title="{#LANGUI_MANUAL_T107}" width="18" height="12">
+                        {$gameMetadata.items.19.levels.0.people_inc} |
+                        <span class="dur">
+                          <img alt="{#text_period_lang}" title="{#text_period_lang}" src="{function="add_style('clock.gif', ASSETS_DIR.'/default/img/un/h/')"}" width="18" height="12">
+                          {function="secondstostring($gameMetadata.items.19.levels.0.time_consume / $gameMetadata.game_speed)"}
+                        </span>
+                        <br>
+                        <b>
+                          {#LANGUI_MANUAL_T46}:
+                        </b>
+                        <br>
+                        {$flag = FALSE}
+                        {loop="$gameMetadata.items.19.pre_requests"}
+                          {if="$flag"},{/if}
+                          {if="$value == NULL"}<strike>{/if}
+                          {function="merge_manual_text('item', $key)"}
+                          {if="$value == NULL"}</strike>{/if}
+                          {if="$value != NULL"}
+                            {#level_lang}{$value}
+                          {/if}
+                          {$flag = TRUE}
+                        {/loop}
+                        {if="!$flag"}{#LANGUI_MANUAL_T47}{/if}
+                        <br>
+                        <br>
+                        <h1>{#LANGUI_MANUAL_T66}</h1>
+                        <br>
+                        <img src="{function="add_style('gid20.gif', ASSETS_DIR.'/default/img/un/h/')"}" width="166" height="150" border="0" alt="{#LANGUI_MANUAL_T64}" title="{#LANGUI_MANUAL_T64}" align="left"/>
+                        <p class="f9">
+                          {#LANGUI_MANUAL_T67}.
+                          <br>
+                          <br>
+                          {#LANGUI_MANUAL_T45}:
+                          <br>
+                          <img src="{function="add_style('1.gif', ASSETS_DIR.'/default/img/un/res/')"}" width="18" height="12" alt="{#item_title_1}" title="{#item_title_1}">
+                          {$gameMetadata.items.20.levels.0.resources.1} |
+                          <img src="{function="add_style('2.gif', ASSETS_DIR.'/default/img/un/res/')"}" width="18" height="12" alt="{#item_title_2}" title="{#item_title_2}">
+                          {$gameMetadata.items.20.levels.0.resources.2} |
+                          <img src="{function="add_style('3.gif', ASSETS_DIR.'/default/img/un/res/')"}" width="18" height="12" alt="{#item_title_3}" title="{#item_title_3}">
+                          {$gameMetadata.items.20.levels.0.resources.3} |
+                          <img src="{function="add_style('4.gif', ASSETS_DIR.'/default/img/un/res/')"}" width="18" height="12" alt="{#item_title_4}" title="{#item_title_4}">
+                          {$gameMetadata.items.20.levels.0.resources.4} |
+                          <img src="{function="add_style('5.gif', ASSETS_DIR.'/default/img/un/res/')"}" alt="{#LANGUI_MANUAL_T107}" title="{#LANGUI_MANUAL_T107}" width="18" height="12">
+                          {$gameMetadata.items.20.levels.0.people_inc} |
+                          <span class="dur">
+                            <img alt="{#text_period_lang}" title="{#text_period_lang}" src="{function="add_style('clock.gif', ASSETS_DIR.'/default/img/un/h/')"}" width="18" height="12">
+                            {function="secondstostring($gameMetadata.items.20.levels.0.time_consume / $gameMetadata.game_speed)"}
+                          </span>
+                          <br>
+                          <b>
+                            {#LANGUI_MANUAL_T46}:
+                          </b>
+                          <br>
+                            {$flag = FALSE}
+                            {loop="$gameMetadata.items.20.pre_requests"}
+                              {if="$flag"},{/if}
+                              {if="$value == NULL"}<strike>{/if}
+                              {function="merge_manual_text('item', $key)"}
+                              {if="$value == NULL"}</strike>{/if}
+                              {if="$value != NULL"}
+                                {#level_lang}{$value}
+                              {/if}
+                              {$flag = TRUE}
+                            {/loop}
+                            {if="!$flag"}{#LANGUI_MANUAL_T47}{/if}
+                          <br>
+                          <br>
+                          <h1>{#LANGUI_MANUAL_T68}</h1>
+                          <br>
+                          <img src="{function="add_style('gid21.gif', ASSETS_DIR.'/default/img/un/h/')"}" width="166" height="150" border="0" alt="{#LANGUI_MANUAL_T64}" title="{#LANGUI_MANUAL_T64}" align="left"/>
+                          <p class="f9">
+                            {#LANGUI_MANUAL_T69}.
+                            <br>
+                            <br>{#LANGUI_MANUAL_T45}:
+                            <br>
+                            <img src="{function="add_style('1.gif', ASSETS_DIR.'/default/img/un/res/')"}" width="18" height="12" alt="{#item_title_1}" title="{#item_title_1}">
+                            {$gameMetadata.items.21.levels.0.resources.1} |
+                            <img src="{function="add_style('2.gif', ASSETS_DIR.'/default/img/un/res/')"}" width="18" height="12" alt="{#item_title_2}" title="{#item_title_2}">
+                            {$gameMetadata.items.21.levels.0.resources.2} |
+                            <img src="{function="add_style('3.gif', ASSETS_DIR.'/default/img/un/res/')"}" width="18" height="12" alt="{#item_title_3}" title="{#item_title_3}">
+                            {$gameMetadata.items.21.levels.0.resources.3} |
+                            <img src="{function="add_style('4.gif', ASSETS_DIR.'/default/img/un/res/')"}" width="18" height="12" alt="{#item_title_4}" title="{#item_title_4}">
+                            {$gameMetadata.items.21.levels.0.resources.4} |
+                            <img src="{function="add_style('5.gif', ASSETS_DIR.'/default/img/un/res/')"}" alt="{#LANGUI_MANUAL_T107}" title="{#LANGUI_MANUAL_T107}" width="18" height="12">
+                            {$gameMetadata.items.21.levels.0.people_inc} |
+                            <span class="dur">
+                              <img alt="{#text_period_lang}" title="{#text_period_lang}" src="{function="add_style('clock.gif', ASSETS_DIR.'/default/img/un/h/')"}" width="18" height="12">
+                              {function="secondstostring($gameMetadata.items.21.levels.0.time_consume / $gameMetadata.game_speed)"}
+                            </span>
+                            <br>
+                            <b>
+                              {#LANGUI_MANUAL_T46}:
+                            </b>
+                            <br>
+                            {$flag = FALSE}
+                            {loop="$gameMetadata.items.21.pre_requests"}
+                              {if="$flag"},{/if}
+                              {if="$value == NULL"}<strike>{/if}
+                              {function="merge_manual_text('item', $key)"}
+                              {if="$value == NULL"}</strike>{/if}
+                              {if="$value != NULL"}
+                                {#level_lang}{$value}
+                              {/if}
+                              {$flag = TRUE}
+                            {/loop}
+                            {if="!$flag"}{#LANGUI_MANUAL_T47}{/if}
+                            <br>
+                            <br>
+                            <h1>{#LANGUI_MANUAL_T70}</h1>
+                            <br>
+                            <img src="{function="add_style('gid22.gif', ASSETS_DIR.'/default/img/un/h/')"}" width="166" height="150" border="0" alt="{#LANGUI_MANUAL_T70}" title="{#LANGUI_MANUAL_T70}" align="right"/>
+                            <p class="f9">
+                              {#LANGUI_MANUAL_T71}.
+                              <br>
+                              <br>{#LANGUI_MANUAL_T45}:
+                              <br>
+                                <img src="{function="add_style('1.gif', ASSETS_DIR.'/default/img/un/res/')"}" width="18" height="12" alt="{#item_title_1}" title="{#item_title_1}">
+                                {$gameMetadata.items.22.levels.0.resources.1} |
+                                <img src="{function="add_style('2.gif', ASSETS_DIR.'/default/img/un/res/')"}" width="18" height="12" alt="{#item_title_2}" title="{#item_title_2}">
+                                {$gameMetadata.items.22.levels.0.resources.2} |
+                                <img src="{function="add_style('3.gif', ASSETS_DIR.'/default/img/un/res/')"}" width="18" height="12" alt="{#item_title_3}" title="{#item_title_3}">
+                                {$gameMetadata.items.22.levels.0.resources.3} |
+                                <img src="{function="add_style('4.gif', ASSETS_DIR.'/default/img/un/res/')"}" width="18" height="12" alt="{#item_title_4}" title="{#item_title_4}">
+                                {$gameMetadata.items.22.levels.0.resources.4} |
+                                <img src="{function="add_style('5.gif', ASSETS_DIR.'/default/img/un/res/')"}" alt="{#LANGUI_MANUAL_T107}" title="{#LANGUI_MANUAL_T107}" width="18" height="12">
+                                {$gameMetadata.items.22.levels.0.people_inc} |
+                                <span class="dur">
+                                  <img alt="{#text_period_lang}" title="{#text_period_lang}" src="{function="add_style('clock.gif', ASSETS_DIR.'/default/img/un/h/')"}" width="18" height="12">
+                                  {function="secondstostring($gameMetadata.items.22.levels.0.time_consume / $gameMetadata.game_speed)"}
+                                </span>
+                              <br>
+                              <b>
+                                {#LANGUI_MANUAL_T46}:
+                              </b>
+                              <br>
+                                {$flag = FALSE}
+                                {loop="$gameMetadata.items.22.pre_requests"}
+                                  {if="$flag"},{/if}
+                                  {if="$value == NULL"}<strike>{/if}
+                                  {function="merge_manual_text('item', $key)"}
+                                  {if="$value == NULL"}</strike>{/if}
+                                  {if="$value != NULL"}
+                                    {#level_lang}{$value}
+                                  {/if}
+                                  {$flag = TRUE}
+                                {/loop}
+                                {if="!$flag"}{#LANGUI_MANUAL_T47}{/if}
+                              <br>
+                              <br>
+                              <h1>{#LANGUI_MANUAL_T72}</h1>
+                              <br>
+                            <img src="{function="add_style('gid12.gif', ASSETS_DIR.'/default/img/un/h/')"}" width="166" height="150" border="0" alt="{#LANGUI_MANUAL_T72}" title="{#LANGUI_MANUAL_T72}" align="left"/>
+                              <p class="f9">
+                                {#LANGUI_MANUAL_T73}.
+                                <br>
+                                <br>{#LANGUI_MANUAL_T45}:
+                                <br>
+                                  <img src="{function="add_style('1.gif', ASSETS_DIR.'/default/img/un/res/')"}" width="18" height="12" alt="{#item_title_1}" title="{#item_title_1}">
+                                  {$gameMetadata.items.12.levels.0.resources.1} |
+                                  <img src="{function="add_style('2.gif', ASSETS_DIR.'/default/img/un/res/')"}" width="18" height="12" alt="{#item_title_2}" title="{#item_title_2}">
+                                  {$gameMetadata.items.12.levels.0.resources.2} |
+                                  <img src="{function="add_style('3.gif', ASSETS_DIR.'/default/img/un/res/')"}" width="18" height="12" alt="{#item_title_3}" title="{#item_title_3}">
+                                  {$gameMetadata.items.12.levels.0.resources.3} |
+                                  <img src="{function="add_style('4.gif', ASSETS_DIR.'/default/img/un/res/')"}" width="18" height="12" alt="{#item_title_4}" title="{#item_title_4}">
+                                  {$gameMetadata.items.12.levels.0.resources.4} |
+                                  <img src="{function="add_style('5.gif', ASSETS_DIR.'/default/img/un/res/')"}" alt="{#LANGUI_MANUAL_T107}" title="{#LANGUI_MANUAL_T107}" width="18" height="12">
+                                  {$gameMetadata.items.12.levels.0.people_inc} |
+                                  <span class="dur">
+                                    <img alt="{#text_period_lang}" title="{#text_period_lang}" src="{function="add_style('clock.gif', ASSETS_DIR.'/default/img/un/h/')"}" width="18" height="12">
+                                    {function="secondstostring($gameMetadata.items.12.levels.0.time_consume / $gameMetadata.game_speed)"}
+                                  </span>
+                                <br>
+                                <b>
+                                  {#LANGUI_MANUAL_T46}:
+                                </b>
+                                <br>
+                                {$flag = FALSE}
+                                {loop="$gameMetadata.items.12.pre_requests"}
+                                  {if="$flag"},{/if}
+                                  {if="$value == NULL"}<strike>{/if}
+                                  {function="merge_manual_text('item', $key)"}
+                                  {if="$value == NULL"}</strike>{/if}
+                                  {if="$value != NULL"}
+                                    {#level_lang}{$value}
+                                  {/if}
+                                  {$flag = TRUE}
+                                {/loop}
+                                {if="!$flag"}{#LANGUI_MANUAL_T47}{/if}
+                                <br>
+                                <br>
+                                <h1>{#LANGUI_MANUAL_T74}</h1>
+                                <br>
+                            <img src="{function="add_style('gid13.gif', ASSETS_DIR.'/default/img/un/h/')"}" width="166" height="150" border="0" alt="{#LANGUI_MANUAL_T74}" title="{#LANGUI_MANUAL_T74}" align="right"/>
+                                <p class="f9">
+                                  {#LANGUI_MANUAL_T75}.
+                                  <br>
+                                  <br>{#LANGUI_MANUAL_T45}:
+                                  <br>
+                                    <img src="{function="add_style('1.gif', ASSETS_DIR.'/default/img/un/res/')"}" width="18" height="12" alt="{#item_title_1}" title="{#item_title_1}">
+                                      {$gameMetadata.items.13.levels.0.resources.1} |
+                                      <img src="{function="add_style('2.gif', ASSETS_DIR.'/default/img/un/res/')"}" width="18" height="12" alt="{#item_title_2}" title="{#item_title_2}">
+                                      {$gameMetadata.items.13.levels.0.resources.2} |
+                                      <img src="{function="add_style('3.gif', ASSETS_DIR.'/default/img/un/res/')"}" width="18" height="12" alt="{#item_title_3}" title="{#item_title_3}">
+                                      {$gameMetadata.items.13.levels.0.resources.3} |
+                                      <img src="{function="add_style('4.gif', ASSETS_DIR.'/default/img/un/res/')"}" width="18" height="12" alt="{#item_title_4}" title="{#item_title_4}">
+                                      {$gameMetadata.items.13.levels.0.resources.4} |
+                                      <img src="{function="add_style('5.gif', ASSETS_DIR.'/default/img/un/res/')"}" alt="{#LANGUI_MANUAL_T107}" title="{#LANGUI_MANUAL_T107}" width="18" height="12">
+                                      {$gameMetadata.items.13.levels.0.people_inc} |
+                                      <span class="dur">
+                                        <img alt="{#text_period_lang}" title="{#text_period_lang}" src="{function="add_style('clock.gif', ASSETS_DIR.'/default/img/un/h/')"}" width="18" height="12">
+                                        {function="secondstostring($gameMetadata.items.13.levels.0.time_consume / $gameMetadata.game_speed)"}
+                                      </span>
+                                  <br>
+                                  <b>
+                                    {#LANGUI_MANUAL_T46}:
+                                  </b>
+                                  <br>
+                                    {$flag = FALSE}
+                                    {loop="$gameMetadata.items.13.pre_requests"}
+                                      {if="$flag"},{/if}
+                                      {if="$value == NULL"}<strike>{/if}
+                                      {function="merge_manual_text('item', $key)"}
+                                      {if="$value == NULL"}</strike>{/if}
+                                      {if="$value != NULL"}
+                                        {#level_lang}{$value}
+                                      {/if}
+                                      {$flag = TRUE}
+                                    {/loop}
+                                    {if="!$flag"}{#LANGUI_MANUAL_T47}{/if}
+                                  <br>
+                                  <br>
+                                  <h1>{#LANGUI_MANUAL_T76}</h1>
+                                  <br>
+                                    <img src="{function="add_style('gid26.gif', ASSETS_DIR.'/default/img/un/h/')"}" width="166" height="150" border="0" alt="{#LANGUI_MANUAL_T76}" title="{#LANGUI_MANUAL_T76}" align="left"/>
+                                  <p class="f9">
+                                    <p>{#LANGUI_MANUAL_T77}</p>
+                                    <br>
+                                    <br>{#LANGUI_MANUAL_T45}:
+                                    <br>
+                                    <img src="{function="add_style('1.gif', ASSETS_DIR.'/default/img/un/res/')"}" width="18" height="12" alt="{#item_title_1}" title="{#item_title_1}">
+                                      {$gameMetadata.items.26.levels.0.resources.1} |
+                                      <img src="{function="add_style('2.gif', ASSETS_DIR.'/default/img/un/res/')"}" width="18" height="12" alt="{#item_title_2}" title="{#item_title_2}">
+                                      {$gameMetadata.items.26.levels.0.resources.2} |
+                                      <img src="{function="add_style('3.gif', ASSETS_DIR.'/default/img/un/res/')"}" width="18" height="12" alt="{#item_title_3}" title="{#item_title_3}">
+                                      {$gameMetadata.items.26.levels.0.resources.3} |
+                                      <img src="{function="add_style('4.gif', ASSETS_DIR.'/default/img/un/res/')"}" width="18" height="12" alt="{#item_title_4}" title="{#item_title_4}">
+                                      {$gameMetadata.items.26.levels.0.resources.4} |
+                                      <img src="{function="add_style('5.gif', ASSETS_DIR.'/default/img/un/res/')"}" alt="{#LANGUI_MANUAL_T107}" title="{#LANGUI_MANUAL_T107}" width="18" height="12">
+                                      {$gameMetadata.items.26.levels.0.people_inc} |
+                                      <span class="dur">
+                                        <img alt="{#text_period_lang}" title="{#text_period_lang}" src="{function="add_style('clock.gif', ASSETS_DIR.'/default/img/un/h/')"}" width="18" height="12">
+                                        {function="secondstostring($gameMetadata.items.26.levels.0.time_consume / $gameMetadata.game_speed)"}
+                                      </span>
+                                    <br>
+                                    <b>
+                                      {#LANGUI_MANUAL_T46}:
+                                    </b>
+                                    <br>
+
+                                    <br>
+                                    <br>
+                                    <h1>{#LANGUI_MANUAL_T78}</h1>
+                                    <br>
+                                    <img src="{function="add_style('gid25.gif', ASSETS_DIR.'/default/img/un/h/')"}" width="166" height="150" border="0" alt="{#LANGUI_MANUAL_T78}" title="{#LANGUI_MANUAL_T78}" align="left"/>
+                                    <p class="f9">
+                                      {#LANGUI_MANUAL_T79}.
+                                      <br>
+                                      <br>{#LANGUI_MANUAL_T45}:
+                                      <br>
+                                        <img src="{function="add_style('1.gif', ASSETS_DIR.'/default/img/un/res/')"}" width="18" height="12" alt="{#item_title_1}" title="{#item_title_1}">
+                                          {$gameMetadata.items.25.levels.0.resources.1} |
+                                          <img src="{function="add_style('2.gif', ASSETS_DIR.'/default/img/un/res/')"}" width="18" height="12" alt="{#item_title_2}" title="{#item_title_2}">
+                                          {$gameMetadata.items.25.levels.0.resources.2} |
+                                          <img src="{function="add_style('3.gif', ASSETS_DIR.'/default/img/un/res/')"}" width="18" height="12" alt="{#item_title_3}" title="{#item_title_3}">
+                                          {$gameMetadata.items.25.levels.0.resources.3} |
+                                          <img src="{function="add_style('4.gif', ASSETS_DIR.'/default/img/un/res/')"}" width="18" height="12" alt="{#item_title_4}" title="{#item_title_4}">
+                                          {$gameMetadata.items.25.levels.0.resources.4} |
+                                          <img src="{function="add_style('5.gif', ASSETS_DIR.'/default/img/un/res/')"}" alt="{#LANGUI_MANUAL_T107}" title="{#LANGUI_MANUAL_T107}" width="18" height="12">
+                                          {$gameMetadata.items.25.levels.0.people_inc} |
+                                          <span class="dur">
+                                            <img alt="{#text_period_lang}" title="{#text_period_lang}" src="{function="add_style('clock.gif', ASSETS_DIR.'/default/img/un/h/')"}" width="18" height="12">
+                                            {function="secondstostring($gameMetadata.items.25.levels.0.time_consume / $gameMetadata.game_speed)"}
+                                          </span>
+                                      <br>
+                                      <b>
+                                        {#LANGUI_MANUAL_T46}:
+                                      </b>
+                                      <br>
+                                        {$flag = FALSE}
+                                        {loop="$gameMetadata.items.25.pre_requests"}
+                                          {if="$flag"},{/if}
+                                          {if="$value == NULL"}<strike>{/if}
+                                          {function="merge_manual_text('item', $key)"}
+                                          {if="$value == NULL"}</strike>{/if}
+                                          {if="$value != NULL"}
+                                            {#level_lang}{$value}
+                                          {/if}
+                                          {$flag = TRUE}
+                                        {/loop}
+                                        {if="!$flag"}{#LANGUI_MANUAL_T47}{/if}
+                                      <br>
+                                      <br>
+                                      <h1>{#LANGUI_MANUAL_T80}</h1>
+                                      <br>
+                                    <img src="{function="add_style('gid28.gif', ASSETS_DIR.'/default/img/un/h/')"}" width="166" height="150" border="0" alt="{#LANGUI_MANUAL_T80}" title="{#LANGUI_MANUAL_T80}" align="left"/>
+                                      <p class="f9">
+                                        {#LANGUI_MANUAL_T81}.
+                                        <br>
+                                        <br>{#LANGUI_MANUAL_T45}:
+                                        <br>
+                                        <img src="{function="add_style('1.gif', ASSETS_DIR.'/default/img/un/res/')"}" width="18" height="12" alt="{#item_title_1}" title="{#item_title_1}">
+                                          {$gameMetadata.items.28.levels.0.resources.1} |
+                                          <img src="{function="add_style('2.gif', ASSETS_DIR.'/default/img/un/res/')"}" width="18" height="12" alt="{#item_title_2}" title="{#item_title_2}">
+                                          {$gameMetadata.items.28.levels.0.resources.2} |
+                                          <img src="{function="add_style('3.gif', ASSETS_DIR.'/default/img/un/res/')"}" width="18" height="12" alt="{#item_title_3}" title="{#item_title_3}">
+                                          {$gameMetadata.items.28.levels.0.resources.3} |
+                                          <img src="{function="add_style('4.gif', ASSETS_DIR.'/default/img/un/res/')"}" width="18" height="12" alt="{#item_title_4}" title="{#item_title_4}">
+                                          {$gameMetadata.items.28.levels.0.resources.4} |
+                                          <img src="{function="add_style('5.gif', ASSETS_DIR.'/default/img/un/res/')"}" alt="{#LANGUI_MANUAL_T107}" title="{#LANGUI_MANUAL_T107}" width="18" height="12">
+                                          {$gameMetadata.items.28.levels.0.people_inc} |
+                                          <span class="dur">
+                                            <img alt="{#text_period_lang}" title="{#text_period_lang}" src="{function="add_style('clock.gif', ASSETS_DIR.'/default/img/un/h/')"}" width="18" height="12">
+                                            {function="secondstostring($gameMetadata.items.28.levels.0.time_consume / $gameMetadata.game_speed)"}
+                                          </span>
+                                        <br>
+                                        <b>
+                                          {#LANGUI_MANUAL_T46}:
+                                        </b>
+                                        <br>
+                                        {$flag = FALSE}
+                                        {loop="$gameMetadata.items.28.pre_requests"}
+                                          {if="$flag"},{/if}
+                                          {if="$value == NULL"}<strike>{/if}
+                                          {function="merge_manual_text('item', $key)"}
+                                          {if="$value == NULL"}</strike>{/if}
+                                          {if="$value != NULL"}
+                                            {#level_lang}{$value}
+                                          {/if}
+                                          {$flag = TRUE}
+                                        {/loop}
+                                        {if="!$flag"}{#LANGUI_MANUAL_T47}{/if}
+                                        <br>
+                                        <br>
+                                        <h1>{#LANGUI_MANUAL_T82}</h1>
+                                        <br>
+                                        <img src="{function="add_style('gid14.gif', ASSETS_DIR.'/default/img/un/h/')"}" width="166" height="150" border="0" alt="{#LANGUI_MANUAL_T82}" title="{#LANGUI_MANUAL_T82}" align="left"/>
+                                        <p class="f9">
+                                          <br>
+                                          {#LANGUI_MANUAL_T83}.
+                                          <br>
+                                          <br>{#LANGUI_MANUAL_T45}:
+                                          <br>
+                                          <img src="{function="add_style('1.gif', ASSETS_DIR.'/default/img/un/res/')"}" width="18" height="12" alt="{#item_title_1}" title="{#item_title_1}">
+                                          {$gameMetadata.items.14.levels.0.resources.1} |
+                                          <img src="{function="add_style('2.gif', ASSETS_DIR.'/default/img/un/res/')"}" width="18" height="12" alt="{#item_title_2}" title="{#item_title_2}">
+                                          {$gameMetadata.items.14.levels.0.resources.2} |
+                                          <img src="{function="add_style('3.gif', ASSETS_DIR.'/default/img/un/res/')"}" width="18" height="12" alt="{#item_title_3}" title="{#item_title_3}">
+                                          {$gameMetadata.items.14.levels.0.resources.3} |
+                                          <img src="{function="add_style('4.gif', ASSETS_DIR.'/default/img/un/res/')"}" width="18" height="12" alt="{#item_title_4}" title="{#item_title_4}">
+                                          {$gameMetadata.items.14.levels.0.resources.4} |
+                                          <img src="{function="add_style('5.gif', ASSETS_DIR.'/default/img/un/res/')"}" alt="{#LANGUI_MANUAL_T107}" title="{#LANGUI_MANUAL_T107}" width="18" height="12">
+                                          {$gameMetadata.items.14.levels.0.people_inc} |
+                                          <span class="dur">
+                                            <img alt="{#text_period_lang}" title="{#text_period_lang}" src="{function="add_style('clock.gif', ASSETS_DIR.'/default/img/un/h/')"}" width="18" height="12">
+                                            {function="secondstostring($gameMetadata.items.14.levels.0.time_consume / $gameMetadata.game_speed)"}
+                                          </span>
+                                          <br>
+                                          <b>
+                                            {#LANGUI_MANUAL_T46}:
+                                          </b>
+                                          <br>
+                                            {$flag = FALSE}
+                                            {loop="$gameMetadata.items.14.pre_requests"}
+                                              {if="$flag"},{/if}
+                                              {if="$value == NULL"}<strike>{/if}
+                                              {function="merge_manual_text('item', $key)"}
+                                              {if="$value == NULL"}</strike>{/if}
+                                              {if="$value != NULL"}
+                                                {#level_lang}{$value}
+                                              {/if}
+                                              {$flag = TRUE}
+                                            {/loop}
+                                            {if="!$flag"}{#LANGUI_MANUAL_T47}{/if}
+                                          <br>
+                                          <br></div>
+                                        {elseif="($tab == 2)"}
+                                        <div class="wholebox">
+                                          <img src="{function="add_style('faq_vp.jpg', ASSETS_DIR.'/default/img/un/h/')"}" width="116" height="128" border="0" alt="Versammlungsplatz" title="Versammlungsplatz" align="right">
+                                          <p class="f10 e b">{#LANGUI_MANUAL_T84}</p>
+                                          <div class="f10">{#LANGUI_MANUAL_T85}</div>
+                                          <img src="{function="add_style('faq_botschaft.jpg', ASSETS_DIR.'/default/img/un/h/')"}" width="122" height="150" border="0" alt="Botschaft" title="Botschaft" align="left">
+                                          <p class="f10 e b">{#LANGUI_MANUAL_T86}</p>
+                                          <div class="f10">
+                                            {#LANGUI_MANUAL_T87}.
+                                          </div>
+                                          <p class="f10 e b">{#LANGUI_MANUAL_T88}</p>
+                                          <div class="f10">{#LANGUI_MANUAL_T89}</div>
+                                          <p class="f10 e b">{#LANGUI_MANUAL_T90}</p>
+                                          <div class="f10">
+                                            {#LANGUI_MANUAL_T91}.
+                                          </div>
+                                          <p class="f10 e b">{#LANGUI_MANUAL_T92}</p>
+                                          <div class="f10">
+                                            {#LANGUI_MANUAL_T93}.
+                                          </div>
+                                          <p class="f10 e b">{#LANGUI_MANUAL_T94}</p>
+                                          <div class="f10">
+                                            {#LANGUI_MANUAL_T95}.
+                                          </div>
+                                          <p class="f10 e b">{#LANGUI_MANUAL_T96}</p>
+                                          <div class="f10">
+                                            {#LANGUI_MANUAL_T97}
+                                            <img src="{function="add_style('5.gif', ASSETS_DIR.'/default/img/un/res/')"}" width="18"  height="12" border="0" alt="Getreideverbrauch" title="{#LANGUI_MANUAL_T106}">.</div>
+                                          <p class="f10 e b">{#LANGUI_MANUAL_T98}</p>
+                                          <div class="f10">
+                                            {#LANGUI_MANUAL_T99}
+                                            <img src="{function="add_style('5.gif', ASSETS_DIR.'/default/img/un/res/')"}" width="18" height="12" border="0" alt="Getreideverbrauch" title="{#LANGUI_MANUAL_T106}">15/5</div>
+                                          <p class="f10 e b">{#LANGUI_MANUAL_T100}</p>
+                                          <div class="f10">
+                                            {#LANGUI_MANUAL_T101}.
+                                          </div>
+                                          <p class="f10 e b">{#LANGUI_MANUAL_T102}</p>
+                                          <div class="f10">
+                                            {#LANGUI_MANUAL_T103}.
+                                          </div>
+                                          <p class="f10 e b">{#LANGUI_MANUAL_T104}</p>
+                                          <div class="f10">
+                                            {#LANGUI_MANUAL_T105}.
+                                          </div>
+                                          <p></p>
+                                        </div>
+                                        {/if}
+                                      </div>
+                                    </div>
+                                  </div>

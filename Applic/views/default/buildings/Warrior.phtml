@@ -1,0 +1,64 @@
+ {function="load_lang('ui/custbuilds')"}
+  <p></p>
+  <form method="post" name="snd" action="build?id={$buildingIndex}">
+    <table cellpadding="1" cellspacing="1" class="build_details">
+      <thead>
+        <tr>
+          <td>{#LANGUI_CUSTBU_TRP_t4}</td>
+          <td>1 <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="gold" alt="{#LANGUI_CUSTBU_TRP_t18}" title="{#LANGUI_CUSTBU_TRP_t18}"> = </td>
+          <td>{#LANGUI_CUSTBU_TRP_t18}</td>
+        </tr>
+      </thead>
+      <tbody>
+  {$_ac = 0}
+  {loop="$troopsUpgrade"}
+      {$_ac = $_ac + 1}
+      {$buildingMetadata = $gameMetadata['troops'][$value]}
+      {$needres = $buildingMetadata['training_resources'][1]+$buildingMetadata['training_resources'][2]+$buildingMetadata['training_resources'][3]+$buildingMetadata['training_resources'][4];}
+      {$Number        = floor((float)$buildingMetadata['gold_needed']/($needres/100))}
+      {$manual           = $value == 99 ? "4,36" : "3," . $value}
+
+      {$troop           = $troops['value'][$value] }
+      <tr>
+        <td class="desc">
+          <div class="tit">
+              <img class="unit u{$value}" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{function="constant('troop_' . $value)"}" title="{function="constant('troop_' . $value)"}">
+              <a href="#" onclick="return showManual({$manual});">{function="constant('troop_' . $value)"}</a>
+              <span class="info">( {#LANGUI_CUSTBU_TRP_t7} :  {$troop}  )</span>
+          </div>
+        </td>
+        <td>
+            <img class="unit u{$value}" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{function="constant('troop_' . $value)"}" title="{function="constant('troop_' . $value)"}">
+          {$Number}
+        </td>
+        <td>
+            <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="gold" alt="{#LANGUI_CUSTBU_TRP_t18}" title="{#LANGUI_CUSTBU_TRP_t18}">  <input type="text" class="text" id="_tf{$value}" name="tf[{$value}]" value="0" maxlength="8">
+        </td>
+      </tr>
+  {/loop}
+
+  {if="($_ac == 0)"}
+      <tr>
+        <td colspan="4">
+          <span class="none">{#LANGUI_CUSTBU_TRP_t8}</span>
+        </td>
+      </tr>
+  {/if}
+  </tbody>
+</table>
+
+  {if="($warriorMessage != '')"}
+      <p {if="$warriorMessage == 1"} {else}class="error"{/if} >
+        <b>
+          {if="$warriorMessage == 1"}{#LANGUI_CUSTBU_TRP_t19}{else}{#LANGUI_CUSTBU_TRP_t20}{/if}
+        </b>
+      </p>
+  {/if}
+
+  {if="(0 < $_ac)"}
+      <p>
+        <input type="image" id="btn_train" class="dynamic_img" value="ok" name="s1" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#LANGUI_CUSTBU_TRP_t9}">
+      </p>
+  {/if}
+
+  </form>

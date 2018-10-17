@@ -1,0 +1,423 @@
+{function="load_lang('ui/village3')"}
+  
+  {if="($pageState == 1)"}
+      <h1>
+      {#LANGUI_VIL3_T1}
+       ({$mapItemData.rel_x}|{$mapItemData.rel_y})</h1>
+      {$mdist      = $setupMetadata['field_maps_summary'][$mapItemData['field_maps_id']]}
+      {$mdistArray = explode("-", $mdist)}
+      <img src="{function="add_style('x.gif', ASSETS_DIR)"}" id="detailed_map" class="f{$mapItemData.field_maps_id}" alt="{$mdist}" title="{$mdist}">
+      <div id="map_details">
+        <table cellpadding="1" cellspacing="1" id="distribution" class="tableNone">
+          <thead>
+            <tr>
+              <th colspan="3">{#LANGUI_VIL3_T2}:</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="ico">
+                <img class="r1" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#item_title_1}" title="{#item_title_1}">
+              </td>
+              <td class="val">{$mdistArray.0}</td>
+              <td class="desc">{#LANGUI_VIL3_T3}</td>
+            </tr>
+            <tr>
+              <td class="ico">
+                <img class="r2" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#item_title_2}" title="{#item_title_2}">
+              </td>
+              <td class="val">{$mdistArray.1}</td>
+              <td class="desc">{#LANGUI_VIL3_T4}</td>
+            </tr>
+            <tr>
+              <td class="ico">
+                <img class="r3" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#item_title_3}" title="{#item_title_3}">
+              </td>
+              <td class="val">{$mdistArray.2}</td>
+              <td class="desc">{#LANGUI_VIL3_T5}</td>
+            </tr>
+            <tr>
+              <td class="ico">
+                <img class="r4" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#item_title_4}" title="{#item_title_4}">
+              </td>
+              <td class="val">{$mdistArray.3}</td>
+              <td class="desc">{#LANGUI_VIL3_T6}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <table cellpadding="1" cellspacing="1" id="options" class="tableNone">
+        <thead>
+          <tr>
+            <th>{#LANGUI_VIL3_T7}:</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a href="map?id={$mapItemData.id}">{#LANGUI_VIL3_T8}</a>
+            </td>
+          </tr>
+
+      {if="!$builderTroopId"}
+          <tr>
+            <td><a href="v2v?id={$mapItemData.id}">{#LANGUI_VIL3_T9}</a></td>
+          </tr>
+      {else}
+          <tr>
+            <td class="none">{#LANGUI_VIL3_T9} ({$builderTroopId} {#LANGUI_VIL3_T10})</td>
+        </tr>
+      {/if}
+	     <tr>
+            <td>
+              <a href="farm?t=1&x={$mapItemData.rel_x}&y={$mapItemData.rel_y}" {if="!$active_plus_account"} onclick="return showManual(5,0);"{/if}>{#LANGUI_VIL3_T35}</a>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+  {elseif="($pageState == 2)"}
+      <h1>
+        <div>{$mapItemData.village_name}</div>&nbsp;
+        ({$mapItemData.rel_x} |{$mapItemData.rel_y})</h1>
+        
+        {if="($mapItemData['is_capital'])"}
+            <div id="dmain">({#LANGUI_VIL3_T11})</div>
+        {/if}
+      {$mdist      = $setupMetadata['field_maps_summary'][$mapItemData['field_maps_id']]}
+      {$mdistArray = explode("-", $mdist)}
+      <img src="{function="add_style('x.gif', ASSETS_DIR)"}" id="detailed_map" class="f{$mapItemData.field_maps_id}" alt="{$mdist}" title="{$mdist}">
+      <div id="map_details">
+        <table cellpadding="1" cellspacing="1" id="village_info" class="tableNone">
+        <tbody>
+          <tr>
+            <th>{#LANGUI_VIL3_T12}:</th>
+            <td>{function="constant('tribe_' . $mapItemData['tribe_id'])"}</td>
+          </tr>
+          <tr>
+            <th>{#LANGUI_VIL3_T13}:</th>
+            <td>
+            {if="(0 < intval($mapItemData['alliance_id']))"}
+                <a href="alliance?id={$mapItemData.alliance_id}">{$mapItemData.alliance_name}</a>
+            {/if}
+            </td>
+          </tr>
+          <tr>
+            <th>{#LANGUI_VIL3_T14}:</th>
+            <td>
+              <a href="profile?uid={$mapItemData.player_id}">{$mapItemData.player_name}</a>
+            </td>
+          </tr>
+          <tr>
+            <th>{#LANGUI_VIL3_T15}:</th>
+            <td>{$mapItemData.people_count}</td>
+          </tr>
+        </tbody>
+      </table>
+      <table cellpadding="1" cellspacing="1" id="troop_info" class="tableNone rep">
+        <thead>
+          <tr>
+            <th>{#LANGUI_VIL3_T16}:</th>
+          </tr>
+        </thead>
+        <tbody>
+                {loop="$lastReport"}
+                  {$isAttack          = $value['isAttack']}
+                  {$rptRelativeResult = ReportHelper::getreportresultrelative($value['rpt_result'], $isAttack)}
+                  {$btext             = ReportHelper::getreportresulttext($rptRelativeResult)}
+                  {$_rptResultCss     = $rptRelativeResult == 100 ? 10 : $rptRelativeResult}
+                  <tr>
+                    <td>
+                      <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="iReport iReport{$_rptResultCss}" alt="{$btext}" title="{$btext}">  
+                      <a href="report?id={$value.id}" title="{$value.mtime}">{$value.mdate}</a>
+                    </td>
+                  </tr>
+                {/loop}
+                {if="($counter1 == -1)"}
+                <tr>
+                  <td>{#LANGUI_VIL3_T17}</td>
+                </tr>
+                {/if}
+      </tbody>
+    </table>
+  </div>
+  <table cellpadding="1" cellspacing="1" id="options" class="tableNone">
+    <thead>
+      <tr>
+        <th>
+          {#LANGUI_VIL3_T7} :
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <a href="map?id={$mapItemData.id}">{#LANGUI_VIL3_T8}</a>
+        </td>
+      </tr>
+  {if="($mapItemData['id'] != $data['selected_village_id'])"}
+          
+      {if="($hasRallyPoint)"}
+      <tr>
+        {if="($mapItemData['playerType'] == PLAYERTYPE_ADMIN)"}
+        <td class="none">
+          {#LANGUI_VIL3_T18}
+              {else}
+          <td>
+            <a href="v2v?id={$mapItemData.id}">{#LANGUI_VIL3_T19}</a>
+            {/if}
+          </td>
+        </tr>
+        {else}
+        <tr>
+          <td class="none">{#LANGUI_VIL3_T20}</td>
+        </tr>
+        {/if}
+          
+        {if="($hasMarketplace)"}
+        <tr>
+          {if="($mapItemData['playerType'] == PLAYERTYPE_ADMIN)"}
+          <td class="none">
+            {#LANGUI_VIL3_T21}
+              {else}
+            <td>
+              <a class="" href="build?bid=17&vid2={$mapItemData.id}">{#LANGUI_VIL3_T22}</a>
+              {/if}
+            </td>
+          </tr>
+          {else}
+          <tr>
+            <td class="none">{#LANGUI_VIL3_T23}</td>
+          </tr>
+          {/if}
+      {/if}
+	  <tr>
+            <td>
+              <a href="farm?t=1&x={$mapItemData.rel_x}&y={$mapItemData.rel_y}" {if="!$active_plus_account"} onclick="return showManual(5,0);"{/if}>{#LANGUI_VIL3_T35}</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+  {elseif="($pageState == 3)"}
+      <h1>
+          {#LANGUI_VIL3_T24}
+         ({$mapItemData.rel_x}|{$mapItemData.rel_y})
+        
+        {if="($mapItemData['player_id'] == $player->playerId && $mapItemData['allegiance_percent'] < 100)"}
+            <div id="loyality" class="{if="$mapItemData['allegiance_percent'] <= 60 "} re {else} gr {/if}">
+              {#LANGUI_VIL3_T25} {$mapItemData.allegiance_percent} %
+            </div>
+        {/if}
+      </h1>
+      {$oid = $setupMetadata['oasis'][$mapItemData['image_num']]}
+      {$str = ""}
+      {loop="$oid"}
+          {if="($str != '')"}
+              {$str = $str .  PHP_EOL . ' ' . text_and_lang } 
+          {/if}
+          {$str = $str .  LANGUI_VIL3_T26 . ' ' . constant('item_title_' . $key) . ' ' . $value . '%'}
+      {/loop}
+      {$str = $str . '' . LANGUI_VIL3_T27}
+      <img src="{function="add_style('x.gif', ASSETS_DIR)"}" id="detailed_map" class="w{$mapItemData.image_num}" alt="{$str}" title="{$str}">
+        <div id="map_details">
+          <table cellpadding="1" cellspacing="1" id="village_info" class="tableNone">
+            <tbody>
+              <tr>
+                <th>
+                  {#LANGUI_VIL3_T12} :
+                </th>
+                <td>{function="constant('tribe_' . $mapItemData['tribe_id'])"}</td>
+              </tr>
+              <tr>
+                <th>
+                  {#LANGUI_VIL3_T13} :
+                </th>
+                <td>
+                  {if="(0 < intval($mapItemData['alliance_id']))"}
+                    <a href="alliance?id={$mapItemData.alliance_id}">
+                        {$mapItemData.alliance_name}
+                    </a>
+                  {/if}
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                    {#LANGUI_VIL3_T14} :
+                  </th>
+                  <td>
+                    <a href="profile?uid={$mapItemData.player_id}">{$mapItemData.player_name}</a>
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                    {#LANGUI_VIL3_T28} :
+                  </th>
+                  <td>
+                    <a href="village3?id={$mapItemData.parent_id}">
+                        {$mapItemData.village_name}
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <table cellpadding="1" cellspacing="1" id="troop_info" class="tableNone rep">
+              <thead>
+                <tr>
+                  <th>
+                    {#LANGUI_VIL3_T16} :
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {loop="$lastReport"}
+                  {$isAttack          = $value['isAttack']}
+                  {$rptRelativeResult = ReportHelper::getreportresultrelative($value['rpt_result'], $isAttack)}
+                  {$btext             = ReportHelper::getreportresulttext($rptRelativeResult)}
+                  {$_rptResultCss     = $rptRelativeResult == 100 ? 10 : $rptRelativeResult}
+                  <tr>
+                    <td>
+                      <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="iReport iReport{$_rptResultCss}" alt="{$btext}" title="{$btext}">  
+                      <a href="report?id={$value.id}" title="{$value.mtime}">{$value.mdate}</a>
+                    </td>
+                  </tr>
+                {/loop}
+                {if="($counter1 == -1)"}
+                <tr>
+                  <td>{#LANGUI_VIL3_T17}</td>
+                </tr>
+                {/if}
+              </tbody>
+            </table>
+          </div>
+          <table cellpadding="1" cellspacing="1" id="options" class="tableNone">
+            <thead>
+              <tr>
+                <th>
+                  {#LANGUI_VIL3_T7} :
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <a href="map?id={$mapItemData.id}">{#LANGUI_VIL3_T8}</a>
+                </td>
+              </tr>
+              
+              {if="($hasRallyPoint)"}
+              <tr>
+                {if="($mapItemData['playerType'] == PLAYERTYPE_ADMIN)"}
+                <td class="none">
+                  {#LANGUI_VIL3_T18}
+                {else}
+                  <td>
+                    <a href="v2v?id={$mapItemData.id}">{#LANGUI_VIL3_T19}</a>
+                {/if}
+                  </td>
+                </tr>
+              {else}
+                <tr>
+                  <td class="none">{#LANGUI_VIL3_T20}</td>
+                </tr>
+                {/if}
+				<tr>
+                    <td>
+                    <a href="farm?t=1&x={$mapItemData.rel_x}&y={$mapItemData.rel_y}" {if="!$active_plus_account"} onclick="return showManual(5,0);"{/if}>{#LANGUI_VIL3_T35}</a>
+                    </td>
+                </tr>
+              </tbody>
+            </table>
+
+        {elseif="($pageState == 4)"}
+            <h1>{#LANGUI_VIL3_T29} ({$mapItemData.rel_x}|{$mapItemData.rel_y})</h1>
+            
+            {$oid            = $setupMetadata['oasis'][$mapItemData['image_num']]}
+            {$str            = ''}
+            {$formatedString = ''}
+            {loop="$oid"}
+                {if="($str != '')"}
+                    {$str = $str .  PHP_EOL . ' ' . text_and_lang}
+                {/if}
+                {$curString = LANGUI_VIL3_T26 . ' ' . constant('item_title_' . $key) . ' ' . $value . '%'}
+                {$str = $str . $curString}
+                {$formatedString = $formatedString . '<li>' . $curString . ' ' . LANGUI_VIL3_T27 . '</li>'}
+              {/loop}
+            {$str = $str . ' ' . LANGUI_VIL3_T27}
+            {$formatedString = '<ul>' . $formatedString . '</ul>'}
+            <img src="{function="add_style('x.gif', ASSETS_DIR)"}" id="detailed_map" class="w{$mapItemData.image_num}" alt="{$str}" title="{$str}">
+                  <div id="map_details">
+                    <table cellpadding="1" cellspacing="1" id="troop_info" class="tableNone">
+                      <thead>
+                        <tr>
+                          <th colspan="3">
+                            {#LANGUI_VIL3_T30} :
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {loop="$itemTroops"}
+                          {if="$value1 >= 0"}
+                              <tr>
+                                  <td class="ico">
+                                    <img class="unit u{$key}" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{function="constant('troop_' . $key)"}" title="{function="constant('troop_' . $key)"}">
+                                  </td>
+                                  <td class="val">{$value}</td>
+                                  <td class="desc">{function="constant('troop_' . $key)"}</td>
+                              </tr>
+                          {/if}
+                        {/loop}
+            
+                        {if="($counter1 == -1)"}
+                        <tr>
+                          <td>{#LANGUI_VIL3_T31}</td>
+                        </tr>
+                        {/if}
+                      </tbody>
+                    </table>
+                    <table cellpadding="1" cellspacing="1" id="troop_info" class="tableNone">
+                      <thead>
+                        <tr>
+                          <th>
+                            {#LANGUI_VIL3_T32} :
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>{$formatedString}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <table cellpadding="1" cellspacing="1" id="options" class="tableNone">
+                    <thead>
+                      <tr>
+                        <th>
+                          {#LANGUI_VIL3_T7} :
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <a href="map?id={$mapItemData.id}">{#LANGUI_VIL3_T8}</a>
+                        </td>
+                      </tr>
+                      {if="($hasRallyPoint)"}
+                      <tr>
+                        <td>
+                          <a href="v2v?id={$mapItemData.id}">{#LANGUI_VIL3_T33}</a>
+                        </td>
+                      </tr>
+                      {else}
+                      <tr>
+                        <td class="none">{#LANGUI_VIL3_T34}</td>
+                      </tr>
+                      {/if}
+					  <tr>
+                        <td>
+                           <a href="farm?t=1&x={$mapItemData.rel_x}&y={$mapItemData.rel_y}" {if="!$active_plus_account"} onclick="return showManual(5,0);"{/if}>{#LANGUI_VIL3_T35}</a>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+        {/if}

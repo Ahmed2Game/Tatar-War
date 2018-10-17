@@ -1,0 +1,90 @@
+#wowwindow {
+    position: absolute;
+    left: 50%;/*margins are adjusted by plugin to place window at center center*/
+    top: 50%;
+    -moz-box-shadow: 0 0 15px #252525;
+    -webkit-box-shadow: 0 0 15px #252525;
+    box-shadow: 0 0 15px #252525;
+    background: #fff;
+    border: 1px solid #7f7f7f;
+    position: absolute;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+}
+
+#wowwindow-image {
+    line-height: 0;
+}
+
+#wowwindow-image-loading {
+    background: url(images/wowwindow-loading.gif) center center no-repeat;
+    height: 100px;
+    width: 100px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -50px;
+    margin-top: -50px;
+}
+
+#wowwindow-iframe, #wowwindow-video-flash {
+    /*position: absolute;
+    left: 10px;
+    top: 10px;*/
+    position: relative;
+    z-index: 10;
+}
+
+.wowwindow-title {
+    font-weight: bold;
+    font-size: 11px;
+    font-family: Verdana,Arial,Helvetica,sans-serif;
+    color: #bfbfbf;
+    cursor: default;
+    /*IE6 rules*/
+    _display: block;
+    _position: relative;
+}
+
+#wowwindow-inner {
+    padding: 10px;
+    position: relative;
+    overflow: hidden; /*contains floating elements*/
+    /*IE6 rule*/
+    _zoom: 1;
+}
+
+.wowwindow-controlbar {
+    background: #252525 url(images/wowwindow-controlbar.gif) repeat-x;
+    overflow: hidden;
+    border-bottom: 1px solid #252525;
+    padding: 0 30px 0 10px;
+    line-height: 18px;
+    /*IE6 rule*/
+    _zoom: 1;
+}
+
+a.wowwindow-close {
+    display: block;
+    float: right;
+    height: 20px;
+    width: 20px;
+    margin-right: -30px;
+    text-indent: -999em;
+    background: url(images/wowwindow-close.gif) no-repeat top left;
+    border-left: 1px solid #7f7f7f;
+    border-bottom: 1px solid #7f7f7f;
+    -moz-border-radius-bottomleft: 3px;
+    -webkit-border-bottom-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    /*rules for IE7 and below*/
+    *position: relative;
+    *right: -9px;
+    /*IE6 rule*/
+    _display: inline;
+}
+
+a.wowwindow-close:hover {
+    background-position: bottom left;
+}

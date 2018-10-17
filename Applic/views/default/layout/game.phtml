@@ -1,0 +1,263 @@
+{function="load_lang('ui/game')"}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <title>العالم رقم ({$_COOKIE['server']})</title>
+    <meta http-equiv="cache-control" content="max-age=0" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <meta http-equiv="imagetoolbar" content="no" />
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta content="{$metatag}" name="keywords">
+    <script type="text/javascript" charset="utf-8" src="https://www.xtatar.com/cometchat/js.php?ext=js"></script>
+    <link type="text/css" charset="utf-8" rel="stylesheet" media="all" href="https://www.xtatar.com/cometchat/css.php?ext=css" />
+    <link href="{function="add_style('lang.css', ASSETS_DIR.'default/lang/'.$lang.'/')"}" rel="stylesheet" type="text/css" />
+    <link href="{function="add_style('compact.css', ASSETS_DIR.'default/lang/'.$lang.'/')"}" rel="stylesheet" type="text/css" />
+    <meta name="google-site-verification" content="vTjsRxnpRzHRJvw5E3uOiAA-jcGayHNOw_SEAD93-fc" />
+    <link rel="shortcut icon" href="{function="add_style('favicon.ico', ASSETS_DIR)"}" type="image/x-icon" />
+    <script type="text/javascript">var d3l= {if="$lang == 'ar' "}180{else}-600{/if};</script>
+    <script src="{function="add_style('core.js', ASSETS_DIR)"}" type="text/javascript"></script>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-37341916-1', 'xtatar.com');
+  ga('send', 'pageview');
+
+</script>
+</head>
+<body class="v35 webkit">
+    <div class="wrapper">
+        <img src="{function="add_style('x.gif', ASSETS_DIR)"}" id="msfilter" alt="" />
+        <div id="dynamic_header"></div>
+        <div id="header">
+            <div id="mtop">
+                {if="($player != NULL)"}
+                <a href="village1" id="n1" accesskey="1">
+                    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" title="{#LANGUI_GAME_ICO1}" alt="{#LANGUI_GAME_ICO1}" />
+                </a>
+                <a href="village2" id="n2" accesskey="2">
+                    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" title="{#LANGUI_GAME_ICO2}" alt="{#LANGUI_GAME_ICO2}" />
+                </a>
+                <a href="map" id="n3" accesskey="3">
+                    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" title="{#LANGUI_GAME_ICO3}" alt="{#LANGUI_GAME_ICO3}" />
+                </a>
+                <a href="analytics" id="n4" accesskey="4">
+                    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" title="{#LANGUI_GAME_ICO4}" alt="{#LANGUI_GAME_ICO4}" />
+                </a>
+                <div id="n5" class="i{$reportMessageStatus}">
+                    <a class="reports" href="report" accesskey="5">
+                        <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="l" title="{#LANGUI_GAME_ICO5}" alt="{#LANGUI_GAME_ICO5}" />
+                    </a>
+                    <a class="messages" href="message" accesskey="6">
+                        <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r" title="{#LANGUI_GAME_ICO6}" alt="{#LANGUI_GAME_ICO6}" />
+                    </a>
+                </div>
+                <a href="plus?t=2" id="plus">
+                    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" id="btn_plus" {if="($data['active_plus_account'])"} class="active" {else} class="inactive" {/if} title="{#LANGUI_GAME_ICO7}" alt="{#LANGUI_GAME_ICO7}" /> <b><font color="#FF6F0F"><img alt="{#text_gold_lang}" class="gold" src="{function="add_style('x.gif', ASSETS_DIR)"}" title="{#text_gold_lang}" />{$data.gold_num}</font></b>
+                </a>
+                {/if}
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div id="mid">
+            <div id="side_navi">
+                <a id="logo" href="#">
+                    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" alt=" {#LANGUI_GAME_GNAME}" />
+                </a>
+                {if="($player != NULL)"}
+                {$_d = intval(date('G'))}
+                    {if="(6 <= $_d && $_d <= 19)"}
+                    <img class="time_of_day day" title="{#LANGUI_GAME_MORNING}" alt="{#LANGUI_GAME_MORNING}" src="{function="add_style('x.gif', ASSETS_DIR)"}" />
+                    {else}
+                    <img class="time_of_day night" title="{#LANGUI_GAME_AFTERNOON}" alt="{#LANGUI_GAME_AFTERNOON}" src="{function="add_style('x.gif', ASSETS_DIR)"}" />
+                    {/if}
+                {/if}
+                <br>
+                <p>
+                    <a href="index.php">{#LANGUI_GAME_MENU1}</a>
+                    {if="($player != NULL)"}
+                    <a href="#" onclick="return showManual(0,0);">{#LANGUI_GAME_MENU2}</a>
+                    <a href="profile">{#LANGUI_GAME_MENU3}</a>
+                    <a href="friends?t=1">{#LANGUI_GAME_MENU5} <span style="background-color:green;color:#ffffff;padding:2px;border-radius: 4px;">{$FriendR}</span></a>
+                    <a href="support"> <b>{#LANGUI_GAME_MENU14}</b>
+                    </a>
+                    <a href="logout">{#LANGUI_GAME_MENU4}</a>
+                </p>
+                <p>
+                    <a href="plus">{#LANGUI_GAME_MENU9}</a>
+                </p>
+                {/if}
+                {if="($player != NULL && $isPlayerInDeletionProgress)"}
+                <p class="deltimer">
+                    <a href="profile?t=4">
+                        {#LANGUI_GAME_PLAYERDEL}
+                        <span id="timer1">{$getPlayerDeletionTime}</span>
+                        {#time_hour_lang}
+                    </a>
+                </p>
+                {/if}
+                <p class="deltimer">سيتم اغلاق اللعبة في : 31/10/2018</p>
+            </div>
+            <div id="content" class="{$contentCssClass}">
+                <div class="top"></div>
+                {$content}
+            </div>
+            <div id="side_info">
+            {if="( $data['guide_quiz'] != GUIDE_QUIZ_COMPLETED && $player != NULL )"}
+                <div id="anm" style="width:118px; height:142px; visibility: hidden;"></div>
+                <div id="qge">
+                    <img onclick="showTask();" src="{function="add_style('x.gif', ASSETS_DIR)"}" id="qgei" class="{$getGuideQuizClassName}" title="{#LANGUI_GAME_LMENU1}" alt="{#LANGUI_GAME_LMENU1}">
+                </div>
+                {/if}
+                {if="( $player != NULL )"}
+                    {if="( 1 < sizeof( $playerVillages ) )"}
+                    <table cellpadding="1" cellspacing="1" id="vlist">
+                        <thead>
+                            <tr>
+                                <td colspan="3">
+                                    <b><a href="villages" {if="!$data.active_plus_account"} onclick="return showManual(5,0);"{/if}>{#LANGUI_GAME_LMENU2}:</a></b>
+                                </td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {loop="$playerVillages"}
+                                {$m = new Global_Model();}
+                                {$war9 = $m->IfVillageHasAttak($key);}
+                                <tr>
+                                    <td class="dot {if="$key == $data['selected_village_id']"}hl{/if}" >?</td>
+                                    <td class="link">
+                                        <div>
+                                            <a href="?vid={$key}{$villagesLinkPostfix}" >
+                                                {$value.2}
+                                                {if="( $war9 > 0 )"}
+                                                    <font color="red"><img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="att1" alt="( {$war9} {#LANGUI_GAME_LMENU5} )" title="( {$war9} {#LANGUI_GAME_LMENU5} )"></a></font>
+                                                {/if}
+                                            </a>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <a href="build?bid=17&vid2={$key}">
+                                            <img src="{function="add_style('6.gif', ASSETS_DIR.'/default/img/r/')"}"></a>
+                                    </td>
+                                    <td>
+                                        <a href="v2v?id={$key}">
+                                            <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="att_all"></a>
+                                    </td>
+                                    <td>
+                                    </td>
+                                    <td class="aligned_coords">
+                                        <div class="cox">
+                                            ( {$value.0}
+                                        </div>
+                                        <div class="pi">|</div>
+                                        <div class="coy">{$value.1} )</div>
+                                    </td>
+                                </tr>
+                            {/loop}
+                        </tbody>
+                    </table>
+                    {/if}
+
+                    {if="( sizeof( $playerLinks ) && $data['active_plus_account'] )"}
+                    <table id="llist">
+                        <thead>
+                            <tr>
+                                <td colspan="2">
+                                    <a href="links">
+                                        {#LANGUI_GAME_LMENU3}:
+                                    </a>
+                                </td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {loop="$playerLinks"}
+                            <tr>
+                                <td class="dot">?</td>
+                                <td class="link">
+                                    <div>
+                                        <a href="{$value.linkHref|htmlspecialchars}" {if="( !$value.linkSelfTarget )"}target="_blank"{/if}>{$value.linkName}</a>
+                                        {if="(!$value.linkSelfTarget)"}
+                                        <img class="external" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#LANGUI_GAME_LMENU4}" title="{#LANGUI_GAME_LMENU4}">
+                                        {/if}
+                                    </div>
+                                </td>
+                            </tr>
+                            {/loop}
+                        </tbody>
+                    </table>
+                    {/if}
+					{/if}
+                </div>
+                <div class="clear"></div>
+            </div>
+
+            <div class="footer-stopper"></div>
+            <div class="clear"></div>
+            <div id="footer">
+                <div id="mfoot">
+                    <div class="footer-menu">
+                        {include="layout/footer"}
+                    </div>
+                </div>
+                <div id="cfoot"></div>
+            </div>
+        </div>
+        {if="( $player != NULL )"}
+        <div id="res">
+            <div id="resWrap">
+                <table cellpadding="1" cellspacing="1">
+                    <tbody>
+                        <tr class="res">
+                            <td>
+                                <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="warehouse" alt="{#item_10}" title="{#item_10}" />
+                            </td>
+                            <td id="warehouse" class="res" title="{#item_curprod_10}">{$resources.1.store_max_limit}</td>
+                            <td>
+                                <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r1" alt="{#item_title_1}" title="{#item_title_1}" />
+                            </td>
+                            <td id="l4" class="res" alt="{$resources.1.store_max_limit}" title="{$resources.1.calc_prod_rate}">{$resources.1.current_value}</td>
+                            <td>
+                                <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r2" alt="{#item_title_2}" title="{#item_title_2}" />
+                            </td>
+                            <td id="l3" class="res" title="{$resources.2.calc_prod_rate}">{$resources.2.current_value}</td>
+                            <td>
+                                <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r3" alt="{#item_title_3}" title="{#item_title_3}" />
+                            </td>
+                            <td id="l2" class="res" title="{$resources.3.calc_prod_rate}">{$resources.3.current_value}</td>
+                            <td>
+                                <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="granary" alt="{#item_11}" title="{#item_11}" />
+                            </td>
+                            <td id="granary" class="res" title="{#item_curprod_10}">{$resources.4.store_max_limit}</td>
+                            <td>
+                                <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r4" alt="{#item_title_4}" title="{#item_title_4}" />
+                            </td>
+                            <td id="l1" class="res" title="{$resources.4.calc_prod_rate}">{$resources.4.current_value}</td>
+                            <td>
+                                <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r5" alt="{#LANGUI_GAME_CROPCONSUM}" title="{#LANGUI_GAME_CROPCONSUM} {function="floor($data.crop_consumption*$crop)"}/{function="floor($data.crop_consumption*$crop + $resources.4.calc_prod_rate)"}" />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div id="stime">
+            <div id="ltime">
+                <div id="ltimeWrap">
+                    {#LANGUI_GAME_CALCMS}
+                    <b>
+                        {$scriptstarttime}
+                    </b>
+                    ms<br />
+                    {#LANGUI_GAME_SRVTIME}
+                    <span id="timer2" class="b">{"G:i:s"|date}</span>
+                </div>
+            </div>
+        </div>
+        {/if}
+        <div id="ce"></div>
+</body>
+<script type="text/javascript">init(); {if="($player!= NULL && !$player->isSpy && $data['guide_quiz']==GUIDE_QUIZ_NOTSTARTED)"}showTask();{/if}</script>
+</html>

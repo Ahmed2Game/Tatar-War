@@ -1,0 +1,311 @@
+{function="load_lang('ui/village1')"}
+<h1>
+    {$data.village_name}
+    <br>
+    {if="($data['allegiance_percent'] < 100 )"}
+        <div id="loyality" class="{if="$data['allegiance_percent'] <= 60"}re{else}gr{/if}">{#LANGUI_VIL1_T1} {$data.allegiance_percent}%</div>
+    {/if}
+</h1>
+<map name="rx" id="rx">
+    <area href="build?id=1" coords="101,33,28" shape="circle" {$BuildingTitle_1}>
+    <area href="build?id=2" coords="165,32,28" shape="circle" {$BuildingTitle_2}>
+    <area href="build?id=3" coords="224,46,28" shape="circle" {$BuildingTitle_3}>
+    <area href="build?id=4" coords="46,63,28" shape="circle" {$BuildingTitle_4}>
+    <area href="build?id=5" coords="138,74,28" shape="circle" {$BuildingTitle_5}>
+    <area href="build?id=6" coords="203,94,28" shape="circle" {$BuildingTitle_6}>
+    <area href="build?id=7" coords="262,86,28" shape="circle" {$BuildingTitle_7}>
+    <area href="build?id=8" coords="31,117,28" shape="circle" {$BuildingTitle_8}>
+    <area href="build?id=9" coords="83,110,28" shape="circle" {$BuildingTitle_9}>
+    <area href="build?id=10" coords="214,142,28" shape="circle" {$BuildingTitle_10}>
+    <area href="build?id=11" coords="269,146,28" shape="circle" {$BuildingTitle_11}>
+    <area href="build?id=12" coords="42,171,28" shape="circle" {$BuildingTitle_12}>
+    <area href="build?id=13" coords="93,164,28" shape="circle" {$BuildingTitle_13}>
+    <area href="build?id=14" coords="160,184,28" shape="circle" {$BuildingTitle_14}>
+    <area href="build?id=15" coords="239,199,28" shape="circle" {$BuildingTitle_15}>
+    <area href="build?id=16" coords="87,217,28" shape="circle" {$BuildingTitle_16}>
+    <area href="build?id=17" coords="140,231,28" shape="circle" {$BuildingTitle_17}>
+    <area href="build?id=18" coords="190,232,28" shape="circle" {$BuildingTitle_18}>
+    <area href="village2" coords="144,131,36" shape="circle" title="{#LANGUI_VIL1_T2}" alt="{#LANGUI_VIL1_T2}">
+</map>
+<div id="village_map" class="f{$data.field_maps_id}">
+{loop="$buildings"}
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="reslevel rf{$key} level{$value.level}" alt="{$value.name}">
+{/loop}
+<img id="resfeld" usemap="#rx" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="">
+</div>
+    <div id="map_details">
+        {if="(0 < $tasksInQueue['war_troops_summary']['total_number'])"}
+            <table id="movements" cellpadding="1" cellspacing="1">
+                <thead>
+                    <tr>
+                        <th colspan="3">
+                            {#LANGUI_VIL1_T3}:
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                {$war = $tasksInQueue['war_troops_summary']['to_me']['attacks']}
+                {if="( 0 < $war.number )"}
+                    <tr>
+                        <td class="typ">
+                            <a href="build?id=39">
+                                <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="att1" alt="{#LANGUI_VIL1_T4}" title="{#LANGUI_VIL1_T4}"></a>
+                            <span class="a1">&laquo;</span>
+                        </td>
+                        <td>
+                            <div class="mov">
+                                <span class="a1">
+                                    {$war.number}
+                                    {#LANGUI_VIL1_T5}
+                                </span>
+                            </div>
+                            <div class="dur_r">
+                                {#text_in_lang}
+                                <span id="timer1">{$war.min_time|secondstostring}</span>
+                                {#time_hour_lang}
+                            </div>
+                        </td>
+                    </tr>
+                    {/if}
+
+                    {$war = $tasksInQueue['war_troops_summary']['to_me']['reinforce']}
+                    {if="( 0 < $war['number'] )"}
+                    <tr>
+                        <td class="typ">
+                            <a href="build?id=39">
+                                <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="def1" alt="{#LANGUI_VIL1_T6}" title="{#LANGUI_VIL1_T6}"></a>
+                            <span class="d1">&laquo;</span>
+                        </td>
+                        <td>
+                            <div class="mov">
+                                <span class="d1">
+                                    {$war.number}
+                                    {#LANGUI_VIL1_T7}
+                                </span>
+                            </div>
+                            <div class="dur_r">
+                                {#text_in_lang}
+                                <span id="timer1">{$war.min_time|secondstostring}</span>
+                                {#time_hour_lang}
+                            </div>
+                        </td>
+                    </tr>
+                    {/if}
+                    {$war = $tasksInQueue['war_troops_summary']['from_me']['attacks']}
+                    {if="( 0 < $war['number'] )"}
+                    <tr>
+                        <td class="typ">
+                            <a href="build?id=39">
+                                <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="att2" alt="{#LANGUI_VIL1_T8}" title="{#LANGUI_VIL1_T8}"></a>
+                            <span class="a2">&raquo;</span>
+                        </td>
+                        <td>
+                            <div class="mov">
+                                <span class="a2">
+                                    {$war.number}
+                                    {#LANGUI_VIL1_T5}
+                                </span>
+                            </div>
+                            <div class="dur_r">
+                                {#text_in_lang}
+                                <span id="timer1">{$war.min_time|secondstostring}</span>
+                                {#time_hour_lang}
+                            </div>
+                        </td>
+                    </tr>
+                    {/if}
+
+                    {$war = $tasksInQueue['war_troops_summary']['from_me']['reinforce']}
+                    {if="( 0 < $war['number'] )"}
+                    <tr>
+                        <td class="typ">
+                            <a href="build?id=39">
+                                <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="def2" alt="{#LANGUI_VIL1_T9}" title="{#LANGUI_VIL1_T9}"></a>
+                            <span class="d2">&raquo;</span>
+                        </td>
+                        <td>
+                            <div class="mov">
+                                <span class="d2">
+                                    {$war.number}
+                                    {#LANGUI_VIL1_T7}
+                                </span>
+                            </div>
+                            <div class="dur_r">
+                                {#text_in_lang}
+                                <span id="timer1">{$war.min_time|secondstostring}</span>
+                                {#time_hour_lang}
+                            </div>
+                        </td>
+                    </tr>
+                    {/if}
+
+                    {$war = $tasksInQueue['war_troops_summary']['to_my_oasis']['attacks']}
+                    {if="( 0 < $war['number'] )"}
+                    <tr>
+                        <td class="typ">
+                            <a href="build?id=39">
+                                <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="att3" alt="{#LANGUI_VIL1_T10}" title="{#LANGUI_VIL1_T10}"></a>
+                            <span class="a3">&laquo;</span>
+                        </td>
+                        <td>
+                            <div class="mov">
+                                <span class="a3">
+                                    {$war.number}
+                                    {#LANGUI_VIL1_T5}
+                                </span>
+                            </div>
+                            <div class="dur_r">
+                                {#text_in_lang}
+                                <span id="timer1">{$war.min_time|secondstostring}</span>
+                                {#time_hour_lang}
+                            </div>
+                        </td>
+                    </tr>
+                    {/if}
+
+                    {$war = $tasksInQueue['war_troops_summary']['to_my_oasis']['reinforce']}
+                    {if="( 0 < $war['number'] )"}
+                    <tr>
+                        <td class="typ">
+                            <a href="build?id=39">
+                                <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="def3" alt="{#LANGUI_VIL1_T11}" title="{#LANGUI_VIL1_T11}"></a>
+                            <span class="d3">&laquo;</span>
+                        </td>
+                        <td>
+                            <div class="mov">
+                                <span class="d3">
+                                    {$war.number}
+                                    {#LANGUI_VIL1_T7}
+                                </span>
+                            </div>
+                            <div class="dur_r">
+                                {#text_in_lang}
+                                <span id="timer1">{$war.min_time|secondstostring}</span>
+                                {#time_hour_lang}
+                            </div>
+                        </td>
+                    </tr>
+                    {/if}
+                </tbody>
+            </table>
+            {/if}
+            <table id="production" cellpadding="1" cellspacing="1">
+                <thead>
+                    <tr>
+                        <th colspan="4">{#LANGUI_VIL1_T12}:</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="ico">
+                            <img class="r1" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt=" {#item_title_1}" title=" {#item_title_1}" />
+                        </td>
+                        {$time1 = (($resources[1]['store_max_limit']-$resources[1]['current_value'])/$resources[1]['calc_prod_rate'])*(60*60)}
+                        <td class="res" title=" {if="($time1 <= 0)"} {#LANGUI_VIL1_T20} {else} {#LANGUI_VIL1_T19}  {$time1|secondstostring}{/if}">{#item_title_1}:</td>
+                        <td class="num" title="{if="($time1 <= 0)"} {#LANGUI_VIL1_T20} {else} {#LANGUI_VIL1_T19}  {$time1|secondstostring}{/if}">{$resources.1.calc_prod_rate}</td>
+                        <td class="per" title=" {if="($time1 <= 0)"} {#LANGUI_VIL1_T20} {else} {#LANGUI_VIL1_T19}  {$time1|secondstostring}{/if}">{#LANGUI_VIL1_T13}</td>
+                    </tr>
+                    <tr>
+                        <td class="ico">
+                            <img class="r2" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt=" {#item_title_2}" title=" {#item_title_2}" />
+                        </td>
+                        {$time2 = (($resources[2]['store_max_limit']-$resources[2]['current_value'])/$resources[2]['calc_prod_rate'])*(60*60)}
+                        <td class="res" title=" {if="($time2 <= 0)"} {#LANGUI_VIL1_T20} {else} {#LANGUI_VIL1_T19}  {$time2|secondstostring}{/if}">{#item_title_2}:</td>
+                        <td class="num" title=" {if="($time2 <= 0)"} {#LANGUI_VIL1_T20} {else} {#LANGUI_VIL1_T19}  {$time2|secondstostring}{/if}">{$resources.2.calc_prod_rate}</td>
+                        <td class="per" title=" {if="($time2 <= 0)"} {#LANGUI_VIL1_T20} {else} {#LANGUI_VIL1_T19}  {$time2|secondstostring}{/if}">{#LANGUI_VIL1_T13}</td>
+                    </tr>
+                    <tr>
+                        <td class="ico">
+                            <img class="r3" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt=" {#item_title_3}" title=" {#item_title_3}" />
+                        </td>
+                        {$time3 = (($resources[3]['store_max_limit']-$resources[3]['current_value'])/$resources[3]['calc_prod_rate'])*(60*60)}
+                        <td class="res" title=" {if="($time3 <= 0)"} {#LANGUI_VIL1_T20} {else} {#LANGUI_VIL1_T19}  {$time3|secondstostring}{/if}">{#item_title_3}:</td>
+                        <td class="num" title=" {if="($time3 <= 0)"} {#LANGUI_VIL1_T20} {else} {#LANGUI_VIL1_T19}  {$time3|secondstostring}{/if}">{$resources.3.calc_prod_rate}</td>
+                        <td class="per" title=" {if="($time3 <= 0)"} {#LANGUI_VIL1_T20} {else} {#LANGUI_VIL1_T19}  {$time3|secondstostring}{/if}">{#LANGUI_VIL1_T13}</td>
+                    </tr>
+                    <tr>
+                        <td class="ico">
+                            <img class="r4" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt=" {#item_title_4}" title=" {#item_title_4}" />
+                        </td>
+                        {$time4 = $resources[4]['calc_prod_rate'] <= 0 ? 0 : (($resources[4]['store_max_limit']-$resources[4]['current_value'])/$resources[4]['calc_prod_rate'])*(60*60)}
+                        <td class="res" title=" {if="($time4 <= 0)"} {#LANGUI_VIL1_T20} {else} {#LANGUI_VIL1_T19}  {$time4|secondstostring}{/if}">{#item_title_4}:</td>
+                        <td class="num" title=" {if="($time4 <= 0)"} {#LANGUI_VIL1_T20} {else} {#LANGUI_VIL1_T19}  {$time4|secondstostring}{/if}">{$resources.4.calc_prod_rate}</td>
+                        <td class="per" title=" {if="($time4 <= 0)"} {#LANGUI_VIL1_T20} {else} {#LANGUI_VIL1_T19}  {$time4|secondstostring}{/if}">{#LANGUI_VIL1_T13}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <table id="troops" cellpadding="1" cellspacing="1">
+                <thead>
+                    <tr>
+                        <th colspan="3">
+                            {#LANGUI_VIL1_T14}:
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {if="( $heroCount == 0 && sizeof( $troops ) == 0 )"}
+                    <tr>
+                        <td>{#LANGUI_VIL1_T15}</td>
+                    </tr>
+                    {else}
+                    {if="( 0 < $heroCount )"}
+                        <tr>
+                            <td class="ico">
+                                <a href="build?id=39">
+                                    <img class="unit uhero" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#troop_hero}" title="{#troop_hero}"></a>
+                            </td>
+                            <td class="num">{$heroCount}</td>
+                            <td class="un">{#troop_hero}</td>
+                        </tr>
+                        {/if}
+                        {loop="$troops"}
+                        <tr>
+                            <td class="ico">
+                                <a href="build?id=39">
+                                    <img class="unit u{$key}" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{$value.name}" title="{$value.name}">
+                                </a>
+                            </td>
+                            <td class="num">{$value.v}</td>
+                            <td class="un">{$value.name}</td>
+                        </tr>
+                        {/loop}
+                        {/if}
+                    </tbody>
+                </table>
+            </div>
+            {if="($QS_BUILD_CREATEUPGRADE)"}
+            <table cellpadding="1" cellspacing="1" id="building_contract">
+                <thead>
+                    <tr>
+                        <th colspan="3">
+                            {#LANGUI_VIL1_T16} :
+                            {if="( !$data['is_special_village'] && $gameMetadata['plusTable'][5]['cost'] <= $data['gold_num'] )"}
+                                <a href="village1?bfs=5&k={$data.update_key}" title="{#LANGUI_VIL1_T18}">
+                                    <img class="clock" alt="{#LANGUI_VIL1_T18}" src="{function="add_style('x.gif', ASSETS_DIR)"}"></a>
+                            {/if}
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {loop="$tmpBuilding"}
+                        <tr>
+                            <td class="ico">
+                                <a href="village1?id={$value.id}&d&k={$data.update_key}">
+                                    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="del" title="{#LANGUI_VIL1_T17}" alt="{#LANGUI_VIL1_T17}">
+                                </a>
+                            </td>
+                            <td>
+                                {$value.item_id_title} ({#level_lang}  {$value.level})
+                            </td>
+                            <td>
+                                {#time_remain_lang}
+                                <span id="timer1">
+                                    {$value.remainingSeconds}
+                                </span>
+                                {#time_hour_lang}
+                            </td>
+                        </tr>
+                        {/loop}
+                </tbody>
+            </table>
+        {/if}

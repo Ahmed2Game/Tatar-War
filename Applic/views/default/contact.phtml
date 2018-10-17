@@ -1,0 +1,100 @@
+{function="load_lang('ui/contact')"}
+<!--Content-->
+<div class="wrapper-contact">
+    <img src="{function="add_style('background-land.jpg', ASSETS_DIR.'indx/images/')"}" /></a></li>
+
+</div>
+
+<div class="container-fluid section2 contact-content-container">
+
+    <article class="caption-block">
+        <h1 class="caption-heading">{#LANGUI_CON_T1}</h1>
+        <div class="box-info about-desciption contact-block">
+            <div class="pull-right right-block-inside">
+                <h1 class="text-center">{#LANGUI_CON_T2}</h1>
+                <div class="col-md-6 col-xs-12">
+                    <p>{#LANGUI_CON_T3}
+                    </p>
+                </div>
+                <div class="col-md-6 col-xs-12  contact-details">
+                    <p>{#LANGUI_CON_T4}</p>
+                    <p>{#LANGUI_CON_T5}</p>
+                    <p>{#LANGUI_CON_T6}</p>
+                    <p>{#LANGUI_CON_T7}</p>
+                    <p>{#LANGUI_CON_T8}</p>
+                    <p>{#LANGUI_CON_T9}</p>
+
+                </div>
+
+            </div>
+        </div>
+
+
+    </article>
+    <article>
+        <div class="box-info about-desciption contact-block-2">
+            <div class="contact-form" >
+                <h1 class="text-center">{#LANGUI_CON_T1}</h1>
+                <form id="contact-form" class="validation-form" method="post" action="contact.php" role="form">
+
+                    <div class="messages"></div>
+
+                    <div class="controls">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group textField">
+                                    <label for="form_name">{#LANGUI_CON_T10}</label>
+                                    <input id="form_name" type="text" name="name" class="form-control" placeholder="{#LANGUI_CON_T15} {#LANGUI_CON_T10}"   data-error="{#LANGUI_CON_T10} {#LANGUI_CON_T17}">
+                                    <div class="validation">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group textField">
+                                    <label for="form_lastname">{#LANGUI_CON_T11}</label>
+                                    <input id="form_lastname" type="text" name="surname" class="form-control" placeholder="{#LANGUI_CON_T15}  {#LANGUI_CON_T11}"   data-error="{#LANGUI_CON_T11} {#LANGUI_CON_T17}">
+                                    <div class="validation">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group textField">
+                                    <label for="form_email">{#LANGUI_CON_T12}</label>
+                                    <input id="form_email" type="text" name="email" class="form-control" placeholder="{#LANGUI_CON_T15} {#LANGUI_CON_T12}"  data-error="{#LANGUI_CON_T12} {#LANGUI_CON_T17}">
+                                    <div class="validation">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="form_phone">{#LANGUI_CON_T13}</label>
+                                    <input id="form_phone" type="tel" name="phone" class="form-control" placeholder="{#LANGUI_CON_T15} {#LANGUI_CON_T13}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group textField">
+                                    <label for="form_message">{#LANGUI_CON_T14}</label>
+                                    <textarea id="form_message" name="message" class="form-control" placeholder="{#LANGUI_CON_T15} {#LANGUI_CON_T14}" rows="4"   data-error="{#LANGUI_CON_T14} {#LANGUI_CON_T17}"></textarea>
+                                    <div class="validation">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <input type="submit" class="btn default btn-send" value="{#LANGUI_CON_T16}">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </article>
+
+</div>
+
+
+<!--/Content-->

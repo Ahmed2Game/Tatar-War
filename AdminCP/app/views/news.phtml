@@ -1,0 +1,147 @@
+<script src="https://cdn.ckeditor.com/4.7.3/full-all/ckeditor.js"></script>
+
+{if="$page == 'show'"}
+<!-- BEGIN Main Content -->
+<div class="row-fluid">
+    <div class="span12">
+        <div class="box">
+            <div class="box-title">
+                <h3><i class="icon-table"></i>عرض الاخبار</h3>
+                <div class="box-tool">
+                </div>
+            </div>
+            <div class="box-content">
+                <table class="table table-striped table-hover fill-head">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>اللغة</th>
+                        <th>العنوان</th>
+                        <th>التاريخ</th>
+                        <th style="width: 150px">اوامر</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {loop="$news"}
+                    <tr>
+                        <td>{$value.id}</td>
+                        <td>{$value.language}</td>
+                        <td>{$value.subject}</td>
+                        <td>{$value.date}</td>
+                        <td>
+                            <a class="btn btn-primary btn-small" href="?page=edit&id={$value.id}"><i class="icon-edit"></i> </a>
+                            
+                            <a class="btn btn-danger btn-small" href="?page=show&delete={$value.id}" onclick="return confirm('هل انت متاكد من حذف الخبر ؟');"><i class="icon-trash"></i> </a>
+                        </td>
+                    </tr>
+                    {/loop}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{elseif="$page == 'add'"}
+<!-- BEGIN Main Content -->
+<div class="row-fluid">
+    <div class="span12">
+        <div class="box">
+            <div class="box-title">
+                <h3><i class="icon-reorder"></i>اضافة خبر جديد</h3>
+                <div class="box-tool">
+                </div>
+            </div>
+            <div class="box-content news-content">
+                <form action="" class="form-horizontal" method="POST">
+                    <div class="control-group">
+                        <label class="control-label" for="lang">اختار اللغة</label>
+                        <div class="controls">
+                            <div class="span12">
+                                <select class="input-medium" id="lang" name="lang">
+                                    <option  value="en">ENG</option>
+                                    <option value="ar">ARABIC</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="subject">العنوان</label>
+                        <div class="controls">
+                            <div class="span12">
+                                <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="editor1">الموضوع</label>
+                        <div class="controls">
+                            <div class="span12">
+                                <textarea cols="80" id="editor1" name="editor1" rows="10" ></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <input type="submit" class="btn btn-primary" value="اضافة خبر">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{elseif="$page == 'edit'"}
+<!-- BEGIN Main Content -->
+<div class="row-fluid">
+    <div class="span12">
+        <div class="box">
+            <div class="box-title">
+                <h3><i class="icon-reorder"></i>تعديل علي "{$data.subject}"</h3>
+                <div class="box-tool">
+                </div>
+            </div>
+            <div class="box-content">
+                <form action="" class="form-horizontal" method="POST">
+                    <div class="control-group">
+                        <label class="control-label" for="lang">اختار اللغة</label>
+                        <div class="controls">
+                            <div class="span12">
+                                <select class="input-medium" id="lang" name="lang" >
+                                    <option {if="$data.language == 'en'"}selected="selected"{/if} value="en">ENG</option>
+                                    <option {if="$data.language == 'ar'"}selected="selected"{/if} value="ar">ARABIC</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="subject">العنوان</label>
+                        <div class="controls">
+                            <div class="span12">
+                                <input type="text" class="form-control" id="subject" name="subject" value="{$data.subject}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="editor1">الموضوع</label>
+                        <div class="controls">
+                            <div class="span12">
+                                <textarea cols="80" id="editor1" name="editor1" rows="10">{$data.message}</textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <input type="submit" class="btn btn-primary" value="تعديل">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END Main Content -->
+{/if}
+<script>
+    CKEDITOR.replace( 'editor1', {
+        height: 260,
+        width: 700,
+    } );
+</script>

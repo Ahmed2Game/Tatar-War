@@ -1,0 +1,189 @@
+{function="load_lang('ui/training')"}
+<link rel=stylesheet type="text/css" href="{function="add_style('un_main2_'.$lang.'.css', ASSETS_DIR)"}" />
+<br />
+<br />
+<div id="lmid1">
+  <div id="lmid2">
+    <div class="headline">
+      <h1>{#LANGUI_TRAINING_T23}</h1>
+    </div>
+    {if="!isset($tab)"}
+    <div class="wholebox">
+      <h2>{#LANGUI_TRAINING_T24}</h2>
+    </div>
+    <div class="wholebox">
+      <table id="tut_img">
+        <tr>
+          <td>
+            <img src="{function="add_style('dorf_klein.jpg', ASSETS_DIR.'/default/img/tut/')"}" width="200" height="170" alt="">
+            <br>{#LANGUI_TRAINING_T1}</td>
+          <td>
+            <img src="{function="add_style('dorf_gross.jpg', ASSETS_DIR.'/default/img/tut/')"}" width="200" height="170" alt="">
+            <br>{#LANGUI_TRAINING_T2}</td>
+        </tr>
+      </table>
+      <table id="tut_txt">
+        <tr>
+          <td colspan="2">
+            <br>{#LANGUI_TRAINING_T3}</td>
+        </tr>
+      </table>
+    </div>
+    <div class="wholebox">
+      <div id="tut_left">
+        <a href="index">&laquo; {#LANGUI_TRAINING_T4}</a>
+      </div>
+      <div id="tut_right">
+        <a href="training?t=1">{#LANGUI_TRAINING_T5}&raquo;</a>
+      </div>
+    </div>
+    {elseif="($tab == 1)"}
+    <div class="wholebox">
+      <h2>{#LANGUI_TRAINING_T25}</h2>
+    </div>
+    <div class="wholebox">
+      <table id="tut_img">
+        <tr>
+          <td>
+            <img src="{function="add_style('rohstofffeld.gif', ASSETS_DIR.'/default/img/tut/')"}" width="200" height="183" alt="">
+            <br>{#LANGUI_TRAINING_T6}</td>
+          <td>
+            <img src="{function="add_style('rohstofffeld2.gif', ASSETS_DIR.'/default/img/tut/')"}" width="200" height="183" alt="">
+            <br>{#LANGUI_TRAINING_T7}</td>
+        </tr>
+      </table>
+      <table id="tut_txt">
+        <tr>
+          <td colspan="2">
+            <br>{#LANGUI_TRAINING_T8}</td>
+        </tr>
+      </table>
+    </div>
+    <div class="wholebox">
+      <div id="tut_left">
+        <a href="training">
+          &laquo; 
+      {#LANGUI_TRAINING_T4}
+        </a>
+      </div>
+      <div id="tut_right">
+        <a href="training?t=2">
+          {#LANGUI_TRAINING_T5}
+       &raquo;
+        </a>
+      </div>
+    </div>
+    {elseif="($tab == 2)"}
+    <div class="wholebox">
+      <h2>{#LANGUI_TRAINING_T26}</h2>
+    </div>
+    <div class="wholebox">
+      <table id="tut_img">
+        <tr>
+          <td>
+            <img src="{function="add_style('dorfzentrum1.gif', ASSETS_DIR.'/default/img/tut/')"}" width="200" height="183" alt="">
+            <br>{#LANGUI_TRAINING_T9}</td>
+          <td>
+            <img src="{function="add_style('dorfzentrum2.gif', ASSETS_DIR.'/default/img/tut/')"}" width="200" height="183" alt="">
+            <br>{#LANGUI_TRAINING_T10}</td>
+        </tr>
+      </table>
+      <table id="tut_txt">
+        <tr>
+          <td colspan="2">
+            <br>{#LANGUI_TRAINING_T11}</td>
+        </tr>
+      </table>
+    </div>
+    <div class="wholebox">
+      <div id="tut_left">
+        <a href="training?t=1">
+          &laquo; 
+      {#LANGUI_TRAINING_T4}
+        </a>
+      </div>
+      <div id="tut_right">
+        <a href="training?t=6">
+          {#LANGUI_TRAINING_T5}
+       &raquo;
+        </a>
+      </div>
+    </div>
+    {elseif="($tab == 6)"}
+    <div class="wholebox">
+      <h2>{#LANGUI_TRAINING_T27}</h2>
+    </div>
+    <div class="wholebox">
+      <table id="tut_img">
+        <tr>
+          <td>
+            <img src="{function="add_style('karte.jpg', ASSETS_DIR.'/default/img/tut/')"}" width="468" height="200" alt="">
+            <br>{#LANGUI_TRAINING_T12}</td>
+        </tr>
+      </table>
+      <table id="tut_txt">
+        <tr>
+          <td colspan="2">{#LANGUI_TRAINING_T13}</td>
+        </tr>
+      </table>
+    </div>
+    <div class="wholebox">
+      <div id="tut_left">
+        <a href="training?t=2">
+          &laquo; 
+          {#LANGUI_TRAINING_T4}
+        </a>
+      </div>
+      <div id="tut_right">
+        <a href="training?t=4">
+          {#LANGUI_TRAINING_T5}
+          &raquo;
+        </a>
+      </div>
+    </div>
+    {elseif="($tab == 4)"}
+    <div class="wholebox">
+      <h2>{#LANGUI_TRAINING_T28}</h2>
+    </div>
+    <div class="wholebox">
+      <table id="tut_img" style="height:40px;">
+        <tr>
+          <td colspan="2">
+            <img src="{function="add_style('navi.jpg', ASSETS_DIR.'/default/img/tut/')"}" width="468" height="100" alt="">
+            <br>{#LANGUI_TRAINING_T14}</td>
+        </tr>
+      </table>
+      <table id="tut_txt">
+        <tr>
+          <td colspan="2">
+            <ol start="1" type="1" class="f10">
+              <li>{#LANGUI_TRAINING_T15}</li>
+              <li>{#LANGUI_TRAINING_T16}</li>
+              <li>{#LANGUI_TRAINING_T17}</li>
+              <li>{#LANGUI_TRAINING_T18}</li>
+              <li>{#LANGUI_TRAINING_T19}</li>
+              <li>{#LANGUI_TRAINING_T20}</li>
+            </ol>
+            {#LANGUI_TRAINING_T21}
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="wholebox">
+      <div id="tut_left">
+        <a href="training?t=6">
+          &laquo; 
+      {#LANGUI_TRAINING_T4}
+        </a>
+      </div>
+      <div id="tut_right">
+        <a href="register"  id="link2">
+          {#LANGUI_TRAINING_T22}
+       &raquo;
+        </a>
+      </div>
+    </div>
+    {/if}
+    <div style="clear:both;"></div>
+  </div>
+</div>

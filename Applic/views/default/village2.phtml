@@ -1,0 +1,132 @@
+{function="load_lang('ui/village1')"}
+{function="load_lang('ui/village2')"}
+  <h1>{$data.village_name}</h1>
+  <map name="map1" id="map1">
+    <area href="build?id=40" {$BuildingTitle_40} coords="325,225,180" shape="circle">
+   <area href="build?id=40" {$BuildingTitle_40} coords="220,230,185" shape="circle">
+ </map>
+ <map name="map2" id="map2">
+  {if="($data['is_special_village'])"}
+      <area href="build?id=25" {$BuildingTitle_25} coords="180,160,80" shape="circle">
+  {/if}
+  <area href="build?id=19" {$BuildingTitle_19} coords="53,91,53,37,128,37,128,91,91,112" shape="poly">
+  <area href="build?id=20" {$BuildingTitle_20} coords="136,66,136,12,211,12,211,66,174,87" shape="poly">
+  <area href="build?id=21" {$BuildingTitle_21} coords="196,56,196,2,271,2,271,56,234,77" shape="poly">
+  <area href="build?id=22" {$BuildingTitle_22} coords="270,69,270,15,345,15,345,69,308,90" shape="poly">
+  <area href="build?id=23" {$BuildingTitle_23} coords="327,117,327,63,402,63,402,117,365,138" shape="poly">
+  <area href="build?id=24" {$BuildingTitle_24} coords="14,129,14,75,89,75,89,129,52,150" shape="poly">
+  {if="(!$data['is_special_village'])"}
+      <area href="build?id=25" {$BuildingTitle_25} coords="97,137,97,83,172,83,172,137,135,158" shape="poly">
+  {/if}
+
+  {if="(!$data['is_special_village'])"}
+      <area href="build?id=26" {$BuildingTitle_26} coords="182,119,182,65,257,65,257,119,220,140" shape="poly">
+  {/if}
+  <area href="build?id=27" {$BuildingTitle_27} coords="337,156,375,136,411,156,375,177" shape="poly">
+  <area href="build?id=28" {$BuildingTitle_28} coords="2,199,2,145,77,145,77,199,40,220" shape="poly">
+  {if="(!$data['is_special_village'])"}
+      <area href="build?id=29" {$BuildingTitle_29} coords="129,164,129,110,204,110,204,164,167,185" shape="poly">
+  {/if}
+
+  {if="(!$data['is_special_village'])"}
+      <area href="build?id=30" {$BuildingTitle_30} coords="92,189,92,135,167,135,167,189,130,210" shape="poly">
+  {/if}
+  <area href="build?id=31" {$BuildingTitle_31} coords="342,216,380,196,416,216,380,237" shape="poly">
+  <area href="build?id=32" {$BuildingTitle_32} coords="22,238,60,218,96,238,60,259" shape="poly">
+  {if="(!$data['is_special_village'])"}
+      <area href="build?id=33" {$BuildingTitle_33} coords="167,232,205,212,241,232,205,253" shape="poly">
+  {/if}
+  <area href="build?id=34" {$BuildingTitle_34} coords="290,251,328,231,364,251,328,272" shape="poly">
+  <area href="build?id=35" {$BuildingTitle_35} coords="95,273,133,253,169,273,133,294" shape="poly">
+  <area href="build?id=36" {$BuildingTitle_36} coords="222,284,260,264,296,284,260,305" shape="poly">
+  <area href="build?id=37" {$BuildingTitle_37} coords="80,306,118,286,154,306,118,327" shape="poly">
+  <area href="build?id=38" {$BuildingTitle_38} coords="199,316,237,296,273,316,237,337" shape="poly">
+   <area href="build?id=39" {$BuildingTitle_39} coords="270,158,303,135,316,155,318,178,304,211,288,227,263,238,250,215" shape="poly">
+   <area href="build?id=40"  {$BuildingTitle_40} coords="312,338,347,338,377,320,406,288,421,262,421,222,396,275,360,311" shape="poly">
+   <area href="build?id=40" {$BuildingTitle_40} coords="49,338,0,274,0,240,33,286,88,338" shape="poly">
+   <area href="build?id=40" {$BuildingTitle_40} coords="0,144,34,88,93,39,181,15,252,15,305,31,358,63,402,106,421,151,421,93,378,47,280,0,175,0,78,28,0,92" shape="poly">
+ </map>
+ <div id="village_map" class="{$getWallCssName}">
+  {if="($data['is_special_village'] && $buildings[25]['item_id'] == 40)"}
+      <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="{$BuildingTitleClass_25}" style="position:absolute; z-index:20; left:161px;" width="214">
+  {/if}
+  <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="building d1 {$BuildingTitleClass_19}" />
+  <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="building d2 {$BuildingTitleClass_20}" />
+  <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="building d3 {$BuildingTitleClass_21}" />
+  <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="building d4 {$BuildingTitleClass_22}" />
+  <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="building d5 {$BuildingTitleClass_23}" />
+  <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="building d6 {$BuildingTitleClass_24}" />
+  {if="(!$data['is_special_village'])"}
+      <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="building d7 {$BuildingTitleClass_25}">
+  {/if}
+
+  {if="(!$data['is_special_village'])"}
+      <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="building d8 {$BuildingTitleClass_26}" />
+  {/if}
+  <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="building d9 {$BuildingTitleClass_27}" />
+  <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="building d10 {$BuildingTitleClass_28}" />
+  {if="(!$data['is_special_village'])"}
+      <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="building d11 {$BuildingTitleClass_29}">
+  {/if}
+
+  {if="(!$data['is_special_village'])"}
+      <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="building d12 {$BuildingTitleClass_30}" />
+  {/if}
+  <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="building d13 {$BuildingTitleClass_31}">
+  <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="building d14 {$BuildingTitleClass_32}">
+  {if="(!$data['is_special_village'])"}
+      <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="building d15 {$BuildingTitleClass_33}">
+  {/if}
+  <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="building d16 {$BuildingTitleClass_34}">
+  <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="building d17 {$BuildingTitleClass_35}">
+  <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="building d18 {$BuildingTitleClass_36}">
+  <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="building d19 {$BuildingTitleClass_37}">
+  <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="building d20 {$BuildingTitleClass_38}">
+  <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="dx1 {$BuildingTitleClass_39}">
+  <div id="levels" class="{$showLevelsStr}">
+    {loop="$buildings_array"}
+    <div class="{$key}">{$value}</div>
+    {/loop}
+  </div>
+  <img class="map1" usemap="#map1" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="">
+  <img class="map2" usemap="#map2" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="">
+</div>
+<img src="{function="add_style('x.gif', ASSETS_DIR)"}" id="lswitch" class="{$showLevelsStr}" onclick="toggleLevels()" alt="">
+  {if="($QS_BUILD_CREATEUPGRADE)"}
+      <table cellpadding="1" cellspacing="1" id="building_contract">
+        <thead>
+          <tr>
+            <th colspan="3"> {#LANGUI_VIL2_T3} :
+                {if="(!$data['is_special_village'] && $gameMetadata['plusTable'][5]['cost'] <= $data['gold_num'])"}
+                    <a href="village2?bfs=5&k={$data.update_key}" title="{#LANGUI_VIL2_T1}">
+                      <img class="clock" alt="{#LANGUI_VIL2_T1}" src="{function="add_style('x.gif', ASSETS_DIR)"}">
+                    </a>
+                {/if}
+           </th>
+          </tr>
+        </thead>
+        <tbody>
+            {loop="$tmpBuilding"}
+            <tr>
+                <td class="ico">
+                    <a href="village1?id={$value.id}&d&k={$data.update_key}">
+                        <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="del" title="{#LANGUI_VIL1_T17}" alt="{#LANGUI_VIL1_T17}">
+                    </a>
+                </td>
+                <td>
+                    {$value.item_id_title} ({#level_lang}  {$value.level})
+                </td>
+                <td>
+                    {#time_remain_lang}
+                    <span id="timer1">
+                        {$value.remainingSeconds}
+                    </span>
+                    {#time_hour_lang}
+                </td>
+            </tr>
+            {/loop}
+      </tbody>
+    </table>
+  {/if}
+<p></p>
+<p></p>

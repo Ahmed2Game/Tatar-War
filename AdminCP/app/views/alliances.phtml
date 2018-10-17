@@ -1,0 +1,166 @@
+<!-- BEGIN Main Content -->
+<div class="row-fluid">
+    <div class="span12">
+        <div class="box">
+            <div class="box-title">
+                <h3><i class="icon-reorder"></i>البحث عن التحالفات</h3>
+                <div class="box-tool">
+                </div>
+            </div>
+            <div class="box-content">
+                <form action="" class="form-horizontal" method="POST">
+
+                    <div class="control-group">
+                        <label class="control-label" for="aid">رقم التحالف</label>
+                        <div class="controls">
+                            <div class="span12">
+                                <input type="text" name="aid" id="aid" class="input-xlarge" data-rule-required="true" data-rule-number="true" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <input type="submit" class="btn btn-primary" value="بحث">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{if="isset($sc)"}
+    <div class="alert alert-success">
+        <button class="close" data-dismiss="alert">&times;</button>
+        <strong>تم تعديل بيانات التحالف بنجاح</strong>
+    </div>
+    {/if}
+{if="$_POST AND isset($a)"}
+<!-- BEGIN Main Content -->
+<div class="row-fluid">
+    <div class="span12">
+        <div class="box">
+            <div class="box-title">
+                <h3><i class="icon-reorder"></i>تعديل تحالف "{$a.name}"</h3>
+                <div class="box-tool">
+                </div>
+            </div>
+            <div class="box-content">
+                <form action="?page=update" class="form-horizontal" method="POST">
+
+                    <div class="control-group">
+                        <label class="control-label" for="name">اسم التحالف</label>
+                        <div class="controls">
+                            <div class="span12">
+                                <input type="text" name="name" id="name" class="input-large" data-rule-required="true" value="{$a.name}" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="name2">اسم التحالف2</label>
+                        <div class="controls">
+                            <div class="span12">
+                                <input type="text" name="name2" id="name2" class="input-large" data-rule-required="true" value="{$a.name2}" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="creator_player_id">منشىء التحالف</label>
+                        <div class="controls">
+                            <div class="span10">
+                                <input type="text" name="creator_player_id" id="creator_player_id" class="input-large" data-rule-required="true" value="{$a.creator_player_id}" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="control-group last">
+                        <label for="description1" class="control-label">وصف التحالف 1</label>
+                        <div class="controls">
+                            <textarea name="description1" id="description1" rows="5" class="input-block-level">{$a.description1}</textarea>
+                        </div>
+                    </div>
+
+
+                    <div class="control-group last">
+                        <label for="description2" class="control-label">وصف التحالف 2</label>
+                        <div class="controls">
+                            <textarea name="description2" id="description2" rows="5" class="input-block-level">{$a.description2}</textarea>
+                        </div>
+                    </div>
+
+
+                    <div class="control-group">
+                        <label class="control-label" for="max_player_count">اقصى عدد للاعبين</label>
+                        <div class="controls">
+                            <div class="span12">
+                                <input type="text" name="max_player_count" id="max_player_count" class="input-small" data-rule-required="true" value="{$a.max_player_count}" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                          <label class="control-label" for="attack_points">نقاط الهجوم </label>
+                          <div class="controls">
+                              <div class="span12">
+                                  <input type="text" name="attack_points" id="attack_points" class="input-small" data-rule-required="true" value="{$a.attack_points}" />
+                              </div>
+                          </div>
+                    </div>
+
+                    <div class="control-group">
+                          <label class="control-label" for="defense_points">نقاط الدفاع </label>
+                          <div class="controls">
+                              <div class="span12">
+                                  <input type="text" name="defense_points" id="defense_points" class="input-small" data-rule-required="true" value="{$a.defense_points}" />
+                              </div>
+                          </div>
+                    </div>
+
+                    <div class="control-group">
+                          <label class="control-label" for="week_attack_points">نقاط مهاجم الاسبوع  </label>
+                          <div class="controls">
+                              <div class="span12">
+                                  <input type="text" name="week_attack_points" id="week_attack_points" class="input-small" data-rule-required="true" value="{$a.week_attack_points}" />
+                              </div>
+                          </div>
+                    </div>
+
+                    <div class="control-group">
+                          <label class="control-label" for="week_defense_points">نقاط مدافع الاسبوع  </label>
+                          <div class="controls">
+                              <div class="span12">
+                                  <input type="text" name="week_defense_points" id="week_defense_points" class="input-small" data-rule-required="true" value="{$a.week_defense_points}" />
+                              </div>
+                          </div>
+                    </div>
+
+                    <div class="control-group">
+                          <label class="control-label" for="week_dev_points">نقاط مطور الاسبوع </label>
+                          <div class="controls">
+                              <div class="span12">
+                                  <input type="text" name="week_dev_points" id="week_dev_points" class="input-small" data-rule-required="true" value="{$a.week_dev_points}" />
+                              </div>
+                          </div>
+                    </div>
+
+                    <div class="control-group">
+                          <label class="control-label" for="week_thief_points">نقاط سارق الاسبوع </label>
+                          <div class="controls">
+                              <div class="span12">
+                                  <input type="text" name="week_thief_points" id="week_thief_points" class="input-small" data-rule-required="true" value="{$a.week_thief_points}" />
+                              </div>
+                          </div>
+                    </div>
+
+
+                    <div class="form-actions">
+                        <input type="submit" class="btn btn-primary" value="تعديل">
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END Main Content -->
+{/if}

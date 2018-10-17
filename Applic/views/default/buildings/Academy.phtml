@@ -1,0 +1,135 @@
+{function="load_lang('ui/custbuilds')"}
+<p></p>
+<table cellpadding="1" cellspacing="1" class="build_details">
+  <thead>
+    <tr>
+      <td>{#LANGUI_CUSTBU_ACD_t1}</td>
+      <td>{#LANGUI_CUSTBU_ACD_t2}</td>
+    </tr>
+  </thead>
+  <tbody>
+    {loop="$troops_upgrade_available"}
+    <tr>
+      <td class="desc">
+        <div class="tit">
+          <img class="unit u{$key}" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{function="constant('troop_' . $key)"}" title="{function="constant('troop_' . $key)"}">
+          <a href="#" onclick="return showManual(3,{$key});">{function="constant('troop_' . $key)"}</a>
+        </div>
+        <div class="details">
+          <img class="r1" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#item_title_1}" title="{#item_title_1}">
+          <span class="little_res">{$value.troopMetadataSelected.research_resources.1}</span>
+          |
+          <img class="r2" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#item_title_2}" title="{#item_title_2}">
+          <span class="little_res">{$value.troopMetadataSelected.research_resources.2}</span>
+          |
+          <img class="r3" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#item_title_3}" title="{#item_title_3}">
+          <span class="little_res">{$value.troopMetadataSelected.research_resources.3}</span>
+          |
+          <img class="r4" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#item_title_4}" title="{#item_title_4}">
+          <span class="little_res">{$value.troopMetadataSelected.research_resources.4}</span>
+          |
+          <img class="clock" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#text_period_lang}" title="{#text_period_lang}">
+          {$value.lvlTime|secondstostring}
+          {$value.getResourceGoldExchange}
+        </div>
+          {$value.getActionText2}
+      </td>
+      <td class="act">
+        {$value.getActionText3}
+      </td>
+    </tr>
+    {/loop}
+  
+  {if="($counter1 == -1)"}
+    <tr>
+      <td colspan="2">
+        <span class="none">
+          {#LANGUI_CUSTBU_ACD_t3} .
+        </span>
+      </td>
+    </tr>
+    {/if}
+  </tbody>
+</table>
+
+{if="(0 < sizeof($troops_upgrade_soon))"}
+  <p class="switch">
+    <a id="researchFutureLink" href="javascript:showPane('researchFuture');">{#LANGUI_CUSTBU_ACD_t4}</a>
+  </p>
+  <table id="researchFuture" class="build_details hide" cellspacing="1" cellpadding="1">
+    <thead>
+      <tr>
+        <td colspan="2">
+          {#LANGUI_CUSTBU_ACD_t5} :
+        </td>
+      </tr>
+    </thead>
+    <tbody>
+      {loop="$troops_upgrade_soon"}
+      <tr>
+        <td class="desc">
+          <div class="tit">
+            <img class="unit u{$key}" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{function="constant('troop_' . $key)"}" title="{function="constant('troop_' . $key)"}">
+          <a href="#" onclick="return showManual(3,{$key});">{function="constant('troop_' . $key)"}</a>
+          </div>
+        </td>
+        <td class="cond">
+        {loop="$value"}
+          <a href="#" onclick="return showManual(4,{$key2});">{function="constant('item_' . $key2)"}</a>
+          <span>
+            {#level_lang}
+            {$value2}
+          </span>
+          <br />
+        {/loop}
+      </td>
+      </tr>
+      {/loop}
+    </tbody>
+  </table>
+  <script language="JavaScript" type="text/javascript">
+    function showPane(list)
+    {
+      var build_list = _(list);
+      var link = _(list+'Link');
+      if (build_list.className == 'build_details hide')
+      {
+          build_list.className = 'build_details';
+          link.innerHTML = '{#LANGUI_CUSTBU_ACD_t6}';
+      }
+      else
+      {
+          build_list.className = 'build_details hide';
+          link.innerHTML = '{#LANGUI_CUSTBU_ACD_t4}';
+      }
+    }
+  </script>
+  {/if}
+
+
+  {if="$queueTroopsUpgradeType"}
+  <table cellpadding="1" cellspacing="1" class="under_progress">
+    <thead>
+      <tr>
+        <td>{#LANGUI_CUSTBU_ACD_t7}</td>
+        <td>{#text_period_lang}</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="desc">
+          <img class="unit u{$tid}" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{function="constant('troop_' . $tid)"}" title="{function="constant('troop_' . $tid)"}">
+          {function="constant('troop_' . $tid)"}
+        </td>
+        <td class="dur">
+          <span id="timer1">
+            {$queueRemainingSeconds}
+          </span>
+        </td>
+      </tr>
+      <tr class="next">
+        <td colspan="2">&nbsp;</td>
+      </tr>
+    </tbody>
+  </table>
+  {/if}

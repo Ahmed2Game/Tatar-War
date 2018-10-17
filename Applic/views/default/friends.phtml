@@ -1,0 +1,174 @@
+{function="load_lang('ui/friends')"}
+    <h1>
+        <p>
+		    <b>{#LANGUI_F_T1}</b>
+		</p>
+	</h1>
+	<div id="textmenu">
+	    <a href="friends"{if="($selectedTabIndex == 0)"} class="selected" {/if}>{#LANGUI_F_T2}</a> |
+		<a href="friends?t=1"{if="($selectedTabIndex == 1)"} class="selected" {/if}>{#LANGUI_F_T3}</a> |
+		<a href="friends?t=2"{if="($selectedTabIndex == 2)"} class="selected" {/if}>{#LANGUI_F_T4}</a>
+	</div>
+{if="($selectedTabIndex == 0)"}
+<table id="brought_in" cellpadding="3" cellspacing="1">
+	<thead>
+		<tr>
+			<th colspan="4">{#LANGUI_F_T1}</th>
+		</tr>
+		<tr>
+			<td>#</td>
+			<td>{#LANGUI_F_T5}</td>
+			<td>{#LANGUI_F_T6}</td>
+			<td>{#LANGUI_F_T7}</td>
+		</tr>
+	</thead>
+	{loop="dataList"}
+	<tr>
+		<td>
+			<center>{$key}</center>
+		</td>
+		<td>
+			<center><a href="profile?uid={$value.id}">{$value.usernam}</a></center>
+		</td>
+		<td>
+			<center>{$value.date}</center>
+		</td>
+		<td>
+			<center><a href="friends?delete={$value.id}"><img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="del" title="{#text_delete_lang}" alt="{#text_delete_lang}"></a></center>
+		</td>
+	</tr>
+	{/loop}{if="(!$found)"}
+	<tr>
+		<td class="none" colspan="4">
+			<center>{#LANGUI_F_T8}</center>
+		</td>
+	</tr>
+	{/if}
+</table>
+<table cellpadding="1" cellspacing="1" id="search_navi">
+	<tbody>
+		<tr>
+			<td>
+				<div class="navi">{$getPreviousLink}|{$getNextLink}</div>
+			</td>
+		</tr>
+	</tbody>
+</table>
+{elseif="($selectedTabIndex == 1)"}
+<table id="brought_in" cellpadding="3" cellspacing="1">
+	<thead>
+		<tr>
+			<th colspan="5">{#LANGUI_F_T3}</th>
+		</tr>
+		<tr>
+			<td>#</td>
+			<td>{#LANGUI_F_T5}</td>
+			<td>{#LANGUI_F_T6}</td>
+			<td>{#LANGUI_F_T9}</td>
+			<td>{#LANGUI_F_T7}</td>
+		</tr>
+	</thead>
+	{loop="dataList"}
+	<tr>
+		<td>
+			<center>{$key}</center>
+		</td>
+		<td>
+			<center><a href="profile?uid={$value.id}">{$value.usernam}</a></center>
+		</td>
+		<td>
+			<center>{$value.date}</center>
+		</td>
+        <td>
+			<center><a href="friends?t=1&from={$value.id}">{#LANGUI_F_T9}</a></center>
+		</td>
+		<td>
+			<center><a href="friends?t=1&defrom={$value.id}"><img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="del" title="{#text_delete_lang}" alt="{#text_delete_lang}"></a></center>
+		</td>
+	</tr>
+	{/loop}{if="(!$found)"}
+	<tr>
+		<td class="none" colspan="5">
+			<center>{#LANGUI_F_T8}</center>
+		</td>
+	</tr>
+	{/if}
+</table>
+<table cellpadding="1" cellspacing="1" id="search_navi">
+	<tbody>
+		<tr>
+			<td>
+				<div class="navi">{$getPreviousLink}|{$getNextLink}</div>
+			</td>
+		</tr>
+	</tbody>
+</table>
+{elseif="($selectedTabIndex == 2)"}
+<form action="friends?t=2" method="post">
+    <table class="rate_details lang_rtl lang_ar" cellpadding="1" cellspacing="1">
+        <thead>
+            <tr>
+		        <th colspan="3">{#LANGUI_F_T10}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="top">
+		        <td>{#LANGUI_F_T11}</td>
+		        <td><input class="text" type="text" name="name" maxlength="20" value=""></td>
+                <td><p class="btn"><center>
+                        <input type="image" value="" name="s1" id="btn_send" class="dynamic_img" src="{function="add_style('x.gif', ASSETS_DIR)"}">
+                    </center>
+                    </p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</form>
+{if="( isset($error) and $error != NULL )"}
+    <p class="error">{$error}</p>
+{/if}
+<table id="brought_in" cellpadding="3" cellspacing="1">
+	<thead>
+		<tr>
+			<th colspan="4">{#LANGUI_F_T12}</th>
+		</tr>
+		<tr>
+			<td>#</td>
+			<td>{#LANGUI_F_T5}</td>
+			<td>{#LANGUI_F_T6}</td>
+			<td>{#LANGUI_F_T7}</td>
+		</tr>
+	</thead>
+	{loop="dataList"}
+	<tr>
+		<td>
+			<center>{$key}</center>
+		</td>
+		<td>
+			<center><a href="profile?uid={$value.id}">{$value.usernam}</a></center>
+		</td>
+		<td>
+			<center>{$value.date}</center>
+		</td>
+		<td>
+			<center><a href="friends?t=2&deto={$value.id}"><img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="del" title="{#text_delete_lang}" alt="{#text_delete_lang}"></a></center>
+		</td>
+	</tr>
+	{/loop}{if="(!$found)"}
+	<tr>
+		<td class="none" colspan="4">
+			<center>{#LANGUI_F_T12}</center>
+		</td>
+	</tr>
+	{/if}
+</table>
+<table cellpadding="1" cellspacing="1" id="search_navi">
+	<tbody>
+		<tr>
+			<td>
+				<div class="navi">{$getPreviousLink}|{$getNextLink}</div>
+			</td>
+		</tr>
+	</tbody>
+</table>
+{/if}

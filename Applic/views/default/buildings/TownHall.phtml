@@ -1,0 +1,129 @@
+{function="load_lang('ui/custbuilds')"}
+
+
+<p></p>
+<table cellpadding="1" cellspacing="1" class="build_details">
+  <thead>
+    <tr>
+      <td>{#LANGUI_CUSTBU_TWH_t1}</td>
+      <td>{#LANGUI_CUSTBU_TWH_t2}</td>
+    </tr>
+  </thead>
+  <tbody>
+    {if="($buildingMetadata['celebrations']['small']['level'] <= $buildProperties['building']['level'])"}
+      <tr>
+        <td class="desc">
+          <div class="tit">
+            <a href="#" onclick="return showManual(4, {$buildProperties.building.item_id});">
+                {#LANGUI_CUSTBU_TWH_t3}
+            </a>
+            <span class="info">
+              (
+                  {$buildingMetadata.celebrations.small.value}
+                  {#LANGUI_CUSTBU_TWH_t4}
+              )
+            </span>
+          </div>
+          <div class="details">
+            <img class="r1" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#item_title_1}" title="{#item_title_1}">
+            <span class="little_res">
+              {$buildingMetadata.celebrations.small.resources.1}
+            </span>
+            |
+            <img class="r2" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#item_title_2}" title="{#item_title_2}">
+            <span class="little_res">
+              {$buildingMetadata.celebrations.small.resources.2}
+            </span>
+            |
+            <img class="r3" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#item_title_3}" title="{#item_title_3}">
+            <span class="little_res">
+              {$buildingMetadata.celebrations.small.resources.3}
+            </span>
+            |
+            <img class="r4" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#item_title_4}" title="{#item_title_4}">
+            {$buildingMetadata.celebrations.small.resources.4}
+            |
+            <img class="clock" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#text_period_lang}" title="{#text_period_lang}">
+            {$time_consume_seconds}
+            {$getResourceGoldExchange}
+          </div>
+          <span class="none">
+            {$getActionText2}
+          </span>
+        </td>
+        <td class="act">
+          {$getActionText3}
+        </td>
+      </tr>
+      {/if}
+  
+  {if="($buildingMetadata['celebrations']['large']['level'] <= $buildProperties['building']['level'])"}
+        <tr>
+          <td class="desc">
+            <div class="tit">
+              <a href="#" onclick="return showManual(4, {$buildProperties.building.item_id});">
+                  {#LANGUI_CUSTBU_TWH_t6}
+              </a>
+              <span class="info">
+                (
+                 {$buildingMetadata.celebrations.large.value}
+                  {#LANGUI_CUSTBU_TWH_t4}
+                )
+              </span>
+            </div>
+            <div class="details">
+              <img class="r1" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#item_title_1}" title="{#item_title_1}">
+              <span class="little_res">
+                {$buildingMetadata.celebrations.large.resources.1}
+              </span>
+              |
+              <img class="r2" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#item_title_2}" title="{#item_title_2}">
+              <span class="little_res">
+                {$buildingMetadata.celebrations.large.resources.2}
+              </span>
+              |
+              <img class="r3" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#item_title_3}" title="{#item_title_3}">
+              <span class="little_res">
+                {$buildingMetadata.celebrations.large.resources.3}
+              </span>
+              |
+              <img class="r4" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#item_title_4}" title="{#item_title_4}">
+              {$buildingMetadata.celebrations.large.resources.4}
+              |
+              <img class="clock" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#text_period_lang}" title="{#text_period_lang}">
+              {$time_consume_seconds_large}
+              {$getResourceGoldExchange_large}
+            </div>
+            <span class="none">
+              {$getActionText2_large}
+            </span>
+          </td>
+          <td class="act">
+            {$getActionText3_large}
+          </td>
+        </tr>
+        {/if}
+      </tbody>
+    </table>
+
+    {if="$QS_TOWNHALL_CELEBRATION"}
+    <table cellpadding="1" cellspacing="1" class="under_progress">
+      <thead>
+        <tr>
+          <td>{#LANGUI_CUSTBU_TWH_t7}</td>
+          <td>{#text_period_lang}</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="desc">{$proc_params}</td>
+          <td class="dur">
+            <span id="timer1">{$remainingSeconds}</span>
+          </td>
+        </tr>
+        <tr class="next">
+          <td colspan="2">&nbsp;</td>
+        </tr>
+      </tbody>
+    </table>
+    {/if}

@@ -1,0 +1,340 @@
+{function="load_lang('ui/villages')"}
+
+{if="(!$data['active_plus_account'])"}
+<h4>{#LANGUI_VILS_21}</h4>
+{else}
+<h1>
+    <p> <b>{#LANGUI_VILS_1}</b> </p>
+</h1>
+<div id="textmenu">
+    <a href="villages" {if="( $selectedTabIndex == 0 )"}class="selected"{/if} >{#LANGUI_VILS_2}</a> |
+    <a href="villages?t=1" {if="($selectedTabIndex == 1 )"}class="selected"{/if}>{#LANGUI_VILS_3}</a> |
+    <a href="villages?t=2" {if="($selectedTabIndex == 2 )"}class="selected"{/if}>{#LANGUI_VILS_4}</a> |
+    <a href="villages?t=3" {if="($selectedTabIndex == 3 )"}class="selected"{/if}>{#LANGUI_VILS_5}</a> |
+    <a href="villages?t=4" {if="($selectedTabIndex == 4 )"}class="selected"{/if}>{#LANGUI_VILS_6}</a>
+</div>
+
+{if="( $selectedTabIndex == 0 )"}
+<table id="overview" cellpadding="1" cellspacing="1">
+    <thead>
+        <tr>
+            <th colspan="6">{#LANGUI_VILS_2}</th>
+        </tr>
+        <tr>
+            <td>{#LANGUI_VILS_7}</td>
+            <td>{#LANGUI_VILS_8}</td>
+            <td>{#LANGUI_VILS_9}</td>
+            <td>{#LANGUI_VILS_10}</td>
+            <td>{#LANGUI_VILS_11}</td>
+            <td>{#LANGUI_VILS_12}</td>
+        </tr>
+    </thead>
+    <tbody>
+        {loop="$village"}
+        <tr {if="( $key == $data['selected_village_id'])"} class="hl" {else} class="hover" {/if} >
+            <td class="vil fc" >
+                <a href='village1?vid={$key}'>{$value.name}</a>
+            </td>
+            <td>
+                <center>{$value.people}</center>
+            </td>
+            <td class="bui" >
+                {if="!$value['build']"}
+                    -
+                {else}
+                    {loop="$value['build']"}
+                        <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="bau" alt=" {#LANGUI_VILS_13} " title=" {#LANGUI_VILS_13} ">
+                    {/loop}
+                {/if}
+                </td>
+                <td class="att" >
+                    {if="!$value['reinforce']"}
+                        -
+                    {elseif="is_array($value['reinforce'])"}
+                        {loop="$value['reinforce']"}
+                            <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="def1" alt=" {#LANGUI_VILS_14} " title=" {#LANGUI_VILS_14} ">
+                        {/loop}
+                    {else}
+                        {$value.reinforce}
+                        <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="def1" alt=" {#LANGUI_VILS_14} " title=" {#LANGUI_VILS_14} ">
+                    {/if}
+                </td>
+                    <td class="att" >
+                        {if="!$value['attack_attack2']"}
+                            -
+                        {else}
+                            {if="is_array($value['attack'])"}
+                                {loop="$value['attack']"}
+                                    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="att1" alt=" {#LANGUI_VILS_15} " title=" {#LANGUI_VILS_15} ">
+                                {/loop}
+                                {loop="$value['attack2']"}
+                                    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="att2" alt=" {#LANGUI_VILS_16} " title=" {#LANGUI_VILS_16} ">
+                                {/loop}
+                            {else}
+                                {if="($value['attack'] + $value['attack2']) <= 4"}
+                                    {$value.attack}
+                                    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="att1" alt=" {#LANGUI_VILS_15} " title=" {#LANGUI_VILS_15} ">
+                                    {$value.attack2}
+                                    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="att2" alt=" {#LANGUI_VILS_16} " title=" {#LANGUI_VILS_16} ">
+                                {/if}
+                            {/if}
+                        {/if}
+                    </td>
+                    
+                    <td class="tra lc" >
+                        {if="!$value['merchant']"}
+                            -
+                        {elseif="is_array($value['merchant'])"}
+                            {loop="$value['merchant']"}
+                                <img src="{function="add_style('6.gif', ASSETS_DIR.'/default/img/r/')"}"  alt=" {#LANGUI_VILS_17} " title=" {#LANGUI_VILS_17} ">
+                            {/loop}
+                        {else}
+                            {$value.merchant}
+                            <img src="{function="add_style('6.gif', ASSETS_DIR.'/default/img/r/')"}"  alt=" {#LANGUI_VILS_17} " title=" {#LANGUI_VILS_17} ">
+                        {/if}
+                    </td>
+                </tr>
+            {/loop}
+        </tbody>
+    </table>
+{/if}
+
+{if="( $selectedTabIndex == 1 )"}
+    <table id="ressources" cellpadding="1" cellspacing="1">
+        <thead>
+            <tr>
+                <th colspan="6">{#LANGUI_VILS_3}</th>
+            </tr>
+            <tr>
+                <td>{#LANGUI_VILS_18}</td>
+                <td>
+                    <img class="r1" src="{function="add_style('x.gif', ASSETS_DIR)"}" title=" {#item_title_1} " alt=" {#item_title_1} "></td>
+                <td>
+                    <img class="r2" src="{function="add_style('x.gif', ASSETS_DIR)"}" title=" {#item_title_2} " alt=" {#item_title_2} "></td>
+                <td>
+                    <img class="r3" src="{function="add_style('x.gif', ASSETS_DIR)"}" title=" {#item_title_3} " alt=" {#item_title_3} "></td>
+                <td>
+                    <img class="r4" src="{function="add_style('x.gif', ASSETS_DIR)"}" title=" {#item_title_4} " alt=" {#item_title_4} "></td>
+                <td>{#LANGUI_VILS_19}</td>
+            </tr>
+
+        </thead>
+        <tbody>
+            {$woodSUM = $claySUM = $ironSUM = $cropSUM = $merchanttotal = $merchantexits = 0}
+            {loop="$village"}
+                <tr {if="( $key == $data['selected_village_id'])"} class="hl" {else}  class="hover" {/if} >
+                    <td class="vil fc">
+                        <div>
+                            <a href="village1?vid={$key}">{$value.name}</a>
+                        </div>
+                    </td>
+                    <td class="lum">{function="number_format($value[1]['current_value'])"}</td>
+                    <td class="clay">{function="number_format($value[2]['current_value'])"}</td>
+                    <td class="iron">{function="number_format($value[3]['current_value'])"}</td>
+                    <td class="crop">{function="number_format($value[4]['current_value'])"}</td>
+                    <td class="tra lc">
+                        <a href="build?vid={$key}&bid=17">
+                            {$value.merchant.exits_num} / {$value.merchant.exits_num}
+                        </a>
+                    </td>
+                </tr>
+                {$woodSUM = $woodSUM + $value[1]['current_value'];}
+                {$claySUM = $claySUM + $value[2]['current_value'];}
+                {$ironSUM = $ironSUM + $value[3]['current_value'];}
+                {$cropSUM = $cropSUM + $value[4]['current_value'];}
+                {$merchanttotal = $merchanttotal + $value['merchant']['total_num'];}
+                {$merchantexits = $merchantexits + $value['merchant']['exits_num'];}
+            {/loop}
+                <tr>
+                    <td colspan="6" class="empty"></td>
+                </tr>
+                {$wood_sum = number_format(round($woodSUM))}
+                {$clay_sum = number_format(round($claySUM))}
+                {$iron_sum = number_format(round($ironSUM))}
+                {$crop_sum = number_format(round($cropSUM))}
+                <tr class="sum">
+                    <th>{#LANGUI_VILS_20}</th>
+                    <td class="lum">{$wood_sum}</td>
+                    <td class="clay">{$clay_sum}</td>
+                    <td class="iron">{$iron_sum}</td>
+                    <td class="crop">{$crop_sum}</td>
+                    <td class="tra">{$merchantexits} / {$merchanttotal}</td>
+                </tr>
+            </tbody>
+        </table>
+    {/if}
+
+{if="( $selectedTabIndex == 2 )"}
+    <table id="ressources" cellpadding="1" cellspacing="1">
+        <thead>
+            <tr>
+                <th colspan="6">{#LANGUI_VILS_4}</th>
+            </tr>
+            <tr>
+                <td>{#LANGUI_VILS_18}</td>
+                <td>
+                    <img class="r1" src="{function="add_style('x.gif', ASSETS_DIR)"}" title=" {#item_title_1} " alt=" {#item_title_1} "></td>
+                <td>
+                    <img class="r2" src="{function="add_style('x.gif', ASSETS_DIR)"}" title=" {#item_title_2} " alt=" {#item_title_2} "></td>
+                <td>
+                    <img class="r3" src="{function="add_style('x.gif', ASSETS_DIR)"}" title=" {#item_title_3} " alt=" {#item_title_3} "></td>
+                <td>
+                    <img class="r4" src="{function="add_style('x.gif', ASSETS_DIR)"}" title=" {#item_title_4} " alt=" {#item_title_4} "></td>
+                <td>{#LANGUI_VILS_19}</td>
+            </tr>
+
+        </thead>
+        <tbody>
+            {$woodSUM = $claySUM = $ironSUM = $cropSUM = $merchanttotal = $merchantexits = 0}
+            {loop="$village"}
+            <tr {if="( $key == $data['selected_village_id'])"} class="hl" {else}  class="hover" {/if} >
+                <td class="vil fc">
+                    <div>
+                        <a href="village1?vid={$key}">{$value.name}</a>
+                    </div>
+                </td>
+                <td class="lum">{function="number_format($value[1]['store_max_limit'])"}</td>
+                <td class="clay">{function="number_format($value[2]['store_max_limit'])"}</td>
+                <td class="iron">{function="number_format($value[3]['store_max_limit'])"}</td>
+                <td class="crop">{function="number_format($value[4]['store_max_limit'])"}</td>
+                <td class="tra lc">
+                    <a href="build?vid={$key}&bid=17">
+                        {$value.merchant.exits_num} / {$value.merchant.total_num}
+                </td>
+            </tr>
+            {$woodSUM = $woodSUM + $value[1]['store_max_limit'];}
+            {$claySUM = $claySUM + $value[2]['store_max_limit'];}
+            {$ironSUM = $ironSUM + $value[3]['store_max_limit'];}
+            {$cropSUM = $cropSUM + $value[4]['store_max_limit'];}
+            {$merchanttotal = $merchanttotal + $value['merchant']['total_num'];}
+            {$merchantexits = $merchantexits + $value['merchant']['exits_num'];}
+        {/loop}
+                <tr>
+                    <td colspan="6" class="empty"></td>
+                </tr>
+                {$wood_sum = number_format(round($woodSUM))}
+                {$clay_sum = number_format(round($claySUM))}
+                {$iron_sum = number_format(round($ironSUM))}
+                {$crop_sum = number_format(round($cropSUM))}
+                <tr class="sum">
+                    <th>{#LANGUI_VILS_20}</th>
+                    <td class="lum">{$wood_sum}</td>
+                    <td class="clay">{$clay_sum}</td>
+                    <td class="iron">{$iron_sum}</td>
+                    <td class="crop">{$crop_sum}</td>
+                    <td class="tra">{$merchantexits} / {$merchanttotal}</td>
+                </tr>
+            </tbody>
+        </table>
+    {/if}
+
+{if="( $selectedTabIndex == 3 )"}
+    <table id="ressources" cellpadding="1" cellspacing="1">
+        <thead>
+            <tr>
+                <th colspan="6">{#LANGUI_VILS_5}</th>
+            </tr>
+            <tr>
+                <td>{#LANGUI_VILS_18}</td>
+                <td>
+                    <img class="r1" src="{function="add_style('x.gif', ASSETS_DIR)"}" title=" {#item_title_1} " alt=" {#item_title_1} "></td>
+                <td>
+                    <img class="r2" src="{function="add_style('x.gif', ASSETS_DIR)"}" title=" {#item_title_2} " alt=" {#item_title_2} "></td>
+                <td>
+                    <img class="r3" src="{function="add_style('x.gif', ASSETS_DIR)"}" title=" {#item_title_3} " alt=" {#item_title_3} "></td>
+                <td>
+                    <img class="r4" src="{function="add_style('x.gif', ASSETS_DIR)"}" title=" {#item_title_4} " alt=" {#item_title_4} "></td>
+                <td>{#LANGUI_VILS_19}</td>
+            </tr>
+        </thead>
+        <tbody>
+            {$woodSUM = $claySUM = $ironSUM = $cropSUM = $merchanttotal = $merchantexits = 0}
+            {loop="$village"}
+            <tr {if="( $key == $data['selected_village_id'])"} class="hl" {else}  class="hover" {/if} >
+                <td class="vil fc">
+                    <div>
+                        <a href="village1?vid={$key}">{$value.name}</a>
+                    </div>
+                </td>
+                <td class="lum">{function="number_format($value[1]['calc_prod_rate'])"}</td>
+                <td class="iron">{function="number_format($value[2]['calc_prod_rate'])"}</td>
+                <td class="crop">{function="number_format($value[3]['calc_prod_rate'])"}</td>
+                <td class="tra lc">{function="number_format($value[4]['calc_prod_rate'])"}</td>
+                <td class="link">
+                    <a href="build?vid={$key}&bid=17">
+                        {$value.merchant.exits_num} / {$value.merchant.total_num}
+                </td>
+            </tr>
+            {$woodSUM = $woodSUM + $value[1]['calc_prod_rate'];}
+            {$claySUM = $claySUM + $value[2]['calc_prod_rate'];}
+            {$ironSUM = $ironSUM + $value[3]['calc_prod_rate'];}
+            {$cropSUM = $cropSUM + $value[4]['calc_prod_rate'];}
+            {$merchanttotal = $merchanttotal + $value['merchant']['total_num'];}
+            {$merchantexits = $merchantexits + $value['merchant']['exits_num'];}
+        {/loop}
+            <tr>
+                <td colspan="6" class="empty"></td>
+            </tr>
+            {$wood_sum = number_format(round($woodSUM))}
+            {$clay_sum = number_format(round($claySUM))}
+            {$iron_sum = number_format(round($ironSUM))}
+            {$crop_sum = number_format(round($cropSUM))}
+            <tr class="sum">
+                <th>{#LANGUI_VILS_20}</th>
+                <td class="lum">{$wood_sum}</td>
+                <td class="clay">{$clay_sum}</td>
+                <td class="iron">{$iron_sum}</td>
+                <td class="crop">{$crop_sum}</td>
+                <td class="tra">{$merchantexits} / {$merchanttotal}</td>
+            </tr>
+        </tbody>
+    </table>
+{/if}
+
+{if="( $selectedTabIndex == 4 )"}
+<table id="troops" cellpadding="1" cellspacing="1">
+    <thead>
+        <tr>
+            <th colspan="12">{#LANGUI_VILS_6}</th>
+        </tr>
+        <tr>
+            <td>{#LANGUI_VILS_18}</td>
+            {loop="$gameMetadata['troops']"}
+                {if="( $value['for_tribe_id'] == $data['tribe_id'] )"}
+                    <td>
+                        <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="unit u{$key}" title="{function="constant('troop_'.$key )"}" alt="{function="constant('troop_'.$key )"}">
+                    </td>
+                {/if}
+            {/loop}
+            <td>
+                <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="unit uhero" title="{#troop_hero}" alt="{#troop_hero}"></td>
+        </tr>
+    </thead>
+    <tbody>
+        {loop="$village"}
+        <tr {if="( $key == $data['selected_village_id'])"} class="hl" {else} class="hover" {/if} >
+            <th class="vil fc">
+                <a href='village1?vid={$key}'>{$value.name}</a>
+            </th>
+
+            {loop="$value['troop']"}
+                <td {if="($value2 == 0)"} class="none" {/if} >{$value2}</td>
+            {/loop}
+            <td {if="($value['hero'] == FALSE)"} class="none" {/if} >
+                {if="($value['hero'] == true)"} {#1} {else} {#0} {/if}
+            </td>
+        </tr>
+        {/loop}
+        <tr>
+            <td colspan="12" class="empty"></td>
+        </tr>
+        <tr class="sum">
+            <th>{#LANGUI_VILS_20}</th>
+            {loop="$all_troop"}
+                <td  {if="($value == 0)"} class="none" {/if} >{$value}</td>
+            {/loop}
+            <td class="none">0</td>
+        </tbody>
+    </table>
+    {/if}
+{/if}

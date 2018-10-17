@@ -1,0 +1,76 @@
+{function="load_lang('ui/cropfinder')"}
+<form id="cropfinder_form" action="cropfinder" method="post">
+    <table id="croplist" cellpadding="1" cellspacing="1">
+        <thead>
+            <tr>
+		        <th colspan="2">{#LANGUI_CROP_1}</th>
+            </tr>
+        </thead>
+        <tbody>
+		    <tr class="top">
+			    <td>{#LANGUI_CROP_2}</td>
+	    	    <td>
+				    Y<input class="text" maxlength="4" value="{if="(is_post('myp'))"}{$myp}{else}{$rely}{/if}" name="myp">
+			        X<input class="text" maxlength="4" value="{if="(is_post('mxp'))"}{$mxp}{else}{$relx}{/if}" name="mxp">
+				</td>
+		    </tr>
+	        <tr>
+			    <td>{#LANGUI_CROP_3}</td>
+	    	    <td>
+					&nbsp;<input type="radio" value="1" name="type" class="radio"{if="(!is_post('type') || (is_post('type') and post('type') == 1))"} checked="checked" {/if}>{#LANGUI_CROP_4}
+			        &nbsp;<input type="radio" value="6" name="type" class="radio"{if="(is_post('type') and post('type') == 6)"} checked="checked" {/if} >{#LANGUI_CROP_5}
+			        &nbsp;<input type="radio" value="12" name="type" class="radio"{if="(is_post('type') and post('type') == 12)"} checked="checked" {/if} > {#LANGUI_CROP_19}
+			    </td>
+	        </tr>
+		    <tr class="btm">
+	    	    <td>{#LANGUI_CROP_6}</td>
+	    	    <td>
+				    <input type="checkbox" value="1" name="only_free" class="check"{if="(is_post('only_free') and post('only_free') == 1)"} checked="checked" {/if}>{#LANGUI_CROP_7}
+				</td>
+	        </tr>
+        </tbody>
+    </table>
+	<p class="btn">
+	    <input type="image" value="search" id="btn_search" class="dynamic_img " name="suchen" src="{function="add_style('x.gif', ASSETS_DIR)"}">
+    </p>
+</form>
+
+{if="(is_post('type'))"}
+	<table id="croplist" cellspacing="1" cellpadding="1">
+	    <thead>
+		    <tr>
+			   <th colspan="7">{if="$_POST['type'] == 12"}{#LANGUI_CROP_19}{else}{#LANGUI_CROP_14}{/if}</th>
+		    </tr>
+		    <tr>
+		       <td></td>
+			   <td>{#LANGUI_CROP_9}</td>
+			   <td>{#LANGUI_CROP_10}</td>
+			   <td>{#LANGUI_CROP_11}</td>
+			   <td>{#LANGUI_CROP_12}</td>
+			   <td>{#LANGUI_CROP_13}</td>
+		    </tr>
+	    </thead>
+	    <tbody>
+	    {$_c = 0}
+		{loop="cropdata"}
+		{$_c = $_c + 1}
+	        <tr>
+	            <td>{$_c}</td>
+			    <td class="aligned_coords center">
+				    <a href="village3?id={$value.id}">
+					    <div class="cox">({$value.rel_x}</div>
+						<div class="pi">|</div>
+						<div class="coy">{$value.rel_y})</div>
+					</a>
+				</td>
+			    <td class="dist center">{if="($value.field_maps == 1)"} {#LANGUI_CROP_15} {elseif="$_POST['type'] == 12"}{#LANGUI_CROP_20} {else} {#LANGUI_CROP_16} {/if}</td>
+			    <td class="owned">{if="($value.player_name)"} {$value.player_name} {else} - {/if}</td>
+			    <td class="dist center">
+				    <b  {if="($value.player_name)"} style="color:red;">{#LANGUI_CROP_18} {else} style="color:green;">{#LANGUI_CROP_17}  {/if}</b>
+				</td>
+			    <td class="dist center">{$key}</td>
+		    </tr>
+	    {/loop}
+	    </tbody>
+    </table>
+{/if}

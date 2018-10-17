@@ -1,0 +1,34 @@
+{if="$data['blocked_second'] > 0"}
+<table class="rate_details lang_rtl lang_ar" cellpadding="1" cellspacing="1">
+    <thead>
+        <tr>
+		    <th colspan="2">{#login_result_msg_blocked}</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+		    <td>{#login_result_msg_blockedreason}</td>
+		    <td>{$block_reason}</td>
+        </tr>
+        <tr>
+		    <td>{#login_result_msg_blockedtime}</td>
+		    <td>
+                <span id="timer1">{$timeout}</span>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<br>
+<table class="rate_details lang_rtl lang_ar" cellpadding="1" cellspacing="1">
+    <thead>
+        <tr>
+		    <th colspan="1">{#login_result_msg_blocked}</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{#login_result_msg_blockedsend}</td>
+        </tr>
+    </tbody>
+</table>
+{/if}

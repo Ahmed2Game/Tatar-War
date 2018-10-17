@@ -1,0 +1,117 @@
+﻿{function="load_lang('ui/farm')"}
+<h1>{#LANGUI_FARM_T1}</h1>
+    <div id="textmenu">
+        <a href="farm"{if="$selectedTabIndex == 0"} class="selected" {/if}>{#LANGUI_FARM_T1}</a> |
+        <a href="farm?t=1"{if="$selectedTabIndex == 1"} class="selected" {/if}>{#LANGUI_FARM_T6}</a>
+    </div>
+{if="$selectedTabIndex == 0"}
+<script src="{function="add_style('jquery.js', ASSETS_DIR)"}" type="text/javascript"></script>
+<script>var texting = "{#LANGUI_FARM_T8}";</script>
+<script type="text/javascript" src="{function="add_style('farm.js', ASSETS_DIR)"}"></script>
+<div id="farming"></div>
+<form name='farm'>
+    <table id="plusFunctions" cellpadding="1" cellspacing="1">
+        <thead>
+            <tr>
+                <th colspan="5">{#LANGUI_FARM_T1}</th>
+            </tr>
+            <tr>
+                <td><input type='checkbox' onclick='CheckAll(this.checked)'></td>
+                <td>{#LANGUI_FARM_T16}</td>
+                <td>{#LANGUI_FARM_T17}</td>
+                <td>{#LANGUI_FARM_T2}</td>
+                <td>{#LANGUI_FARM_T3}</td>
+            </tr>
+        </thead>
+        <tbody>
+        {if="$found"}
+        {$_c = 0}
+        {loop="$listData"}
+        {$_c = $_c + 1}
+            <tr>
+                <td id="a{$_c}">
+                    <center>
+                        <input class='check' type='checkbox' name='list[]' id='list' value='{$value.vid}|{$value.troop}'>
+                    </center>
+                </td>
+                <td id="b{$_c}">
+                    <center>
+                        <a href="village3?id={$value.vid}">{$value.name}</a>
+                    </center>
+                </td>
+                <td id="c{$_c}">
+                    <center>{$value.time}</center>
+                </td>
+                <td id="d{$_c}">
+                    <center>
+                    {loop="$value.troops"}
+                        <img class="unit u{$key}" src='assets/x.gif' alt="{function="constant('troop_'.$key)"}" title="{function="constant('troop_'.$key)"}">{$value}
+                    {/loop}
+                    </center>
+                </td>
+                <td id="e{$_c}">
+                    <center>
+                        <a href='farm?del={$key}'><img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="del" title="{#text_delete_lang}" alt="{#text_delete_lang}"></a>
+                    </center>
+                </td>
+            </tr>
+        {/loop}
+        {else}
+            <tr>
+                <td colspan='5'>
+                    <center>{#LANGUI_FARM_T4}</center>
+                </td>
+            </tr>
+        {/if}
+        </tbody>
+    </table>
+    <br>
+    <input class="text" name="attack" type="button" value="{#LANGUI_FARM_T5}" onClick="javascript:farming();scrollTo(0,0);">
+</form>
+{elseif="$selectedTabIndex == 1"}
+<form action="farm?t=1" method="post">
+    <table id="plusFunctions" cellpadding="1" cellspacing="1">
+        <thead>
+            <tr>
+                <th colspan="3">
+                    <center>{#LANGUI_FARM_T6}</center>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <center>{#LANGUI_FARM_T15}</center>
+                </td>
+                <td>
+                    <center>
+                        X: <input class="text" type="text" name="x" value="{if="is_post('x')"}{function="post('x')"}{elseif="is_get('x')"}{function="get('x')"}{/if}" size="8">
+                    </center>
+                </td>
+                <td>
+                    <center>
+                        Y: <input class="text" type="text" name="y" value="{if="is_post('y')"}{function="post('y')"}{elseif="is_get('y')"}{function="get('y')"}{/if}" size="8">
+                    </center>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <center>{#LANGUI_FARM_T2}</center>
+                </td>
+                <td colspan="2">
+                {loop="$troops"}
+                    <img class="unit u{$value}" src='assets/x.gif' alt="{function="constant('troop_'.$value)"}" title="{function="constant('troop_'.$value)"}">
+                    <input class="text" size="6" name="t[{$value}]" type="text" value="">
+                {/loop}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    {if="isset($error)"}
+    <p class="error">{$error}</p>
+    {/if}
+    <p>
+        <input type="image" value="ok" name="s1" id="btn_ok" class="dynamic_img" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#text_okdone_lang}">
+    </p>
+</form>
+{/if}

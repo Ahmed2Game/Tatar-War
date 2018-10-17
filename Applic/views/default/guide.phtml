@@ -1,0 +1,1407 @@
+{function="load_lang('ui/guide')"}
+  {if="($taskNumber == 0)"}
+<div id="qstd">
+  <h1>
+    <img class="point" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="" title="">{#LANGUI_GUIDE_T1}
+  </h1>
+  <br />
+  <i>{#LANGUI_GUIDE_T2}.</i> 
+  <br>
+  <br>
+  <span id="qst_accpt">
+    <a class="qle" href="javascript:goto_guide('s');">{#LANGUI_GUIDE_T3}</a>
+    &nbsp;
+    <a class="qri" href="javascript: free_guide();">{#LANGUI_GUIDE_T4}</a>
+    <br />
+    <br />
+    <br />
+    <a class="qri" href="javascript: goto_guide('n');">{#LANGUI_GUIDE_T5}</a>
+  </span>
+</div>
+<div id="qstbg" class="intro"></div>
+{elseif="($taskNumber == 1)"}
+<div id="qstd">
+  <h1>
+    <img class="point" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="" title="">{#LANGUI_GUIDE_T6}</h1>
+  <br />
+  {if="($taskState == 0)"}
+  <i>{#LANGUI_GUIDE_T7}</i>
+  <br />
+  <br>
+  <div class="rew">
+    <p class="ta_aw">{#LANGUI_GUIDE_T13}</p>
+    {#LANGUI_GUIDE_T8}
+  </div>
+  <br>
+  <span id="qst_accpt"></span>
+  {elseif="($taskState == 1)"}
+  <i>{#LANGUI_GUIDE_T9}</i>
+  <br>
+  <br>
+  <span id="qst_accpt">
+    <a href="javascript:goto_guide();">{#LANGUI_GUIDE_T10}</a>
+  </span>
+  {/if}
+</div>
+<div id="qstbg" class="wood"></div>
+{elseif="($taskNumber == 2)"}
+<div id="qstd">
+  <h1>
+    <img class="point" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="" title="">{#LANGUI_GUIDE_T11}</h1>
+  <br>
+  {if="($taskState == 0)"}
+  <i>{#LANGUI_GUIDE_T12}</i>
+  <br>
+  <br>
+  <div class="rew">
+    <p class="ta_aw">{#LANGUI_GUIDE_T13}</p>
+    {#LANGUI_GUIDE_T14}
+  </div>
+  <br>
+  <span id="qst_accpt"></span>
+  {elseif="($taskState == 1)"}
+  <i>{#LANGUI_GUIDE_T15}</i>
+  <br>
+  <br>
+  <div class="rew">
+    <p class="ta_aw">{#LANGUI_GUIDE_T21}</p>
+    {#LANGUI_GUIDE_T157}
+    {#LANGUI_GUIDE_T16}
+    <br></div>
+  <br>
+  <span id="qst_accpt">
+    <a href="javascript:goto_guide();">{#LANGUI_GUIDE_T10}</a>
+  </span>
+  {/if}
+</div>
+<div id="qstbg" class="farm"></div>
+{elseif="($taskNumber == 3)"}
+<div id="qstd">
+  <h1>
+    <img class="point" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="" title="">{#LANGUI_GUIDE_T17}</h1>
+  <br>
+  {if="($taskState == 0)"}
+  <i>{#LANGUI_GUIDE_T18}</i>
+  <br>
+  <br>
+  <div class="rew">
+    <p class="ta_aw">{#LANGUI_GUIDE_T13}</p>
+    {#LANGUI_GUIDE_T19}
+  </div>
+  <br>
+  <span id="qst_accpt"></span>
+  {elseif="($taskState == 1)"}
+  <i>{#LANGUI_GUIDE_T20}</i>
+  <br>
+  <br>
+  <div class="rew">
+    <p class="ta_aw">{#LANGUI_GUIDE_T21}</p>
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r1" alt="{#item_title_1}" title="{#item_title_1}">
+    30&nbsp;&nbsp;
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r2" alt="{#item_title_2}" title="{#item_title_2}">
+    60&nbsp;&nbsp;
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r3" alt="{#item_title_3}" title="{#item_title_3}">
+    30&nbsp;&nbsp;
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r4" alt="{#item_title_4}" title="{#item_title_4}">20&nbsp;&nbsp;
+  </div>
+  <br>
+  <span id="qst_accpt">
+    <a href="javascript:goto_guide();">{#LANGUI_GUIDE_T10}</a>
+  </span>
+  {/if}
+</div>
+<div id="qstbg" class="village_name"></div>
+{elseif="($taskNumber == 4)"}
+<div id="qstd">
+  <h1>
+    <img class="point" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="" title="">{#LANGUI_GUIDE_T22}</h1>
+  <br>
+  {if="($taskState == 0)"}
+  <i>{#LANGUI_GUIDE_T23}</i>
+  <br>
+  <br>
+  <div class="rew">
+    <p class="ta_aw">{#LANGUI_GUIDE_T13}</p>
+    {#LANGUI_GUIDE_T24}
+  </div>
+  <br>
+  <input id="qst_val" class="text" type="text">
+  <input onclick="goto_guide(_('qst_val').value)" type="button" value="{#LANGUI_GUIDE_T48}">
+  <br>
+  <span id="qst_accpt"></span>
+  {elseif="($taskState == 1)"}
+  <i>{#LANGUI_GUIDE_T25}</i>
+  <br>
+  <br>
+  <div class="rew">
+    <p class="ta_aw">{#LANGUI_GUIDE_T13}</p>
+    {#LANGUI_GUIDE_T24}
+  </div>
+  <br>
+  <input id="qst_val" class="text" type="text">
+  <input onclick="goto_guide(_('qst_val').value)" type="button" value="{#LANGUI_GUIDE_T48}">
+  <br>
+  <span id="qst_accpt"></span>
+  {elseif="($taskState == 2)"}
+  <i>{#LANGUI_GUIDE_T26}</i>
+  <br>
+  <br>
+  <div class="rew">
+    <p class="ta_aw">{#LANGUI_GUIDE_T21}</p>
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r1" alt="{#item_title_1}" title="{#item_title_1}">
+    40&nbsp;&nbsp;
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r2" alt="{#item_title_2}" title="{#item_title_2}">
+    30&nbsp;&nbsp;
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r3" alt="{#item_title_3}" title="{#item_title_3}">
+    20&nbsp;&nbsp;
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r4" alt="{#item_title_4}" title="{#item_title_4}">
+    30&nbsp;&nbsp;
+  </div>
+  <br>
+  <span id="qst_accpt">
+    <a href="javascript:goto_guide();">{#LANGUI_GUIDE_T10}</a>
+  </span>
+  {elseif="($taskState == 3)"}
+  <i>{#LANGUI_GUIDE_T27}</i>
+  <br>
+  <br>
+  <div class="rew">
+    <p class="ta_aw">{#LANGUI_GUIDE_T21}</p>
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r1" alt="{#item_title_1}" title="{#item_title_1}">
+    40&nbsp;&nbsp;
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r2" alt="{#item_title_2}" title="{#item_title_2}">
+    30&nbsp;&nbsp;
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r3" alt="{#item_title_3}" title="{#item_title_3}">
+    20&nbsp;&nbsp;
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r4" alt="{#item_title_4}" title="{#item_title_4}">
+    30&nbsp;&nbsp;
+  </div>
+  <br>
+  <span id="qst_accpt">
+    <a href="javascript:goto_guide();">{#LANGUI_GUIDE_T10}</a>
+  </span>
+  {elseif="($taskState == 4)"}
+  <i>{#LANGUI_GUIDE_T28}</i>
+  <br>
+  <br>
+  <div class="rew">
+    <p class="ta_aw">{#LANGUI_GUIDE_T21}</p>
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r1" alt="{#item_title_1}" title="{#item_title_1}">
+    40&nbsp;&nbsp;
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r2" alt="{#item_title_2}" title="{#item_title_2}">
+    30&nbsp;&nbsp;
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r3" alt="{#item_title_3}" title="{#item_title_3}">
+    20&nbsp;&nbsp;
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r4" alt="{#item_title_4}" title="{#item_title_4}">
+    30&nbsp;&nbsp;
+  </div>
+  <br>
+  <span id="qst_accpt">
+    <a href="javascript:goto_guide();">{#LANGUI_GUIDE_T10}</a>
+  </span>
+  {/if}
+</div>
+<div id="qstbg" class="rank"></div>
+{elseif="($taskNumber == 5)"}
+<div id="qstd">
+  <h1>
+    <img class="point" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="" title="">{#LANGUI_GUIDE_T29}</h1>
+  <br>
+  {if="($taskState == 0)"}
+  <i>{#LANGUI_GUIDE_T30}</i>
+  <br>
+  <br>
+  <div class="rew">
+    <p class="ta_aw">{#LANGUI_GUIDE_T13}</p>
+    <ul>
+      <li>{#LANGUI_GUIDE_T31}</li>
+      <li>{#LANGUI_GUIDE_T32}</li>
+    </ul>
+  </div>
+  <br>
+  <span id="qst_accpt"></span>
+  {elseif="($taskState == 1)"}
+  <i>{#LANGUI_GUIDE_T33}</i>
+  <br>
+  <br>
+  <div class="rew">
+    <p class="ta_aw">{#LANGUI_GUIDE_T21}</p>
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r1" alt="{#item_title_1}" title="{#item_title_1}">
+    50&nbsp;&nbsp;
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r2" alt="{#item_title_2}" title="{#item_title_2}">
+    60&nbsp;&nbsp;
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r3" alt="{#item_title_3}" title="{#item_title_3}">
+    30&nbsp;&nbsp;
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r4" alt="{#item_title_4}" title="{#item_title_4}">
+    30&nbsp;&nbsp;</div>
+  <br>
+  <span id="qst_accpt">
+    <a href="javascript:goto_guide();">{#LANGUI_GUIDE_T10}</a>
+  </span>
+  {/if}
+</div>
+<div id="qstbg" class="clay_iron"></div>
+{elseif="($taskNumber == 6)"}
+<div id="qstd">
+  <h1>
+    <img class="point" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="" title="">{#LANGUI_GUIDE_T34}</h1>
+  <br>
+  {if="($taskState == 0)"}
+  <i>{#LANGUI_GUIDE_T35}</i>
+  <br>
+  <br>
+  <div class="rew">
+    <p class="ta_aw">{#LANGUI_GUIDE_T13}</p>
+    {#LANGUI_GUIDE_T36}
+  </div>
+  <br>
+  <span id="qst_accpt"></span>
+  {elseif="($taskState == 1)"}
+  <i>{#LANGUI_GUIDE_T37}.
+    <br />
+    <br />
+    {#LANGUI_GUIDE_T38}
+    <a href="plus?id=3"> <font color="#000000">{#LANGUI_GUIDE_T39}</font> <b>{#LANGUI_GUIDE_T40}</b></a>
+    {#LANGUI_GUIDE_T41}</i> 
+  <br />
+  <br />
+  <div class="rew">
+    <p class="ta_aw">{#LANGUI_GUIDE_T21}</p>
+    20 {#LANGUI_GUIDE_T42}
+    <br />
+  </div>
+  <br>
+  <span id="qst_accpt">
+    <a href="javascript:goto_guide();">{#LANGUI_GUIDE_T10}</a>
+  </span>
+  {/if}
+</div>
+<div id="qstbg" class="msg"></div>
+{elseif="($taskNumber == 7)"}
+<div id="qstd">
+  <h1>
+    <img class="point" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="" title="">{#LANGUI_GUIDE_T43}</h1>
+  <br>
+  {if="($taskState == 0)"}
+  <i>
+    {#LANGUI_GUIDE_T44} <b>{$guideData.vname}</b>
+    .
+    <br>
+    <br>{#LANGUI_GUIDE_T45}</i>
+  <br>
+  <br>
+  <div class="rew">
+    <p class="ta_aw">{#LANGUI_GUIDE_T13}</p>
+    {#LANGUI_GUIDE_T46} <b>{$guideData.vname}</b> {#LANGUI_GUIDE_T47}
+  </div>
+  <br>
+  <span class="qcoords">
+    ( <input id="qst_val_x" class="text" type="text" name="qstinx" maxlength="4"> |
+    <input id="qst_val_y" class="text" type="text" name="qstiny" maxlength="4">)
+  </span>
+  <input onclick="goto_guide(_('qst_val_x').value + '|' + _('qst_val_y').value)" type="button" value="{#LANGUI_GUIDE_T48}">
+  <br>
+  <span id="qst_accpt"></span>
+  {elseif="($taskState == 1)"}
+  <i>
+    {#LANGUI_GUIDE_T49} {$guideData.vname} {#LANGUI_GUIDE_T50}
+  </i>
+  <br>
+  <br />
+  <div class="rew">
+    <p class="ta_aw">{#LANGUI_GUIDE_T13}</p>
+    {#LANGUI_GUIDE_T46}<b>{$guideData.vname}</b> {#LANGUI_GUIDE_T47}
+  </div>
+  <br />
+  <span class="qcoords">
+    (
+    <input id="qst_val_x" class="text" type="text" name="qstinx" maxlength="4">
+    |
+    <input id="qst_val_y" class="text" type="text" name="qstiny" maxlength="4">)</span>
+    <input onclick="goto_guide(_('qst_val_x').value + '|' + _('qst_val_y').value)" type="button" value="{#LANGUI_GUIDE_T48}">
+  <br />
+  <span id="qst_accpt"></span>
+  {elseif="($taskState == 2)"}
+  <i>
+    {#LANGUI_GUIDE_T51} <b>{$guideData.vname}</b> {#LANGUI_GUIDE_T52} !
+  </i>
+  <br />
+  <br />
+  <div class="rew">
+    <p class="ta_aw">{#LANGUI_GUIDE_T21}</p>
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r1" alt="{#item_title_1}" title="{#item_title_1}">
+    60&nbsp;&nbsp;
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r2" alt="{#item_title_2}" title="{#item_title_2}">
+    30&nbsp;&nbsp;
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r3" alt="{#item_title_3}" title="{#item_title_3}">
+    40&nbsp;&nbsp;
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r4" alt="{#item_title_4}" title="{#item_title_4}">
+    90&nbsp;&nbsp;
+  </div>
+  <br>
+  <span id="qst_accpt">
+    <a href="javascript:goto_guide();">{#LANGUI_GUIDE_T10}</a>
+  </span>
+  {/if}
+</div>
+<div id="qstbg" class="neighbour"></div>
+{elseif="($taskNumber == 8)"}
+<div id="qstd">
+  <h1>
+    <img class="point" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="" title="">{#LANGUI_GUIDE_T53}</h1>
+  <br>
+  {if="($taskState == 0)"}
+  <i>{#LANGUI_GUIDE_T54}</i>
+  <br>
+  <br>
+  <div class="rew">
+    <p class="ta_aw">{#LANGUI_GUIDE_T13}</p>
+    {#LANGUI_GUIDE_T55}
+  </div>
+  <br>
+  <img class="r4" src="{function="add_style('x.gif', ASSETS_DIR)"}" title="{#item_title_4}" alt="{#item_title_4}">
+  200
+  <input onclick="goto_guide('send')" name="qstin" type="button" value="{#LANGUI_GUIDE_T56}">
+  <br>
+  <span id="qst_accpt"></span>
+  {elseif="($taskState == 1)"}
+  <i>{#LANGUI_GUIDE_T57}</i>
+  <br>
+  <br>
+  <div class="rew">
+    <p class="ta_aw">{#LANGUI_GUIDE_T13}</p>
+    {#LANGUI_GUIDE_T55}
+  </div>
+  <br>
+  <img class="r4" src="{function="add_style('x.gif', ASSETS_DIR)"}" title="{#item_title_4}" alt="{#item_title_4}">
+  200
+  <input onclick="goto_guide('send')" name="qstin" type="button" value="{#LANGUI_GUIDE_T56}">
+  <br>
+  <span id="qst_accpt"></span>
+  {elseif="($taskState == 2)"}
+  <i>{#LANGUI_GUIDE_T58}</i>
+  <br />
+  <br />
+  <div class="rew">
+    <p class="ta_aw">{#LANGUI_GUIDE_T21}</p>
+    {#LANGUI_GUIDE_T59}
+    <br></div>
+  <br>
+  <span id="qst_accpt">
+    <a href="javascript:goto_guide();">{#LANGUI_GUIDE_T10}</a>
+  </span>
+  {/if}
+</div>
+<div id="qstbg" class="army"></div>
+{elseif="($taskNumber == 9)"}
+<div id="qstd">
+  <h1>
+    <img class="point" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="" title="">{#LANGUI_GUIDE_T60}</h1>
+  <br>
+  {if="($taskState == 0)"}
+  <i>{#LANGUI_GUIDE_T61}</i>
+  <br>
+  <br>
+  <div class="rew">
+    <p class="ta_aw">{#LANGUI_GUIDE_T13}</p>
+    {#LANGUI_GUIDE_T62}
+  </div>
+  <br>
+  <span id="qst_accpt"></span>
+  {elseif="($taskState == 1)"}
+  <i>{#LANGUI_GUIDE_T63}</i>
+  <br>
+  <br>
+  <div class="rew">
+    <p class="ta_aw">{#LANGUI_GUIDE_T21}</p>
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r1" alt="{#item_title_1}" title="{#item_title_1}">
+    100&nbsp;&nbsp;
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r2" alt="{#item_title_2}" title="{#item_title_2}">
+    80&nbsp;&nbsp;
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r3" alt="{#item_title_3}" title="{#item_title_3}">
+    40&nbsp;&nbsp;
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r4" alt="{#item_title_4}" title="{#item_title_4}">40&nbsp;&nbsp;</div>
+  <br>
+  <span id="qst_accpt">
+    <a href="javascript:goto_guide();">{#LANGUI_GUIDE_T10}</a>
+  </span>
+  {/if}
+</div>
+<div id="qstbg" class="allres"></div>
+{elseif="($taskNumber == 10)"}
+<div id="qstd">
+  <h1>
+    <img class="point" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="" title="">
+    {#LANGUI_GUIDE_T64} !
+  </h1>
+  <br>
+  {if="($taskState == 0)"}
+  <i>{#LANGUI_GUIDE_T65}</i>
+  <br>
+  <br>
+  <div class="rew">
+    <p class="ta_aw">{#LANGUI_GUIDE_T13}</p>
+    {#LANGUI_GUIDE_T66}
+  </div>
+  <br>
+  <span id="qst_accpt"></span>
+  {elseif="($taskState == 1)"}
+  <i>
+    {#LANGUI_GUIDE_T67} ......
+  </i>
+  <br>
+  <br>
+  <div class="rew">
+    <p class="ta_aw">{#LANGUI_GUIDE_T21}</p> 2 {#LANGUI_GUIDE_T68}
+    <br />
+  </div>
+  <br>
+  <span id="qst_accpt">
+    <a href="javascript:goto_guide();">{#LANGUI_GUIDE_T10}</a>
+  </span>
+  {/if}
+</div>
+<div id="qstbg" class="army"></div>
+{elseif="($taskNumber == 11)"}
+<div id="qstd">
+  <h1>
+    <img class="point" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="" title="">{#LANGUI_GUIDE_T69}</h1>
+  <br>
+  {if="($taskState == 0)"}
+  <i>{#LANGUI_GUIDE_T70}</i>
+  <br>
+  <br>
+  <div class="rew">
+    <p class="ta_aw">{#LANGUI_GUIDE_T13}</p>
+    {#LANGUI_GUIDE_T71}
+  </div>
+  <br>
+  <span id="qst_accpt"></span>
+  {elseif="($taskState == 1)"}
+  <i>
+    {#LANGUI_GUIDE_T72}  !
+  </i>
+  <br>
+  <br>
+  <div class="rew">
+    <p class="ta_aw">{#LANGUI_GUIDE_T21}</p>
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r1" alt="{#item_title_1}" title="{#item_title_1}">
+    75&nbsp;&nbsp;
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r2" alt="{#item_title_2}" title="{#item_title_2}">
+    140&nbsp;&nbsp;
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r3" alt="{#item_title_3}" title="{#item_title_3}">
+    40&nbsp;&nbsp;
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r4" alt="{#item_title_4}" title="{#item_title_4}">230&nbsp;&nbsp;</div>
+  <br>
+  <span id="qst_accpt">
+    <a href="javascript:goto_guide();">{#LANGUI_GUIDE_T10}</a>
+  </span>
+  {/if}
+</div>
+<div id="qstbg" class="msg"></div>
+{elseif="($taskNumber == 12)"}
+<div id="qstd">
+  <h1>
+    <img class="point" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="" title="">{#LANGUI_GUIDE_T73}</h1>
+  <br>
+  {if="($taskState == 0)"}
+  <i>{#LANGUI_GUIDE_T74}</i>
+  <br />
+  <br />
+  <div class="rew">
+    <p class="ta_aw">{#LANGUI_GUIDE_T13}</p>
+    {#LANGUI_GUIDE_T75}
+  </div>
+  <br>
+  <span id="qst_accpt"></span>
+  {elseif="($taskState == 1)"}
+  <i>{#LANGUI_GUIDE_T76}</i>
+  <br />
+  <br />
+  <div class="rew">
+    <p class="ta_aw">{#LANGUI_GUIDE_T21}</p>
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r1" alt="{#item_title_1}" title="{#item_title_1}">
+    75&nbsp;&nbsp;
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r2" alt="{#item_title_2}" title="{#item_title_2}">
+    80&nbsp;&nbsp;
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r3" alt="{#item_title_3}" title="{#item_title_3}">
+    30&nbsp;&nbsp;
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r4" alt="{#item_title_4}" title="{#item_title_4}">50&nbsp;&nbsp;</div>
+  <br>
+  <span id="qst_accpt">
+    <a href="javascript:goto_guide();">{#LANGUI_GUIDE_T10}</a>
+  </span>
+  {/if}
+</div>
+<div id="qstbg" class="allres"></div>
+{elseif="($taskNumber == 13)"}
+<div id="qstd">
+  <h1>
+    <img class="point" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="" title="">{#LANGUI_GUIDE_T77}</h1>
+  <br />
+  {if="($taskState == 0)"}
+  <i>{#LANGUI_GUIDE_T78}</i>
+  <br />
+  <br />
+  <div class="rew">
+    <p class="ta_aw">{#LANGUI_GUIDE_T13}</p>
+    {#LANGUI_GUIDE_T79}
+    <b>[#0]</b>
+    {#LANGUI_GUIDE_T80}
+  </div>
+  <br>
+  <span id="qst_accpt"></span>
+  {elseif="($taskState == 1)"}
+  <i>{#LANGUI_GUIDE_T81}</i>
+  <br>
+  <br>
+  <div class="rew">
+    <p class="ta_aw">{#LANGUI_GUIDE_T21}</p>
+    {#item_title_1}
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r1" alt="" title="{#item_title_1}">
+    120&nbsp;&nbsp;
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r2" alt="{#item_title_2}" title="{#item_title_2}">
+    200&nbsp;&nbsp;
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r3" alt="{#item_title_3}" title="{#item_title_3}">
+    140&nbsp;&nbsp;
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r4" alt="{#item_title_4}" title="{#item_title_4}">100&nbsp;&nbsp;</div>
+  <br>
+  <span id="qst_accpt">
+    <a href="javascript:goto_guide();">{#LANGUI_GUIDE_T10}</a>
+  </span>
+  {/if}
+</div>
+<div id="qstbg" class="medal"></div>
+{elseif="($taskNumber == 14)"}
+<div id="qstd">
+  <h1>
+    <img class="point" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="" title="">{#LANGUI_GUIDE_T82}</h1>
+  <br>
+  {if="($taskState == 0)"}
+  <i>{#LANGUI_GUIDE_T83}</i>
+  <br>
+  <br>
+  <div class="rew">
+    <p class="ta_aw">{#LANGUI_GUIDE_T13}</p>
+    {#LANGUI_GUIDE_T84}
+  </div>
+  <br>
+  <span id="qst_accpt"></span>
+  {elseif="($taskState == 1)"}
+  <i>{#LANGUI_GUIDE_T85}</i>
+  <br>
+  <br>
+  <div class="rew">
+    <p class="ta_aw">{#LANGUI_GUIDE_T21}</p>
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r1" alt="{#item_title_1}" title="{#item_title_1}">
+    150&nbsp;&nbsp;
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r2" alt="{#item_title_2}" title="{#item_title_2}">
+    180&nbsp;&nbsp;
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r3" alt="{#item_title_3}" title="{#item_title_3}">
+    30&nbsp;&nbsp;
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r4" alt="{#item_title_4}" title="{#item_title_4}">
+    130&nbsp;&nbsp;
+  </div>
+  <br>
+  <span id="qst_accpt">
+    <a href="javascript:goto_guide();">{#LANGUI_GUIDE_T10}</a>
+  </span>
+  {/if}
+</div>
+<div id="qstbg" class="hide"></div>
+{elseif="($taskNumber == 15)"}
+<div id="qstd">
+  <h1>
+    <img class="point" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="" title="">{#LANGUI_GUIDE_T86}</h1>
+  <br />
+  {if="($taskState == 0)"}
+  <i>{#LANGUI_GUIDE_T87}</i>
+  <br />
+  <br />
+  <div class="rew">
+    <p class="ta_aw">{#LANGUI_GUIDE_T13}</p>
+    {#LANGUI_GUIDE_T88}
+  </div>
+  <br>
+  <span id="qst_accpt"></span>
+  {elseif="($taskState == 1)"}
+  <i>{#LANGUI_GUIDE_T89}</i>
+  <br>
+  <br>
+  <div class="rew">
+    <p class="ta_aw">{#LANGUI_GUIDE_T21}</p>
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r1" alt="{#item_title_1}" title="{#item_title_1}">
+    60&nbsp;&nbsp;
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r2" alt="{#item_title_2}" title="{#item_title_2}">
+    50&nbsp;&nbsp;
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r3" alt="{#item_title_3}" title="{#item_title_3}">
+    40&nbsp;&nbsp;
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r4" alt="{#item_title_4}" title="{#item_title_4}">
+    30&nbsp;&nbsp;
+  </div>
+  <br>
+  <span id="qst_accpt">
+    <a href="javascript:goto_guide();">{#LANGUI_GUIDE_T10}</a>
+  </span>
+  {/if}
+</div>
+<div id="qstbg" class="allres"></div>
+{elseif="($taskNumber == 16)"}
+<div id="qstd">
+  <h1>
+    <img class="point" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="" title="">{#LANGUI_GUIDE_T90}</h1>
+  <br />
+  {if="($taskState == 0)"}
+  <i>{#LANGUI_GUIDE_T91}</i>
+  <br />
+  <br />
+  <div class="rew">
+    <p class="ta_aw">{#LANGUI_GUIDE_T13}</p>
+    {#LANGUI_GUIDE_T92}
+  </div>
+  <br />
+  <input id="qst_val" class="text" type="text" name="qstin">
+  <input onclick="goto_guide(_('qst_val').value)" type="button" value="{#LANGUI_GUIDE_T48}">
+  <br />
+  <span id="qst_accpt"></span>
+  {elseif="($taskState == 1)"}
+  <i>{#LANGUI_GUIDE_T93}</i>
+  <br />
+  <br />
+  <div class="rew">
+    <p class="ta_aw">{#LANGUI_GUIDE_T13}</p>
+    {#LANGUI_GUIDE_T92}
+  </div>
+  <br />
+  <input id="qst_val" class="text" type="text" name="qstin">
+  <input onclick="goto_guide(_('qst_val').value)" type="button" value="{#LANGUI_GUIDE_T48}">
+  <br />
+  <span id="qst_accpt"></span>
+  {elseif="($taskState == 2)"}
+  <i>{#LANGUI_GUIDE_T94}</i>
+  <br />
+  <br />
+  <div class="rew">
+    <p class="ta_aw">{#LANGUI_GUIDE_T13}</p>
+    {#LANGUI_GUIDE_T92}
+  </div>
+  <br />
+  <input id="qst_val" class="text" type="text" name="qstin">
+  <input onclick="goto_guide(_('qst_val').value)" type="button" value="{#LANGUI_GUIDE_T48}">
+  <br>
+  <span id="qst_accpt"></span>
+  {elseif="($taskState == 3)"}
+  <i>
+    {#LANGUI_GUIDE_T95} {$guideData.wood} {#LANGUI_GUIDE_T96}
+  </i>
+  <br>
+  <br>
+  <div class="rew">
+    <p class="ta_aw">{#LANGUI_GUIDE_T21}</p>
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r1" alt="{#item_title_1}" title="{#item_title_1}">
+    50&nbsp;&nbsp;
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r2" alt="{#item_title_2}" title="{#item_title_2}">
+    30&nbsp;&nbsp;
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r3" alt="{#item_title_3}" title="{#item_title_3}">
+    60&nbsp;&nbsp;
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r4" alt="{#item_title_4}" title="{#item_title_4}">
+    20&nbsp;&nbsp;
+  </div>
+  <br>
+  <span id="qst_accpt">
+    <a href="javascript:goto_guide();">{#LANGUI_GUIDE_T10}</a>
+  </span>
+  {/if}
+</div>
+<div id="qstbg" class="cost"></div>
+{elseif="($taskNumber == 17)"}
+<div id="qstd">
+  <h1>
+    <img class="point" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="" title="">{#LANGUI_GUIDE_T97}</h1>
+  <br>
+  {if="($taskState == 0)"}
+  <i>{#LANGUI_GUIDE_T98}</i>
+  <br>
+  <br>
+  <div class="rew">
+    <p class="ta_aw">{#LANGUI_GUIDE_T13}</p>
+    {#LANGUI_GUIDE_T99}
+  </div>
+  <br>
+  <span id="qst_accpt"></span>
+  {elseif="($taskState == 1)"}
+  <i>{#LANGUI_GUIDE_T100}</i>
+  <br>
+  <br>
+  <div class="rew">
+    <p class="ta_aw">{#LANGUI_GUIDE_T21}</p>
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r1" alt="{#item_title_1}" title="{#item_title_1}">
+    75&nbsp;&nbsp;
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r2" alt="{#item_title_2}" title="{#item_title_2}">
+    75&nbsp;&nbsp;
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r3" alt="{#item_title_3}" title="{#item_title_3}">
+    40&nbsp;&nbsp;
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r4" alt="{#item_title_4}" title="{#item_title_4}">
+    40&nbsp;&nbsp;
+  </div>
+  <br />
+  <span id="qst_accpt">
+    <a href="javascript:goto_guide();">{#LANGUI_GUIDE_T10}</a>
+  </span>
+  {/if}
+</div>
+<div id="qstbg" class="main"></div>
+{elseif="($taskNumber == 18)"}
+<div id="qstd">
+  <h1>
+    <img class="point" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="" title="">{#LANGUI_GUIDE_T101}</h1>
+  <br>
+  {if="($taskState == 0)"}
+  <i>{#LANGUI_GUIDE_T102}</i>
+  <br>
+  <br>
+  <div class="rew">
+    <p class="ta_aw">{#LANGUI_GUIDE_T13}</p>
+    {#LANGUI_GUIDE_T24}
+  </div>
+  <br>
+  <input id="qst_val" class="text" type="text" name="qstin">
+  <input onclick="goto_guide(_('qst_val').value)" type="button" value="{#LANGUI_GUIDE_T48}">
+  <br />
+  <span id="qst_accpt"></span>
+  {elseif="($taskState == 1)"}
+  <i>{#LANGUI_GUIDE_T103}</i>
+  <br />
+  <br />
+  <div class="rew">
+    <p class="ta_aw">{#LANGUI_GUIDE_T13}</p>
+    {#LANGUI_GUIDE_T24}
+  </div>
+  <br />
+  <input id="qst_val" class="text" type="text" name="qstin">
+  <input onclick="goto_guide(_('qst_val').value)" type="button" value="{#LANGUI_GUIDE_T48}">
+  <br />
+  <span id="qst_accpt"></span>
+  {elseif="($taskState == 2)"}
+  <i>{#LANGUI_GUIDE_T104}</i>
+  <br />
+  <br />
+  <div class="rew">
+    <p class="ta_aw">{#LANGUI_GUIDE_T13}</p>
+    {#LANGUI_GUIDE_T24}
+  </div>
+  <br>
+  <input id="qst_val" class="text" type="text" name="qstin">
+  <input onclick="goto_guide(_('qst_val').value)" type="button" value="{#LANGUI_GUIDE_T48}" />
+  <br />
+  <span id="qst_accpt"></span>
+  {elseif="($taskState == 3)"}
+  <i>{#LANGUI_GUIDE_T105}</i>
+  <br />
+  <br />
+  <div class="rew">
+    <p class="ta_aw">{#LANGUI_GUIDE_T13}</p>
+    {#LANGUI_GUIDE_T24}
+  </div>
+  <br>
+  <input id="qst_val" class="text" type="text" name="qstin">
+  <input onclick="goto_guide(_('qst_val').value)" type="button" value="{#LANGUI_GUIDE_T48}">
+  <br>
+  <span id="qst_accpt"></span>
+  {elseif="($taskState == 4)"}
+  <i>{#LANGUI_GUIDE_T106}</i>
+  <br />
+  <br />
+  <div class="rew">
+    <p class="ta_aw">{#LANGUI_GUIDE_T21}</p>
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r1" alt="{#item_title_1}" title="{#item_title_1}">
+    100&nbsp;&nbsp;
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r2" alt="{#item_title_2}" title="{#item_title_2}">
+    90&nbsp;&nbsp;
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r3" alt="{#item_title_3}" title="{#item_title_3}">
+    100&nbsp;&nbsp;
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r4" alt="{#item_title_4}" title="{#item_title_4}">
+    60&nbsp;&nbsp;
+  </div>
+  <br />
+  <span id="qst_accpt">
+    <a href="javascript:goto_guide();">{#LANGUI_GUIDE_T10}</a>
+  </span>
+  {/if}
+</div>
+<div id="qstbg" class="rank"></div>
+{elseif="($taskNumber == 19)"}
+<div id="qstd">
+  <h1>
+    <img class="point" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="" title="">{#LANGUI_GUIDE_T107}</h1>
+  <br>
+  {if="($taskState == 0)"}
+  <i>{#LANGUI_GUIDE_T108}</i>
+  <br>
+  <br>
+  <input onclick="goto_guide(1);" type="button" value="{#LANGUI_GUIDE_T109}" class="qb1">
+  <input onclick="goto_guide(2);" type="button" value="{#LANGUI_GUIDE_T110}" class="qb2">
+  <span id="qst_accpt"></span>
+  {elseif="($taskState == 1)"}
+  <i>
+    {#LANGUI_GUIDE_T111}
+    <a href="build?id=39">{#LANGUI_GUIDE_T112}</a>
+    {#LANGUI_GUIDE_T113}
+  </i>
+  <br />
+  <br />
+  <div class="rew">
+    <p class="ta_aw">{#LANGUI_GUIDE_T13}</p>
+    {#LANGUI_GUIDE_T114}
+  </div>
+  <br>
+  <span id="qst_accpt"></span>
+  {elseif="($taskState == 2)"}
+  <i>{#LANGUI_GUIDE_T115}</i>
+  <br />
+  <br />
+  <div class="rew">
+    <p class="ta_aw">{#LANGUI_GUIDE_T13}</p>
+    {#LANGUI_GUIDE_T116}
+  </div>
+  <br>
+  <span id="qst_accpt"></span>
+  {elseif="($taskState == 3)"}
+  <i>{#LANGUI_GUIDE_T117}</i>
+  <br />
+  <br />
+  <div class="rew">
+    <p class="ta_aw">{#LANGUI_GUIDE_T21}</p>
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r1" alt="{#item_title_1}" title="{#item_title_1}">
+    80&nbsp;&nbsp;
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r2" alt="{#item_title_2}" title="{#item_title_2}">
+    90&nbsp;&nbsp;
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r3" alt="{#item_title_3}" title="{#item_title_3}">
+    60&nbsp;&nbsp;
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r4" alt="{#item_title_4}" title="{#item_title_4}">
+    40&nbsp;&nbsp;
+  </div>
+  <br />
+  <span id="qst_accpt">
+    <a href="javascript:goto_guide();">{#LANGUI_GUIDE_T10}</a>
+  </span>
+  {elseif="($taskState == 4)"}
+  <i>{#LANGUI_GUIDE_T118}</i>
+  <br />
+  <br />
+  <div class="rew">
+    <p class="ta_aw">{#LANGUI_GUIDE_T21}</p>
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r1" alt="{#item_title_1}" title="{#item_title_1}" />
+    80&nbsp;&nbsp;
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r2" alt="{#item_title_2}" title="{#item_title_2}">
+    90&nbsp;&nbsp;
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r3" alt="{#item_title_3}" title="{#item_title_3}">
+    60&nbsp;&nbsp;
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r4" alt="{#item_title_4}" title="{#item_title_4}">
+    40&nbsp;&nbsp;
+  </div>
+  <br>
+  <span id="qst_accpt">
+    <a href="javascript:goto_guide();">{#LANGUI_GUIDE_T10}</a>
+  </span>
+  {/if}
+</div>
+<div id="qstbg" class="granary_rally"></div>
+{elseif="($taskNumber == 20)"}
+<div id="qstd">
+  <h1>
+    <img class="point" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="" title="">
+    {if="($taskState == 0 || $taskState == 1)"} {#LANGUI_GUIDE_T119} {else} {#LANGUI_GUIDE_T120} {/if}
+  </h1>
+  <br />
+  {if="($taskState == 0)"}
+  <i>
+    {#LANGUI_GUIDE_T121} !
+  </i>
+  <br />
+  <br />
+  <div class="rew">
+    <p class="ta_aw">{#LANGUI_GUIDE_T13}</p>
+    {#LANGUI_GUIDE_T122}
+  </div>
+  <br />
+  <span id="qst_accpt"></span>
+  {elseif="($taskState == 1)"}
+  <i>{#LANGUI_GUIDE_T123}</i>
+  <br />
+  <br />
+  <div class="rew">
+    <p class="ta_aw">{#LANGUI_GUIDE_T21}</p>
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r1" alt="{#item_title_1}" title="{#item_title_1}">
+    70&nbsp;&nbsp;
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r2" alt="{#item_title_2}" title="{#item_title_2}">
+    120&nbsp;&nbsp;
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r3" alt="{#item_title_3}" title="{#item_title_3}">
+    90&nbsp;&nbsp;
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r4" alt="{#item_title_4}" title="{#item_title_4}">
+    50&nbsp;&nbsp;
+  </div>
+  <br />
+  <span id="qst_accpt">
+    <a href="javascript:goto_guide();">{#LANGUI_GUIDE_T10}</a>
+  </span>
+  {elseif="($taskState == 2)"}
+  <i>{#LANGUI_GUIDE_T124}</i>
+  <br />
+  <br />
+  <div class="rew">
+    <p class="ta_aw">{#LANGUI_GUIDE_T13}</p>
+    {#LANGUI_GUIDE_T125}
+  </div>
+  <br />
+  <span id="qst_accpt"></span>
+  {elseif="($taskState == 3)"}
+  <i>{#LANGUI_GUIDE_T126}</i>
+  <br>
+  <br>
+  <div class="rew">
+    <p class="ta_aw">{#LANGUI_GUIDE_T21}</p>
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r1" alt="{#item_title_1}" title="{#item_title_1}">
+    70&nbsp;&nbsp;
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r2" alt="{#item_title_2}" title="{#item_title_2}">
+    100&nbsp;&nbsp;
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r3" alt="{#item_title_3}" title="{#item_title_3}">
+    90&nbsp;&nbsp;
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r4" alt="{#item_title_4}" title="{#item_title_4}">
+    100&nbsp;&nbsp;
+  </div>
+  <br>
+  <span id="qst_accpt">
+    <a href="javascript:goto_guide()">{#LANGUI_GUIDE_T10}</a>
+  </span>
+  {/if}
+</div>
+{if="($taskState == 0 || $taskState == 1)"}
+<div id="qstbg" class="warehouse"></div>
+{else}
+<div id="qstbg" class="barracks"></div>
+{/if}
+
+{elseif="($taskNumber == 21)"}
+<div id="qstd">
+  <h1>
+    <img class="point" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="" title="">
+    {if="($taskState == 0 || $taskState == 1)"}
+          {#LANGUI_GUIDE_T127}
+      {else}
+          {#LANGUI_GUIDE_T128}
+      {/if}
+  </h1>
+  <br />
+  {if="($taskState == 0)"}
+  <i>{#LANGUI_GUIDE_T129}</i>
+  <br />
+  <br />
+  <div class="rew">
+    <p class="ta_aw">{#LANGUI_GUIDE_T13}</p>
+    {#LANGUI_GUIDE_T130}
+  </div>
+  <br />
+  <span id="qst_accpt"></span>
+  {elseif="($taskState == 1)"}
+  <i>{#LANGUI_GUIDE_T131}</i>
+  <br />
+  <br />
+  <div class="rew">
+    <p class="ta_aw">{#LANGUI_GUIDE_T21}</p>
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r1" alt="{#item_title_1}" title="{#item_title_1}">
+    200&nbsp;&nbsp;
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r2" alt="{#item_title_2}" title="{#item_title_2}">
+    200&nbsp;&nbsp;
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r3" alt="{#item_title_3}" title="{#item_title_3}">
+    700&nbsp;&nbsp;
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r4" alt="{#item_title_4}" title="{#item_title_4}">
+    450&nbsp;&nbsp;
+  </div>
+  <br>
+  <span id="qst_accpt">
+    <a href="javascript:goto_guide();">{#LANGUI_GUIDE_T10}</a>
+  </span>
+  {elseif="($taskState == 2)"}
+  <i>
+    {#LANGUI_GUIDE_T132} {$guideData.troop_name}
+  </i>
+  <br />
+  <br />
+  <div class="rew">
+    <p class="ta_aw">{#LANGUI_GUIDE_T13}</p>
+    {#LANGUI_GUIDE_T133} {$guideData.troop_name}
+  </div>
+  <br>
+  <span id="qst_accpt"></span>
+  {elseif="($taskState == 3)"}
+  <i>
+    {#LANGUI_GUIDE_T134}
+    <a href="warsm">{#LANGUI_GUIDE_T135}</a>
+    {#LANGUI_GUIDE_T136}
+  </i>
+  <br>
+  <br>
+  <div class="rew">
+    <p class="ta_aw">{#LANGUI_GUIDE_T21}</p>
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r1" alt="{#item_title_1}" title="{#item_title_1}">
+    300&nbsp;&nbsp;
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r2" alt="{#item_title_2}" title="{#item_title_2}">
+    320&nbsp;&nbsp;
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r3" alt="{#item_title_3}" title="{#item_title_3}">
+    360&nbsp;&nbsp;
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r4" alt="{#item_title_4}" title="{#item_title_4}">570&nbsp;&nbsp;</div>
+  <br>
+  <span id="qst_accpt">
+    <a href="javascript:goto_guide()">{#LANGUI_GUIDE_T10}</a>
+  </span>
+  {/if}
+</div>
+{if="($taskState == 0 || $taskState == 1)"}
+<div id="qstbg" class="market"></div>
+{else}
+<div id="qstbg" class="units"></div>
+{/if}
+{elseif="($taskNumber == 22)"}
+<div id="qstd">
+  <h1>
+    <img class="point" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="" title="">{#LANGUI_GUIDE_T137}</h1>
+  <br>
+  {if="($taskState == 0)"}
+  <i>{#LANGUI_GUIDE_T138}</i>
+  <br>
+  <br>
+  <div class="rew">
+    <p class="ta_aw">{#LANGUI_GUIDE_T13}</p>
+    {#LANGUI_GUIDE_T139}
+  </div>
+  <br>
+  <span id="qst_accpt"></span>
+  {elseif="($taskState == 1)"}
+  <i>{#LANGUI_GUIDE_T140}</i>
+  <br>
+  <br>
+  <div class="rew">
+    <p class="ta_aw">{#LANGUI_GUIDE_T21}</p> 15 {#LANGUI_GUIDE_T42}
+    <br></div>
+  <br>
+  <span id="qst_accpt">
+    <a href="javascript:goto_guide();">{#LANGUI_GUIDE_T10}</a>
+  </span>
+  {/if}
+</div>
+<div id="qstbg" class="allres"></div>
+{elseif="($taskNumber == 23)"}
+<div id="qstd">
+  <h1>
+    <img class="point" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="" title="">{#LANGUI_GUIDE_T141}</h1>
+  <br />
+  {if="($taskState == 0)"}
+  <i>
+    {#LANGUI_GUIDE_T142} .
+  </i>
+  <br />
+  <br />
+  <div class="rew">
+    <p class="ta_aw">{#LANGUI_GUIDE_T13}</p>
+    {#LANGUI_GUIDE_T162}
+  </div>
+  <br />
+  <span id="qst_accpt"></span>
+  {elseif="($taskState == 1)"}
+  <i>{#LANGUI_GUIDE_T143}</i>
+  <br />
+  <br />
+  <div class="rew">
+    <p class="ta_aw">{#LANGUI_GUIDE_T21}</p>
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r1" alt="{#item_title_1}" title="{#item_title_1}" />
+    100&nbsp;&nbsp;
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r2" alt="{#item_title_2}" title="{#item_title_2}" />
+    60&nbsp;&nbsp;
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r3" alt="{#item_title_3}" title="{#item_title_3}" />
+    90&nbsp;&nbsp;
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r4" alt="{#item_title_4}" title="{#item_title_4}">
+    40&nbsp;&nbsp;
+  </div>
+  <br />
+  <span id="qst_accpt">
+    <a href="javascript:goto_guide();">{#LANGUI_GUIDE_T10}</a>
+  </span>
+  {/if}
+</div>
+<div id="qstbg" class="intro"></div>
+{elseif="($taskNumber == 24)"}
+<div id="qstd">
+  <h1>
+    <img class="point" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="" title="">{#LANGUI_GUIDE_T144}</h1>
+  <br>
+  {if="($taskState == 0)"}
+  <i>{#LANGUI_GUIDE_T145}</i>
+  <br>
+  <br>
+  <div class="rew">
+    <p class="ta_aw">{#LANGUI_GUIDE_T13}</p>
+    {#LANGUI_GUIDE_T146}
+  </div>
+  <br>
+  <span id="qst_accpt"></span>
+  {elseif="($taskState == 1)"}
+  <i>
+    {#LANGUI_GUIDE_T147} .
+  </i>
+  <br>
+  <br>
+  <div class="rew">
+    <p class="ta_aw">{#LANGUI_GUIDE_T21}</p>
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r1" alt="{#item_title_1}" title="{#item_title_1}" />
+    395&nbsp;&nbsp;
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r2" alt="{#item_title_2}" title="{#item_title_2}" />
+    315&nbsp;&nbsp;
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r3" alt="{#item_title_3}" title="{#item_title_3}" />
+    345&nbsp;&nbsp;
+    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r4" alt="{#item_title_4}" title="{#item_title_4}" />
+    230&nbsp;&nbsp;
+  </div>
+  <br>
+  <span id="qst_accpt"></span>
+  {/if}
+</div>
+<div id="qstbg" class="new_village"></div>
+{elseif="($taskNumber == 200)"}
+<div id="qstd">
+  <h1>
+    <img class="point" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="" title="">{#LANGUI_GUIDE_T148}</h1>
+  <br>
+  <i>{#LANGUI_GUIDE_T149}</i>
+  <br>
+  <br>
+  <span id="qst_accpt">
+    <a class="qle" href="javascript: goto_guide('y');">{#LANGUI_GUIDE_T150}</a>
+    <a class="qri" href="javascript: goto_guide('c');">{#LANGUI_GUIDE_T151}</a>
+  </span>
+</div>
+<div id="qstbg" class="intro"></div>
+{elseif="($taskNumber == 201)"}
+<div id="qstd">
+  <h1>
+    <img class="point" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="" title="">{#LANGUI_GUIDE_T152}</h1>
+  <br>
+  <table class="altquest" cellpadding="1" cellspacing="1">
+    <thead>
+      <tr>
+        <th colspan="4">{#LANGUI_GUIDE_T153}</th>
+      </tr>
+      <tr>
+        <td></td>
+        <td>{#LANGUI_GUIDE_T154}</td>
+        <td>{#LANGUI_GUIDE_T155}</td>
+        <td>{#LANGUI_GUIDE_T156}</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr {if="($guideData['quizStep'] == 0)"}class="hl"{elseif="(0 < $guideData['quizStep'])"}class="none"{/if} >
+          <td class="fc ra">1</td>
+          <td class="desc">
+              {#LANGUI_GUIDE_T157} {#LANGUI_GUIDE_T16}
+              <br />
+              15 
+              {#LANGUI_GUIDE_T42}
+              <br />
+          </td>
+          <td class="dur">0:00:00</td>
+          <td class="lc stat">
+            {if="($guideData['quizStep'] == 0)"}
+            <div id="qst_reshere">
+              <a href="javascript: goto_guide('y');">{#LANGUI_GUIDE_T158}</a>
+            </div>
+            {else}
+              {#LANGUI_GUIDE_T159}
+            {/if}
+          </td>
+      </tr>
+      <tr {if="($guideData['quizStep'] == 1)"}class="hl"{elseif="(1 < $guideData['quizStep'])"}class="none"{/if} >
+          <td class="fc ra">2</td>
+          <td class="desc">
+              <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r1" alt="{#item_title_1}" title="{#item_title_1}" >
+              217&nbsp;&nbsp;
+              <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r2" alt="{#item_title_2}" title="{#item_title_2}" />
+              247&nbsp;&nbsp;
+              <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r3" alt="{#item_title_3}" title="{#item_title_3}" />
+              177&nbsp;&nbsp;
+              <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r4" alt="{#item_title_4}" title="{#item_title_4}" />
+              207&nbsp;&nbsp;
+          </td>
+          <td class="dur">{$guideData.quiztime}</td>
+            <td class="lc stat">
+              {if="($guideData['quizStep'] < 1)"}
+                {#LANGUI_GUIDE_T160}
+              {elseif="($guideData['quizStep'] == 1)"}
+                {if="($guideData['pended'])"}
+                <span id="timer1">
+                  {$guideData.remainingSeconds|secondstostring}
+                </span>
+                {else}
+                <div id="qst_reshere">
+                  <a href="javascript: goto_guide('y');">{#LANGUI_GUIDE_T158}</a>
+                </div>
+                {/if}
+              {else}
+                  {#LANGUI_GUIDE_T159}
+              {/if}
+              </td>
+      </tr>
+      <tr {if="($guideData['quizStep'] == 2)"}class="hl"{elseif="(2 < $guideData['quizStep'])"}class="none"{/if} >
+                <td class="fc ra">3</td>
+                <td class="desc">
+                  <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r1" alt="{#item_title_1}" title="{#item_title_1}" />
+                  217&nbsp;&nbsp;
+                  <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r2" alt="{#item_title_2}" title="{#item_title_2}" />
+                  247&nbsp;&nbsp;
+                  <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r3" alt="{#item_title_3}" title="{#item_title_3}" />
+                  177&nbsp;&nbsp;
+                  <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r4" alt="{#item_title_4}" title="{#item_title_4}" />
+                  207&nbsp;&nbsp;
+                </td>
+                <td class="dur">{$guideData.quiztime}</td>
+                <td class="lc stat">
+                  {if="($guideData['quizStep'] < 2)"}
+                    {#LANGUI_GUIDE_T160}
+                  {elseif="($guideData['quizStep'] == 2)"}
+                      {if="($guideData['pended'])"}
+                    <span id="timer1">
+                      {$guideData.remainingSeconds|secondstostring}
+                    </span>
+                    {else}
+                    <div id="qst_reshere">
+                      <a href="javascript: goto_guide('y');">{#LANGUI_GUIDE_T158}</a>
+                    </div>
+                    {/if}
+                  {else}
+                      {#LANGUI_GUIDE_T159}
+                  {/if}
+                  </td>
+      </tr>
+      <tr {if="($guideData['quizStep'] == 3)"}class="hl"{elseif="(3 < $guideData['quizStep'])"}class="none"{/if} >
+                    <td class="fc ra">4</td>
+                    <td class="desc">
+                      <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r1" alt="{#item_title_1}" title="{#item_title_1}" />
+                      217&nbsp;&nbsp;
+                      <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r2" alt="{#item_title_2}" title="{#item_title_2}" />
+                      247&nbsp;&nbsp;
+                      <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r3" alt="{#item_title_3}" title="{#item_title_3}" />
+                      177&nbsp;&nbsp;
+                      <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r4" alt="{#item_title_4}" title="{#item_title_4}" />
+                      207&nbsp;&nbsp;
+                    </td>
+                    <td class="dur">{$guideData.quiztime};</td>
+                    <td class="lc stat">
+                      {if="($guideData['quizStep'] < 3)"}
+                          {#LANGUI_GUIDE_T160}
+                      {elseif="($guideData['quizStep'] == 3)"}
+                          {if="($guideData['pended'])"}
+                        <span id="timer1">
+                          {$guideData.remainingSeconds|secondstostring}
+                        </span>
+                        {else}
+                        <div id="qst_reshere">
+                          <a href="javascript: goto_guide('y');">{#LANGUI_GUIDE_T158}</a>
+                        </div>
+                        {/if}
+                      {else}
+                          {#LANGUI_GUIDE_T159}
+                      {/if}
+                      </td>
+      </tr>
+      <tr {if="($guideData['quizStep'] == 4)"}class="hl"{elseif="(4 < $guideData['quizStep'])"}class="none"{/if} >
+                        <td class="fc ra">5</td>
+                        <td class="desc">
+                          <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r1" alt="{#item_title_1}" title="{#item_title_1}" />
+                          217&nbsp;&nbsp;
+                          <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r2" alt="{#item_title_2}" title="{#item_title_2}" />
+                          247&nbsp;&nbsp;
+                          <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r3" alt="{#item_title_3}" title="{#item_title_3}" />
+                          177&nbsp;&nbsp;
+                          <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r4" alt="{#item_title_4}" title="{#item_title_4}" />
+                          207&nbsp;&nbsp;
+                        </td>
+                        <td class="dur">{$guideData.quiztime}</td>
+                        <td class="lc stat">
+                          {if="($guideData['quizStep'] < 4)"}
+                            {#LANGUI_GUIDE_T160}
+                          {elseif="($guideData['quizStep'] == 4)"}
+                            {if="($guideData['pended'])"}
+                            <span id="timer1">
+                              {$guideData.remainingSeconds|secondstostring}
+                            </span>
+                            {else}
+                            <div id="qst_reshere">
+                              <a href="javascript: goto_guide('y');">{#LANGUI_GUIDE_T158}</a>
+                            </div>
+                            {/if}
+                          {else}
+                              {#LANGUI_GUIDE_T159}
+                          {/if}
+                          </td>
+      </tr>
+      <tr {if="($guideData['quizStep'] == 5)"}class="hl"{elseif="(5 < $guideData['quizStep'])"}class="none"{/if} >
+                            <td class="fc ra">6</td>
+                            <td class="desc">
+                              <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r1" alt="{#item_title_1}" title="{#item_title_1}">
+                              217&nbsp;&nbsp;
+                              <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r2" alt="{#item_title_2}" title="{#item_title_2}">
+                              247&nbsp;&nbsp;
+                              <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r3" alt="{#item_title_3}" title="{#item_title_3}">
+                              177&nbsp;&nbsp;
+                              <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r4" alt="{#item_title_4}" title="{#item_title_4}">207&nbsp;&nbsp;</td>
+                            <td class="dur">{$guideData.quiztime}</td>
+                            <td class="lc stat">
+                              {if="($guideData['quizStep'] < 5)"}
+                                {#LANGUI_GUIDE_T160}
+                              {elseif="($guideData['quizStep'] == 5)"}
+                                {if="($guideData['pended'])"}
+                                <span id="timer1">
+                                  {$guideData.remainingSeconds|secondstostring}
+                                </span>
+                                {else}
+                                <div id="qst_reshere">
+                                  <a href="javascript: goto_guide('y');">{#LANGUI_GUIDE_T158}</a>
+                                </div>
+                                {/if}
+                              {else}
+                                  {#LANGUI_GUIDE_T159}
+                              {/if}
+                              </td>
+                              </tr>
+                              <tr {if="($guideData['quizStep'] == 6)"}class="hl"{elseif="(6 < $guideData['quizStep'])"}class="none"{/if}>
+                                <td class="fc ra">7</td>
+                                <td class="desc">
+                                  2 {#LANGUI_GUIDE_T161} {#LANGUI_GUIDE_T16}
+                                  <br />
+                                  20 {#LANGUI_GUIDE_T42}
+                                  <br />
+                                </td>
+                                <td class="dur">{$guideData.quiztime}</td>
+                                <td class="lc stat">
+                                  {if="($guideData['quizStep'] < 6)"}
+                                    {#LANGUI_GUIDE_T160}
+                                  {elseif="($guideData['quizStep'] == 6 && $quiz != GUIDE_QUIZ_COMPLETED)"}
+                                      {if="($guideData['pended'])"}
+                                    <span id="timer1">
+                                      {$guideData.remainingSeconds|secondstostring}
+                                    </span>
+                                    {else}
+                                    <div id="qst_reshere">
+                                      <a href="javascript: goto_guide('y');">{#LANGUI_GUIDE_T158}</a>
+                                    </div>
+                                    {/if}
+                                  {else}
+                                      {#LANGUI_GUIDE_T159}
+                                  {/if}
+                                  </td>
+      </tr>
+    </tbody>
+    </table>
+    <span id="qst_accpt"></span>
+  </div>
+  <div id="qstbg" class="intro"></div>
+  {/if}

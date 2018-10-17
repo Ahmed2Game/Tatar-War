@@ -1,0 +1,463 @@
+{function="load_lang('ui/help')"}
+
+  {if="($state == 0)"}
+      <h1><img class="point" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="" title="">
+      {#LANGUI_HLP_T1}
+      </h1><p></p><p>
+      {#LANGUI_HLP_T2}.</p><p></p>
+      <img class="troops" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#LANGUI_HLP_T3}" title="{#LANGUI_HLP_T3}">
+      <img class="buildings" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#LANGUI_HLP_T4}" title="{#LANGUI_HLP_T4}"><ul>
+      <li>
+      {#LANGUI_HLP_T5}
+      </li><ul>
+      <li><a href="?c=1&id=7">{#tribe_7}</a></li>
+      <li><a href="?c=1&id=1">{#tribe_1}</a></li>
+      <li><a href="?c=1&id=2">{#tribe_2}</a></li>
+      <li><a href="?c=1&id=3">{#tribe_3}</a></li>
+      </ul>
+      <br><li>
+      {#LANGUI_HLP_T4}</li><ul><li><a href="?c=2&id=1">{#LANGUI_HLP_T6}</a></li>
+      <li><a href="?c=2&id=2">{#LANGUI_HLP_T7}</a></li>
+      <li><a href="?c=2&id=3">{#LANGUI_HLP_T8}</a></li></ul>
+      <br><li><a href="manual" target="_blank">{#LANGUI_HLP_T9}
+       <img class="external" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#LANGUI_HLP_T10}" title="{#LANGUI_HLP_T10}"></a>
+       <br><p><br><br>
+      {#LANGUI_HLP_T11}.</p></li><br></ul>
+
+      {elseif="($state == 1)"}
+      <h1><img class="unit uunits" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="" title="">
+      {#LANGUI_HLP_T12}({function="merge_manual_text('tribe', $tribeId)"})</h1>
+      <ul>
+      {loop="gameMetadata.troops"}
+        {if="$value.for_tribe_id == $tribeId && $value.is_cavalry !== NULL"}
+          <li><a href="?c=3&id={$key}">{function="merge_manual_text('troop', $key)"}</a></li>
+        {/if}
+      {/loop}
+      </ul>
+  {elseif="($state == 2)"}
+      {if="($buildingGroup == 1)"}
+          <h1><img class="unit ugeb" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="" title="">
+          {#LANGUI_HLP_T13}
+          </h1><ul><li><a href="?c=4&id=1">
+          {#item_1}
+          </a></li><li><a href="?c=4&id=2">
+          {#item_2}
+          </a></li><li><a href="?c=4&id=3">
+          {#item_3}
+          </a></li><li><a href="?c=4&id=4">
+          {#item_4}
+          </a></li><li><a href="?c=4&id=5">
+          {#item_5}
+          </a></li><li><a href="?c=4&id=6">
+          {#item_6}
+          </a></li><li><a href="?c=4&id=7">
+          {#item_7}
+          </a></li><li><a href="?c=4&id=8">
+          {#item_8}
+          </a></li><li><a href="?c=4&id=9">
+          {#item_9}
+          </a></li><li><a href="?c=4&id=10">
+          {#item_10}
+          </a></li><li><a href="?c=4&id=11">
+          {#item_11}
+          </a></li></ul>
+
+        {elseif="($buildingGroup == '2')"}
+          <h1><img class="unit ugeb" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="" title="">
+          {#LANGUI_HLP_T14}
+          </h1><ul><li><a href="?c=4&id=12">
+          {#item_12}
+          </a></li><li><a href="?c=4&id=13">
+          {#item_13}
+          </a></li><li><a href="?c=4&id=14">
+          {#item_14}
+          </a></li><li><a href="?c=4&id=16">
+          {#item_16}
+          </a></li><li><a href="?c=4&id=19">
+          {#item_19}
+          </a></li><li><a href="?c=4&id=20">
+          {#item_20}
+          </a></li><li><a href="?c=4&id=21">
+          {#item_21}
+          </a></li><li><a href="?c=4&id=22">
+          {#item_22}
+          </a></li><li><a href="?c=4&id=29">
+          {#item_29}
+          </a></li><li><a href="?c=4&id=30">
+          {#item_30}
+          </a></li><li><a href="?c=4&id=36">
+          {#item_36}
+          </a></li><li><a href="?c=4&id=37">
+          {#item_37}
+          </a></li><li><a href="?c=4&id=42">
+          {#item_42}
+          </a></li></ul>
+          {elseif="($buildingGroup == 3)"}
+          <h1><img class="unit ugeb" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="" title="">
+          {#LANGUI_HLP_T15}
+          </h1><ul><li><a href="?c=4&id=15">
+          {#item_15}
+          </a></li><li><a href="?c=4&id=17">
+          {#item_17}
+          </a></li><li><a href="?c=4&id=18">
+          {#item_18}
+          </a></li><li><a href="?c=4&id=23">
+          {#item_23}
+          </a></li><li><a href="?c=4&id=24">
+          {#item_24}
+          </a></li><li><a href="?c=4&id=25">
+          {#item_25}
+          </a></li><li><a href="?c=4&id=26">
+          {#item_26}
+          </a></li><li><a href="?c=4&id=28">
+          {#item_28}
+          </a></li><li><a href="?c=4&id=34">
+          {#item_34}
+          </a></li><li><a href="?c=4&id=35">
+          {#item_35}
+          </a></li><li><a href="?c=4&id=38">
+          {#item_38}
+          </a></li><li><a href="?c=4&id=39">
+          {#item_39}
+          </a></li><li><a href="?c=4&id=41">
+          {#item_41}
+          </a></li><li><a href="?c=4&id=40">
+          {#item_40}
+          </a></li></ul>
+      {/if}
+      {elseif="($state == 3)"}
+      <h1><img class="unit u {$troopId}" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{function="merge_manual_text('troop', $troopId)"}" title="{function="merge_manual_text('troop', $troopId)"}">
+      {function="merge_manual_text('troop', $troopId)"}
+      <span class="tribe">({if="($troop['for_tribe_id'] > 0)"} {function="merge_manual_text('tribe', $troop['for_tribe_id'])"} {/if})</span></h1>
+      <table id="troop_info" cellpadding="1" cellspacing="1">
+        <thead>
+          <tr>
+            <th><img class="att_all" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#LANGUI_HLP_T16}" title="{#LANGUI_HLP_T16}"></th>
+            <th><img class="def_i" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#LANGUI_HLP_T17}" title="{#LANGUI_HLP_T17}"></th><th><img class="def_c" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#LANGUI_HLP_T18}" title="{#LANGUI_HLP_T18}"></th>
+            <th><img class="r1" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#item_title_1}" title="{#item_title_1}"></th>
+            <th><img class="r2" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#item_title_2}" title="{#item_title_2}"></th>
+            <th><img class="r3" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#item_title_3}" title="{#item_title_3}"></th>
+            <th><img class="r4" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#item_title_4}" title="{#item_title_4}"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{$troop.attack_value}</td>
+            <td>{$troop.defense_infantry}</td>
+            <td>{$troop.defense_cavalry}</td>
+            <td>{$troop.training_resources.1}</td>
+            <td>{$troop.training_resources.2}</td>
+            <td>{$troop.training_resources.3}</td>
+            <td>{$troop.training_resources.4}</td>
+          </tr>
+        </tbody>
+      </table>
+      <table id="troop_details" cellpadding="1" cellspacing="1">
+        <tbody>
+          <tr>
+            <th>{#LANGUI_HLP_T19}:</th>
+            <td><b>{$troop.velocity * $gameMetadata['game_speed']}</b> {#LANGUI_HLP_T20}</td>
+          </tr>
+          <tr>
+            <th>{#LANGUI_HLP_T21}:</th>
+            <td><b>{$troop.carry_load}</b> {#LANGUI_HLP_T6}</td>
+          </tr>
+          <tr>
+            <th>{#LANGUI_HLP_T22}:</th>
+            <td>
+              <img class="r5" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#LANGUI_HLP_T23}" title="{#LANGUI_HLP_T23}">
+            {$troop.crop_consumption}
+          </td>
+        </tr>
+        <tr>
+          <th>{#LANGUI_HLP_T24}:</th>
+          <td><img class="clock" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#text_period_lang}" title="{#text_period_lang}">
+              {function="secondstostring($troop['training_time_consume'] / $gameSpeed)"}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <img id="big_unit" class="big_u{$troopId}" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{function="merge_manual_text('troop', $troopId)"}" title="{function="merge_manual_text('troop', $troopId)"}" />
+    <div id="t_desc">
+      <p><br>
+      {if="$troop['for_tribe_id'] != 4 AND $troop['for_tribe_id'] != 5"}
+        {function="merge_manual_text('troop_desc', $troopId)"}
+      {/if}
+      <br />
+    </p>
+  </div>
+  <div id="prereqs">
+    <b>{#LANGUI_HLP_T25}:</b>
+    <br />
+      {if="isset($troop['help_pre_requests'])"}
+        {$t_pre_request = $troop['help_pre_requests']}
+      {else}
+        {$t_pre_request = $troop['pre_requests']}
+      {/if}
+      {$flag = FALSE}
+      {loop="t_pre_request"}
+          {$reqIds = explode("|", $key)}
+          {$strFlag = FALSE}
+          {if="$flag"},{/if}
+          {loop="reqIds"}
+              {if="!$strFlag"}{$strFlag = TRUE}{else}  {#text_or_lang}{/if}
+              <a href="?c=4&id={$key}">
+              {if="($value1 == NULL)"}<strike>{/if}
+                  {function="merge_manual_text('item', $value)"}
+              {if="($value1 == NULL)"}</strike>{/if}
+              </a>
+              {if="($value1 != NULL)"}
+                  {#level_lang}
+                  {$value1}
+              {/if}
+          {/loop}
+          {$flag = TRUE}
+      {/loop}
+      {if="!$flag"}{#LANGUI_HLP_T26}{/if}
+    </div>
+  {elseif="($state == 4)"}
+      <h1><img class="unit ugeb" src="{function="add_style('x.gif', ASSETS_DIR)"}">
+        {function="merge_manual_text('item', $itemId)"}
+      </h1><img class="building g{$itemId}" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{function="merge_manual_text('item', $itemId)"}" title="{function="merge_manual_text('item', $itemId)"}">
+      {function="merge_manual_text('item_desc', $itemId)"}
+      <p><b>
+      {#LANGUI_HLP_T27}:<br><img class="r1" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#item_title_1}" title="{#item_title_1}">
+      {$build.levels.0.resources.1}|
+      <img class="r2" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#item_title_2}" title="{#item_title_2}">
+      {$build.levels.0.resources.2}|
+      <img class="r3" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#item_title_3}" title="{#item_title_3}">
+      {$build.levels.0.resources.3} |
+      <img class="r4" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#item_title_4}" title="{#item_title_4}">
+      {$build.levels.0.resources.4}|
+      <img class="r5" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#LANGUI_HLP_T23}" title="{#LANGUI_HLP_T23}">
+      {$build.levels.0.people_inc}
+      <span class="dur">
+        <img class="clock" alt="{#text_period_lang}" title="{#text_period_lang}" src="{function="add_style('x.gif', ASSETS_DIR)"}">
+        {function="secondstostring($build['levels'][0]['time_consume'] / $gameSpeed)"}
+      </span></p><p><b>
+      {#LANGUI_HLP_T25}:
+    </b><br>
+    {$flag = FALSE}
+    {loop="$build.pre_requests"}
+      {if="$flag"},{/if}
+      <a href="?c=4&id={$key}">
+        {if="$value == NULL"}<strike>{/if}
+        {function="merge_manual_text('item', $key)"}
+        {if="$value == NULL"}</strike>{/if}
+      </a>
+      {if="$value != NULL"}
+        {#level_lang}{$value}
+      {/if}
+      {$flag = TRUE}
+    {/loop}
+    {if="!$flag"}{#LANGUI_HLP_T26}{/if}
+    </p>
+      {elseif="($state == 5)"}
+      {if="($plusIndex == 0)"}
+          <h1>
+            <img class="point" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="" title="" />
+            {#LANGUI_HLP_T28}
+          </h1>
+          {#LANGUI_HLP_T29}:
+          <br />
+          <br />
+          <ul>
+            <li>{#LANGUI_HLP_T31}</li>
+            <li>{#LANGUI_HLP_T82}</li>
+            <li>{#LANGUI_HLP_T33}</li>
+            <li>{#LANGUI_HLP_T30}</li>
+            <li>{#LANGUI_HLP_T83}</li>
+            <li>{#LANGUI_HLP_T32}</li>
+            <li>{#LANGUI_HLP_T81}</li>
+            <li>{#LANGUI_HLP_T84}</li>
+          </ul>
+      {elseif="($plusIndex == 1)"}
+          <h1><img class="point" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="" title="">
+          {#LANGUI_HLP_T34}
+          </h1>
+          {#LANGUI_HLP_T35}
+          .
+      {elseif="($plusIndex == 2)"}
+          <h1><img class="point" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="" title="">
+          {#LANGUI_HLP_T36}
+          </h1>
+          {#LANGUI_HLP_T37}
+          .
+      {elseif="($plusIndex == 3)"}
+          <h1>
+            <img class="point" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="" title="">
+          {#LANGUI_HLP_T38}
+          </h1>
+          {#LANGUI_HLP_T39}
+          .
+      {elseif="($plusIndex == 4)"}
+          <h1>
+            <img class="point" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="" title="">
+          {#LANGUI_HLP_T40}
+          </h1>
+          {#LANGUI_HLP_T41}
+          .
+      {elseif="($plusIndex == 5)"}
+          <h1><img class="point" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="" title="">
+          {#LANGUI_HLP_T42}
+          </h1>
+          {#LANGUI_HLP_T43}
+          .
+      {elseif="($plusIndex == 7)"}
+          <h1><img class="point" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="" title="">
+          {#LANGUI_HLP_T44}
+          </h1>
+          {#LANGUI_HLP_T45}
+          .
+      {elseif="($plusIndex == 8)"}
+          <h1><img class="point" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="" title="">
+          {#LANGUI_HLP_T75}
+          </h1>
+          {#LANGUI_HLP_T76}
+          .
+      {elseif="($plusIndex == 9)"}
+          <h1><img class="point" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="" title="">
+          {#LANGUI_HLP_T77}
+          </h1>
+          {#LANGUI_HLP_T78}
+          .
+      {elseif="($plusIndex == 10)"}
+          <h1><img class="point" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="" title="">
+          {#LANGUI_HLP_T79}
+          </h1>
+          {#LANGUI_HLP_T80}
+          .
+      {elseif="($plusIndex == 6)"}
+          <h1>
+            <img class="point" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="" title="">{#LANGUI_HLP_T46}</h1>
+          <p>
+            {#LANGUI_HLP_T47}.
+          </p>
+          <table id="examples" cellpadding="1" cellspacing="1">
+            <thead>
+              <tr>
+                <th colspan="2">{#LANGUI_HLP_T48}</th>
+              </tr>
+              <tr>
+                <td>{#LANGUI_HLP_T49}</td>
+                <td>{#LANGUI_HLP_T50}</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th>{#item_19}</th>
+                <td>build?bid=19</td>
+              </tr>
+              <tr>
+                <th>{#item_17}</th>
+                <td>build?bid=17</td>
+              </tr>
+              <tr>
+                <th>{#item_16}</th>
+                <td>build?bid=16</td>
+              </tr>
+              <tr>
+                <th>{#LANGUI_HLP_T51}</th>
+                <td>notes*</td>
+              </tr>
+            </tbody>
+          </table>
+          <p>
+            {#LANGUI_HLP_T52}.
+          </p>
+      {/if}
+    {elseif="($state == 6)"}
+      {if="($id == 0)"}
+          <h1>
+            <img class="point" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="" title="">{#LANGUI_HLP_T53}</h1>
+          <p></p>
+          <p>{#LANGUI_HLP_T54}</p>
+          <p></p>
+          <table id="examples" cellpadding="1" cellspacing="1">
+            <thead>
+              <tr>
+                <th colspan="2">{#LANGUI_HLP_T55}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th>{#LANGUI_HLP_T56}</th>
+                <td>{#LANGUI_HLP_T57}</td>
+              </tr>
+              <tr>
+                <th>{#LANGUI_HLP_T58}</th>
+                <td>{#LANGUI_HLP_T59}</td>
+              </tr>
+              <tr>
+                <th>{#LANGUI_HLP_T60}</th>
+                <td>{#LANGUI_HLP_T61}</td>
+              </tr>
+              <tr>
+                <th>{#LANGUI_HLP_T62}</th>
+                <td>{#LANGUI_HLP_T63}</td>
+              </tr>
+            </tbody>
+          </table>
+          <p></p>
+          <p>
+            {#LANGUI_HLP_T64}:-
+          </p>
+          <p></p>
+          <p class="medals">
+            <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="medal t1_1" alt="" title="">
+            <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="medal t1_2" alt="" title="">
+            <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="medal t1_3" alt="" title="">
+            <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="medal t1_4" alt="" title="">
+          </p>
+      {elseif="($id == 1)"}
+          <h1><img class="point" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="" title="">
+          {#LANGUI_HLP_T65}
+          </h1><p>
+          {#LANGUI_HLP_T66}
+          </p><p></p>
+          <table id="examples" cellpadding="1" cellspacing="1">
+            <thead>
+              <tr>
+                <th colspan="2">{#LANGUI_HLP_T67}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th>{#LANGUI_HLP_T56}</th>
+                <td>{#LANGUI_HLP_T68}</td>
+              </tr>
+              <tr>
+                <th>{#LANGUI_HLP_T58}</th>
+                <td>{#LANGUI_HLP_T69}</td>
+          </tr>
+          <tr>
+              <th>{#LANGUI_HLP_T60}</th>
+              <td>{#LANGUI_HLP_T61}</td>
+          </tr>
+          <tr>
+              <th>{#LANGUI_HLP_T62}</th>
+              <td>{#LANGUI_HLP_T63}</td>
+          </tr>
+          </tbody>
+          </table>
+          <p>
+          {#LANGUI_HLP_T70}
+          </p>
+          <p class="medals">
+            <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="medal a1_1" alt="" title="">
+            <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="medal a1_2" alt="" title="">
+            <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="medal a1_3" alt="" title="">
+            <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="medal a1_4" alt="" title="">
+          </p>
+      {/if}
+  {elseif="($state == 7)"}
+      <h1><img class="point" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="" title="">{#LANGUI_HLP_T73}</h1>
+      {#LANGUI_HLP_T74}
+  {/if}
+
+  {if="(0 < $state)"}
+      <map id="nav" name="nav"><area href="{$previousLink}" title="{#LANGUI_HLP_T71}" coords="0,0,45,18" shape="rect" alt="">
+        <area href="help" title="{#LANGUI_HLP_T1}" coords="46,0,70,18" shape="rect" alt="">
+        <area href="{$nextLink}" title="{#LANGUI_HLP_T72}" coords="71,0,116,18" shape="rect" alt=""></map>
+        <img usemap="#nav" src="{function="add_style('x.gif', ASSETS_DIR)"}" class="navi" alt="">
+  {/if}

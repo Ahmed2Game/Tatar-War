@@ -1,0 +1,72 @@
+{function="load_lang('ui/news')"}
+<!--Content-->
+<div class="wrapper-contact">
+    <img src="{function="add_style('background-land.jpg', ASSETS_DIR.'indx/images/')"}" /></a></li>
+
+</div>
+
+<div class="container-fluid section2 contact-content-container">
+
+    <article class="caption-block">
+        <h1 class="caption-heading">{#LANGUI_NEWS_T1}</h1>
+        <div class="box-info about-desciption contact-block-2">
+
+            <div class="container">
+
+                <h1 class="all-news-title text-center">
+                    {#LANGUI_NEWS_T2}
+                </h1>
+                    <table class="table table-striped table-hover table-bordered">
+                    <thead>
+                        <tr>
+                            <td>#</td>
+                            <td>العنوان</td>
+                            <td>التاريخ</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {loop="$all"}
+                        <tr>
+                          <td>{$key+1}</td>
+                          <td>
+                              <a href="profile?uid=">{$value.subject}</a>
+                          </td>
+                          <td>{$value.date}</td>
+                        </tr>
+                    {/loop}
+                    </tbody>
+                </table>
+
+            </div>
+
+        </div>
+
+
+    </article>
+</div>
+
+
+<!--News Modal-->
+<div class="modal fade" id="news"  tabindex="-1" role="dialog"  aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title single-news-title" id="myModalLabel">
+                    <span class="news-date ">
+                    1.30.2017
+                </span>
+
+                </h2>
+            </div>
+            <div class="modal-body">
+                <p class="news-text-block">
+
+
+
+
+                </p>
+
+            </div>
+        </div>
+    </div>
+</div>

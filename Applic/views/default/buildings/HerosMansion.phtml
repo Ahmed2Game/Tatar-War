@@ -1,0 +1,176 @@
+{function="load_lang('ui/custbuilds')"}
+<div id="textmenu">
+    <a href="build?id={$buildingIndex}" {if="( $selectedTabIndex == 0 )"}class="selected"{/if}>{#LANGUI_CUSTBU_HRO_p1}</a>
+    |
+    <a href="build?id={$buildingIndex}&t=1" {if="( $selectedTabIndex == 1 )"}class="selected"{/if}>{#LANGUI_CUSTBU_HRO_p2}</a>
+</div>
+
+{if="( $selectedTabIndex == 0 )"}
+    {if="( !$hasHero )"}
+        {if="!$troopsUpgradeType"}
+            <table class="build_details" cellpadding="1" cellspacing="1">
+                <thead>
+                    <tr>
+                        <td colspan="2">
+                            {#LANGUI_CUSTBU_HRO_p1_t1}
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {loop="$troops"}
+                        <tr>
+                            <td class="desc">
+                                <div class="tit">
+                                    <img class="unit u{$key}" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{function="constant('troop_'.$key )"}" title="{function="constant('troop_'.$key )"}">
+                                    <a href="#" onclick="return showManual(3,{$key});">{function="constant('troop_'.$key )"}</a>
+                                </div>
+                                <div class="details">
+                                    <img class="r1" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#item_title_1}" title="{#item_title_1}">
+                                <span class="little_res">
+                                {$value.res.1}
+                                </span>|<img class="r2" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#item_title_2}" title="{#item_title_2}">
+                                {$value.res.2}
+                                |<img class="r3" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#item_title_3}" title="{#item_title_3}">
+                                {$value.res.3}
+                                |<img class="r4" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#item_title_4}" title="{#item_title_4}">
+                                {$value.res.4}
+                                |<img class="clock" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#text_period_lang}" title="{#text_period_lang}">
+                                {$value.lvlTime}
+                                {$value.getResourceGoldExchange}
+                                </div>
+                                {$value.getActionText2}
+                            </td>
+                            <td class="act">
+                                {$value.getActionText3}
+                            </td>
+                        </tr>
+                    {/loop}
+                    {if="$_c == 0"}
+                    <tr>
+                        <td colspan="2" class="none">
+                            {#LANGUI_CUSTBU_HRO_p1_t2}
+                        </td>
+                    </tr>
+                    {/if}
+                </tbody>
+            </table>
+        {else}
+            <p>
+            {#LANGUI_CUSTBU_HRO_p1_t3}
+             <b>
+                <span id="timer1">{$troopsUpgradeType_remainingSeconds}</span>
+            </b> 
+            {#time_hour_lang}
+        {/if}
+    {else}
+        <form method="post" name="snd" action="build?id={$buildingIndex}">
+            <table id="distribution" cellpadding="1" cellspacing="1">
+                <thead>
+                    <tr>
+                        <th colspan="2">
+                            {$data.hero_name}   
+                            {#level_lang}
+                            {$data.hero_level}
+                            <span class="info">({function="constant('troop_'.$data['hero_troop_id'] )"})</span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>{#LANGUI_CUSTBU_HRO_p1_t4}:</th>
+                        <td class="val">{$data.hero_points}</td>
+                    </tr>
+                    <tr>
+                        <th>{#LANGUI_CUSTBU_HRO_p1_t5}:</th>
+                        <td class="val">
+                            <input tabindex="6" type="text" name="hname" value="{function="htmlspecialchars( $data['hero_name'] )"}" maxlength="20" class="text">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="btn">
+                <input type="image" value="" tabindex="9" name="s1" id="btn_save" class="dynamic_img" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#LANGUI_CUSTBU_HRO_p1_t6}">
+            </p>
+        </form>
+    {/if}
+{elseif="( $selectedTabIndex == 1 )"}
+    <table id="oases" cellpadding="1" cellspacing="1">
+        <thead>
+            <tr>
+                <th colspan="5">{#LANGUI_CUSTBU_HRO_p2_t1}</th>
+            </tr>
+            <tr>
+                <td></td>
+                <td>{#LANGUI_CUSTBU_HRO_p2_t2}</td>
+                <td>{#LANGUI_CUSTBU_HRO_p2_t3}</td>
+                <td>{#LANGUI_CUSTBU_HRO_p2_t4}</td>
+                <td>{#LANGUI_CUSTBU_HRO_p2_t5}</td>
+            </tr>
+        </thead>
+        <tbody>
+            {loop="$villageOases"}
+                <tr>
+                    <td>
+                        {if="!$value.QS_LEAVEOASIS"}
+                            <a href="build?id={$buildingIndex}&t=1&a={$value.oasis.id}&k={$data.update_key}">
+                                <img class="del" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#LANGUI_CUSTBU_HRO_p2_t6}" title="{#LANGUI_CUSTBU_HRO_p2_t6}">
+                            </a>
+                        {/if}
+                        </td>
+                        <td class="nam">
+                            <a href="village3?id={$value.oasis.id}">{#LANGUI_CUSTBU_HRO_p2_t7}</a>
+                        </td>
+                        <td class="aligned_coords">
+                            <div class="cox">({$value.oasis.rel_x}</div>
+                            <div class="pi">|</div>
+                            <div class="coy">{$value.oasis.rel_y})</div>
+                        </td>
+                        <td class="zp">{$value.oasis.allegiance_percent} %</td>
+                        <td class="res">
+                            {$value.str}
+                        </td>
+                    </tr>
+            {/loop}
+        </tbody>
+    </table>
+    <br/><br/>
+    {if="$QS_LEAVEOASIS"}
+        <h2>{#LANGUI_CUSTBU_HRO_p2_t6}</h2>
+        <table id="leave" cellpadding="1" cellspacing="1">
+            <thead>
+                <tr>
+                    <td>{#LANGUI_CUSTBU_HRO_p2_t2}</td>
+                    <td>{#LANGUI_CUSTBU_HRO_p2_t3}</td>
+                    <td>{#text_period_lang}</td>
+                </tr>
+            </thead>
+            <tbody>
+                {loop="$QS_LEAVEOASIS"}
+                {$qt = $value[0]}
+                {$coordArray = explode( " ", $qt['proc_params'] )}
+                <tr>
+                    <td class="nam">
+                        <a href="build?id={$buildingIndex}&t=1&qid={$qt.id}">
+                            <img class="del" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#LANGUI_CUSTBU_HRO_p2_t8}" title="{#LANGUI_CUSTBU_HRO_p2_t8}">
+                        </a>
+                        <a href="village3?id=echo $oasisId;">{#LANGUI_CUSTBU_HRO_p2_t7}</a>
+                    </td>
+                    <td class="aligned_coords">
+                        <div class="cox">
+                            ( {$coordArray.0}
+                        </div>
+                        <div class="pi">|</div>
+                        <div class="coy">
+                            {$coordArray.1} )
+                        </div>
+                    </td>
+                    <td class="dur">
+                        <span id="timer1">{$qt.remainingSeconds|secondstostring}</span>
+                    </td>
+                </tr>
+            {/loop}
+            </tbody>
+        </table>
+    {/if}
+    <br/>
+{/if}

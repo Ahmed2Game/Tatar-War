@@ -1,0 +1,39 @@
+{function="load_lang('ui/custbuilds')"}
+  <h2>{#LANGUI_CUSTBU_M_DROP}:</h2>
+  <p> {#LANGUI_CUSTBU_M_DROPDESC} .</p>
+
+  {if="$if_QS_BUILD_DROP"}
+      <table cellpadding="1" cellspacing="1" id="demolish">
+        <tbody>
+          <tr>
+            <td>
+              <a href="build?id={$buildingIndex}&d&qid={$qtask.id}&k={$data.update_key}">
+              <img class="del" src="{function="add_style('x.gif', ASSETS_DIR)"}" title="{#LANGUI_CUSTBU_M_CANCEL}" alt="{#LANGUI_CUSTBU_M_CANCEL}">
+            </a>
+          </td>
+          <td>
+              {function="constant('item_' . $qtask['building_id'])"}
+              ( {#level_lang} {$proc_params_level} )
+        </td>
+      <td>
+      {#time_remain_lang}
+      <span id="timer1">{$qtask.remainingSeconds|secondstostring}</span> 
+      {#time_hour_lang}
+      </td>
+    </tr>
+  </tbody>
+</table>
+  {else}
+      <div id="contract">
+        <form class="demolish_building" action="build?id={$buildingIndex}" method="post" style="display:inline">
+      <select name="drbid" class="dropdown">
+        {loop="$buildings_array"}
+            <option value="{$key}">{$key} {if="!$value"}{#LANGUI_CUSTBU_M_EMPTY}{else}{$value}{/if}</option> 
+        {/loop}
+      </select>
+	  <input class="check" name="full" value="0" type="checkbox"><b class="none"> ذهبة لكل مستوى <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="gold" alt="{#text_gold_lang}" title="{#text_gold_lang}">كامل</b>
+      <input id="btn_demolish" name="ok" class="dynamic_img" type="image" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#LANGUI_CUSTBU_M_DROPBTN}">
+    </form>
+  </div>
+{if="is_post('full')"}<script>document.location.reload();</script>{/if}
+  {/if}

@@ -1,0 +1,146 @@
+{function="load_lang('ui/artefacts')"}
+<div id="textmenu">
+  <a href="build?id={$buildingIndex}" {if="($selectedTabIndex == 0)"} class="selected" {/if}>{#LANGUI_ART_9}</a> |
+  <a href="build?id={$buildingIndex}&t=1" {if="($selectedTabIndex == 1)"} class="selected" {/if}>{#LANGUI_ART_size_1}</a> |
+  <a href="build?id={$buildingIndex}&t=2" {if="($selectedTabIndex == 2)"} class="selected" {/if}>{#LANGUI_ART_size_2}</a> |
+  <a href="build?id={$buildingIndex}&t=3" {if="($selectedTabIndex == 3)"} class="selected" {/if}>{#LANGUI_ART_size_3}</a>
+</div>
+{if="$selectedTabIndex == 0"}
+    <table id="own" cellpadding="1" cellspacing="1">
+        <thead>
+            <tr>
+                <th colspan="4">{#LANGUI_ART_9}</th>
+            </tr>
+            <tr>
+                <td></td>
+                <td>{#LANGUI_ART_10}</td>
+                <td>{#LANGUI_ART_11}</td>
+                <td>{#LANGUI_ART_12}</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+            {if="!$Artefacts"}
+                <td colspan="4" class="none">{#LANGUI_ART_13}</td>
+            {else}
+                <td class="icon">
+                    <img class="artefact_icon_{$Artefacts.type}" src="{function="add_style('x.gif', ASSETS_DIR)"}">
+                </td>
+                <td class="nam">
+                    <a href="build?id={$buildingIndex}&t=4&show={$Artefacts.id}">{function="constant('LANGUI_ART_name_'.$Artefacts.type)"}</a>
+                    <span class="bon">{function="constant('LANGUI_ART_effect_'.$Artefacts.type.'_'.$Artefacts.size)"}</span>
+                    <div class="info">
+                        {#item_27} <b>{if="$Artefacts.size == 1"}10{else}20{/if}</b>, {#LANGUI_ART_14} <b>{if="$Artefacts.size == 1"}{#LANGUI_ART_17}{else}{#LANGUI_ART_18}{/if}</b>
+                    </div>
+                </td>
+                <td class="pla">
+                    <a href="village3?id={$data.selected_village_id}">{$data.village_name}</a>
+                </td>
+                <td class="dist">{$Artefacts.mdate}</td>
+            {/if}
+            </tr>
+        </tbody>
+    </table>
+{elseif="$selectedTabIndex <= 3"}
+    <table id="show_artefacts" cellpadding="1" cellspacing="1">
+        <thead>
+            <tr>
+                <th colspan="5">{function="constant('LANGUI_ART_size_'.$selectedTabIndex)"}</th>
+            </tr>
+            <tr>
+                <td></td>
+                <td>{#LANGUI_ART_10}</td>
+                <td>{#LANGUI_ART_11}</td>
+                <td>{#LANGUI_ART_15}</td>
+                <td>{#LANGUI_ART_16}</td>
+            </tr>
+        </thead>
+        <tbody>
+        {$f = 0}
+        {loop="$Artefacts"}
+            <tr>
+                <td class="icon">
+                    <img class="artefact_icon_{$value.type}" src="{function="add_style('x.gif', ASSETS_DIR)"}">
+                </td>
+                <td class="nam">
+                    <a href="build?id={$buildingIndex}&t=4&show={$value.id}">{$value.name}</a>
+                    <span class="bon">{function="constant('LANGUI_ART_effect_'.$value.type.'_'.$selectedTabIndex)"}</span>
+                    <div class="info">{#item_27} <b>{if="$selectedTabIndex == 1"}10{else}20{/if}</b>, {#LANGUI_ART_14} <b>{if="$selectedTabIndex == 1"}{#LANGUI_ART_17}{else}{#LANGUI_ART_18}{/if}</b></div>
+                </td>
+                <td class="vil">
+                    <a href="village3?id={$value.village_id}">{$value.village_name}</a>
+                </td>
+                <td class="pla">
+                    <a href="profile?uid={$value.player_id}">{$value.player_name}</a>
+                </td>
+                <td class="dist">{$value.dist}</td>
+            </tr>
+        {if="$key/$value.type == 4 && $selectedTabIndex != 3"}
+            <tr><td colspan="5"></td></tr>
+        {/if}
+        {if="$selectedTabIndex == 3"}
+            <tr><td colspan="5"></td></tr>
+        {/if}
+        {$f = 1}
+        {/loop}
+        {if="!$f"}
+            <tr><td colspan="5" class="none">{#LANGUI_ART_19}</td></tr>
+        {/if}
+        </tbody>
+    </table>
+{elseif="$selectedTabIndex == 4 && $Artefacts"}
+    <div class="artefact image-{$Artefacts.type}"></div>
+        <table id="art_details" cellpadding="1" cellspacing="1">
+            <thead>
+                <tr>
+                    <th colspan="2">{$Artefacts.name}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="2" class="desc">
+                        <span class="detail">{$Artefacts.desc}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>{#LANGUI_ART_15}</th>
+                    <td>
+                        <a href="profile?uid={$Artefacts.player_id}">{$Artefacts.player_name}</a>
+                    </td>
+                </tr>
+                <tr>
+                    <th>{#LANGUI_ART_11}</th>
+                    <td>
+                        <a href="village3?id={$Artefacts.village_id}">{$Artefacts.village_name}</a>
+                    </td>
+                </tr>
+                <tr>
+                    <th>{#LANGUI_ART_20}</th>
+                    <td>
+                        <a href="alliance?id={$Artefacts.alliance_id}">{$Artefacts.alliance_name}</a>
+                    </td>
+                </tr>
+                <tr>
+                    <th>{#LANGUI_ART_14}</th>
+                    <td>{if="$Artefacts.size == 1"}{#LANGUI_ART_17}{else}{#LANGUI_ART_18}{/if}</td>
+                </tr>
+
+                <tr>
+                    <th>{#LANGUI_ART_21}</th>
+                    <td>{function="constant('LANGUI_ART_effect_'.$Artefacts.type.'_'.$Artefacts.size)"}</td>
+                </tr>
+                <tr>
+                    <th>{#LANGUI_ART_22}</th>
+                    <td>{#item_27} <b>{if="$Artefacts.size == 1"}10{else}20{/if}</b></td>
+                </tr>
+                <tr>
+                    <th>{#LANGUI_ART_12}</th>
+                    <td>{$Artefacts.date}</td>
+                </tr>
+                <tr>
+                    <th>{#LANGUI_ART_23}</th>
+                    <td>{$Artefacts.date}</td>
+                </tr>
+            </tbody>
+        </table>
+{/if}

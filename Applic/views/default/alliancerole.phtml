@@ -1,0 +1,78 @@
+{function="load_lang('ui/alliancerole')"}
+    <h1>
+        <img class="point" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="" title="">{#LANGUI_ALLIROL_T1}
+	</h1>
+	<p></p>
+	<form method="post" action="alliancerole?uid={function="get('uid')"}">
+	    <table cellpadding="1" cellspacing="1" id="position" class="small_option">
+		    <thead>
+			    <tr>
+				    <th colspan="2">{#LANGUI_ALLIROL_T1}</th>
+				</tr>
+			</thead>
+			<tbody>
+			    <tr>
+				    <th>{#LANGUI_ALLIROL_T2}:</th>
+					<td>{$playerName}</td>
+				</tr>
+				<tr>
+				    <th>{#LANGUI_ALLIROL_T3}</th>
+				    <td>
+				        <input class="name text" type="text" name="a_titel" value="{$playerRoles.name}" maxlength="20">
+				    </td>
+			    </tr>
+			</tbody>
+		</table>
+		<p></p>
+		<table cellpadding="1" cellspacing="1" id="rights" class="small_option">
+		    <thead>
+			    <tr>
+				    <th colspan="2">{#LANGUI_ALLIROL_T4}</th>
+				</tr>
+			</thead>
+			<tbody>
+			    <tr>
+				    <td class="sel">
+					    <input class="check" type="checkbox" name="e1" {$e1}>
+					</td>
+					<td>{#LANGUI_ALLIROL_T5}</td>
+				</tr>
+				<tr>
+				    <td class="sel">
+					    <input class="check" type="checkbox" name="e2" {$e2}>
+					</td>
+				    <td>{#LANGUI_ALLIROL_T6}</td>
+				</tr>
+				<tr>
+				    <td class="sel">
+					    <input class="check" type="checkbox" name="e3" {$e3}>
+					</td>
+					<td>{#LANGUI_ALLIROL_T7}</td>
+				</tr>
+				<tr>
+				    <td class="sel">
+					    <input class="check" type="checkbox" name="e4" {$e4}>
+					</td>
+					<td>{#LANGUI_ALLIROL_T8}</td>
+				</tr>
+				<tr>
+				    <td class="sel">
+					    <input class="check" type="checkbox" name="e5" {$e5}>
+					</td>
+				    <td>{#LANGUI_ALLIROL_T9}</td>
+				</tr>
+			    <tr>
+				    <td class="sel">
+					    <input class="check" type="checkbox" name="e6"  {$e6}>
+					</td>
+					<td>{#LANGUI_ALLIROL_T10}</td>
+				</tr>
+			</tbody>
+		</table>
+		<p>
+		    <input type="image" value="ok" name="s1" id="btn_save" class="dynamic_img" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#text_save_lang}">
+		</p>
+	</form>
+{if="is_post('a_titel')"}
+     <p class="error">{#text_newssaved_lang}</p>
+{/if}

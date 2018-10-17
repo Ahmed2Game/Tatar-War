@@ -1,0 +1,10 @@
+{function="load_lang('ui/custbuilds')"}
+{if="(1 < $crannyProperty['buildingCount'])"}
+      <br/><b>
+      {#LANGUI_CUSTBU_CRANNYEXTRA}
+       : 
+      {$crannyProperty.totalSize}
+       
+      {function="constant('item_unit_' . $buildProperties['building']['item_id'])"}
+      </b>
+ {/if}

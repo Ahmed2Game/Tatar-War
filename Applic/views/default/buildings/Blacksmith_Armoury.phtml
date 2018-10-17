@@ -1,0 +1,149 @@
+{function="load_lang('ui/custbuilds')"}
+
+{$tableTital = $buildProperties['building']['item_id'] == 12 ? LANGUI_CUSTBU_RP_t32 : LANGUI_CUSTBU_RP_t33 }
+<table class="troop_prop" cellpadding="1" cellspacing="1">
+    <thead>
+        <tr>
+            <th colspan="9">{$tableTital}</th>
+        </tr>
+        <tr>
+            <td>{#LANGUI_CUSTBU_RP_t28}</td>
+            {loop="troops_training"}
+                <td>
+                    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="unit u{$value}" title="{function="constant('troop_'.$value )"}" alt="{function="constant('troop_'.$value )"}" >
+                </td>
+            {/loop}
+
+{if="($buildProperties['building']['item_id'] == 12)"}
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <img class="att_all" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#LANGUI_CUSTBU_RP_t29}" title="{#LANGUI_CUSTBU_RP_t29}" >
+            </td>
+            {loop="$tpower_array"}
+                <td>{$value}</td>
+            {/loop}
+
+        {else}
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <img class="def_i" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#LANGUI_CUSTBU_RP_t30}" title="{#LANGUI_CUSTBU_RP_t30}">
+            </td>
+            {loop="$tpower_defense"}
+                <td>{$value}</td>
+            {/loop}
+        </tr>
+        <tr>
+            <td>
+                <img class="def_c" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#LANGUI_CUSTBU_RP_t31}" title="{#LANGUI_CUSTBU_RP_t31}">
+            </td>
+            {loop="$tpower_defense_cavalry"}
+                <td>{$value}</td>
+            {/loop}
+        {/if}
+        </tr>
+    </tbody>
+</table>
+<p></p>
+<p></p>
+<table cellpadding="1" cellspacing="1" class="build_details">
+    <thead>
+        <tr>
+            <td>
+                {if="$troopsUpgradeType == QS_TROOP_UPGRADE_ATTACK"} {#item_12} {else} {#item_13} {/if}
+            </td>
+            <td>{#LANGUI_CUSTBU_BLK_t1}</td>
+        </tr>
+    </thead>
+    <tbody>
+
+    {loop="$troopsUpgrade_array"}
+    <tr>
+        <td class="desc">
+            <div class="tit">
+                <img class="unit u{$key}" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{function="constant('troop_'.$key )"}" title="{function="constant('troop_'.$key )"}" >
+                <a href="#" onclick="return showManual(3,echo $tid;);">{function="constant('troop_'.$key )"}</a>
+                <span class="info">
+                    (
+                        {#level_lang2} 
+                        {$value.ulevel}
+                    )
+                </span>
+            </div>
+            <div class="details">
+                <img class="r1" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#item_title_1}" title="{#item_title_1}">
+                <span class="little_res">{$value.lvl.resources.1}</span>
+                |
+                <img class="r2" src="{function="add_style('x.gif', ASSETS_DIR)"} " alt="{#item_title_2}" title="{#item_title_2}">
+                <span class="little_res">{$value.lvl.resources.2}</span>
+                |
+                <img class="r3" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#item_title_3}" title="{#item_title_3}">
+                <span class="little_res">{$value.lvl.resources.3}</span>
+                |
+                <img class="r4" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#item_title_4}" title="{#item_title_4}">
+                <span class="little_res">{$value.lvl.resources.4}</span>
+               |<img class="clock" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#text_period_lang}" >
+                </span>
+                {$value.lvlTime}
+                {$value.getResourceGoldExchange}
+            </div>
+            {$value.getActionText2}
+        </td>
+        <td class="act">
+            {$value.getActionText4}
+			<br>
+			-------------
+			<br>
+			{$max = 20}
+			<a class="build" href="build?id={$buildProperties['building']['index']}&k={$data['update_key']}&a={$key}&max=1">مستوى 20</a> 
+				<img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="gold" alt="{#text_gold_lang}" title="{#text_gold_lang}">{$max - $value.ulevel}
+        </td>
+    </tr>
+    {/loop}
+
+    {if="( $_ac == 0 )"}
+            <tr>
+                <td colspan="2">
+                    <span class="none">{#LANGUI_CUSTBU_BLK_t2}</span>
+                </td>
+            </tr>
+    {/if}
+    </tbody>
+</table>
+
+{if="$tasksInQueue"}
+<table cellpadding="1" cellspacing="1" class="under_progress">
+    <thead>
+        <tr>
+            <td>{#LANGUI_CUSTBU_BLK_t3}</td>
+            <td>{#text_period_lang}</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="desc">
+                <img class="unit u{$tid}" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt={function="constant('troop_'.$tid )"} title="{function="constant('troop_'.$tid )"}" >
+                {function="constant('troop_'.$tid )"}
+                <span class="info">
+                    (
+                        {#level_lang2}
+                        {$ulevel}
+                    )
+                </span>
+            </td>
+            <td class="dur">
+                <span id="timer1">{$remainingSeconds}</span>
+            </td>
+        </tr>
+        <tr class="next">
+            <td colspan="2"></td>
+        </tr>
+    </tbody>
+</table>
+{/if}

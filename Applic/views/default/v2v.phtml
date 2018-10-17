@@ -1,0 +1,383 @@
+{function="load_lang('ui/v2v')"}
+
+{if="( $pageState == 1 )"}
+    <h1>{#LANGUI_V2V_T1}</h1>
+    <form method="post" name="snd" action="v2v">
+        <table id="troops" cellpadding="1" cellspacing="1">
+            <tbody>
+                <tr>
+                    <td class="line-first column-first">
+                        <img class="unit u{$troops.0.troopId}" src="{function="add_style('x.gif', ASSETS_DIR)"}" title="{function="constant('troop_'.$troops.0.troopId )"}" alt="{function="constant('troop_'.$troops.0.troopId )"}" {if="( 0 < $troops[0]['number'] )"} onclick="_('t1').value=''; return false;" {/if}>
+                        <input type="text" class="text {if="( $troops[0]['number'] <= 0 )"}disabled{/if}" name="t[{$troops.0.troopId}]" id="t1" value="" maxlength="9">
+                        {if="( $troops[0]['number'] <= 0 )"}
+                            <span class="none">(0)</span>
+                        {else}
+                    	    <a href="#" onclick="_('t1').value={$troops.0.number}; return false;">({$troops.0.number})</a>
+                        {/if}
+	               </td>
+                   <td class="line-first">
+                    <img class="unit u{$troops.3.troopId}" src="{function="add_style('x.gif', ASSETS_DIR)"}" title="{function="constant('troop_'.$troops.3.troopId )"}" alt="{function="constant('troop_'.$troops.3.troopId )"}" {if="( 0 < $troops[3]['number'] )"} onclick="_('t4').value=''; return false;"{/if} >
+                    <input type="text" class="text  {if="( $troops[3]['number'] <= 0 )"} disabled {/if}" name="t[{$troops.3.troopId}]" id="t4" value="" maxlength="9">
+                    {if="( $troops[3]['number'] <= 0 )"}
+                        <span class="none">(0)</span>
+                    {else}
+                        <a href="#" onclick="_('t4').value={$troops.3.number}; return false;">({$troops.3.number})</a>
+                    {/if}
+                  </td>
+                  <td class="line-first">
+                    <img class="unit u{$troops.6.troopId}" src="{function="add_style('x.gif', ASSETS_DIR)"}" title="{function="constant('troop_'.$troops[6]['troopId'] )"}" alt="{function="constant('troop_'.$troops[6]['troopId'] )"}"{if="( 0 < $troops[6]['number'] )"}onclick="_('t7').value=''; return false;"{/if}>
+                    <input type="text" class="text {if="( $troops[6]['number'] <= 0 )"}disabled{/if}" name="t[{$troops.6.troopId}]" id="t7" value="" maxlength="9">
+                    {if="( $troops[6]['number'] <= 0 )"}
+                        <span class="none">(0)</span>
+                    {else}
+                        <a href="#" onclick="_('t7').value={$troops.6.number}; return false;">({$troops.6.number})</a>{/if}
+                    </td>
+                    <td class="line-first column-last">
+                        <img class="unit u{$troops.8.troopId}" src="{function="add_style('x.gif', ASSETS_DIR)"}" title="{function="constant('troop_'.$troops[8]['troopId'] )"}" alt="{function="constant('troop_'.$troops[8]['troopId'] )"}"{if="( 0 < $troops[8]['number'] )"}onclick="_('t9').value=''; return false;"{/if}>
+                        <input type="text" class="text {if="( $troops[8]['number'] <= 0 )"}disabled{/if}" name="t[{$troops.8.troopId}]" id="t9" value="" maxlength="9">
+                   {if="( $troops[8]['number'] <= 0 )"}
+                        <span class="none">(0)</span>
+                    {else}
+                        <a href="#" onclick="_('t9').value={$troops.8.number}; return false;">({$troops.8.number})</a>
+                    {/if}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="column-first">
+                        <img class="unit u{$troops.1.troopId}" src="{function="add_style('x.gif', ASSETS_DIR)"}" title="{function="constant('troop_'.$troops[1]['troopId'] )"}" alt="{function="constant('troop_'.$troops[1]['troopId'] )"}" {if="( 0 < $troops[1]['number'] )"}onclick="_('t2').value=''; return false;"{/if}>
+                        <input type="text" class="text {if="( $troops[1]['number'] <= 0 )"}disabled{/if}" name="t[{$troops.1.troopId}]" id="t2" value="" maxlength="9">
+                    {if="( $troops[1]['number'] <= 0 )"}
+                        <span class="none">(0)</span>
+                    {else}
+                        <a href="#" onclick="_('t2').value={$troops.1.number}; return false;">({$troops.1.number})</a>
+                    {/if}
+                    </td>
+                    <td>
+                        <img class="unit u{$troops.4.troopId}" src="{function="add_style('x.gif', ASSETS_DIR)"}" title="{function="constant('troop_'.$troops[4]['troopId'] )"}" alt="{function="constant('troop_'.$troops[4]['troopId'] )"}" {if="( 0 < $troops[4]['number'] )"} onclick="_('t5').value=''; return false;"{/if}>
+                        <input type="text" class="text {if="( $troops[4]['number'] <= 0 )"} disabled {/if}" name="t[{$troops.4.troopId}]" id="t5" value="" maxlength="9">
+                        {if="( $troops[4]['number'] <= 0 )"}
+                            <span class="none">(0)</span>
+                        {else}
+                            <a href="#" onclick="_('t5').value={$troops.4.number}; return false;">({$troops.4.number})</a>
+                        {/if}
+                    </td>
+                    <td>
+                        <img class="unit u{$troops.7.troopId}" src="{function="add_style('x.gif', ASSETS_DIR)"}" title="{function="constant('troop_'.$troops[7]['troopId'] )"}" alt="{function="constant('troop_'.$troops[7]['troopId'] )"}" {if="( 0 < $troops[7]['number'] )"}onclick="_('t8').value=''; return false;"{/if}>
+                        <input type="text" class="text {if="( $troops[7]['number'] <= 0 )"}disabled{/if}" name="t[{$troops.7.troopId}]" id="t8" value="" maxlength="9">
+                        {if="( $troops[7]['number'] <= 0 )"}
+                            <span class="none">(0)</span>
+                        {else}
+                            <a href="#" onclick="_('t8').value={$troops.7.number}; return false;">({$troops.7.number})</a>
+                        {/if}
+                    </td>
+                    <td class="column-last">
+                        <img class="unit u{$troops.9.troopId}" src="{function="add_style('x.gif', ASSETS_DIR)"}" title="{function="constant('troop_'.$troops[9]['troopId'] )"}" alt="{function="constant('troop_'.$troops[9]['troopId'] )"}" {if="( 0 < $troops[9]['number'] )"} onclick="_('t10').value=''; return false;"{/if}>
+                        <input type="text" class="text {if="( $troops[9]['number'] <= 0 )"}disabled{/if}" name="t[{$troops.9.troopId}]" id="t10" value="" maxlength="9">
+                        {if="( $troops[9]['number'] <= 0 )"}
+                            <span class="none">(0)</span>
+                        {else}
+                            <a href="#" onclick="_('t10').value={$troops.9.number}; return false;">({$troops.9.number})</a>
+                        {/if}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="line-last column-first">
+                        <img class="unit u{$troops.2.troopId}" src="{function="add_style('x.gif', ASSETS_DIR)"}" title="{function="constant('troop_'.$troops[2]['troopId'] )"}" alt="{function="constant('troop_'.$troops[2]['troopId'] )"}" {if="( 0 < $troops[2]['number'] )"} onclick="_('t3').value=''; return false;"{/if}>
+                        <input type="text" class="text {if="( $troops[2]['number'] <= 0 )"}disabled{/if}" name="t[{$troops.2.troopId}]" id="t3" value="" maxlength="9">
+                        {if="( $troops[2]['number'] <= 0 )"}
+                            <span class="none">(0)</span>
+                        {else}
+                            <a href="#" onclick="_('t3').value={$troops.2.number}; return false;">({$troops.2.number})</a>
+                        {/if}
+                    </td>
+                    <td class="line-last">
+                        <img class="unit u{$troops.5.troopId}" src="{function="add_style('x.gif', ASSETS_DIR)"}" title="{function="constant('troop_'.$troops[5]['troopId'] )"}" alt="{function="constant('troop_'.$troops[5]['troopId'] )"}" {if="( 0 < $troops[5]['number'] )"} onclick="_('t6').value=''; return false;"{/if} >
+                        <input type="text" class="text {if="( $troops[5]['number'] <= 0 )"}disabled{/if}" name="t[{$troops.5.troopId}]" id="t6" value="" maxlength="9">
+                        {if="( $troops.5.number <= 0 )"}
+                            <span class="none">(0)</span>
+                        {else}
+                            <a href="#" onclick="_('t6').value={$troops.5.number}; return false;">({$troops.5.number})</a>
+                        {/if}
+                    </td>
+                    <td class="line-last"></td>
+                    <td class="line-last column-last">
+                        {if="( $hasHero )"}
+                            <img class="unit uhero" src="{function="add_style('x.gif', ASSETS_DIR)"}" title="{#troop_hero}" onclick="_('_t').value=''; return false;" alt="{#troop_hero}">
+                            <input type="text" class="text" id="_t" name="_t" value="" maxlength="1">
+                            <a href="#" onclick="_('_t').value=1; return false;">(1)</a>
+                        {/if}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table id="coords" cellpadding="1" cellspacing="1">
+            <tbody>
+                <tr>
+                    <td class="sel">
+                        <label>
+                            <input type="radio" class="radio" name="c" value="2" {if="( $disableFirstTwoAttack )"} disabled="disabled" {elseif="( $transferType == 2 )"} checked="" {/if} >
+                            {#LANGUI_V2V_T2}
+                        </label>
+                    </td>
+                    <td class="vil">
+                        <span>{#LANGUI_V2V_T3}</span>
+                        <input type="text" class="text" name="dname" value="" maxlength="20">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="sel">
+                        <label>
+                            <input type="radio" class="radio" name="c" value="3" {if="( $disableFirstTwoAttack )"}disabled="disabled"{elseif="( $transferType == 3 )"}checked=""{/if}>
+                            {#LANGUI_V2V_T4}
+                        </label>
+                    </td>
+                    <td class="or">{#text_or_lang}</td>
+                </tr>
+                <tr>
+                    <td class="sel">
+                        <label>
+                            <input type="radio" class="radio" name="c" value="4" {if="( $disableFirstTwoAttack )"} checked=""{elseif="( $transferType == 4 )"} checked="" {/if}>
+                            {#LANGUI_V2V_T5}
+                        </label>
+                    </td>
+                    <td class="target">
+                        <span>X:</span>
+                        <input type="text" class="text" name="x" value="{if="( $targetVillage['x'] !== NULL )"}{$targetVillage.x}{/if}" maxlength="4">
+                        <span>Y:</span>
+                        <input type="text" class="text" name="y" value="{if="( $targetVillage['y'] !== NULL )"}{$targetVillage.y}{/if}" maxlength="4">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <input type="image" value="ok" name="s1" id="btn_ok" class="dynamic_img" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#text_okdone_lang}">
+    </form>
+    {if="( $errorTable != NULL )"}
+        <p class="error">
+        {$errorTable}
+        </p>
+    {/if}
+
+{elseif="( $pageState == 2 )"}
+
+    {$text = rand(1,50)}
+    {$vercod = $_SESSION["vercode"] = $text}
+
+    <h1><p>{$targetVillage.transferType}</p></h1>
+    <form method="post" name="snd" action="v2v">
+        <table id="short_info" cellpadding="1" cellspacing="1">
+            <tbody>
+                <tr>
+                    <th>{#LANGUI_V2V_T6}:</th>
+                    <td>
+                        <a href="village3?id={$targetVillage.villageId}">{$targetVillage.villageName}</a>
+                    </td>
+                </tr>
+                {if="( trim( $targetVillage['playerName'] ) != '' )"}
+                    <tr>
+                        <th>{#LANGUI_V2V_T7}:</th>
+                        <td>
+                            {if="( $targetVillage['playerId'] == 0 )"}
+                                {$targetVillage.playerName}
+                            {else}
+                                <a href="profile?uid={$targetVillage.playerId}">{$targetVillage.playerName}</a>
+                            {/if}
+                        </td>
+                    </tr>
+                {/if}
+            </tbody>
+        </table>
+        <table class="troop_details" cellpadding="1" cellspacing="1">
+            <thead>
+                <tr>
+                    <td>{$data.village_name}</td>
+                    <td colspan="11">
+                        <p class="custDir">{$targetVillage.transferType} {$targetVillage.playerName}</p>
+                    </td>
+                </tr>
+            </thead>
+            <tbody class="units">
+                <tr>
+                    <td></td>
+                    {loop="$targetVillage['troops']"}
+                    <td>
+                        <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="unit u{$key}" title="{function="constant('troop_'.$key )"}" alt="{function="constant('troop_'.$key )"}">
+                    </td>
+                    {/loop}
+
+                    {if="( $targetVillage['hasHero'] )"}
+                        <td>
+                            <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="unit uhero" title="{#troop_hero}" alt="{#troop_hero}">
+                        </td>
+                    {/if}
+                </tr>
+                <tr>
+                    <th>{#LANGUI_V2V_T8}</th>
+                    {loop="$targetVillage['troops']"}
+                        {if="( $value <= 0 )"}
+                            <td class="none">0</td>
+                        {else}
+                            <td>{$value}</td>
+                        {/if}
+
+                    {/loop}
+
+                    {if="( $targetVillage['hasHero'] )"}
+                        <td>1</td>
+                    {/if}
+                </tr>
+            </tbody>
+            {if="$transferType == 1"}
+
+            <tbody class="options">
+                <tr>
+                    <th>{#LANGUI_V2V_T9}</th>
+                    <td colspan="11">
+                        <img class="r1" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#item_title_1}" title="{#item_title_1}">
+                            {$newVillageResources.1} |
+                        <img class="r2" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#item_title_2}" title="{#item_title_2}">
+                            {$newVillageResources.2} |
+                        <img class="r3" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#item_title_3}" title="{#item_title_3}">
+                            {$newVillageResources.3} |
+                        <img class="r4" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#item_title_4}" title="{#item_title_4}">
+                            {$newVillageResources.4}
+                    </td>
+                </tr>
+            </tbody>
+            {elseif="$targetVillage['spy']"}
+            <tbody class="options">
+                <tr>
+                    <th>{#LANGUI_V2V_T10}</th>
+                    <td colspan="11">
+                        <input class="radio" type="radio" name="spy" value="1" checked="">
+                        {#LANGUI_V2V_T11}
+                        <br />
+                        {if="( !$onlyOneSpyAction )"}
+                            <input class="radio" type="radio" name="spy" value="2">
+                            {#LANGUI_V2V_T12}
+                        {/if}
+                        </td>
+                    </tr>
+                </tbody>
+            {elseif="$attackWithCatapult"}
+                <tbody class="options">
+                    <tr>
+                        <th>{#LANGUI_V2V_T6}</th>
+                        <td colspan="11">
+                            <select name="dtg" class="dropdown">
+                                <option value="99">{#LANGUI_V2V_T13}</option>
+                                    {$availableCatapultTargetsString}
+                            </select>
+                            <span class="info">({#LANGUI_V2V_T14})</span>
+                        </td>
+                    </tr>
+                </tbody>
+                {if="( $rallyPointLevel == 20 && 2000 <= $totalCatapultTroopsCount )"}
+                    <tbody class="options">
+                        <tr>
+                            <th>{#LANGUI_V2V_T15}</th>
+                            <td colspan="11">
+                                <select name="dtg1" class="dropdown">
+                                    <option value="99">{#LANGUI_V2V_T13}</option>
+                                    {$availableCatapultTargetsString}
+                                </select>
+                                <span class="info">({#LANGUI_V2V_T14})</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                {/if}
+            {/if}
+            <tbody class="infos">
+                <tr>
+                    <th>{#LANGUI_V2V_T16}</th>
+                    <td colspan="11">
+                        {#text_in_lang}
+                        {$targetVillage.needed_time|secondstostring}
+                        {#LANGUI_V2V_T17}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <input type="hidden" name="id" value="{$targetVillage.villageId}">
+        <input type="hidden" name="c" value="{if="is_post('c')"}{function="post('c')"}{else}4{/if}">
+
+        {loop="$targetVillage['troops']"}
+            <input type="hidden" name="t[{$key}]" value="{$value}">
+        {/loop}
+        {if="( $targetVillage['hasHero'] )"}
+            <input type="hidden" name="_t" value="1">
+        {/if}
+
+    <input name="captcha"  type="hidden" value="{$vercod}" />
+    <p class="btn">
+    <input type="image" value="ok" name="s1" id="btn_ok" class="dynamic_img" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#text_okdone_lang}" onclick="if (this.disabled==false) {document.getElementsByTagName('form')[0].submit();} this.disabled=true;" onLoad="this.disabled=false;">
+    </p>
+    </form>
+
+
+{elseif="( $pageState == 3 )"}
+
+    {$text = rand(1,50)}
+    {$vercod = $_SESSION["vercode"] = $text}
+    {$colspan = $backTroopsProperty['backTroops']['hasHero'] ? 11 : 10}
+
+    <h1>{$backTroopsProperty.headerText}</h1>
+    <form method="POST" id="v2v" action="v2v?{$backTroopsProperty.queryString}">
+        <table class="troop_details" cellpadding="1" cellspacing="1">
+            <thead>
+                <tr>
+                    <td lass="role">{$backTroopsProperty.action1}</td>
+                    <td colspan="{$colspan}">{$backTroopsProperty.action2}</td>
+                </tr>
+            </thead>
+            <tbody class="units">
+                <tr>
+                    <th>&nbsp;</th>
+                    {loop="$backTroopsProperty['backTroops']['troops']"}
+                    <td>
+                        <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="unit u{$key}" title="{function="constant('troop_'.$key )"}" alt="{function="constant('troop_'.$key )"}">
+                    </td>
+                    {/loop}
+
+                    {if="( $backTroopsProperty['backTroops']['hasHero'] )"}
+                        <td>
+                            <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="unit uhero" title="{#troop_hero}" alt="{#troop_hero}">
+                        </td>
+                    {/if}
+                </tr>
+                <tr>
+                    <th>{#LANGUI_V2V_T8}</th>
+                    {loop="$backTroopsProperty['backTroops']['troops']"}
+                        {if="( $value <= 0 )"}
+                            <td class="none">0</td>
+                        {else}
+                            <td>
+                                <input type="text" name="t[{$key}]" class="text" value="{$value}" maxlength="9">
+                            </td>
+                        {/if}
+                    {/loop}
+
+                    {if="( $backTroopsProperty['backTroops']['hasHero'] )"}
+                        <td><input type="text" name="_t" class="text" value="1" maxlength="9"></td>
+                    {/if}
+                </tr>
+            </tbody>
+            <tbody class="infos">
+                <tr>
+                    <th>{#LANGUI_V2V_T16}</th>
+                    <td colspan="{$colspan}">
+                        <div class="in"> {#LANGUI_V2V_T18} {$backTroopsProperty.time|secondstostring}
+
+                        {$arrival_in = !isset($targetVillage['needed_time']) ? date('G:i:s',time()) : date('G:i:s',time()+$targetVillage['needed_time']) }
+                          <span id="timer2"> {$arrival_in} </span>
+                        {#LANGUI_V2V_T17}
+                        </div>
+                    </td>
+                    </tr>
+                    </tbody>
+                    </table>
+                <input name="captcha"  type="hidden" value="{$vercod}" />
+                <p class="btn">
+                    <input type="image" value="ok" name="s1" id="btn_ok" class="dynamic_img" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#text_okdone_lang}">
+                </p>
+            </form>
+    {/if}

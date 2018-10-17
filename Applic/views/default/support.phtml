@@ -1,0 +1,126 @@
+{function="load_lang('ui/support')"}
+<h1>{#LANGUI_SUPP_5}</h1>
+    <div id="textmenu">
+        <a href="support"{if="$selectedTabIndex == 0"} class="selected" {/if}>{#LANGUI_SUPP_1}</a> |
+        <a href="support?t=1"{if="$selectedTabIndex == 1"} class="selected" {/if}>{#LANGUI_SUPP_2}</a> |
+        <a href="support?t=2"{if="$selectedTabIndex == 2"} class="selected" {/if}>{#LANGUI_SUPP_3}</a>|
+        <a href="javascript:void(0)" onclick="javascript:jqcc.cometchat.chatWith(1);">{#LANGUI_SUPP_23}</a>
+    </div>
+{if="$selectedTabIndex == 2"}
+<form action='support?t=2' method='post'>
+    <table class="rate_details lang_rtl lang_ar" cellpadding="1" cellspacing="1">
+        <thead>
+            <tr>
+                <th colspan="2">{#LANGUI_SUPP_4}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{#LANGUI_SUPP_6}</td>
+                <td>
+                    <select name='type'>
+                        <option value="2">{#LANGUI_SUPP_7}</option>
+                        <option value="1">{#LANGUI_SUPP_8}</option>
+                        <option value="3">{#LANGUI_SUPP_9}</option>
+                        <option value="4">{#LANGUI_SUPP_10}</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>{#LANGUI_SUPP_11}</td>
+                <td><input type="text" maxlength='60' size="35" name="title" class="text"/></td>
+            </tr>
+            <tr>
+                <td>{#LANGUI_SUPP_12}</td>
+                <td><textarea name='content' cols="52" rows="12">{if="is_post('content')"}{function="post('content')"}{/if}</textarea></td>
+            </tr>
+            <p>
+        </tbody>
+    </table>
+    <center>
+        <input type="image" value="" name="s1" id="btn_send" class="dynamic_img" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#LANGUI_SUPP_16}" tabindex="4;">
+    </center>
+</form>
+{elseif="is_get('id') && $ticket != null"}
+<table class="rate_details lang_rtl lang_ar" cellpadding="1" cellspacing="1">
+    <thead>
+        <tr>
+		  <th>{$ticket.title}</th>
+          <th>{$ticket.added_time}</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+		  <td colspan="2">{function="nl2br($ticket.content)"}</td>
+        </tr>
+    </tbody>
+</table>
+{if="$reply != null"}
+<table class="rate_details lang_rtl lang_ar" cellpadding="1" cellspacing="1">
+{loop="$reply"}
+    <thead>
+        <tr>
+		  <td>{if="!$value.is_player"}{#LANGUI_SUPP_13}{else}{#LANGUI_SUPP_14}{/if}</td>
+          <td>{$value.added_time}</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr {if="!$value.is_player"}class="hl"{/if}>
+            <td colspan="2">{function="nl2br($value.replay)"}</td>
+        </tr>
+    </tbody>
+{/loop}
+</table>
+{/if}
+{if="$ticket.status != 3"}
+<form action='support?id={$ticket.id}' method='post'>
+    <center>
+        <input type="submit" name="close" value="{#LANGUI_SUPP_21}">
+    </center>
+</form>
+<form action='support?id={$ticket.id}' method='post'>
+    <table class="rate_details lang_rtl lang_ar" cellpadding="1" cellspacing="1">
+        <thead>
+            <tr>
+                <td>{#LANGUI_SUPP_15}</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><textarea name='reply' cols="69" rows="10"></textarea></td>
+            </tr>
+        </tbody>
+    </table>
+        <input type="image" value="" name="s1" id="btn_send" class="dynamic_img" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#LANGUI_SUPP_16}" tabindex="4;">
+</form>
+{/if}
+{elseif="$selectedTabIndex <= 1"}
+<table class="rate_details lang_rtl lang_ar" cellpadding="1" cellspacing="1">
+    <thead>
+        <tr>
+          <th colspan="3">{#LANGUI_SUPP_17}</th>
+        </tr>
+        <tr>
+            <td>{#LANGUI_SUPP_18}</td>
+            <td>{#LANGUI_SUPP_19}</td>
+            <td>{#LANGUI_SUPP_20}</td>
+        </tr>
+    </thead>
+    <tbody>
+    {loop="$tickets"}
+        <tr>
+            <td><a href="support?id={$value.id}">{$value.title}</a></td>
+            <td>{function="constant('LANGUI_SUPP_stat_'.$value.status)"}</td>
+            <td>{$value.added_time}</td>
+        </tr>
+    {/loop}
+    {if="$tickets == null"}
+        <tr>
+            <td colspan='3'>
+                <center>{#LANGUI_SUPP_22}</center>
+            </td>
+        </tr>
+    {/if}
+    </tbody>
+</table>
+{/if}

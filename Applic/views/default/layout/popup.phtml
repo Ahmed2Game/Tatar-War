@@ -1,0 +1,20 @@
+  <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html>
+  <head>
+    <title>{$title}</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="imagetoolbar" content="no" />
+    <meta http-equiv="cache-control" content="max-age=0" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <link href="{function="add_style('lang.css', ASSETS_DIR.'/default/lang/'.$lang.'/')"}" rel="stylesheet" type="text/css" />
+    <link href="{function="add_style('compact.css', ASSETS_DIR.'/default/lang/'.$lang.'/')"}" rel="stylesheet" type="text/css" />
+    <script type="text/javascript">
+      var d3l= {if="$lang == 'ar' "}180{else}-600{/if};
+    </script>
+    <script src="{function="add_style('core.js', ASSETS_DIR)"}" type="text/javascript"></script>
+    </head>
+  <body class="manual">
+    {$content}
+  </body>
+  <script type="text/javascript">init();</script></html>

@@ -1,0 +1,742 @@
+{function="load_lang('ui/statistics')"}
+<h1>{#LANGUI_STAT_T1}</h1>
+    <div id="textmenu">
+	     <a href="analytics"{if="($selectedTabIndex == 0 || $selectedTabIndex == 5 || $selectedTabIndex == 6 || $selectedTabIndex == 7)"} class="selected" {/if}>{#LANGUI_STAT_T2}</a> |
+		 <a href="analytics?t=1"{if="($selectedTabIndex == 1 || $selectedTabIndex == 8 || $selectedTabIndex == 9 || $selectedTabIndex == 10)"} class="selected"{/if}>{#LANGUI_STAT_T3}</a> |
+		 <a href="analytics?t=2"{if="($selectedTabIndex == 2)"} class="selected"{/if}>{#LANGUI_STAT_T4}</a> |
+		 <a href="analytics?t=3"{if="($selectedTabIndex == 3)"} class="selected"{/if}>{#LANGUI_STAT_T5}</a>
+    {if="($tatarRaised)"}
+      | <a href="analytics?t=11"{if="($selectedTabIndex == 11)"} class="selected"{/if}>{#LANGUI_STAT_T6}</a>
+    {/if}
+      | <a href="analytics?t=4"{if="($selectedTabIndex == 4)"} class="selected"{/if}>{#LANGUI_STAT_T7}</a>
+	</div>
+{if="($selectedTabIndex == 0)"}
+    <table cellpadding="1" cellspacing="1" id="player" class="row_table_data">
+	    <thead>
+		    <tr>
+			    <th colspan="{if="($isAdmin)"}7{else}6{/if}">{#LANGUI_STAT_T9} {if="(0 < $_tb)"}{function="constant('tribe_'.$_tb)"}{/if}
+                <div id="submenu">
+				    <a title="{#LANGUI_STAT_T10}" href="analytics?t=5">
+					    <img class="btn_top10" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#LANGUI_STAT_T10}">
+					</a>
+					<a title="{#LANGUI_STAT_T11}" href="analytics?t=6">
+					    <img class="btn_def" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#LANGUI_STAT_T11}">
+					</a>
+					<a title="{#LANGUI_STAT_T12}" href="analytics?t=7">
+					    <img class="btn_off" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#LANGUI_STAT_T12}">
+					</a>
+				</div>
+				<div id="submenu2">
+					<a title="{#tribe_7}" href="{if="($_tb != 7)"}?tb=7{/if}">
+					    <img class="{if="($_tb == 7)"}active {/if}btn_v7" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#LANGUI_STAT_T12}">
+					</a>
+					<a title="{#tribe_1}" href="{if="($_tb != 1)"}?tb=1{/if}">
+					    <img class="{if="($_tb == 1)"}active {/if}btn_v1" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#LANGUI_STAT_T12}">
+					</a>
+					<a title="{#tribe_2}" href="{if="($_tb != 2)"}?tb=2{/if}">
+					    <img class="{if="($_tb == 2)"}active {/if}btn_v2" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#LANGUI_STAT_T12}">
+					</a>
+					<a title="{#tribe_3}" href="{if="($_tb != 3)"}?tb=3{/if}">
+					    <img class="{if="($_tb == 3)"}active {/if}btn_v3" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#LANGUI_STAT_T12}">
+					</a>
+				</div>
+			    </th>
+			</tr>
+			<tr>
+			    <td></td>
+				<td>{#LANGUI_STAT_T2}</td>
+				<td>{#LANGUI_STAT_T13}</td>
+				<td>{#LANGUI_STAT_T14}</td>
+				<td>{#LANGUI_STAT_T4}</td>
+				<td>{#LANGUI_STAT_T53}</td>
+            {if="( $isAdmin )"}
+				<td></td>
+            {/if}
+            </tr>
+            {if="($adminActionMessage != '')"}
+            <tr>
+			    <td colspan="7">
+				    <div class="error">
+					    <b>{$adminActionMessage}</b>
+					</div>
+				</td>
+			<tr>
+            {/if}
+        </thead>
+		<tbody>
+    {$rowIndex = 0}
+    {loop="$dataList"}
+        {$rowIndex = $rowIndex + 1}
+        {$rank = $rowIndex + $pageIndex * $pageSize}
+        <tr{if="($selectedRank == $rank)"} class="hl"{/if}>
+		    <td class="ra">{$rank}</td>
+			<td class="pla">
+			    <a href="profile?uid={$value.id}">
+				{if="($value.player_type == PLAYERTYPE_ADMIN)"}<span style="color:#0000ff;" title="{#LANGUI_STAT_T17}" alt="{#LANGUI_STAT_T17}">{/if}
+				{if="($value.player_type == PLAYERTYPE_HUNTER)"}<span style="color:#FF66FF;" title="{#LANGUI_STAT_BB1}" alt="{#LANGUI_STAT_BB1}">{/if}
+				{if="($value.player_type == PLAYERTYPE_ONE)"}<span style="color:#666633;" title="{#LANGUI_STAT_BB2}" alt="{#LANGUI_STAT_BB2}">{/if}
+				{if="($value.player_type == PLAYERTYPE_WIN)"}<span style="color:#CC0000;" title="{#LANGUI_STAT_BB3}" alt="{#LANGUI_STAT_BB3}">{/if}
+				{if="($value.player_type == PLAYERTYPE_WINWEEK)"}<span style="color:#660000;" title="{#LANGUI_STAT_BB4}" alt="{#LANGUI_STAT_BB4}">{/if}
+				{if="($value.player_type == PLAYERTYPE_WINTATAR)"}<span style="color:#000000;" title="{#LANGUI_STAT_BB5}" alt="{#LANGUI_STAT_BB5}">{/if}
+                {$value.name}
+                {if="($value.player_type == PLAYERTYPE_ADMIN)"}</span>{/if}
+				{if="($value.player_type == PLAYERTYPE_HUNTER)"}</span>{/if}
+				{if="($value.player_type == PLAYERTYPE_ONE)"}</span>{/if}
+				{if="($value.player_type == PLAYERTYPE_WIN)"}</span>{/if}
+				{if="($value.player_type == PLAYERTYPE_WINWEEK)"}</span>{/if}
+				{if="($value.player_type == PLAYERTYPE_WINTATAR)"}</span>{/if}
+				</a>
+			</td>
+			<td class="al">
+			{if="(0 < intval($value.alliance_id))"}
+			    <a href="alliance?id={$value.alliance_id}">{$value.alliance_name}</a>
+            {/if}
+			</td>
+			<td class="pop">{$value.total_people_count}</td>
+			<td class="vil">{$value.villages_count}</td>
+            <td>
+                <a href="message?uid={$value.id}">
+                    <img src="{function="add_style('msg.png', ASSETS_DIR.'/default/img/a/')"}" />
+                </a>
+			</td>
+        {if="($isAdmin)"}
+            <td>
+            {if="($value.player_type == PLAYERTYPE_NORMAL)"}
+                <a href="analytics?_jsdue={$value.id}{if="( 0 < $_tb)"}&tb={$_tb}{/if}{if="( 0 < $pageIndex)"}&p={$pageIndex}{/if}">
+				    <img class="online{if="($value.is_blocked)"}4{else}2{/if}" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{if="($value.is_blocked)"}{#LANGUI_STAT_T51}{else}{#LANGUI_STAT_T52}{/if}" title="{if="($value.is_blocked)"}{#LANGUI_STAT_T51}{else}{#LANGUI_STAT_T52}{/if}">
+				</a>
+            {/if}
+            </td>
+        {/if}
+        </tr>
+    {/loop}
+        </tbody>
+	</table>
+	<table cellpadding="1" cellspacing="1" id="search_navi">
+	    <tbody>
+		    <tr>
+			    <td>
+				    <form method="post" action="analytics{if="(0 < $selectedTabIndex)"}?t={$selectedTabIndex}{elseif="(0 < $_tb)"}?tb={$_tb}{/if}">
+					<div class="search">
+                        <span>{#LANGUI_STAT_T20}:
+                            <input type="text" class="text ra" maxlength="5" name="rank" value="{if="(0 < $selectedRank)"}{$selectedRank}{/if}">
+						</span>
+                        <span class="or">{#text_or_lang}</span>
+                        <span>{#LANGUI_STAT_T21}
+                            <input type="text" class="text name" maxlength="20" name="name" value="">
+						</span>
+						<input type="image" value="submit" name="submit" id="btn_ok" class="dynamic_img" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#text_okdone_lang}">
+					</div>
+					</form>
+					<div class="navi">{$getPreviousLink}|{$getNextLink}</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+{elseif="($selectedTabIndex == 1)"}
+    <table cellpadding="1" cellspacing="1" id="alliance" class="row_table_data">
+	    <thead>
+		    <tr>
+			    <th colspan="5">{#LANGUI_STAT_T22}
+                    <div id="submenu">
+					    <a title="{#LANGUI_STAT_T10}" href="analytics?t=8">
+						    <img class="btn_top10" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#LANGUI_STAT_T10}">
+						</a>
+						<a title="{#LANGUI_STAT_T11}" href="analytics?t=9">
+						    <img class="btn_def" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#LANGUI_STAT_T11}">
+						</a>
+						<a title="{#LANGUI_STAT_T12}" href="analytics?t=10">
+						    <img class="btn_off" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#LANGUI_STAT_T12}">
+						</a>
+					</div>
+				</th>
+			</tr>
+			<tr>
+			    <td></td>
+				<td>{#LANGUI_STAT_T13}</td>
+				<td>{#LANGUI_STAT_T2}</td>
+                <td>&Oslash;</td>
+				<td>{#LANGUI_STAT_T23}</td>
+			</tr>
+		</thead>
+		<tbody>
+    {$rowIndex = 0}
+    {loop="$dataList"}
+        {$rowIndex = $rowIndex + 1}
+        {$rank = $rowIndex + $pageIndex * $pageSize}
+        <tr{if="($selectedRank == $rank)"} class="hl"{/if}>
+		    <td class="ra">{$rank}</td>
+			<td class="al">
+				<a href="alliance?id={$value.id}">{$value.name}</a>
+			</td>
+			<td class="pla">{$value.player_count}</td>
+            <td class="po">{function="round($value.average)"}</td>
+			<td class="po">{$value.points}</td>
+		</tr>
+    {/loop}
+        </tbody>
+	</table>
+	<table cellpadding="1" cellspacing="1" id="search_navi">
+	    <tbody>
+		    <tr>
+			    <td>
+				    <form method="post" action="analytics{if="(0 < $selectedTabIndex)"}?t={$selectedTabIndex}{/if}">
+					    <div class="search">
+                            <span>{#LANGUI_STAT_T20}:<input type="text" class="text ra" maxlength="5" name="rank" value="{if="(0 < $selectedRank)"}{$selectedRank}{/if}"></span>
+                            <span class="or">{#text_or_lang}</span>
+                            <span>{#LANGUI_STAT_T21}<input type="text" class="text name" maxlength="20" name="name" value=""></span>
+							<input type="image" value="submit" name="submit" id="btn_ok" class="dynamic_img" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#text_okdone_lang}">
+						</div>
+					</form>
+				    <div class="navi">{$getPreviousLink}|{$getNextLink}</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+{elseif="($selectedTabIndex == 2)"}
+    <table cellpadding="1" cellspacing="1" id="villages" class="row_table_data">
+	    <thead>
+		    <tr>
+			    <th colspan="5">{#LANGUI_STAT_T24}</th>
+			</tr>
+			<tr>
+			    <td></td>
+				<td>{#LANGUI_STAT_T25}</td>
+				<td>{#LANGUI_STAT_T2}</td>
+				<td>{#LANGUI_STAT_T14}</td>
+				<td>{#LANGUI_STAT_T26}</td>
+            </tr>
+		</thead>
+		<tbody>
+    {$rowIndex = 0}
+    {loop="$dataList"}
+        {$rowIndex = $rowIndex + 1}
+        {$rank = $rowIndex + $pageIndex * $pageSize}
+        <tr{if="($selectedRank == $rank)"} class="hl"{/if}>
+		    <td class="ra">{$rank}</td>
+			<td class="vil">
+			    <a href="village3?id={$value.id}">{$value.village_name}</a>
+			</td>
+			<td class="pla">
+			    <a href="profile?uid={$value.player_id}">{$value.player_name}</a>
+			</td>
+			<td class="hab">{$value.people_count}</td>
+			<td class="aligned_coords ">
+			    <div class="cox">({$value.rel_x}</div>
+				<div class="pi">|</div>
+				<div class="coy">{$value.rel_y})</div>
+			</td>
+        </tr>
+    {/loop}
+        </tbody>
+	</table>
+	<table cellpadding="1" cellspacing="1" id="search_navi">
+	    <tbody>
+		    <tr>
+			    <td>
+				    <form method="post" action="analytics{if="(0 < $selectedTabIndex)"}?t={$selectedTabIndex}{/if}">
+					    <div class="search">
+                            <span>{#LANGUI_STAT_T20}:<input type="text" class="text ra" maxlength="5" name="rank" value="{if="(0 < $selectedRank)"}{$selectedRank}{/if}"></span>
+                            <span class="or">{#text_or_lang}</span>
+                            <span>{#LANGUI_STAT_T21}<input type="text" class="text name" maxlength="20" name="name" value=""></span>
+							<input type="image" value="submit" name="submit" id="btn_ok" class="dynamic_img" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#text_okdone_lang}">
+						</div>
+					</form>
+				    <div class="navi">{$getPreviousLink}|{$getNextLink}</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+{elseif="($selectedTabIndex == 3)"}
+    <table cellpadding="1" cellspacing="1" id="heroes" class="row_table_data">
+	    <thead>
+		    <tr>
+			    <th colspan="5">{#LANGUI_STAT_T28}</th>
+			</tr>
+			<tr>
+			    <td></td>
+				<td>{#LANGUI_STAT_T29}</td>
+				<td>{#LANGUI_STAT_T2}</td>
+				<td>{#level_lang2}</td>
+				<td>{#LANGUI_STAT_T30}</td>
+			</tr>
+		</thead>
+		<tbody>
+    {$rowIndex = 0}
+    {loop="$dataList"}
+        {$rowIndex = $rowIndex + 1}
+        {$rank = $rowIndex + $pageIndex * $pageSize}
+        <tr{if="($selectedRank == $rank)"} class="hl"{/if}>
+		    <td class="ra">{$rank}</td>
+			<td class="hero">
+			    <img class="unit u{$value.hero_troop_id}" alt="{function="constant('troop_' . $value.hero_troop_id)"}" title="{function="constant('troop_' . $value.hero_troop_id)"}" src="{function="add_style('x.gif', ASSETS_DIR)"}"> &nbsp;{$value.hero_name}
+			</td>
+			<td class="pla">
+			    <a href="profile?uid={$value.id}">{$value.name}</a>
+			</td>
+		    <td class="lev">{$value.hero_level}</td>
+			<td class="xp">{$value.hero_points}</td>
+		</tr>
+    {/loop}
+        </tbody>
+	</table>
+	<table cellpadding="1" cellspacing="1" id="search_navi">
+	    <tbody>
+		    <tr>
+			    <td>
+				    <form method="post" action="analytics{if="(0 < $selectedTabIndex)"}?t={$selectedTabIndex}{/if}">
+					    <div class="search">
+                            <span>{#LANGUI_STAT_T20}:<input type="text" class="text ra" maxlength="5" name="rank" value="{if="(0 < $selectedRank)"}{$selectedRank}{/if}"></span>
+                            <span class="or">{#text_or_lang}</span>
+                            <span>{#LANGUI_STAT_T21}<input type="text" class="text name" maxlength="20" name="name" value=""></span>
+							<input type="image" value="submit" name="submit" id="btn_ok" class="dynamic_img" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#text_okdone_lang}">
+						</div>
+					</form>
+				    <div class="navi">{$getPreviousLink}|{$getNextLink}</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+{elseif="($selectedTabIndex == 11)"}
+    <table cellpadding="1" cellspacing="1" id="villages" class="row_table_data">
+	    <thead>
+		    <tr>
+			    <th colspan="5">{#LANGUI_STAT_T24}</th>
+			</tr>
+			<tr>
+			    <td></td>
+			    <td>{#LANGUI_STAT_T2}</td>
+			    <td>{#LANGUI_STAT_T25}</td>
+			    <td>{#LANGUI_STAT_T13}</td>
+			    <td>{#level_lang}</td>
+			</tr>
+		</thead>
+		<tbody>
+    {$rowIndex = 0}
+    {loop="$dataList"}
+        {$rowIndex = $rowIndex + 1}
+        <tr>
+		    <td class="ra">{$rowIndex}</td>
+			<td class="pla">
+			    <a href="profile?uid={$value.player_id}">{$value.player_name}</a>
+			</td>
+			<td class="vil">
+			    <a href="village3?id={$value.id}">{$value.village_name}</a>
+			</td>
+			<td class="vil">
+			{if="(0 < intval($value.alliance_id))"}
+                <a href="alliance?id={$value.alliance_id}">{$value.alliance_name}</a>
+            {/if}
+			</td>
+			<td class="ra" style="text-align:center;">{$value.buildings}</td>
+		</tr>
+    {/loop}
+        </tbody>
+	</table>
+{elseif="($selectedTabIndex == 4)"}
+    <table cellpadding="1" cellspacing="1" id="world_player" class="world">
+	    <thead>
+		    <tr>
+			    <th colspan="2">{#LANGUI_STAT_T54}</th>
+			</tr>
+		</thead>
+		<tbody>
+        {if="$GameOver"}
+            <tr>
+                <td>
+                    <strong>{#LANGUI_STAT_T60}:</strong>
+                </td>
+                <td><span id="timer1">{$siteReset}</span> {#time_hour_lang}</td>
+            </tr>
+            {else}
+            <tr>
+                <td>
+                    <strong>{#LANGUI_STAT_T55}:</strong>
+                </td>
+                <td><span id="timer2">{$starttime}</span> {#time_hour_lang}</td>
+            </tr>
+            <tr>
+                <td>
+                  <strong>{#LANGUI_STAT_T56}:</strong>
+                </td>
+                <td>{if="$tatardate > 0"}<span id="timer1">{$tatartime}</span> {#time_hour_lang}{else}{#LANGUI_STAT_T57}{/if}</td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>{#LANGUI_STAT_T58}:</strong>
+                </td>
+                <td>{if="$Artdate > 0"}<span id="timer1">{$Arttime}</span> {#time_hour_lang}{else}{#LANGUI_STAT_T59}{/if}</td>
+            </tr>
+        {/if}
+		</tbody>
+	</table>
+	<table cellpadding="1" cellspacing="1" id="player" class="row_table_data">
+	    <thead>
+		    <tr>
+			    <th colspan="4">{#LANGUI_STAT_T34}</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+			    <td class="pla">{#LANGUI_STAT_T31}</td>
+				<td class="pop">{$generalData.players_count}</td>
+				<td class="pla">{#LANGUI_STAT_T66}</td>
+                <td class="pop">{$settings.over}</td>
+			</tr>
+			<tr>
+			    <td class="pla">{#LANGUI_STAT_T32}</td>
+				<td class="pop">{$settings.speed}</td>
+			    <td class="pla">{#LANGUI_STAT_T63}</td>
+				<td class="pop">{$settings.protection}</td>
+			</tr>
+			<tr>
+			    <td class="pla">{#LANGUI_STAT_T61}</td>
+				<td class="pop">{$settings.attack}</td>
+                <td class="pla">{#LANGUI_STAT_T64}</td>
+                <td class="pop">{$settings.wingold}</td>
+			</tr>
+			<tr>
+				<td class="pla">{#LANGUI_STAT_T33}</td>
+                <td class="pop">{$settings.speed * $settings.moared}</td>
+				<td class="pla">{#LANGUI_STAT_T65}</td>
+				<td class="pop">{if="$settings.Crop > 10"}{#LANGUI_STAT_T69}{else}{#LANGUI_STAT_T68}{/if}</td>
+			</tr>
+            <tr>
+				<td class="pla">{#LANGUI_STAT_T62}</td>
+                <td class="pop">{$settings.capacity}</td>
+				<td class="pla">{#LANGUI_STAT_T67}</td>
+                <td class="pop">{if="$settings.buytroop == 0"}{#LANGUI_STAT_T69}{else}{#LANGUI_STAT_T68}{/if}</td>
+			</tr>
+		</tbody>
+	</table>
+{elseif="($selectedTabIndex == 6 || $selectedTabIndex == 7)"}
+    <table cellpadding="1" cellspacing="1" id="player_off" class="row_table_data">
+	    <thead>
+		    <tr>
+			    <th colspan="5">{if="($selectedTabIndex == 6)"}{#LANGUI_STAT_T37}{else}{#LANGUI_STAT_T38}{/if}
+                <div id="submenu">
+				    <a title="{#LANGUI_STAT_T10}" href="analytics?t=5">
+					    <img class="btn_top10" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#LANGUI_STAT_T10}">
+					</a>
+					<a title="{#LANGUI_STAT_T11}" href="analytics{if="($selectedTabIndex == 6)"}{else}?t=6{/if}">
+					    <img class="{if="($selectedTabIndex == 6)"}active btn_def{else}btn_def{/if}" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#LANGUI_STAT_T11}">
+					</a>
+					<a title="{#LANGUI_STAT_T12}" href="analytics{if="($selectedTabIndex == 7)"}{else}?t=7{/if}">
+					    <img class="{if="($selectedTabIndex == 7)"}active btn_off{else}btn_off{/if}" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#LANGUI_STAT_T12}">
+					</a>
+				</div>
+				<div id="submenu2">
+					<a title="{#tribe_7}" href="{if="($_tb != 7)"}?tb=7{/if}">
+					    <img class="{if="($_tb == 7)"}active {/if}btn_v7" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#LANGUI_STAT_T12}">
+					</a>
+					<a title="{#tribe_1}" href="{if="($_tb != 1)"}?tb=1{/if}">
+					    <img class="{if="($_tb == 1)"}active {/if}btn_v1" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#LANGUI_STAT_T12}">
+					</a>
+					<a title="{#tribe_2}" href="{if="($_tb != 2)"}?tb=2{/if}">
+					    <img class="{if="($_tb == 2)"}active {/if}btn_v2" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#LANGUI_STAT_T12}">
+					</a>
+					<a title="{#tribe_3}" href="{if="($_tb != 3)"}?tb=3{/if}">
+					    <img class="{if="($_tb == 3)"}active {/if}btn_v3" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#LANGUI_STAT_T12}">
+					</a>
+				</div>
+				</th>
+			</tr>
+			<tr>
+			    <td></td>
+				<td>{#LANGUI_STAT_T2}</td>
+				<td>{#LANGUI_STAT_T14}</td>
+				<td>{#LANGUI_STAT_T4}</td>
+				<td>{#LANGUI_STAT_T23}</td>
+			</tr>
+		</thead>
+		<tbody>
+    {$rowIndex = 0}
+    {loop="$dataList"}
+        {$rowIndex = $rowIndex + 1}
+        {$rank = $rowIndex + $pageIndex * $pageSize}
+        <tr{if="($selectedRank == $rank)"} class="hl"{/if}>
+		    <td class="ra">{$rank}</td>
+			<td class="pla">
+			    <a href="profile?uid={$value.id}">{$value.name}</a>
+			</td>
+			<td class="pop">{$value.total_people_count}</td>
+			<td class="vil">{$value.villages_count}</td>
+			<td class="po">{$value.points}</td>
+		</tr>
+    {/loop}
+        </tbody>
+	</table>
+	<table cellpadding="1" cellspacing="1" id="search_navi">
+	    <tbody>
+		    <tr>
+			    <td>
+				    <form method="post" action="analytics{if="(0 < $selectedTabIndex)"}?t={$selectedTabIndex}{/if}">
+					    <div class="search">
+                            <span>{#LANGUI_STAT_T20}:<input type="text" class="text ra" maxlength="5" name="rank" value="{if="(0 < $selectedRank)"}{$selectedRank}{/if}"></span>
+                            <span class="or">{#text_or_lang}</span>
+                            <span>{#LANGUI_STAT_T21}<input type="text" class="text name" maxlength="20" name="name" value=""></span>
+							<input type="image" value="submit" name="submit" id="btn_ok" class="dynamic_img" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#text_okdone_lang}">
+						</div>
+					</form>
+				    <div class="navi">{$getPreviousLink}|{$getNextLink}</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+{elseif="($selectedTabIndex == 9 || $selectedTabIndex == 10 )"}
+    <table cellpadding="1" cellspacing="1" id="alliance" class="row_table_data">
+	    <thead>
+		    <tr>
+			    <th colspan="4">{if="($selectedTabIndex == 9)"}{#LANGUI_STAT_T39}{else}{#LANGUI_STAT_T40}{/if}
+                    <div id="submenu">
+					    <a title="{#LANGUI_STAT_T10}" href="analytics?t=8">
+						    <img class="btn_top10" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#LANGUI_STAT_T10}">
+						</a>
+						<a title="{#LANGUI_STAT_T11}" href="analytics?{if="($selectedTabIndex == 9)"}t=1{else}t=9{/if}">
+						    <img class="{if="($selectedTabIndex == 9)"}active {/if}btn_def" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#LANGUI_STAT_T11}">
+						</a>
+						<a title="{#LANGUI_STAT_T12}" href="analytics?{if="($selectedTabIndex == 10)"}t=1{else}t=10{/if}">
+						    <img class="{if="($selectedTabIndex == 10)"}active {/if}btn_off" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#LANGUI_STAT_T12}">
+						</a>
+					</div>
+				</th>
+			</tr>
+			<tr>
+			    <td></td>
+				<td>{#LANGUI_STAT_T13}</td>
+				<td>{#LANGUI_STAT_T2}</td>
+				<td>{#LANGUI_STAT_T23}</td>
+			</tr>
+		</thead>
+		<tbody>
+    {$rowIndex = 0}
+    {loop="$dataList"}
+        {$rowIndex = $rowIndex + 1}
+        {$rank = $rowIndex + $pageIndex * $pageSize}
+        <tr{if="($selectedRank == $rank)"} class="hl"{/if}>
+		    <td class="ra">{$rank}</td>
+		    <td class="al">
+			    <a href="alliance?id={$value.id}">{$value.name}</a>
+			</td>
+			<td class="pla">{$value.player_count}</td>
+			<td class="po">{$value.points}</td>
+		</tr>
+    {/loop}
+        </tbody>
+	</table>
+	<table cellpadding="1" cellspacing="1" id="search_navi">
+	    <tbody>
+		    <tr>
+			    <td>
+				    <form method="post" action="analytics{if="(0 < $selectedTabIndex)"}?t={$selectedTabIndex}{/if}">
+					    <div class="search">
+                            <span>{#LANGUI_STAT_T20}:<input type="text" class="text ra" maxlength="5" name="rank" value="{if="(0 < $selectedRank)"}{$selectedRank}{/if}"></span>
+                            <span class="or">{#text_or_lang}</span>
+                            <span>{#LANGUI_STAT_T21}<input type="text" class="text name" maxlength="20" name="name" value=""></span>
+							<input type="image" value="submit" name="submit" id="btn_ok" class="dynamic_img" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#text_okdone_lang}">
+						</div>
+					</form>
+				    <div class="navi">{$getPreviousLink}|{$getNextLink}</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+{elseif="($selectedTabIndex == 5 || $selectedTabIndex == 8)"}
+{$showManualID = $selectedTabIndex == 5 ? 0: 1 }
+    <table cellpadding="1" cellspacing="1">
+	    <thead>
+		    <tr>
+			    <th>{if="($selectedTabIndex == 5)"}{#LANGUI_STAT_T41}{else}{#LANGUI_STAT_T42}{/if}
+                    <div id="submenu">
+					    <a title="{#LANGUI_STAT_T10}" href="analytics{if="($selectedTabIndex == 5)"}{else}t=1{/if}">
+						    <img class="active btn_top10" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#LANGUI_STAT_T10}">
+						</a>
+						<a title="{#LANGUI_STAT_T11}" href="analytics?t={if="($selectedTabIndex == 5)"}6{else}9{/if}">
+						    <img class="btn_def" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#LANGUI_STAT_T11}">
+						</a>
+						<a title="{#LANGUI_STAT_T12}" href="analytics?t={if="($selectedTabIndex == 5)"}7{else}10{/if}">
+						    <img class="btn_off" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#LANGUI_STAT_T12}">
+						</a>
+					</div>
+				{if="($selectedTabIndex == 5)"}
+                    <div id="submenu2">
+						<a title="{#tribe_7}" href="{if="($_tb != 7)"}?tb=7{/if}">
+						    <img class="{if="($_tb == 7)"}active {/if}btn_v7" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#LANGUI_STAT_T12}">
+						</a>
+						<a title="{#tribe_1}" href="{if="($_tb != 1)"}?tb=1{/if}">
+						    <img class="{if="($_tb == 1)"}active {/if}btn_v1" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#LANGUI_STAT_T12}">
+						</a>
+						<a title="{#tribe_2}" href="{if="($_tb != 2)"}?tb=2{/if}">
+						    <img class="{if="($_tb == 2)"}active {/if}btn_v2" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#LANGUI_STAT_T12}">
+						</a>
+						<a title="{#tribe_3}" href="{if="($_tb != 3)"}?tb=3{/if}">
+						    <img class="{if="($_tb == 3)"}active {/if}btn_v3" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#LANGUI_STAT_T12}">
+						</a>
+					</div>
+                {/if}
+                </th>
+			</tr>
+		</thead>
+	</table>
+	<table cellpadding="1" cellspacing="1" id="top10_offs" class="top10 row_table_data">
+	    <thead>
+		    <tr>
+			    <th>
+				    <a href="#" onclick="return showManual(6,{$showManualID});">
+					    <img class="help" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#LANGUI_STAT_T43}" title="{#LANGUI_STAT_T43}">
+					</a>
+				</th>
+				<th colspan="2">{#LANGUI_STAT_T44}</th>
+			</tr>
+			<tr>
+			    <td>{#LANGUI_STAT_T20}</td>
+				<td>{if="($selectedTabIndex == 5)"}{#LANGUI_STAT_T2}{else}{#LANGUI_STAT_T13}{/if}</td>
+				<td>{#LANGUI_STAT_T23}</td>
+			</tr>
+		</thead>
+	    <tbody>
+	    {$_c = 0}
+	    {loop="$top10Result.ATTACK"}
+        {$_c = $_c + 1}
+        <tr{if="($top10Result.TARGETID == $value['id'])"} class="hl"{/if}>
+		    <td class="ra fc">{$_c}&nbsp;</td>
+			<td class="pla">
+			    <a href="{$top10Result.URL}{$value.id}">{$value.name}</a>
+			</td>
+			<td class="val lc">{$value.points}</td>
+		</tr>
+   		 {/loop}
+        <tr>
+		    <td colspan="3" class="empty"></td>
+		</tr>
+		<tr class="own hl">
+		    <td class="ra fc">?</td>
+		    <td class="pla">
+		       <a href="{$top10Result.URL}{$top10Result.TARGETID}">{$top10Result.TARGETNAME}</a>
+		    </td>
+		    <td class="val lc">{$top10Result.TARGEPOINT_ATTACK}</td>
+		</tr>
+		</tbody>
+	</table>
+	<table cellpadding="1" cellspacing="1" id="top10_defs" class="top10 row_table_data">
+	    <thead>
+		    <tr>
+			    <th>
+				    <a href="#" onclick="return showManual(6,{$showManualID});">
+					    <img class="help" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#LANGUI_STAT_T43}" title="{#LANGUI_STAT_T43}">
+					</a>
+				</th>
+				<th colspan="2">{#LANGUI_STAT_T45}</th>
+			</tr>
+			<tr>
+			    <td>{#LANGUI_STAT_T20}</td>
+				<td>{if="($selectedTabIndex == 5)"}{#LANGUI_STAT_T2}{else}{#LANGUI_STAT_T13}{/if}</td>
+				<td>{#LANGUI_STAT_T23}</td>
+			</tr>
+		</thead>
+	    <tbody>
+	    {$_c = 0}
+	    {loop="$top10Result.DEFENSE"}
+	    {$_c = $_c + 1}
+        <tr{if="($top10Result.TARGETID == $value['id'])"} class="hl"{/if}>
+		    <td class="ra fc">{$_c}&nbsp;</td>
+			<td class="pla">
+			    <a href="{$top10Result.URL}{$value.id}">{$value.name}</a>
+			</td>
+			<td class="val lc">{$value.points}</td>
+		</tr>
+    	{/loop}
+	    <tr>
+		    <td colspan="3" class="empty"></td>
+		</tr>
+		<tr class="own hl">
+		    <td class="ra fc">?</td>
+		    <td class="pla">
+		       <a href="{$top10Result.URL}{$top10Result.TARGETID}">{$top10Result.TARGETNAME}</a>
+		    </td>
+		    <td class="val lc">{$top10Result.TARGEPOINT_DEFENSE}</td>
+		</tr>
+		</tbody>
+	</table>
+    <div class="clear"></div>
+	<table cellpadding="1" cellspacing="1" id="top10_climbers" class="top10 row_table_data">
+	    <thead>
+		    <tr>
+			    <th>
+				    <a href="#" onclick="return showManual(6,{$showManualID});">
+					    <img class="help" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#LANGUI_STAT_T43}" title="{#LANGUI_STAT_T43}">
+					</a>
+				</th>
+				<th colspan="2">{#LANGUI_STAT_T46}</th>
+			</tr>
+			<tr>
+			    <td>{#LANGUI_STAT_T20}</td>
+				<td>{if="($selectedTabIndex == 5)"}{#LANGUI_STAT_T2}{else}{#LANGUI_STAT_T13}{/if}</td>
+				<td>{#LANGUI_STAT_T23}</td>
+			</tr>
+		</thead>
+	    <tbody>
+	    {$_c = 0}
+	    {loop="$top10Result.DEV"}
+	    {$_c = $_c + 1}
+        <tr{if="($top10Result.TARGETID == $value['id'])"} class="hl"{/if}>
+		    <td class="ra fc">{$_c}&nbsp;</td>
+			<td class="pla">
+			    <a href="{$top10Result.URL}{$value.id}">{$value.name}</a>
+			</td>
+			<td class="val lc">{$value.points}</td>
+		</tr>
+    	{/loop}
+	    <tr>
+		    <td colspan="3" class="empty"></td>
+		</tr>
+		<tr class="own hl">
+		    <td class="ra fc">?</td>
+		    <td class="pla">
+		       <a href="{$top10Result.URL}{$top10Result.TARGETID}">{$top10Result.TARGETNAME}</a>
+		    </td>
+		    <td class="val lc">{$top10Result.TARGEPOINT_DEV}</td>
+		</tr>
+		</tbody>
+	</table>
+	<table cellpadding="1" cellspacing="1" id="top10_raiders" class="top10 row_table_data">
+	    <thead>
+		    <tr>
+			    <th>
+				    <a href="#" onclick="return showManual(6,{$showManualID});">
+					    <img class="help" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#LANGUI_STAT_T43}" title="{#LANGUI_STAT_T43}">
+					</a>
+				</th>
+				<th colspan="2">{#LANGUI_STAT_T47}</th>
+			</tr>
+			<tr>
+			    <td>{#LANGUI_STAT_T20}</td>
+				<td>{if="($selectedTabIndex == 5)"}{#LANGUI_STAT_T2}{else}{#LANGUI_STAT_T13}{/if}</td>
+				<td>{#LANGUI_STAT_T23}</td>
+			</tr>
+		</thead>
+	    <tbody>
+	    {$_c = 0}
+	    {loop="$top10Result.THIEF"}
+	    {$_c = $_c + 1}
+        <tr{if="($top10Result.TARGETID == $value['id'])"} class="hl"{/if}>
+		    <td class="ra fc">{$_c}&nbsp;</td>
+			<td class="pla">
+			    <a href="{$top10Result.URL}{$value.id}">{$value.name}</a>
+			</td>
+			<td class="val lc">{$value.points}</td>
+		</tr>
+    	{/loop}
+	    <tr>
+		    <td colspan="3" class="empty"></td>
+		</tr>
+		<tr class="own hl">
+		    <td class="ra fc">?</td>
+		    <td class="pla">
+		       <a href="{$top10Result.URL}{$top10Result.TARGETID}">{$top10Result.TARGETNAME}</a>
+		    </td>
+		    <td class="val lc">{$top10Result.TARGEPOINT_THIEF}</td>
+		</tr>
+		</tbody>
+	</table>
+{/if}

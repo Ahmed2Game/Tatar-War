@@ -1,0 +1,171 @@
+{function="load_lang('ui/msg')"}
+<h1>{#LANGUI_MSG_T1}</h1>
+    <div id="textmenu">
+	    <a href="message"{if="$selectedTabIndex == 0"} class="selected" {/if}>{#LANGUI_MSG_T2}</a> |
+	    <a href="message?t=1"{if="$selectedTabIndex == 1"} class="selected" {/if}>{#LANGUI_MSG_T3}</a> |
+	    <a href="message?t=2"{if="$selectedTabIndex == 2"} class="selected" {/if}>{#LANGUI_MSG_T4}</a>
+        | <a href="message?t=3"{if="!$data.active_plus_account"} onclick="return showManual(5,0);"{/if}{if="$selectedTabIndex == 3"} class="selected" {/if}>{#text_pnotes_lang}</a> |
+	    <a href="message?t=4"{if="$selectedTabIndex == 4"} class="selected" {/if}>Chat</a>
+	</div>
+{if="($showList)"}
+    <form method="post" action="message?p={$pageIndex}{if="($selectedTabIndex == 2)"}&t=2{/if}" name="msg">
+	    <table cellpadding="1" cellspacing="1" id="overview" class="row_table_data">
+		    <thead>
+			    <tr>
+				    <th colspan="2">{#LANGUI_MSG_T5}</th>
+					<th>{if="($selectedTabIndex == 2)"} {#LANGUI_MSG_T6} {else} {#LANGUI_MSG_T7} {/if}</th>
+					<th class="sent">{#LANGUI_MSG_T8}</th>
+				</tr>
+		    </thead>
+	    <tbody>
+    {$_c = 0}
+    {loop="dataList"}
+        {$_c = $_c + 1}
+        <tr>
+		    <td class="sel"><input class="check" type="checkbox" name="dm[]" value="{$value.id}"></td>
+            <td class="top"><a href="message?id={$value.id}">{$value.msg_title}</a>{if="( !$value.is_readed )"}{if="($selectedTabIndex == 0)"} {#LANGUI_MSG_T9} {else} {#LANGUI_MSG_T10} {/if} {/if}</td>
+			<td class="send">{if="(0 < $value.uid)"}<a href="profile?uid={$value.uid}">{$value.uname}</a>{else}<span class="none">{$value.uname}</span>{/if}</td>
+			<td class="dat">{$value.mdate}</td>
+		</tr>
+	{/loop}
+    {if="($_c == 0)"}
+        <tr>
+		    <td colspan="4">
+			    <span class="none">{#LANGUI_MSG_T11}</span>
+		    </td>
+		</tr>
+    {/if}
+        </tbody>
+		<tfoot>
+		    <tr>
+			    <th>
+				{if="(0 < $_c)"}
+		          <input class="check"  type="checkbox" id="s10" name="s10" onclick="Allmsg(this.form);">
+                {/if}
+                </th>
+				<th colspan="2" class="buttons">
+                {if="(0 < $_c)"}
+                    <input name="delmsg" value="{#LANGUI_MSG_T12}" type="image" id="btn_delete" class="dynamic_img" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#LANGUI_MSG_T12}">
+				{/if}
+                </th>
+				<th class="navi">{$getPreviousLink} {$getNextLink}</th>
+			</tr>
+		</tfoot>
+	    </table>
+	</form>
+{elseif="$selectedTabIndex == 3"}
+<form method="post" action="message?t=3">
+    <div id="block">
+      <textarea name="notes" id="notice">{$data.notes}</textarea>
+      <p class="btn">
+        <input id="btn_save" type="image" value="" name="s1" src="{function="add_style('x.gif', ASSETS_DIR)"}" class="dynamic_img" alt="{#text_save_lang}">
+        <br />
+    {if="$_POST && $saved"}
+      {#text_newssaved_lang}
+    {/if}
+  </p>
+</div>
+</form>
+{elseif="$selectedTabIndex == 4"}
+    <div id="cometchat_embed_synergy_container" style="width:520px;height:500px;max-width:100%;border:1px solid #CCCCCC;border-radius:5px;overflow:hidden;" ></div><script src="https://www.xtatar.com/cometchat/js.php?type=core&name=embedcode" type="text/javascript"></script><script>var iframeObj = {};iframeObj.module="synergy";iframeObj.style="min-height:420px;min-width:350px;";iframeObj.width="520px";iframeObj.height="500px";iframeObj.src="https://www.xtatar.com/cometchat/cometchat_embedded.php"; if(typeof(addEmbedIframe)=="function"){addEmbedIframe(iframeObj);}</script>
+{else}
+<script language="JavaScript" type="text/javascript">
+	function closeFriendsList()
+	{
+	    _('adressbook').className = 'hide';
+	}
+	function toggleFriendsList()
+	{
+	    var book = _('adressbook');
+		book.className = (book.className == 'hide') ? '' : 'hide';
+	}
+	function copyElement(element)
+	{
+	    if (element == 'receiver')
+		{
+		    _('copy_receiver').value = _('receiver').value;
+		}
+		else if (element == 'subject')
+        {
+		    _('copy_subject').value = _('subject').value;
+	    }
+		else if (element == 'body')
+		{
+		    _('copy_igm').value = _('igm').value;
+	    }
+	}
+	function setReceiver(name)
+	{
+	    _('receiver').value = name;copyElement('receiver');
+	}
+	function delFriend (uid)
+	{
+	     _("fma").value=uid;document.abform.submit();
+    }
+</script>
+    <span class="error">{$errorText}</span>
+	<div id="write_head" class="msg_head"></div>
+    <div id="write_content" class="msg_content">
+	    <form method="post" action="message" accept-charset="UTF-8" name="msg">
+		    <input type="hidden" name="{if="($viewOnly)"}rm{else}sm{/if}" value="1">
+			<img src="{function="add_style('x.gif', ASSETS_DIR)"}" id="label" class="{if="($sendMail)"}send{else}read{/if}" alt="">
+			<div id="heading">
+			    <input class="text" type="text"{if="($viewOnly)"} readonly="readonly" {/if}name="anxc" id="receiver" value="{$receiver}" maxlength="20" onkeyup="copyElement('receiver')" tabindex="1;">
+				<br>
+				<input class="text" type="text"{if="($viewOnly)"} readonly="readonly" {/if}name="be" id="subject" value="{$subject}" maxlength="35" onkeyup="copyElement('subject')" tabindex="2;">
+			</div>
+        {if="($viewOnly)"}
+           <div id="time">
+		        <div>{$messageDate}</div>
+				<div>{$messageTime}</div>
+			</div>
+        {else}
+            <a id="adbook" href="#" onclick="toggleFriendsList(); return false;">
+			    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#LANGUI_MSG_T13}" title="{#LANGUI_MSG_T13}">
+		    </a>
+        {/if}
+            <div class="clear"></div>
+			<div id="line"></div>
+			<textarea class="textarea write" name="message" id="igm" onkeyup="copyElement('body')" tabindex="3;"{if="($viewOnly)"} readonly="readonly" {/if}>{$body}</textarea>
+
+        {if="($isInbox)"}
+            <p class="btn">
+            {if="($viewOnly)"}
+		        <input type="image" value="" name="s1" id="btn_reply" class="dynamic_img" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#LANGUI_MSG_T14}" onclick="if (this.disabled==false) {document.getElementsByTagName('form')[0].submit();} this.disabled=true;" onLoad="this.disabled=false;">
+            {else}
+		        <input type="image" value="" name="s1" id="btn_send" class="dynamic_img" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#LANGUI_MSG_T15}" tabindex="4;" onclick="if (this.disabled==false) {document.getElementsByTagName('form')[0].submit();} this.disabled=true;" onLoad="this.disabled=false;">
+            {/if}
+            </p>
+        {/if}
+        </form>
+    {if="(!$viewOnly)"}
+    <div id="adressbook" class="{if="(!$showFriendPane)"}hide{/if}">
+		<h2>{#LANGUI_MSG_T13}</h2>
+			<table cellpadding="1" cellspacing="1" id="friendlist">
+			    <tbody>
+				    <tr>
+                    {$_c = 0}
+					{loop="$friendList"}
+						{$_c = $_c + 1}
+                        {if="$counter1 == 0"}{$counter1 = 1}{/if}
+                        <td class="end">{$_c}</td>
+						<td class="pla">
+						    <a href="#" onclick="closeFriendsList(); setReceiver('{$value}'); return false;">{$value}</a>
+						</td>
+                    {if="($counter1 % 2 == 0)"}</tr>{/if}
+                    {/loop}
+                    
+                </tbody>
+			</table>
+		<a href="#" onclick="closeFriendsList(); return false;">
+		    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" id="close" alt="{#LANGUI_MSG_T16}" title="{#LANGUI_MSG_T16}">
+		</a>
+	</div>
+    {/if}
+    </div>
+	<div id="write_foot" class="msg_foot"></div>
+    {if="(0 < intval($data.alliance_id))"}
+        <span class="error">{#LANGUI_MSG_T17}</span>
+    {/if}
+
+{/if}

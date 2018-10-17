@@ -1,0 +1,653 @@
+{function="load_lang('ui/custbuilds')"}
+<p></p>
+<p></p>
+<div id="textmenu">
+    <a href="build?id={$buildingIndex}" class="selected">{#LANGUI_CUSTBU_RP_p1}</a> |
+    <a href="v2v">{#LANGUI_CUSTBU_RP_p2}</a> |
+    <a href="warsm">{#LANGUI_CUSTBU_RP_p3}</a> |
+    <a href="farm"{if="!$data.active_plus_account"} onclick="return showManual(5,0);"{/if}>{#LANGUI_CUSTBU_RP_p4}</a>
+</div>
+<div id="textmenu">
+    <a href="?id={$buildingIndex}" {if="$tap == 0"}class="selected"{/if}>{#LANGUI_CUSTBU_RP_t16}</a> |
+    <a href="?id={$buildingIndex}&t=1" {if="$tap == 1"}class="selected"{/if}>{#LANGUI_CUSTBU_RP_t1}</a> |
+    <a href="?id={$buildingIndex}&t=2" {if="$tap == 2"}class="selected"{/if}>{#LANGUI_CUSTBU_RP_t9}</a> |
+    <a href="?id={$buildingIndex}&t=3" {if="$tap == 3"}class="selected"{/if}>{#LANGUI_CUSTBU_RP_t23}</a>
+</div>
+{if="$war_to_village_size && $tap == 1"}
+    <h4>
+    {#LANGUI_CUSTBU_RP_t1}
+    </h4>
+    {loop="$war_to_village"}
+        <table class="troop_details" cellpadding="1" cellspacing="1">
+            <thead>
+                <tr>
+                    <td class="role">
+                        {if="( $value1['actionRow'] != NULL && $value1['actionRow']['player_id'] == $value1['taskTable']['player_id'] )"}
+                            <a href="village3?id={$value.taskTable.village_id}">{$value.action2}</a>
+                        {else}
+                            {$value.action2}
+                        {/if}
+                    </td>
+                    <td colspan="{$value.colspan}">
+                        <a href="village3?id={$value.taskTable.to_village_id}"><p>{$value.action1}</p></a>
+                    </td>
+                </tr>
+            </thead>
+            <tbody class="units">
+                <tr>
+                    <th>&nbsp;</th>
+                    {loop="$value.troops"}
+                        <td>
+                            <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="unit u{$key2}" title="{function="constant('troop_'.$key2 )"}" alt="{function="constant('troop_'.$key2 )"}">
+                        </td>
+                    {/loop}
+                    {if="($value1['hasHero'] && $value1['procType'] == QS_WAR_REINFORCE )"}
+                        <td>
+                            <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="unit uhero" title="{#troop_hero}" alt="{#troop_hero}">
+                        </td>
+                    {/if}
+                    </tr>
+                    <tr>
+                        <th>{#LANGUI_CUSTBU_RP_t6}</th>
+                        {loop="$value.troops"}
+                            {if="$value1.procType != QS_WAR_REINFORCE && $artPower && $value2 > 0"}
+                                <td>?</td>
+                            {elseif="$value1.procType != QS_WAR_REINFORCE"}
+                                <td class="none">?</td>
+                            {elseif="( $value2 == 0 )"}
+                                <td class="none">0</td>
+                            {else}
+                                <td>
+                                    {$value2}
+                                </td>
+                            {/if}
+                        {/loop}
+                        {if="( $value1['hasHero'] && $value1['procType'] == QS_WAR_REINFORCE )"}
+                            <td>1</td>
+                        {/if}
+            </tbody>
+            <tbody class="infos">
+                <tr>
+                    <th>{#LANGUI_CUSTBU_RP_t7}</th>
+                    <td colspan="{$value.colspan}">
+                        <div class="in small">
+                        {#text_in_lang}
+                        <span id="timer1">
+                            {$value.taskTable.remainingSeconds|secondstostring}
+                        </span>
+                        {#time_hour_lang}
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+            {if="( $value['resources'] != NULL )"}
+            <tbody class="infos">
+                <tr>
+                    <th>{#LANGUI_CUSTBU_RP_t8}</th>
+                    <td colspan="{$value.colspan}">
+                        <img class="r1" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#item_title_1}" title="{#item_title_1}">
+                        {$value.resources.0}
+                       |<img class="r2" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#item_title_2}" title="{#item_title_2}">
+                        {$value.resources.1}
+                       |<img class="r3" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#item_title_3}" title="{#item_title_3}">
+                        {$value.resources.2}
+                       |<img class="r4" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#item_title_4}" title="{#item_title_4}">
+                        {$value.resources.3}
+                    </td>
+                </tr>
+            </tbody>
+            {/if}
+        </table>
+    {/loop}
+{/if}
+
+
+{if="$war_from_village_size && $tap == 2"}
+    <h4>
+    {#LANGUI_CUSTBU_RP_t9}
+    </h4>
+    {loop="$war_from_village"}
+        <table class="troop_details" cellpadding="1" cellspacing="1">
+            <thead>
+                <tr>
+                    <td class="role">
+                        <a href="village3?id={$data.selected_village_id}">{$data.village_name}</a>
+                    </td>
+                    <td colspan="{$value.colspan}">
+                        <a href="village3?id={$value.taskTable.to_village_id}">
+                            <p>{$value.action}</p>
+                        </a>
+                    </td>
+                </tr>
+            </thead>
+            <tbody class="units">
+                <tr>
+                    <th>&nbsp;</th>
+                    {loop="$value.troops"}
+                        <td>
+                            <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="unit u{$key2}" title="{function="constant('troop_'.$key2 )"}" alt="{function="constant('troop_'.$key2 )"}" >
+                    </td>
+                    {/loop}
+                    {if="( $value1['hasHero'] )"}
+                        <td>
+                            <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="unit uhero" title="{#troop_hero}" alt="{#troop_hero}"></td>
+                    {/if}
+                </tr>
+                <tr>
+                    <th>{#LANGUI_CUSTBU_RP_t6}</th>
+                    {loop="$value.troops"}
+                        {if="( $value2 == 0 )"}
+                            <td class="none">0</td>
+                        {else}
+                            <td>
+                                {$value2}
+                            </td>
+                        {/if}
+                    {/loop}
+                    {if="( $value['hasHero'])"}
+                        <td>1</td>
+                    {/if}
+                </tr>
+            </tbody>
+            <tbody class="infos">
+                <tr>
+                    <th>{#LANGUI_CUSTBU_RP_t7}</th>
+                    <td colspan="{$value.colspan}">
+                        <div class="in small">
+                            {#text_in_lang}
+                            <span id="timer1">
+                                {$value1.remainingSeconds|secondstostring}
+                            </span>
+                            {#time_hour_lang}
+                        </div>
+                        {if="$value1.canCancelWarTask"}
+                            <div class="abort">
+                                <a href="build?id=39&d={$value1.taskTable.id}">
+                                    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="del" title="{#LANGUI_CUSTBU_RP_t27}" alt="{#LANGUI_CUSTBU_RP_t27}">
+                                </a>
+                            </div>
+                        {/if}
+                        </td>
+                    </tr>
+                </tbody>
+                {if="( $value['resources'] != NULL )"}
+                <tbody class="infos">
+                    <tr>
+                        <th>{#LANGUI_CUSTBU_RP_t15}</th>
+                        <td colspan="{$value.colspan}">
+                            <img class="r1" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#item_title_1}" title="{#item_title_1}">
+                            {$value.resources.0}
+                           |<img class="r2" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#item_title_2}" title="{#item_title_2}">
+                            {$value.resources.1}
+                           |<img class="r3" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#item_title_3}" title="{#item_title_3}">
+                            {$value.resources.2}
+                           |<img class="r4" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#item_title_4}" title="{#item_title_4}">
+                            {$value.resources.3}
+                        </td>
+                    </tr>
+                </tbody>
+                {/if}
+        </table>
+    {/loop}
+{/if}
+
+{if="$troops_in_village_size && $tap == 0"}
+    <h4>
+    {#LANGUI_CUSTBU_RP_t16}
+    </h4>
+    {loop="$troops_in_village"}
+        <table class="troop_details" cellpadding="1" cellspacing="1">
+            <thead>
+                <tr>
+                    <td class="role">
+                        {if="( 0 < intval( $value['troopTable']['villageData']['player_id'] ) )"}
+                            <a href="village3?id={$value.troopTable.villageData.id}">{$value.troopTable.villageData.village_name}</a>
+                        {else}
+                            <span class="none">[?]</span>
+                        {/if}
+                    </td>
+                    <td colspan="{$value.colspan}">
+                    {if="( 0 < intval( $value['troopTable']['villageData']['player_id'] ) )"}
+                        <a href="profile?uid={$value.troopTable.villageData.player_id}">{#LANGUI_CUSTBU_RP_t17} {$value.troopTable.villageData.player_name}</a>
+                        {else}
+                            <span class="none">[?]</span>
+                        {/if}
+                    </td>
+                </tr>
+            </thead>
+            <tbody class="units">
+                <tr>
+                    <th>&nbsp;</th>
+                        {loop="$value.troopTable.troops"}
+                            {if="( $key2 == 31 )"}
+                                {$value1.canBack = FALSE}
+                            {/if}
+                            <td>
+                                <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="unit u{$key2}" title="{function="constant('troop_'.$key2 )"}" alt="{function="constant('troop_'.$key2 )"}">
+                            </td>
+                        {/loop}
+                        {if="( $value['troopTable']['hasHero'] )"}
+                            <td>
+                                <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="unit uhero" title="{#troop_hero}" alt="{#troop_hero}">
+                            </td>
+                        {/if}
+                        </tr>
+                        <tr>
+                            <th>{#LANGUI_CUSTBU_RP_t6}</th>
+                            {loop="$value.troopTable.troops"}
+                                {if="( $value2 == 0 )"}
+                                    <td class="none">0</td>
+                                {else}
+                                    <td>
+                                        {$value2}
+                                    </td>
+                                {/if}
+                            {/loop}
+                        {if="( $value['troopTable']['hasHero'] )"}
+                            <td>1</td>
+                        {/if}
+                        </tr>
+                    </tbody>
+                    <tbody class="infos">
+                        <tr>
+                            <th>{#LANGUI_CUSTBU_RP_t18}</th>
+                            <td colspan="{$value.colspan}">
+                                <div class="sup">
+                                    {$value.troopTable.cropConsumption}
+                                    <img class="r4" src="{function="add_style('x.gif', ASSETS_DIR)"}" title="{#item_title_4}" alt="{#item_title_4}">
+                                    {#LANGUI_CUSTBU_RP_t19}
+                                </div>
+                                {if="($value['troopTable']['villageData']['id'] != $data['selected_village_id'] && $value['canBack'] )"}
+                                    <div class="gback">
+                                        <a href="v2v?d1={$value.troopTable.villageData.id}">
+                                            {#LANGUI_CUSTBU_RP_t20}
+                                        </a>
+                                    </div>
+                                {/if}
+                        </td>
+                    </tr>
+                </tbody>
+        </table>
+    {/loop}
+
+    {loop="$troops_in_village_in_table"}
+        <table class="troop_details" cellpadding="1" cellspacing="1">
+            <thead>
+                <tr>
+                    <td class="role">
+                        {if="( 0 < intval( $value['troopTable']['villageData']['player_id'] ) )"}
+                            <a href="village3?id={$value.troopTable.villageData.id}">{$value.troopTable.villageData.village_name}</a>
+                        {else}
+                            <span class="none">[?]</span>
+                        {/if}
+                    </td>
+                    <td colspan="{$value.colspan}">
+                        <a href="profile?uid={$value.troopTable.villageData.player_id}">
+                        {#LANGUI_CUSTBU_RP_t17}
+                        {if="( 0 < intval( $value['troopTable']['villageData']['player_id'] ) )"}
+                            {$value.troopTable.villageData.player_name}
+                        {else}
+                            <span class="none">[?]</span>
+                        {/if}
+                        </a>
+                    </td>
+                </tr>
+            </thead>
+            <tbody class="units">
+                <tr>
+                    <th>&nbsp;</th>
+                        {loop="$value.troopTable.troops"}
+                            <td>
+                                <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="unit u{$key1}" title="{function="constant('troop_'.$key1 )"}" alt="{function="constant('troop_'.$key1 )"}">
+                            </td>
+                        {/loop}
+                        {if="( $value['troopTable']['hasHero'] )"}
+                            <td>
+                                <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="unit uhero" title="{#troop_hero}" alt="{#troop_hero}">
+                            </td>
+                        {/if}
+                        </tr>
+                        <tr>
+                            <th>{#LANGUI_CUSTBU_RP_t6}</th>
+                            {loop="$value.troopTable.troops"}
+                                {if="( $value2 == 0 )"}
+                                    <td class="none">0</td>
+                                {else}
+                                    <td>
+                                        {$value2}
+                                    </td>
+                                {/if}
+                            {/loop}
+                        {if="( $value['troopTable']['hasHero'] )"}
+                            <td>1</td>
+                        {/if}
+                        </tr>
+                    </tbody>
+                    <tbody class="infos">
+                        <tr>
+                            <th>{#LANGUI_CUSTBU_RP_t18}</th>
+                        <td colspan="{$value.colspan}">
+                            <div class="sup">
+                                {$value.troopTable.cropConsumption}
+                                <img class="r4" src="{function="add_style('x.gif', ASSETS_DIR)"}" title="{#item_title_4}" alt="{#item_title_4}">
+                                {#LANGUI_CUSTBU_RP_t19}
+                            </div>
+                                <div class="gback">
+                                    <a href="v2v?d2={$value.troopTable.villageData.id}">
+                                        {#LANGUI_CUSTBU_RP_t22}
+                                    </a>
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+        </table>
+    {/loop}
+{/if}
+
+{if="$troops_out_village_size && $tap == 3"}
+    <h4>
+    {#LANGUI_CUSTBU_RP_t23}
+    </h4>
+    {loop="$troops_out_village"}
+        <table class="troop_details" cellpadding="1" cellspacing="1">
+            <thead>
+                <tr>
+                    <td class="role">
+                        {if="( 0 < intval( $value['troopTable']['villageData']['player_id'] ) )"}
+                            <a href="village3?id={$value.troopTable.villageData.id}">{$value.troopTable.villageData.village_name}</a>
+                        {else}
+                            <span class="none">[?]</span>
+                        {/if}
+                    </td>
+                    <td colspan="{$value.colspan}">
+                        <a href="profile?uid={$value.troopTable.villageData.player_id}">
+                        {#LANGUI_CUSTBU_RP_t10}
+
+                        {if="( 0 < intval( $value['troopTable']['villageData']['player_id'] ) )"}
+                            {$value.troopTable.villageData.player_name}
+                        {else}
+                            <span class="none">[?]</span>
+                        {/if}
+                        </a>
+                    </td>
+                </tr>
+            </thead>
+            <tbody class="units">
+                <tr>
+                    <th>&nbsp;</th>
+                        {loop="$value.troopTable.troops"}
+                            <td>
+                                <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="unit u{$key2}" title="{function="constant('troop_'.$key2 )"}" alt="{function="constant('troop_'.$key2 )"}">
+                            </td>
+                        {/loop}
+                        {if="( $value['troopTable']['hasHero'] )"}
+                            <td>
+                                <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="unit uhero" title="{#troop_hero}" alt="{#troop_hero}">
+                            </td>
+                        {/if}
+                        </tr>
+                        <tr>
+                            <th>{#LANGUI_CUSTBU_RP_t6}</th>
+                            {loop="$value.troopTable.troops"}
+                                {if="( $value2 == 0 )"}
+                                    <td class="none">0</td>
+                                {else}
+                                    <td>
+                                        {$value2}
+                                    </td>
+                                {/if}
+                            {/loop}
+                        {if="( $value['troopTable']['hasHero'] )"}
+                            <td>1</td>
+                        {/if}
+                        </tr>
+                    </tbody>
+                    <tbody class="infos">
+                        <tr>
+                            <th>{#LANGUI_CUSTBU_RP_t18}</th>
+                            <td colspan="{$value.colspan}">
+                                <div class="sup">
+                                    {$value.troopTable.cropConsumption}
+                                    <img class="r4" src="{function="add_style('x.gif', ASSETS_DIR)"}" title="{#item_title_4}" alt="{#item_title_4}">
+                                    {#LANGUI_CUSTBU_RP_t19}
+                                </div>
+                                <div class="gback">
+                                    <a href="v2v?d3={$value.troopTable.villageData.id}">
+                                        {#LANGUI_CUSTBU_RP_t24}
+                                    </a>
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+    {/loop}
+
+    {loop="$troops_out_village_in_table"}
+        <table class="troop_details" cellpadding="1" cellspacing="1">
+            <thead>
+                <tr>
+                    <td class="role">
+                        {if="( 0 < intval( $value['troopTable']['villageData']['player_id'] ) )"}
+                            <a href="village3?id={$value.troopTable.villageData.id}">{$value.troopTable.villageData.village_name}</a>
+                        {else}
+                            <span class="none">[?]</span>
+                        {/if}
+                    </td>
+                    <td colspan="{$value.colspan}">
+                        <a href="profile?uid={$value.troopTable.villageData.player_id}">
+                        {#LANGUI_CUSTBU_RP_t25}
+                        {if="( 0 < intval( $value['troopTable']['villageData']['player_id'] ) )"}
+                            {$value.troopTable.villageData.player_name}
+                        {else}
+                            <span class="none">[?]</span>
+                        {/if}
+                        </a>
+                    </td>
+                </tr>
+            </thead>
+            <tbody class="units">
+                <tr>
+                    <th>&nbsp;</th>
+                        {loop="$value.troopTable.troops"}
+                            <td>
+                                <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="unit u{$key1}" title="{function="constant('troop_'.$key1 )"}" alt="{function="constant('troop_'.$key1 )"}">
+                            </td>
+                        {/loop}
+                        {if="( $value['troopTable']['hasHero'] )"}
+                            <td>
+                                <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="unit uhero" title="{#troop_hero}" alt="{#troop_hero}">
+                            </td>
+                        {/if}
+                        </tr>
+                        <tr>
+                            <th>{#LANGUI_CUSTBU_RP_t6}</th>
+                            {loop="$value.troopTable.troops"}
+                                {if="( $value2 == 0 )"}
+                                    <td class="none">0</td>
+                                {else}
+                                    <td>
+                                        {$value2}
+                                    </td>
+                                {/if}
+                            {/loop}
+                        {if="( $value['troopTable']['hasHero'] )"}
+                            <td>1</td>
+                        {/if}
+                        </tr>
+                    </tbody>
+                    <tbody class="infos">
+                        <tr>
+                        <th>{#LANGUI_CUSTBU_RP_t18}</th>
+                        <td colspan="{$value.colspan}">
+                            <div class="sup">
+                                {$value.troopTable.cropConsumption}
+                                <img class="r4" src="{function="add_style('x.gif', ASSETS_DIR)"}" title="{#item_title_4}" alt="{#item_title_4}">
+                                {#LANGUI_CUSTBU_RP_t19}
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+        </table>
+    {/loop}
+{/if}
+
+
+{if="$troops_in_oases_size && $tap == 0"}
+    {loop="$troops_in_oases"}
+        <br />
+        <p class="info">
+            <a href="village3?id={$key}"> {#LANGUI_CUSTBU_RP_t26}
+                ( {$value.oasisData.oasisRow.rel_x}|{$value.oasisData.oasisRow.rel_y} )
+            </a>
+        </p>
+        {if="( 0 < sizeof( $value['oasisData']['war_to'] ) )"}
+            <h4>{#LANGUI_CUSTBU_RP_t1}</h4>
+            {loop="$value['war_to_oasis_data']"}
+                <table class="troop_details" cellpadding="1" cellspacing="1">
+                    <thead>
+                        <tr>
+                            <td class="role">
+                                {if="( $value.action2 != '' )"}
+                                    <a href="village3?id={$value.taskTable.village_id}">
+                                        {$value.action2}
+                                    </a>
+                                {else}
+                                    {$value.action2}
+                                {/if}
+                            </td>
+                            <td colspan="{$value.colspan}">
+                                <a href="village3?id={$value.taskTable.to_village_id}"><p>{$value.action1}</p></a>
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody class="units">
+                        <tr>
+                            <th>&nbsp;</th>
+                            {loop="$value.troops"}
+                                <td>
+                                    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="unit u{$key}" title="{function="constant('troop_'.$key )"}" alt="{function="constant('troop_'.$key )"}">
+                                </td>
+                            {/loop}
+
+                            {if="( $value['hasHero'] && $value['procType'] == QS_WAR_REINFORCE )"}
+                                <td>
+                                    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="unit uhero" title="{#troop_hero}" alt="{#troop_hero}">
+                                </td>
+                            {/if}
+                            </tr>
+                            <tr>
+                                <th>{#LANGUI_CUSTBU_RP_t6}</th>
+                                {$prty = $value['procType']}
+                                {loop="$value.troops"}
+                                    {if="$prty != QS_WAR_REINFORCE && $artPower && $value > 0"}
+                                        <td>?</td>
+                                    {elseif="$value2.procType != QS_WAR_REINFORCE"}
+                                        <td class="none">?</td>
+                                    {elseif="( $value == 0 )"}
+                                        <td class="none">0</td>
+                                    {else}
+                                        <td>{$value}</td>
+                                    {/if}
+                                {/loop}
+
+                                {if="( $value['hasHero'] && $value['procType'] == QS_WAR_REINFORCE )"}
+                                    <td>1</td>
+                                {/if}
+                                </tr>
+                            </tbody>
+                            <tbody class="infos">
+                                <tr>
+                                    <th>{#LANGUI_CUSTBU_RP_t7}</th>
+                                    <td colspan="{$value.colspan}">
+                                        <div class="in small">
+                                            {#text_in_lang}
+                                            <span id="timer1">
+                                            {$value.taskTable.remainingSeconds|secondstostring}
+                                            </span>
+                                            {#time_hour_lang}
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                </table>
+            {/loop}
+        {/if}
+
+        {if="( 0 < sizeof( $value['oasisData']['troopsTable']) )"}
+            <h4>{#LANGUI_CUSTBU_RP_t16}</h4>
+            {loop="$value.troopsTable"}
+                <table class="troop_details" cellpadding="1" cellspacing="1">
+                    <thead>
+                        <tr>
+                            <td class="role">
+                                {if="( 0 < intval( $value['troopTable']['villageData']['player_id'] ) )"}
+                                    <a href="village3?id={$value.troopTable.villageData.id}">{$value.troopTable.villageData.village_name}</a>
+                                {else}
+                                    <span class="none">[?]</span>
+                                {/if}
+                            </td>
+                            <td colspan="{$value.colspan}">
+                                <a href="profile?uid={$value.troopTable.villageData.player_id}">
+                                {#LANGUI_CUSTBU_RP_t17}
+
+                                {if="( 0 < intval( $value['troopTable']['villageData']['player_id'] ) )"}
+                                    {$value.troopTable.villageData.player_name}
+                                {else}
+                                    <span class="none">[?]</span>
+                                {/if}
+                                </a>
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody class="units">
+                        <tr>
+                            <th>&nbsp;</th>
+                                {loop="$value.troopTable.troops"}
+                                    <td>
+                                        <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="unit u{$key}" title="{function="constant('troop_'.$key )"}" alt="{function="constant('troop_'.$key )"}">
+                                    </td>
+                                {/loop}
+                                {if="( $value['troopTable']['hasHero'] )"}
+                                    <td>
+                                        <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="unit uhero" title="{#troop_hero}" alt="{#troop_hero}">
+                                    </td>
+                                {/if}
+                                </tr>
+                                <tr>
+                                    <th>{#LANGUI_CUSTBU_RP_t6}</th>
+                                    {loop="$value.troopTable.troops"}
+                                        {if="( $value == 0 )"}
+                                            <td class="none">0</td>
+                                        {else}
+                                            <td>
+                                                {$value}
+                                            </td>
+                                        {/if}
+                                    {/loop}
+                                {if="( $value['troopTable']['hasHero'] )"}
+                                    <td>1</td>
+                                {/if}
+                                </tr>
+                            </tbody>
+                            <tbody class="infos">
+                                <tr>
+                                    <th>{#LANGUI_CUSTBU_RP_t18}</th>
+                                    <td colspan="{$value.colspan}">
+                                        <div class="sup">
+                                            {$value.troopTable.cropConsumption}
+                                            <img class="r4" src="{function="add_style('x.gif', ASSETS_DIR)"}" title="{#item_title_4}" alt="{#item_title_4}">
+                                            {#LANGUI_CUSTBU_RP_t19}
+                                        </div>
+                                        <div class="gback">
+                                            <a href="v2v?d1={$value.troopTable.villageData.id}&o={$key1}">
+                                                {#LANGUI_CUSTBU_RP_t20}
+                                            </a>
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                </table>
+            {/loop}
+        {/if}
+    {/loop}
+{/if}

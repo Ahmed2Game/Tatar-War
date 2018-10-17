@@ -1,0 +1,158 @@
+{function="load_lang('ui/map')"}
+  <h1>
+    {#LANGUI_MAP_T1}
+     (<span id="x">{$x}</span>|<span id="y">{$y}</span>)
+  </h1>
+  <div id="map">
+  <script type="text/javascript">
+  <!--
+  var textb = {};
+  textb.t1 = '{#LANGUI_MAP_T2}:';
+  textb.t2 = '{#LANGUI_MAP_T3}';
+  textb.t3 = '{#LANGUI_MAP_T4}';
+  textb.t4 = '{#LANGUI_MAP_T5}';
+  textb.f = {{$_f = FALSE}{loop="$setupMetadata['field_maps_summary']"}{if="$_f"},{/if}"{$key}":"{$value}"{$_f = TRUE}{/loop}};
+  function scrollMap (evt) {
+    var k=evt?evt.keyCode:event.keyCode;
+    var es="";
+    switch (k)
+    {
+      case 37: es="ma_n4"; break;
+      case 38: es="ma_n1"; break;
+      case 39: es="ma_n2"; break;
+      case 40: es="ma_n3";
+      break;
+    }
+    var e = _(es);
+    if(e) e.onclick();
+  }
+  if (window.document.addEventListener)
+    {
+      window.document.addEventListener("keydown", scrollMap, false);
+    }
+    else
+    {
+      window.document.attachEvent("onkeydown", scrollMap);}
+      // -->
+    </script>
+  <div id="map_content">
+      {loop="$map_content"}
+        <div id="{$key}" class="{$value}"></div>
+      {/loop}
+  </div>
+  <div id="map_rulers">
+    {loop="$map_rules"}
+      <div id="mx{$key}">{$value.x}</div>
+      <div id="my{$key}">{$value.y}</div>
+    {/loop}
+  </div>
+
+<map id="map_overlay_large" name="map_overlay_large">
+<map id="map_overlay_large" name="map_overlay_large">
+  <area id="a_0_0" shape="poly" coords="53, 137, 90, 157, 53, 177, 16, 157"  {$getMapArea_0_0}>
+  <area id="a_0_1" shape="poly" coords="89, 117, 126, 137, 89, 157, 52, 137"  {$getMapArea_0_1}>
+  <area id="a_0_2" shape="poly" coords="125, 97, 162, 117, 125, 137, 88, 117"  {$getMapArea_0_2}>
+  <area id="a_0_3" shape="poly" coords="161, 77, 198, 97, 161, 117, 124, 97"  {$getMapArea_0_3} >
+  <area id="a_0_4" shape="poly" coords="197, 57, 234, 77, 197, 97, 160, 77"  {$getMapArea_0_4}>
+  <area id="a_0_5" shape="poly" coords="233, 37, 270, 57, 233, 77, 196, 57"  {$getMapArea_0_5}>
+  <area id="a_0_6" shape="poly" coords="269, 17, 306, 37, 269, 57, 232, 37"  {$getMapArea_0_6}>
+  <area id="a_1_0" shape="poly" coords="90, 157, 127, 177, 90, 197, 53, 177"  {$getMapArea_1_0}>
+  <area id="a_1_1" shape="poly" coords="126, 137, 163, 157, 126, 177, 89, 157"  {$getMapArea_1_1}>
+  <area id="a_1_2" shape="poly" coords="162, 117, 199, 137, 162, 157, 125, 137"  {$getMapArea_1_2}>
+  <area id="a_1_3" shape="poly" coords="198, 97, 235, 117, 198, 137, 161, 117"  {$getMapArea_1_3}>
+  <area id="a_1_4" shape="poly" coords="234, 77, 271, 97, 234, 117, 197, 97"  {$getMapArea_1_4}>
+  <area id="a_1_5" shape="poly" coords="270, 57, 307, 77, 270, 97, 233, 77"  {$getMapArea_1_5}>
+  <area id="a_1_6" shape="poly" coords="306, 37, 343, 57, 306, 77, 269, 57"  {$getMapArea_1_6}>
+  <area id="a_2_0" shape="poly" coords="127, 177, 164, 197, 127, 217, 90, 197"  {$getMapArea_2_0} >
+  <area id="a_2_1" shape="poly" coords="163, 157, 200, 177, 163, 197, 126, 177"  {$getMapArea_2_1} >
+  <area id="a_2_2" shape="poly" coords="199, 137, 236, 157, 199, 177, 162, 157"  {$getMapArea_2_2} >
+  <area id="a_2_3" shape="poly" coords="235, 117, 272, 137, 235, 157, 198, 137"  {$getMapArea_2_3} >
+  <area id="a_2_4" shape="poly" coords="271, 97, 308, 117, 271, 137, 234, 117"  {$getMapArea_2_4} >
+  <area id="a_2_5" shape="poly" coords="307, 77, 344, 97, 307, 117, 270, 97"  {$getMapArea_2_5} >
+  <area id="a_2_6" shape="poly" coords="343, 57, 380, 77, 343, 97, 306, 77"  {$getMapArea_2_6} >
+  <area id="a_3_0" shape="poly" coords="164, 197, 201, 217, 164, 237, 127, 217"  {$getMapArea_3_0}>
+  <area id="a_3_1" shape="poly" coords="200, 177, 237, 197, 200, 217, 163, 197"  {$getMapArea_3_1}>
+  <area id="a_3_2" shape="poly" coords="236, 157, 273, 177, 236, 197, 199, 177"  {$getMapArea_3_2}>
+  <area id="a_3_3" shape="poly" coords="272, 137, 309, 157, 272, 177, 235, 157"  {$getMapArea_3_3}>
+  <area id="a_3_4" shape="poly" coords="308, 117, 345, 137, 308, 157, 271, 137"  {$getMapArea_3_4}>
+  <area id="a_3_5" shape="poly" coords="344, 97, 381, 117, 344, 137, 307, 117"  {$getMapArea_3_5}>
+  <area id="a_3_6" shape="poly" coords="380, 77, 417, 97, 380, 117, 343, 97"  {$getMapArea_3_6}>
+  <area id="a_4_0" shape="poly" coords="201, 217, 238, 237, 201, 257, 164, 237"  {$getMapArea_4_0}>
+  <area id="a_4_1" shape="poly" coords="237, 197, 274, 217, 237, 237, 200, 217"  {$getMapArea_4_1}>
+  <area id="a_4_2" shape="poly" coords="273, 177, 310, 197, 273, 217, 236, 197"  {$getMapArea_4_2}>
+  <area id="a_4_3" shape="poly" coords="309, 157, 346, 177, 309, 197, 272, 177"  {$getMapArea_4_3}>
+  <area id="a_4_4" shape="poly" coords="345, 137, 382, 157, 345, 177, 308, 157"  {$getMapArea_4_4}>
+  <area id="a_4_5" shape="poly" coords="381, 117, 418, 137, 381, 157, 344, 137"  {$getMapArea_4_5}>
+  <area id="a_4_6" shape="poly" coords="417, 97, 454, 117, 417, 137, 380, 117"  {$getMapArea_4_6}>
+  <area id="a_5_0" shape="poly" coords="238, 237, 275, 257, 238, 277, 201, 257"  {$getMapArea_5_0}>
+  <area id="a_5_1" shape="poly" coords="274, 217, 311, 237, 274, 257, 237, 237"  {$getMapArea_5_1}>
+  <area id="a_5_2" shape="poly" coords="310, 197, 347, 217, 310, 237, 273, 217"  {$getMapArea_5_2}>
+  <area id="a_5_3" shape="poly" coords="346, 177, 383, 197, 346, 217, 309, 197"  {$getMapArea_5_3}>
+  <area id="a_5_4" shape="poly" coords="382, 157, 419, 177, 382, 197, 345, 177"  {$getMapArea_5_4}>
+  <area id="a_5_5" shape="poly" coords="418, 137, 455, 157, 418, 177, 381, 157"  {$getMapArea_5_5}>
+  <area id="a_5_6" shape="poly" coords="454, 117, 491, 137, 454, 157, 417, 137"  {$getMapArea_5_6}>
+  <area id="a_6_0" shape="poly" coords="275, 257, 312, 277, 275, 297, 238, 277"  {$getMapArea_6_0}>
+  <area id="a_6_1" shape="poly" coords="311, 237, 348, 257, 311, 277, 274, 257"  {$getMapArea_6_1}>
+  <area id="a_6_2" shape="poly" coords="347, 217, 384, 237, 347, 257, 310, 237"  {$getMapArea_6_2}>
+  <area id="a_6_3" shape="poly" coords="383, 197, 420, 217, 383, 237, 346, 217"  {$getMapArea_6_3}>
+  <area id="a_6_4" shape="poly" coords="419, 177, 456, 197, 419, 217, 382, 197"  {$getMapArea_6_4}>
+  <area id="a_6_5" shape="poly" coords="455, 157, 492, 177, 455, 197, 418, 177"  {$getMapArea_6_5}>
+  <area id="a_6_6" shape="poly" coords="491, 137, 528, 157, 491, 177, 454, 157"  {$getMapArea_6_6}>
+
+  <area id="ma_n1" href="" onclick="return renderMap(this,false);" vid="{$stepDirectionsMatrix.1}" coords="422,67,25" shape="circle" title="{#LANGUI_MAP_T6}">
+  <area id="ma_n2" href="" onclick="return renderMap(this,false);" vid="{$stepDirectionsMatrix.2}" coords="427,254,25" shape="circle" title="{#LANGUI_MAP_T7}">
+  <area id="ma_n3" href="" onclick="return renderMap(this,false);" vid="{$stepDirectionsMatrix.3}" coords="119,255,25" shape="circle" title="{#LANGUI_MAP_T8}">
+  <area id="ma_n4" href="" onclick="return renderMap(this,false);" vid="{$stepDirectionsMatrix.0}" coords="114,63,25" shape="circle" title="{#LANGUI_MAP_T9}">
+</map>
+<img id="map_links" src="{function="add_style('x.gif', ASSETS_DIR)"}" usemap="#map_overlay_large">
+  <a id="map_makelarge" href="" {if="!$data.active_plus_account"} onclick="return showManual(5,0);"{else}onclick="return slm();"{/if}>
+    <img class="ml" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#LANGUI_MAP_T10}" title="{#LANGUI_MAP_T10}">
+  </a>
+<img id="map_navibox" src="{function="add_style('x.gif', ASSETS_DIR)"}" usemap="#map_navibox">
+<map name="map_navibox">
+  <area id="ma_n1p7" href="" onclick="return renderMap(this,false);" vid="{$directionsMatrix.2}" coords="51,15,73,3,95,15,73,27" shape="poly" title="{#LANGUI_MAP_T6}">
+  <area id="ma_n2p7" href="" onclick="return renderMap(this,false);" vid="{$directionsMatrix.0}" coords="51,41,73,29,95,41,73,53" shape="poly" title="{#LANGUI_MAP_T7}">
+  <area id="ma_n3p7" href="" onclick="return renderMap(this,false);" vid="{$directionsMatrix.3}" coords="4,41,26,29,48,41,26,53" shape="poly" title="{#LANGUI_MAP_T8}">
+  <area id="ma_n4p7" href="" onclick="return renderMap(this,false);" vid="{$directionsMatrix.1}" coords="4,15,26,3,48,15,26,27" shape="poly" title="{#LANGUI_MAP_T9}">
+</map>
+
+<div id="map_coords">
+  <form name="map_coords" method="post" action="map" >
+    <span>x </span>
+    <input id="mcx" class="text" name="mxp" value="{$x}" maxlength="4">
+  <span>y </span>
+  <input id="mcy" class="text" name="myp" value="{$y}" maxlength="4">
+  <input type="image" id="btn_ok" class="dynamic_img" value="ok" name="s1" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#text_okdone_lang}">
+</form>
+</div>
+<table cellpadding="1" cellspacing="1" id="map_infobox" class="default">
+  <thead>
+    <tr>
+      <th colspan="2" id="mbx_1">{#LANGUI_MAP_T2}:</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>{#LANGUI_MAP_T11}:</th>
+      <td id="mbx_11">-</td>
+    </tr>
+    <tr>
+      <th>{#LANGUI_MAP_T12}:</th>
+      <td id="mbx_12">-</td>
+    </tr>
+    <tr>
+      <th>{#LANGUI_MAP_T13}:</th>
+      <td id="mbx_13">-</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<div class="cropfinder_icon">
+	<a href="cropfinder"{if="!$data.active_plus_account"} onclick="return showManual(5,0);"{/if}>
+        <img title="{#LANGUI_MAP_T15}" alt="{#LANGUI_MAP_T15}" src="{function="add_style('x.gif', ASSETS_DIR)"}" class="cropfinder_icon">
+	</a>
+</div>
+  <script type="text/javascript"><!--
+  {$getClientScript}
+  // -->
+  </script>

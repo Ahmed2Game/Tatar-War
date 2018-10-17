@@ -1,0 +1,322 @@
+{if="$page == 'edit'"}
+<!-- BEGIN Main Content -->
+<div class="row-fluid">
+    <div class="span12">
+        <div class="box">
+        {if="isset($sc)"}
+            <div class="alert alert-success">
+                <button class="close" data-dismiss="alert">&times;</button>
+                <strong>تم تعديل بيانات القرية بنجاح</strong>
+            </div>
+        {/if}
+            <div class="box-title">
+                <h3><i class="icon-reorder"></i>تعديل قرية "{$v.village_name}"</h3>
+                <div class="box-tool">
+                </div>
+            </div>
+            <div class="box-content">
+                <form action="?page=update" class="form-horizontal" method="POST">
+
+                    <div class="control-group">
+                        <label class="control-label" for="username">رقم القرية</label>
+                        <div class="controls">
+                            <div class="span10">
+                                <input type="text" name="id" id="sitetitle" class="input-small" data-rule-required="true" data-rule-number="true" value="{$v.id}" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="username">الاحداثيات X</label>
+                        <div class="controls">
+                            <div class="span10">
+                                <input type="text" name="rel_x" id="sitetitle" class="input-small" data-rule-required="true" data-rule-number="true" value="{$v.rel_x}" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="username">الاحداثيات Y</label>
+                        <div class="controls">
+                            <div class="span10">
+                                <input type="text" name="rel_y" id="sitetitle" class="input-small" data-rule-required="true" data-rule-number="true" value="{$v.rel_y}" />
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="control-group">
+                        <label class="control-label" for="username">رقم القبيلة </label>
+                        <div class="controls">
+                            <div class="span12">
+                                <input type="text" name="tribe_id" id="sitedesc" class="input-large" data-rule-required="true" value="{$v.tribe_id}" />
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="control-group">
+                        <label class="control-label" for="username">رقم اللاعب  </label>
+                        <div class="controls">
+                            <div class="span12">
+                                <input type="text" name="player_id" id="sitemeta" class="input-large" data-rule-required="true"  value="{$v.player_id}" />
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="control-group">
+                        <label class="control-label" for="username">رقم التحالف </label>
+                        <div class="controls">
+                            <div class="span12">
+                                <input type="text" name="alliance_id" id="sitedesc" class="input-large" data-rule-required="true" value="{$v.alliance_id}" />
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="control-group">
+                        <label class="control-label" for="username">اسم اللاعب  </label>
+                        <div class="controls">
+                            <div class="span12">
+                                <input type="text" name="player_name" id="sitedesc" class="input-large" data-rule-required="true" value="{$v.player_name}" />
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="control-group">
+                        <label class="control-label" for="username">اسم القرية</label>
+                        <div class="controls">
+                            <div class="span12">
+                                <input type="text" name="village_name" id="sitedesc" class="input-large" data-rule-required="true" value="{$v.village_name}" />
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="control-group">
+                        <label class="control-label" for="username">اسم التحالف </label>
+                        <div class="controls">
+                            <div class="span12">
+                                <input type="text" name="alliance_name" id="sitedesc" class="input-large" data-rule-required="true" value="{$v.alliance_name}" />
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="control-group">
+                        <label class="control-label">عاصمة ؟</label>
+                       <div class="controls">
+                          <label class="radio inline">
+                              <input type="radio" name="is_capital" value="1" {if="$v.is_capital"}checked{/if} /> نعم
+                          </label>
+                          <label class="radio inline">
+                              <input type="radio" name="is_capital" value="0" {if="!$v.is_capital"}checked{/if} /> لا
+                          </label>
+                       </div>
+                    </div>
+
+
+                  <div class="control-group">
+                        <label class="control-label">معجزة</label>
+                       <div class="controls">
+                          <label class="radio inline">
+                              <input type="radio" name="is_special_village" value="1" {if="$v.is_special_village"}checked{/if} /> نعم
+                          </label>
+                          <label class="radio inline">
+                              <input type="radio" name="is_special_village" value="0" {if="!$v.is_special_village"}checked{/if} /> ﻻ
+                          </label>
+                       </div>
+                    </div>
+
+
+                    <div class="control-group">
+                        <label class="control-label">واحة</label>
+                       <div class="controls">
+                          <label class="radio inline">
+                              <input type="radio" name="is_oasis" value="1" {if="$v.is_oasis"}checked{/if} /> نعم
+                          </label>
+                          <label class="radio inline">
+                              <input type="radio" name="is_oasis" value="0" {if="!$v.is_oasis"}checked{/if} /> ﻻ
+                          </label>
+                       </div>
+                    </div>
+
+
+                    <div class="control-group">
+                        <label class="control-label" for="username">عدد السكان</label>
+                        <div class="controls">
+                            <div class="span12">
+                                <input type="text" name="people_count" id="sitedesc" class="input-large" data-rule-required="true" value="{$v.people_count}" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="username">استهلاك القمح</label>
+                        <div class="controls">
+                            <div class="span12">
+                                <input type="text" name="crop_consumption" id="sitedesc" class="input-large" data-rule-required="true" value="{$v.crop_consumption}" />
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="control-group last">
+                        <label for="textarea5" class="control-label">الموارد</label>
+                        <div class="controls">
+                            <textarea name="resources" id="textarea5" rows="5" class="input-block-level">{$v.resources}</textarea>
+                        </div>
+                    </div>
+
+
+                  <div class="control-group last">
+                      <label for="textarea5" class="control-label">النقاط الحضارية</label>
+                      <div class="controls">
+                          <textarea name="cp" id="textarea5" rows="5" class="input-block-level">{$v.cp}</textarea>
+                      </div>
+                  </div>
+
+
+                  <div class="control-group last">
+                        <label for="textarea5" class="control-label">المبانى</label>
+                        <div class="controls">
+                            <textarea name="buildings" id="textarea5" rows="5" class="input-block-level">{$v.buildings}</textarea>
+                        </div>
+                  </div>
+
+
+                  <div class="control-group last">
+                        <label for="textarea5" class="control-label">القوات</label>
+                        <div class="controls">
+                            <textarea name="troops_num" id="textarea5" rows="5" class="input-block-level">{$v.troops_num}</textarea>
+                        </div>
+                  </div>
+
+
+                    <div class="control-group">
+                        <label class="control-label" for="username">ارقام الواحات المحتلة من القرية </label>
+                        <div class="controls">
+                            <div class="span12">
+                                <input type="text" name="village_oases_id" id="sitedesc" class="input-xlarge" data-rule-required="true" value="{$v.village_oases_id}" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <input type="submit" class="btn btn-primary" value="تعديل">
+                        <button type="button" class="btn">مسح</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END Main Content -->
+{elseif="$page == 'search'"}
+<!-- BEGIN Main Content -->
+<div class="row-fluid">
+    <div class="span12">
+        <div class="box">
+            <div class="box-title">
+                <h3><i class="icon-reorder"></i>البحث عن القرى</h3>
+                <div class="box-tool">
+                </div>
+            </div>
+            <div class="box-content">
+                <form action="?page=search" class="form-horizontal" method="POST">
+
+                    <div class="control-group">
+                        <label class="control-label" for="username">كلمة البحث</label>
+                        <div class="controls">
+                            <div class="span12">
+                                <input type="text" name="searchword" id="sitetitle" class="input-xlarge" data-rule-required="true" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label">نوع البحث</label>
+                       <div class="controls">
+                          <label class="radio inline">
+                              <input type="radio" name="type" value="1" checked /> اسم اللاعب
+                          </label>
+                          <label class="radio inline">
+                              <input type="radio" name="type" value="2" /> عدد الجيش
+                          </label>
+                          <label class="radio inline">
+                              <input type="radio" name="type" value="3" /> الاستهلاك
+                          </label>
+                       </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <input type="submit" class="btn btn-primary" value="بحث">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END Main Content -->
+{if="$_POST && $list"}
+<div class="row-fluid">
+    <div class="span12">
+        <div class="box">
+            <div class="box-title">
+                <h3><i class="icon-table"></i> عرض نتائج البحث</h3>
+                <div class="box-tool">
+                </div>
+            </div>
+            <div class="box-content">
+                <table class="table table-striped table-hover fill-head">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>اسم القرية</th>
+                            {if="post('type') == 2"}
+                            <th>اسم اللاعب</th>
+                            <th>عدد الجيش</th>
+                            {else}
+                            <th>عاصمة ؟</th>
+                            <th>معجزة ؟</th>
+                            {/if}
+                            <th>عدد السكان</th>
+                            <th>الاستهلاك</th>
+                            <th style="width: 150px">اوامر</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {$_c = 0}
+                    {loop="$list"}
+                    {$_c = $_c + 1}
+                        <tr>
+                            <td>{$_c}</td>
+                            <td>
+                                <a href="{$url}village3?id={$value.id}">{$value.village_name}</a>
+                            </td>
+                            {if="post('type') == 2"}
+                            <td>
+                                <a href="{$url}profile?uid={$value.player_id}">{$value.player_name}</a>
+                            </td>
+                            <td>{$value.troop}</td>
+                            {else}
+                            <td>{$value.is_capital}</td>
+                            <td>{$value.is_special_village}</td>
+                            {/if}
+                            <td>{$value.people_count}</td>
+                            <td>{$value.crop_consumption}</td>
+                            <td>
+                                <a class="btn btn-primary btn-small" href="?page=edit&id={$value.id}"><i class="icon-edit"></i> </a>
+                            </td>
+                        </tr>
+                    {/loop}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{/if}
+{/if}

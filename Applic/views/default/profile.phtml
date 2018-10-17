@@ -1,0 +1,660 @@
+{function="load_lang('ui/profile')"}
+<h1>{#LANGUI_PROFILE_T1}</h1>
+<br />
+{if="($fullView)"}
+    <div id="textmenu">
+        <a href="profile" {if="$selectedTabIndex == 0"} class="selected" {/if}>{#LANGUI_PROFILE_T2}</a> |
+        <a href="profile?t=1" {if="$selectedTabIndex == 1"} class="selected" {/if}>{#LANGUI_PROFILE_T3}</a> |
+        <a href="profile?t=2" {if="$selectedTabIndex == 2"} class="selected" {/if}>{#LANGUI_PROFILE_T4}</a> |
+        <a href="profile?t=3" {if="$selectedTabIndex == 3"} class="selected" {/if}>{#LANGUI_PROFILE_T5}</a>
+        {if="($data['player_type'] != PLAYERTYPE_TATAR )"}
+           | <a href="profile?t=4" {if="$selectedTabIndex == 4"} class="selected" {/if}>{#LANGUI_PROFILE_T6}</a>
+        {/if}
+           | <a href="profile?t=5"{if="!$active_plus_account"} onclick="return showManual(5,0);"{/if} {if="$selectedTabIndex == 5"} class="selected" {/if}>{#LANGUI_LNKS_T1}</a>
+        | <a href="profile?t=6" {if="$selectedTabIndex == 6"} class="selected" {/if}>{#LANGUI_PROFILE_T75}</a>
+    </div>
+{/if}
+{if="($selectedTabIndex == 0)"}
+    <script type="text/javascript">
+        function getMouseCoords(e) {
+            var coords = {};
+            if (!e) var e = window.event;
+            if (e.pageX || e.pageY) {
+                coords.x = e.pageX;
+                coords.y = e.pageY;
+            }
+            else if (e.clientX || e.clientY) {
+                coords.x = e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
+                coords.y = e.clientY + document.body.scrollTop + document.documentElement.scrollTop;
+            }
+            return coords;
+        }
+        function med_mouseMoveHandler(e, desc_string) {
+            var coords = getMouseCoords(e);
+            var layer = _("medal_mouseover");
+            layer.style.top = (coords.y + 25) + "px";
+            layer.style.left = (coords.x - 20) + "px";
+            layer.className = "";
+            layer.innerHTML  = desc_string;
+        }
+        function med_closeDescription(){
+            var layer = _("medal_mouseover");
+            layer.className = "hide";
+        }
+        layer = document.createElement("div");
+        layer.id = "medal_mouseover";
+        layer.className = "hide";
+        document.body.appendChild(layer);
+    </script>
+    <table id="profile" cellpadding="1" cellspacing="1">
+        <thead>
+            <tr>
+                <th colspan="2">{#LANGUI_PROFILE_T7} {$profileData.name}
+                    {if="(((isset($profileData['is_blocked']) && $profileData['is_blocked'] == 1 ) or $profileData['blocked_second'] > 0))"}
+                    <font color="#990000">{#LANGUI_PROFILE_T70}</font>
+                    {/if}
+                </th>
+            </tr>
+            <tr>
+                <td>{#LANGUI_PROFILE_T8} :</td>
+                <td>{#LANGUI_PROFILE_T9} :</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="empty"></td>
+                <td class="empty"></td>
+            </tr>
+            <tr>
+                <td class="details">
+                    <table cellpadding="0" cellspacing="0">
+                        <tbody>
+                            <tr>
+                                <th>{#LANGUI_PROFILE_T10} :</th>
+                                <td>{$profileData.rank}</td>
+                            </tr>
+                            <tr>
+                                <th>{#LANGUI_PROFILE_T11} :</th>
+                                <td>{function="constant('tribe_'.$profileData['tribe_id'])"}</td>
+                            </tr>
+                            <tr>
+                                <th>{#LANGUI_PROFILE_T12} :</th>
+                                <td>{if="(0 < intval($profileData['alliance_id']))"}
+                                    <a href="alliance?id={$profileData.alliance_id}">{$profileData.alliance_name}</a>
+                                    {else} - {/if}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>{#LANGUI_PROFILE_T13}</th>
+                                <td>{$villagesCount}</td>
+                            </tr>
+                            <tr>
+                                <th>{#LANGUI_PROFILE_T14} :</th>
+                                <td>{$profileData.total_people_count}</td>
+                            </tr>
+                            {if="(0 < $profileData['age'])"}
+                            <tr>
+                                <th>{#LANGUI_PROFILE_T15} :</th>
+                                <td>{$profileData.age}</td>
+                            </tr>
+                            {/if}
+                            {if="(0 < $profileData['gender'])"}
+                            <tr>
+                                <th>{#LANGUI_PROFILE_T16} :</th>
+                                <td>{if="$profileData['gender'] == 1"} {#LANGUI_PROFILE_T17} {else} {#LANGUI_PROFILE_T18} {/if}</td>
+                            </tr>
+                            {/if}
+
+                            {if="( htmlspecialchars( $profileData['house_name'] ) != '' )"}
+                                <tr>
+                                    <th>{#LANGUI_PROFILE_T19} :</th>
+                                    <td>{$profileData.house_name|htmlspecialchars}</td>
+                                </tr>
+                            {/if}
+
+                            {if="($profileData['tribe_id'] != 5 )"}
+                                <tr>
+                                    <td colspan="2" class="empty"></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        {if="( !$player->isAgent )"}
+                                            {if="( $fullView )"}
+                                                <a href="profile?t=1">{#LANGUI_PROFILE_T20}</a>
+                                            {elseif="$isfriend > 0"}
+                                                <a href="javascript:void(0)" onclick="javascript:jqcc.cometchat.chatWith({$profileData.id});">
+                                                {#LANGUI_PROFILE_T21}
+                                                </a>
+                                            {elseif="$isisend > 0"}
+                                            <a href="friends?t=2&deto={$profileData.id}">
+                                                {#LANGUI_PROFILE_T90}
+                                                </a>
+                                            {elseif="$issend > 0"}
+                                            <a href="friends?t=1&from={$profileData.id}">
+                                                {#LANGUI_PROFILE_T91}
+                                                </a>
+                                            {else}
+                                            <a href="friends?t=2&id={$profileData.id}">
+                                                {#LANGUI_PROFILE_T92}
+                                            </a>
+                                            {/if}
+                                        {/if}
+                                    </td>
+                                </tr>
+                            {/if}
+                            {if="!$fullView"}
+                                <tr>
+                                    <td colspan="2"><a href="profile?block&uid={$profileData.id}">{if="$isblock"}{#LANGUI_PROFILE_T88}{else}{#LANGUI_PROFILE_T87}{/if}</a></td>
+                                </tr>
+                            {/if}
+                            {if="( ($isAdmin || $isHunter) && $player->playerId != $profileData['id'] && $profileData['id'] != 1 )"}
+                                <tr>
+                                    <td colspan="2">
+                                        <form action="profile?spy&uid={$profileData.id}" method="POST">
+                                            <input class="text" type="text" name="spybass" value="" />
+                                        </form>
+                                    </td>
+                                </tr>
+                            {/if}
+
+                            <tr>
+                                <td colspan="2" class="empty"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" class="desc2">
+                                    <div class="desc2div">{$getProfileDescription_2}</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+                <td class="desc1"><div>{$getProfileDescription}</div></td>
+            </tr>
+        </tbody>
+    </table>
+    <table cellpadding="1" cellspacing="1" id="villages">
+        <thead>
+            <tr>
+                <th colspan="5">{#LANGUI_PROFILE_T13}</th>
+            </tr>
+            <tr>
+                <td>{#LANGUI_PROFILE_T23}</td>
+                <td>{#LANGUI_PROFILE_T73}</td>
+                <td>{#LANGUI_PROFILE_T74}</td>
+                <td>{#LANGUI_PROFILE_T14}</td>
+                <td>{#LANGUI_PROFILE_T24}</td>
+            </tr>
+        </thead>
+    <tbody>
+    {loop="$villages"}
+        <tr>
+        <td class="nam">
+            <a href="village3?id={$value.id}">{$value.village_name}</a>
+            {if="( $value['is_capital'] )"}
+            <span class="none3">({#LANGUI_PROFILE_T25})</span>
+            {/if}
+        </td>
+        <td>
+            <a href="build?bid=17&vid2={$value.id}">
+                <img src="{function="add_style('6.gif', ASSETS_DIR.'/default/img/r/')"}">
+            </a>
+        </td>
+        <td>
+            <a href="v2v?id={$value.id}"><img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="att_all"></a>
+        </td>
+        <td class="hab">{$value.people_count}</td>
+        <td class="aligned_coords">
+            <div class="cox">({$value.rel_x}</div>
+            <div class="pi">|</div>
+            <div class="coy">{$value.rel_y})</div>
+        </td>
+        </tr>
+    {/loop}
+    </tbody>
+    </table>
+{elseif="( $selectedTabIndex == 1 )"}
+    <form action="profile?t=1" enctype="multipart/form-data" method="POST">
+    <input type="hidden" name="e" value="1" />
+    <table cellpadding="1" cellspacing="1" id="edit" class="vip">
+    <thead>
+    <tr>
+    <th colspan="3">
+        {#LANGUI_PROFILE_T7}
+        {$profileData.name}
+    </th>
+    </tr>
+    <tr>
+    <td colspan="2">
+    {#LANGUI_PROFILE_T8} :
+    </td>
+    <td>
+    {#LANGUI_PROFILE_T9} :
+    </td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td colspan="2" class="empty"></td>
+    <td class="empty"></td>
+    </tr>
+    <tr>
+    <th>{#LANGUI_PROFILE_T26} :</th>
+    <td class="birth">
+    <input tabindex="3" type="text" name="jahr" value="{if="( 0 < $birthDate['year'] )"}{$birthDate.year}{/if}" maxlength="4" class="text year">
+    <select tabindex="2" name="monat" size="0" class="dropdown">
+        <option value="0"></option>
+        <option value="1" {if="( $birthDate['month'] == 1 )"}selected="selected"{/if} >{#LANGUI_PROFILE_T27}</option>
+        <option value="2" {if="( $birthDate['month'] == 2 )"} selected="selected"{/if} >{#LANGUI_PROFILE_T28}</option>
+        <option value="3" {if="( $birthDate['month'] == 3 )"} selected="selected"{/if} >{#LANGUI_PROFILE_T29}</option>
+        <option value="4" {if="( $birthDate['month'] == 4 )"} selected="selected"{/if} >{#LANGUI_PROFILE_T30}</option>
+        <option value="5" {if="( $birthDate['month'] == 5 )"} selected="selected"{/if} >{#LANGUI_PROFILE_T31}</option>
+        <option value="6" {if="( $birthDate['month'] == 6 )"} selected="selected"{/if} >{#LANGUI_PROFILE_T32}</option>
+        <option value="7" {if="( $birthDate['month'] == 7 )"} selected="selected"{/if} >{#LANGUI_PROFILE_T33}</option>
+        <option value="8" {if="( $birthDate['month'] == 8 )"} selected="selected"{/if} >{#LANGUI_PROFILE_T34}</option>
+        <option value="9" {if="( $birthDate['month'] == 9 )"} selected="selected"{/if} >{#LANGUI_PROFILE_T35}</option>
+        <option value="10" {if="( $birthDate['month'] == 10 )"} selected="selected"{/if} >{#LANGUI_PROFILE_T36}</option>
+        <option value="11" {if="( $birthDate['month'] == 11 )"} selected="selected"{/if} >{#LANGUI_PROFILE_T37}</option>
+        <option value="12" {if="( $birthDate['month'] == 12 )"} selected="selected"{/if} >{#LANGUI_PROFILE_T38}</option>
+    </select>
+    <input tabindex="1" class="text day" type="text" name="tag" value="{if="( 0 < $birthDate['day'] )"}{$birthDate.day}{/if}" maxlength="2">
+    </td>
+    <td rowspan="8" class="desc1">
+        <textarea tabindex="7" name="be1">{$profileData.description1}</textarea>
+    </td>
+    </tr>
+    <tr>
+    <th>
+    {#LANGUI_PROFILE_T16} :
+    </th>
+    <td class="gend">
+    <label>
+        <input class="radio" type="radio" name="mw" value="0" {if="( $profileData['gender'] == 0 )"}checked="" tabindex="4"{/if}>
+        {#LANGUI_PROFILE_T39}
+    </label>
+    <label>
+        <input class="radio" type="radio" name="mw" value="1" {if="( $profileData['gender'] == 1 )"}checked="" tabindex="4"{/if} >
+    {#LANGUI_PROFILE_T40}
+    </label>
+    <label>
+        <input class="radio" type="radio" name="mw" value="2" {if="( $profileData['gender'] == 2 )"}checked="" tabindex="4"{/if} >
+    {#LANGUI_PROFILE_T41}
+    </label>
+    </td>
+    </tr>
+    <tr>
+    <th>
+    {#LANGUI_PROFILE_T19} :
+    </th>
+    <td>
+        <input tabindex="5" type="text" name="ort" value="{function="htmlspecialchars($profileData['house_name'] )"}" maxlength="30" class="text" />
+    </td>
+    </tr>
+    <tr>
+    <td colspan="2" class="empty"></td>
+    </tr>
+    <tr>
+    <th> {#LANGUI_PROFILE_T42} : </th>
+    <td>
+        <input tabindex="6" type="text" name="dname" value="{function="htmlspecialchars($profileData['village_name'] )"}" maxlength="20" class="text" />
+    </td>
+    </tr>
+    <tr>
+    <td colspan="2" class="empty"></td>
+    </tr>
+    <tr>
+    <td colspan="2" class="desc2"><textarea tabindex="8" name="be2">{$profileData.description2}</textarea></td>
+    </tr>
+    </tbody>
+    </table>
+    <table cellpadding="1" cellspacing="1" id="medals">
+    <thead>
+    <tr>
+    <th colspan="5">{#LANGUI_PROFILE_T43}</th>
+    </tr>
+    <tr>
+    <td>{#LANGUI_PROFILE_T44}</td>
+    <td>{#LANGUI_PROFILE_T45}</td>
+    <td>{#LANGUI_PROFILE_T46}</td>
+    <td>{#profile_medal_txt_points}</td>
+    <td>{#LANGUI_PROFILE_T47}</td>
+    </tr>
+    </thead>
+    <tbody>
+        {loop="$medals"}
+            <tr>
+                <td class="typ">{$value.textIndex}</td>
+                <td class="ra">{$value.rank}</td>
+                <td class="we">{$value.week}</td>
+                <td class="we">{$value.points}</td>
+                <td class="bb">[#{$value.bb}]</td>
+            </tr>
+        {/loop}
+    </tbody>
+    </table>
+    {if="$_POST && $errorTable != NULL"}
+        <p class="error">
+        {$errorTable}
+        </p>
+    {/if}
+    <p class="btn">
+        <input type="image" value="" tabindex="9" name="s1" id="btn_ok" class="dynamic_img" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#text_okdone_lang}">
+    </p>
+    </form>
+{elseif="( $selectedTabIndex == 2 )"}
+    <form action="profile?t=2" method="POST">
+    <input type="hidden" name="e" value="2">
+    <table cellpadding="1" cellspacing="1" id="change_mail" class="account">
+    <thead>
+    <tr>
+    <th colspan="2">{#LANGUI_PROFILE_T48}</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td class="note" colspan="2">{#LANGUI_PROFILE_T49}</td>
+    </tr>
+    <tr>
+    <th>{#LANGUI_PROFILE_T50} :</th>
+    <td><input class="text" type="password" name="pw1" maxlength="20"></td>
+    </tr>
+    <tr>
+    <th>{#LANGUI_PROFILE_T51} :</th>
+    <td>
+        <input class="text" type="password" name="pw2" maxlength="20"></td>
+    </tr>
+    <tr>
+    <th>{#LANGUI_PROFILE_T51} :</th>
+    <td>
+        <input class="text" type="password" name="pw3" maxlength="20">
+    </td>
+    </tr>
+    </tbody>
+    </table>
+    {if="$_POST && $errorTable != NULL"}
+        <p class="error">
+        {$errorTable}
+        </p>
+    {/if}
+    <table cellpadding="1" cellspacing="1" id="change_mail" class="account">
+    <thead>
+    <tr>
+    <th colspan="2">{#LANGUI_PROFILE_T52}</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td class="note" colspan="2">{#LANGUI_PROFILE_T53}</td>
+    </tr>
+    <tr>
+    <th>
+    {#LANGUI_PROFILE_T54} :
+    </th>
+    <td>
+    <input class="text" type="text" name="email_alt" maxlength="50"></td>
+    </tr>
+    <tr>
+    <th>
+    {#LANGUI_PROFILE_T55} :
+    </th>
+    <td>
+    <input class="text" type="text" name="email_neu" maxlength="50"></td>
+    </tr>
+    </tbody>
+    </table>
+    {if="$_POST && $erroremail != NULL"}
+        <p class="error">
+        {$erroremail}
+        </p>
+    {/if}
+    <p class="btn">
+        <input type="image" value="" name="s1" id="btn_save" class="dynamic_img" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#text_save_lang}">
+    </p>
+    </form>
+{elseif="( $selectedTabIndex == 3 )"}
+    {if="( $errorText != '' )"}
+        <p class="f10 e">{$errorText}</p>
+    {/if}
+    <form action="profile?t=3" method="POST">
+    <input type="hidden" name="e" value="3">
+    <table cellpadding="1" cellspacing="1" id="sitter" class="account">
+    <thead>
+    <tr>
+    <th colspan="2">{#LANGUI_PROFILE_T56}</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td class="note" colspan="2">{#LANGUI_PROFILE_T57}</td>
+    </tr>
+    <tr>
+    <th>
+    {#LANGUI_PROFILE_T58} :
+    </th>
+    <td>
+    <input class="text" type="text" name="v1" maxlength="15" {if="( 2 <= sizeof( $myAgentPlayers ) )"}disabled=""{/if}>
+    <span class="{if=" 2 <= sizeof( $myAgentPlayers )"}  max {else} count {/if}">({function="sizeof( $myAgentPlayers )"}/2)</span>
+    </td>
+    </tr>
+    <tr>
+    <td colspan="2" class="sitter">
+    {if="( sizeof( $myAgentPlayers ) == 0 )"}
+        <span class="none">{#LANGUI_PROFILE_T59}</span>
+    {else}
+        {loop="$myAgentPlayers"}
+            <div>
+                <a href="profile?t=3&aid={$key}">
+                    <img class="del" src="{function="add_style('x.gif', ASSETS_DIR)"}" title="{#LANGUI_PROFILE_T60}" alt="{#LANGUI_PROFILE_T60}">
+                </a>
+                <a href="profile?uid={$key}">{$value}</a>
+            </div>
+        {/loop}
+    {/if}
+    </td>
+    </tr>
+    <tr>
+    <td class="note" colspan="2">{#LANGUI_PROFILE_T61}</td>
+    </tr>
+    <tr>
+    <td colspan="2" class="sitter">
+    {if="( sizeof( $agentForPlayers ) == 0 )"}
+        <span class="none">{#LANGUI_PROFILE_T62}</span>
+    {else}
+        {loop="$agentForPlayers"}
+            <div>
+                <a href="profile?t=3&afid={$key}">
+                    <img class="del" src="{function="add_style('x.gif', ASSETS_DIR)"}" title="{#LANGUI_PROFILE_T63}" alt="{#LANGUI_PROFILE_T63}">
+                </a>
+                <a href="profile?uid={$key}">{$value}</a>
+            </div>
+        {/loop}
+    {/if}
+    </td>
+    </tr>
+    </tbody>
+    </table>
+    {if="( sizeof( $myAgentPlayers ) < 2 )"}
+        <p class="btn">
+            <input type="image" value="" name="s1" id="btn_save" class="dynamic_img" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#text_save_lang}">
+        </p>
+    {/if}
+    </form>
+
+{elseif="( $selectedTabIndex == 4 )"}
+    <form action="profile?t=4" method="POST">
+    <input type="hidden" name="e" value="4">
+    <table cellpadding="1" cellspacing="1" id="del_acc" class="account">
+    <thead>
+    <tr>
+        <th colspan="2">{#LANGUI_PROFILE_T6}</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td class="note" colspan="2">{#LANGUI_PROFILE_T64}</td>
+    </tr>
+    {if="( $isPlayerInDeletionProgress )"}
+    <tr>
+    <td colspan="2" class="count">
+        {if="( $canCancelPlayerDeletionProcess )"}
+        <a href="profile?t=4&qid={$getPlayerDeletionId}">
+            <img class="del" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#LANGUI_PROFILE_T65}" title="{#LANGUI_PROFILE_T65}">
+        </a>
+        {/if}
+        {#LANGUI_PROFILE_T66}
+        <span id="timer1">{$getPlayerDeletionTime}</span>
+        {#time_hour_lang}
+    </td>
+    </tr>
+    {else}
+    <tr>
+    <th>{#LANGUI_PROFILE_T6}</th>
+    <td class="del_selection">
+    <label>
+        <input class="radio" type="radio" name="del" value="1">{#LANGUI_PROFILE_T67}</label>
+    <label>
+        <input class="radio" type="radio" name="del" value="0" checked="">{#LANGUI_PROFILE_T68}</label>
+    </td>
+    </tr>
+    <tr>
+        <th>{#LANGUI_PROFILE_T69}:</th>
+        <td><input class="text" type="password" name="del_pw" maxlength="20"></td>
+    </tr>
+    {/if}
+    </tbody>
+    </table>
+        {if="$_POST && $erroremail != NULL"}
+        <p class="error">
+        {$erroremail}
+        </p>
+    {/if}
+    {if="( !$isPlayerInDeletionProgress)"}
+    <p class="btn">
+        <input type="image" value="" name="s1" id="btn_save" class="dynamic_img" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#text_save_lang}">
+    </p>
+    {/if}
+    </form>
+{elseif="$selectedTabIndex == 5"}
+<form action="profile?t=5" method="POST">
+  <input type="hidden" name="e" value="5">
+  <table cellpadding="1" cellspacing="1" id="links">
+    <thead>
+      <tr>
+        <th>
+          <a href="#" onclick="return showManual(5,6);">
+            <img class="help" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#text_helptip_lang}" title="{#text_helptip_lang}">
+          </a>
+        </th>
+        <th colspan="2">{#LANGUI_LNKS_T1}</th>
+      </tr>
+      <tr>
+        <td>{#LANGUI_LNKS_T2}</td>
+        <td>{#LANGUI_LNKS_T3}</td>
+        <td>{#LANGUI_LNKS_T4}</td>
+      </tr>
+    </thead>
+    <tbody>
+    {$_c = 1}
+    {loop="$playerLinks"}
+      <tr>
+        <td class="nr">
+          <input class="text" type="text" name="nr[]" value="{$_c++}" size="1" maxlength="3"></td>
+        <td class="nam">
+          <input class="text" type="text" name="linkname[]" value="{$value.linkName|htmlspecialchars}" maxlength="30">
+        </td>
+        <td class="link">
+          <input class="text" type="text" name="linkurl[]" value="{$value.linkHref|htmlspecialchars}{if="!$value.linkSelfTarget"}*{/if}" maxlength="255">
+        </td>
+      </tr>
+      {/loop}
+      <tr>
+        <td class="nr">
+          <input class="text" type="text" name="nr[]" value="{$_c}" size="1" maxlength="3">
+        </td>
+        <td class="nam">
+          <input class="text" type="text" name="linkname[]" value="" maxlength="30"></td>
+        <td class="link">
+          <input class="text" type="text" name="linkurl[]" value="" maxlength="255"></td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="btn">
+    <input type="image" value="" name="s1" id="btn_ok" class="dynamic_img" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#text_okdone_lang}">
+  </p>
+</form>
+{elseif="$selectedTabIndex == 6"}
+<form action="profile?t=6" method="POST">
+    <input type="hidden" name="e" value="6">
+    <input type="hidden" name="protection" value="1">
+    <table cellpadding="1" cellspacing="1" id="change_mail" class="account">
+        <thead>
+            <tr>
+                <th colspan="2">{#LANGUI_PROFILE_T76}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="note" colspan="2">{#LANGUI_PROFILE_T77}</td>
+            </tr>
+            {if="$ProtectionStatus==1"}
+            <tr>
+                <th>{#LANGUI_PROFILE_T78}:</th>
+                <td>
+                    <p class="btn">
+                        <input type="image" value="1" name="protection" id="btn_ok" class="dynamic_img" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#text_okdone_lang}">
+                    </p>
+                </td>
+            </tr>
+            {elseif="$ProtectionStatus==2"}
+            <tr>
+                <th>{#LANGUI_PROFILE_T79}:</th>
+                <td><span id="timer1">{$timer}</span></td>
+            </tr>
+            {else}
+            <tr>
+                <td class="note" colspan="2">{#LANGUI_PROFILE_T80}</td>
+            </tr>
+            {/if}
+        </tbody>
+    </table>
+</form>
+<!--<form action="profile?t=6" method="POST">
+    <input type="hidden" name="e" value="6">
+    <table cellpadding="1" cellspacing="1" id="change_mail" class="account">
+        <thead>
+            <tr>
+                <th colspan="2">{#LANGUI_PROFILE_T81}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="note" colspan="2">{#LANGUI_PROFILE_T82}</td>
+            </tr>
+            {if="$holidayActiv==FALSE"}
+            <tr>
+                <th>{if="$holidayEnd==TRUE"}{#LANGUI_PROFILE_T83}:{else}{#LANGUI_PROFILE_T84}:{/if}</th>
+                <td>
+                {if="$holidayEnd==TRUE"}
+                    <span id="timer1">{$holidayback}</span>
+                {else}
+                    <p class="btn">
+                        <input type="hidden" name="holiday" value="1">
+                        <input type="image" value="1" name="holiday" id="btn_ok" class="dynamic_img" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#text_okdone_lang}">
+                    </p>
+                {/if}
+                </td>
+            </tr>
+            {else}
+            <tr>
+                <th>{if="$holidayEnd==TRUE"}{#LANGUI_PROFILE_T85}(<span id="timer1">{$holidayback}</span>){#LANGUI_PROFILE_T86}:{else}{#LANGUI_PROFILE_T89}:{/if}</th>
+                <td>
+                    <p class="btn">
+                        <input type="hidden" name="holiday" value="2">
+                        <input type="image" value="2" name="holiday" id="btn_ok" class="dynamic_img" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#text_okdone_lang}">
+                    </p>
+                </td>
+            </tr>
+            {/if}
+        </tbody>
+    </table>
+</form>-->
+{/if}

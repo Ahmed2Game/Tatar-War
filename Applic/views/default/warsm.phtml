@@ -1,0 +1,337 @@
+{function="load_lang('ui/warsm')"}
+  <h1>{#LANGUI_WARSN_T1}</h1>
+  <form action="warsm" method="post">
+  {if="($showWarResult)"}
+      <table class="results attacker" cellpadding="1" cellspacing="1">
+        <thead>
+          <tr>
+            <td class="role">{#LANGUI_WARSN_T2}</td>
+            {loop="$warResult['attackTroops']['troops']"}
+              <td>
+                <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="unit u{$key}" title="{function="constant('troop_' . $key)"}" alt="{function="constant('troop_' . $key)"}">
+              </td>
+            {/loop}
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>{#LANGUI_WARSN_T3}</th>
+            {loop="$warResult['attackTroops']['troops']"}
+                {$num = $value['number']}
+                {if="($num <= 0)"}
+                    <td class="none">0</td>
+                {else}
+                    <td>
+                        {$num}
+                    </td>
+                {/if}
+            {/loop}
+          </tr>
+          <tr>
+            <th>{#LANGUI_WARSN_T4}</th>
+            {loop="$warResult['attackTroops']['troops']"}
+              {$num = $value['number'] - $value['live_number']}
+
+                {if="($num <= 0)"}
+                    <td class="none">0</td>
+                {else}
+                    <td>
+                    {$num}
+                    </td>
+                {/if}
+            {/loop}
+          </tr>
+        </tbody>
+      </table>
+
+      {loop="$warResult['defenseTroops']"}
+          <table class="results defender" cellpadding="1" cellspacing="1">
+            <thead>
+              <tr>
+                <td class="role">{#LANGUI_WARSN_T5}</td>
+                {loop="$value['troops']"}
+                <td>
+                  <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="unit u{$key2}" title="{function="constant('troop_' . $key2)"}" alt="{function="constant('troop_' . $key2)"}">
+                </td>
+              {/loop}
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th>{#LANGUI_WARSN_T3}</th>
+                {loop="$value['troops']"}
+                    {$num = $value2['number']}
+                    {if="($num <= 0)"}
+                        <td class="none">0</td>
+                    {else}
+                        <td>
+                            {$num}
+                        </td>
+                    {/if}
+                {/loop}
+                </tr>
+                <tr>
+                  <th>{#LANGUI_WARSN_T4}</th>
+                  {loop="$value['troops']"}
+                    {$num = $value2['number'] - $value2['live_number']}
+                      {if="($num <= 0)"}
+                          <td class="none">0</td>
+                      {else}
+                          <td>
+                          {$num}
+                          </td>
+                      {/if}
+                  {/loop}
+                </tr>
+              </tbody>
+            </table>
+      {/loop}
+  {/if}
+
+
+  {if="($showTroopsTable)"}
+      <p> {#LANGUI_WARSN_T6}: <b>
+
+      {if="intval($_POST['ktyp']) == 1"}{#LANGUI_WARSN_T7}{else}{#LANGUI_WARSN_T8}{/if}
+      </b></p>
+      <table id="attacker" class="fill_in" cellpadding="1" cellspacing="1">
+        <thead>
+          <tr>
+            <th>{#LANGUI_WARSN_T2}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>{function="constant('tribe_'.$_POST['a1'])"}</th>
+          </tr>
+          <tr>
+            <td class="details">
+              <table cellpadding="1" cellspacing="1">
+                <tbody>
+                  {$tribeId = intval($_POST['a1'])}
+                  {loop="$troops"}
+                    <tr>
+                        <td class="ico">
+                          <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="unit u{$key}" title="{function="constant('troop_' . $key)"}" alt="{function="constant('troop_' . $key)"}">
+                        </td>
+                        <td class="desc">
+                          {function="constant('troop_' . $key)"}
+                        </td>
+                        <td class="value">
+                          <input class="text" type="text" name="t1[{$tribeId}][{$key}]" value="{if="(isset($_POST['t1'], $_POST['t1'][$tribeId]) && isset($_POST['t1'][$tribeId][$key]) && 0 < intval($_POST['t1'][$tribeId][$key]))"}{function="intval($_POST['t1'][$tribeId][$key])"}{/if}" maxlength="10" title="{#LANGUI_WARSN_T9}{function="constant('troop_' . $key)"}">
+                        </td>
+                        <td class="research">
+                          {if="($tribeId != 4 && $counter1 <= 7)"}
+                              <input class="text" type="text" name="f1[{$tribeId}][{$key}]" value="{if="(isset($_POST['f1'], $_POST['f1'][$tribeId]) && isset($_POST['f1'][$tribeId][$key]) && 0 < intval($_POST['f1'][$tribeId][$key]))"}{function="intval($_POST['f1'][$tribeId][$key])"}{/if}" maxlength="2" title="{#LANGUI_WARSN_T10}{function="constant('troop_' . $key)"}">
+                          {/if}
+                          </td>
+                    </tr>
+                  {/loop}
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+      <tbody>
+        <tr>
+          <th>{#LANGUI_WARSN_T11}</th>
+        </tr>
+        <tr>
+          <td class="details">
+            <table cellpadding="1" cellspacing="1">
+              <tbody>
+                <tr>
+                  <td class="ico">
+                    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="unit uhab" alt="{#LANGUI_WARSN_T12}" title="{#LANGUI_WARSN_T12}">
+                  </td>
+                  <td class="desc">{#LANGUI_WARSN_T12}</td>
+                  <td class="value"><input class="text" type="text" name="ew1" value="{if="(isset($_POST['ew1']) && 0 < intval($_POST['ew1']))"}{function="intval($_POST['ew1'])"}{/if}" maxlength="5" title="{#LANGUI_WARSN_T13}">
+                  </td>
+                  <td class="research"></td>
+                </tr>
+                <tr>
+                  <td class="ico">
+                    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="unit uhero" title="{#troop_hero}" alt="{#troop_hero}">
+                  </td>
+                  <td class="desc">{#troop_hero} ( {#level_lang2} {#troop_hero})</td>
+                  <td class="value">
+                    <input class="text" type="text" name="h_off_bonus1" value="{if="(isset($_POST['h_off_bonus1']) && 0 < intval($_POST['h_off_bonus1']))"}{function="intval($_POST['h_off_bonus1'])"}{/if}" maxlength="4" title="{#troop_hero}( {#level_lang2} {#troop_hero})">
+                  </td>
+                  <td class="research"></td>
+                </tr>
+
+                {if="$for_tribe_id_exists"}
+                    <tr>
+                      <td class="ico">
+                        <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="unit ucata" alt="{#LANGUI_WARSN_T14}" title="{#LANGUI_WARSN_T14}">
+                      </td>
+                      <td class="desc">{#LANGUI_WARSN_T14}</td>
+                      <td class="value">
+                        <input class="text" type="text" name="kata" value="{if="(isset($_POST['kata']) && 0 < intval($_POST['kata']))"}{function="intval($_POST['kata'])"}{/if}" maxlength="4" title="{#LANGUI_WARSN_T14}">
+                      </td>
+                      <td class="research"></td>
+                    </tr>
+                {/if}
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table id="defender" class="fill_in" cellpadding="1" cellspacing="1">
+    <thead>
+      <tr>
+        <th>{#LANGUI_WARSN_T5}</th>
+      </tr>
+    </thead>
+      {loop="$_POST['a2']"}
+          <tbody>
+            <tr>
+              <th>{function="constant('tribe_' . $key)"}</th>
+            </tr>
+            <tr>
+              <td class="details">
+                <table cellpadding="1" cellspacing="1">
+                  <tbody>
+                    {loop="$troops_t2"}
+                        {if="$key1 == $key2"}
+                          {loop="$value2"}
+                            <tr>
+                              <td class="ico">
+                                <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="unit u{$key3}" title="{function="constant('troop_' . $key3)"}" alt="{function="constant('troop_' . $key3)"}">
+                              </td>
+                              <td class="desc">{function="constant('troop_' . $key3)"}</td>
+                              <td class="value">
+                                <input class="text" type="text" name="t2[{$key1}][{$key3}]" value="{if="(isset($_POST['t2'], $_POST['t2'][$key1]) && isset($_POST['t2'][$key1][$key3]) && 0 < intval($_POST['t2'][$key1][$key3]))"}{function="intval($_POST['t2'][$key1][$key3])"}{/if}" maxlength="10" title="{#LANGUI_WARSN_T9} {function="constant('troop_' . $key3)"}">
+                             </td>
+                              <td class="research">
+                            {if="($key1 != 4 && $counter2 <= 7)"}
+                              <input class="text" type="text" name="f2[{$key1}][{$key3}]" value="{if="(isset($_POST['f2'], $_POST['f2'][$key1]) && isset($_POST['f2'][$key1][$key3]) && 0 < intval($_POST['f2'][$key1][$key3]))"}{function="intval($_POST['f2'][$key1][$key3])"}{/if}" maxlength="2" title="{#LANGUI_WARSN_T9} {function="constant('troop_' . $key3)"}">
+                            {/if}
+                            </td>
+                          </tr>
+                        {/loop}
+                      {/if}
+                    {/loop}
+                </tbody>
+            </table>
+        </td>
+      </tr>
+  </tbody>
+  {/loop}
+  <tbody>
+    <tr>
+      <th>{#LANGUI_WARSN_T11}</th>
+    </tr>
+    <tr>
+      <td class="details">
+        <table cellpadding="1" cellspacing="1">
+          <tbody>
+            <tr>
+              <td class="ico">
+                <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="unit uhab" alt="{#LANGUI_WARSN_T12}" title="{#LANGUI_WARSN_T12}">
+              </td>
+              <td class="desc">{#LANGUI_WARSN_T12}</td>
+            <td class="value">
+              <input class="text" type="text" name="ew2" value="{if="(isset($_POST['ew2']) && 0 < intval($_POST['ew2']))"}{function="intval($_POST['ew2'])"}{/if}" maxlength="5" title="{#LANGUI_WARSN_T13}">
+            </td>
+            <td class="research"></td>
+          </tr>
+          <tr>
+            <td class="ico">
+              <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="unit uwall" alt="{#LANGUI_WARSN_T16}" title="{#LANGUI_WARSN_T16}">
+            </td>
+            <td class="desc">{#LANGUI_WARSN_T16}</td>
+            <td class="value">
+              <input class="text" type="text" name="wall1" value="{if="(isset($_POST['wall1']) && 0 < intval($_POST['wall1']))"}{function="intval($_POST['wall1'])"}{/if}" maxlength="2" title="{#LANGUI_WARSN_T17}"></td>
+              <td class="research"></td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div class="clear"></div>
+{/if}
+
+  <table id="select" cellpadding="1" cellspacing="1">
+    <thead>
+      <tr>
+        <td>{#LANGUI_WARSN_T2}</td>
+        <td>{#LANGUI_WARSN_T5}</td>
+        <td>{#LANGUI_WARSN_T6}</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <label>
+            <input class="radio" type="radio" name="a1" value="7" {if="!isset($_POST['a1']) || (isset($_POST['a1']) && intval($_POST['a1']) == 7)"}checked="" {/if} >
+            {#tribe_7}
+          </label>
+          <br />
+          <label>
+            <input class="radio" type="radio" name="a1" value="1" {if="(isset($_POST['a1']) && intval($_POST['a1']) == 1)"}checked=""{/if}>
+          {#tribe_1}
+        </label>
+        <br />
+        <label>
+          <input class="radio" type="radio" name="a1" value="2" {if="(isset($_POST['a1']) && intval($_POST['a1']) == 2)"}checked=""{/if}>
+          {#tribe_2}
+        </label>
+        <br />
+        <label>
+          <input class="radio" type="radio" name="a1" value="3" {if="(isset($_POST['a1']) && intval($_POST['a1']) == 3)"} checked="" {/if} >
+          {#tribe_3}
+        </label>
+      </td>
+      <td>
+         <label>
+          <input class="check" type="checkbox" name="a2[7]" value="1" {if="!isset($_POST['a2']) || (isset($_POST['a2'], $_POST['a2'][7]))"}checked=""{/if} >
+          {#tribe_7}
+        </label>
+         <br />
+         <label>
+          <input class="check" type="checkbox" name="a2[1]" value="1"{if="(isset($_POST['a2'], $_POST['a2'][1]))"} checked="" {/if} >
+          {#tribe_1}
+        </label>
+        <br />
+        <label><input class="check" type="checkbox" name="a2[2]" value="1" {if="(isset($_POST['a2'], $_POST['a2'][2]))"}checked=""{/if} >
+        {#tribe_2}
+      </label>
+      <br />
+      <label>
+        <input class="check" type="checkbox" name="a2[3]" value="1" {if="(isset($_POST['a2'], $_POST['a2'][3]))"}checked=""{/if} >
+        {#tribe_3}
+      </label>
+      <br />
+      <label>
+        <input class="check" type="checkbox" name="a2[4]" value="1" {if="(isset($_POST['a2'], $_POST['a2'][4]))"} checked=""{/if}>
+        {#tribe_4}
+      </label>
+    </td>
+    <td>
+      <label>
+        <input class="radio" type="radio" name="ktyp" value="1" {if="!isset($_POST['ktyp']) || (isset($_POST['ktyp']) && intval($_POST['ktyp']) == 1)"} checked=""{/if}>
+        {#LANGUI_WARSN_T7}
+      </label>
+      <br />
+      <label>
+        <input class="radio" type="radio" name="ktyp" value="2" {if="(isset($_POST['ktyp']) && intval($_POST['ktyp']) == 2)"}checked=""{/if} >
+        {#LANGUI_WARSN_T8}
+      </label>
+       <br />
+     </td>
+   </tr>
+ </tbody>
+</table>
+<p class="btn">
+  <input type="image" value="ok" name="s1" id="btn_ok" class="dynamic_img" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#text_okdone_lang}"></p>
+  {if="($errorText != '')"}
+      <b><p class="error">
+      {$errorText}
+      </p></b>
+  {/if}
+  </form>

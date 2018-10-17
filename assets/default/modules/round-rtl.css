@@ -1,0 +1,215 @@
+@CHARSET "UTF-8";
+
+/* Panel */
+.panel .l-content {margin: 0 -6px;}
+
+.panel .l-tl, .panel .l-tc, .panel .l-tr,
+.panel .l-bl, .panel .l-bc, .panel .l-br {background-color: transparent; background-position: right top;}
+.panel .l-ml, .panel .l-mc, .panel .l-mr {background-color: transparent; background-position: right bottom;}
+.panel .l-tc, .panel .l-mc, .panel .l-bc {margin-right: 6px; margin-left: 6px; width: auto;}
+
+.panel .l-tl, 
+.panel .l-tc, 
+.panel .l-tr {height: 5px;}
+.panel .l-bl, 
+.panel .l-bc, 
+.panel .l-br {height: 7px;}
+
+.panel .l-tl, 
+.panel .l-tr, 
+.panel .l-ml, 
+.panel .l-mr,
+.panel .l-bl,
+.panel .l-br {background-repeat: no-repeat;}
+
+.panel .l-tc,
+.panel .l-mc,
+.panel .l-bc {background-repeat: repeat-x;}
+	
+.panel .l-tl {background-image: url(../img/rtl/panel-tl.png);}
+.panel .l-tc {background-image: url(../img/rtl/panel-tc.png);}
+.panel .l-tr {background-image: url(../img/rtl/panel-tr.png); background-position: left top;}
+.panel .l-ml {background-image: url(../img/rtl/panel-ml.png);}
+.panel .l-mc {background-image: url(../img/rtl/panel-mc.png);}
+.panel .l-mr {background-image: url(../img/rtl/panel-mr.png); background-position: left bottom;}
+.panel .l-bl {background-image: url(../img/rtl/panel-bl.png);}
+.panel .l-bc {background-image: url(../img/rtl/panel-bc.png);}
+.panel .l-br {background-image: url(../img/rtl/panel-br.png); background-position: left top;}
+
+/* Panel IE6 */
+.ie6 .panel .l-tl {font-size: 0; line-height: 0;}
+
+/* Login Error */
+.error {width: 401px;}
+.error .e-content {margin: 0 -5px;}
+
+.error .e-tl, .error .e-tc, .error .e-tr,
+.error .e-ml, .error .e-mc, .error .e-mr,
+.error .e-bl, .error .e-bc, .error .e-br {background-color: transparent; background-image: none; background-position: right top; background-repeat: no-repeat;}
+.error .e-tc, .error .e-mc, .error .e-bc {margin-right: 5px; margin-left: 5px; width: auto;}
+
+.error .e-tl, 
+.error .e-tc, 
+.error .e-tr {height: 5px;}
+.error .e-bl, 
+.error .e-bc, 
+.error .e-br {height: 10px;}
+
+.error .e-ml, 
+.error .e-mr {background-repeat: repeat-y;}
+	
+.error .e-tl {background-image: url(../img/error-t.png);}
+.error .e-ml {background-image: url(../img/rtl/error-ml.png);}
+.error .e-mc {background-color: #C80808;}
+.error .e-mr {background-image: url(../img/rtl/error-mr.png); background-position: left top;}
+.error .e-bl {background-image: url(../img/error-b.png);}
+
+/* Login Error IE6 */
+.ie6 .error .e-tl {background-image: url(../img/ie6/error-t.gif); font-size: 0; line-height: 0;}
+.ie6 .error .e-bl {background-image: url(../img/ie6/error-b.gif);}
+
+/* Inputs */
+.input input {border: none; background-color: transparent; margin: 0; padding: 0; width: 100%;}
+
+/* Input Text */
+.input .i-tl, .input .i-tc, .input .i-tr,
+.input .i-ml, .input .i-mc, .input .i-mr,
+.input .i-bl, .input .i-bc, .input .i-br {background-color: transparent; background-position: right top;}
+.input .i-tc, .input .i-mc, .input .i-bc {margin-right: 4px; margin-left: 4px; width: auto;}
+
+.input .i-tl, 
+.input .i-tc, 
+.input .i-tr {height: 4px;}
+.input .i-bl, 
+.input .i-bc, 
+.input .i-br {height: 2px;}
+
+.input .i-tl, 
+.input .i-tr, 
+.input .i-bl,
+.input .i-br {background-repeat: no-repeat;}
+
+.input .i-tc,
+.input .i-bc {background-repeat: repeat-x;}
+	
+.input .i-tl {background-image: url(../img/rtl/input-tl.png);}
+.input .i-tc {background-image: url(../img/rtl/input-tc.png);}
+.input .i-tr {background-image: url(../img/rtl/input-tr.png); background-position: left top;}
+.input .i-ml {background-image: url(../img/rtl/input-ml.png); background-repeat: repeat-y;}
+.input .i-mc {background-color: #FFFFFF;}
+.input .i-mr {background-image: url(../img/rtl/input-mr.png); background-position: left bottom; background-repeat: repeat-y;}
+.input .i-bl {background-image: url(../img/rtl/input-bl.png);}
+.input .i-bc {background-image: url(../img/rtl/input-bc.png);}
+.input .i-br {background-image: url(../img/rtl/input-br.png); background-position: left top;}
+
+/* Input Text IE6 */
+.ie6 .input .i-tl {font-size: 0; line-height: 0;}
+
+/* Input Button */
+.input .b-tl, .input .b-tc, .input .b-tr,
+.input .b-ml, .input .b-mc, .input .b-mr,
+.input .b-bl, .input .b-bc, .input .b-br {background-color: transparent; background-position: right top;}
+.input .b-tc, .input .b-mc, .input .b-bc {margin-right: 6px; margin-left: 6px; width: auto;}
+
+.input .b-tl, 
+.input .b-tc, 
+.input .b-tr {height: 5px;}
+.input .b-bl, 
+.input .b-bc, 
+.input .b-br {height: 6px;}
+
+.input .b-tl, 
+.input .b-tr, 
+.input .b-bl,
+.input .b-br {background-repeat: no-repeat;}
+
+.input .b-tc,
+.input .b-bc {background-repeat: repeat-x;}
+	
+.input .b-tl {background-image: url(../img/rtl/button-tl.png);}
+.input .b-tc {background-image: url(../img/rtl/button-tc.png);}
+.input .b-tr {background-image: url(../img/rtl/button-tr.png); background-position: left top;}
+.input .b-ml {background-image: url(../img/rtl/button-ml.png); background-repeat: repeat-y;}
+.input .b-mc {background-color: #F9FCEE;}
+.input .b-mr {background-image: url(../img/rtl/button-mr.png); background-position: left bottom; background-repeat: repeat-y;}
+.input .b-bl {background-image: url(../img/rtl/button-bl.png);}
+.input .b-bc {background-image: url(../img/rtl/button-bc.png);}
+.input .b-br {background-image: url(../img/rtl/button-br.png); background-position: left top;}
+
+/* Input Button Hover */
+.input:hover .b-tl {background-image: url(../img/rtl/button-tl-hover.png);}
+.input:hover .b-tc {background-image: url(../img/rtl/button-tc-hover.png);}
+.input:hover .b-tr {background-image: url(../img/rtl/button-tr-hover.png);}
+.input:hover .b-ml {background-image: url(../img/rtl/button-ml-hover.png);}
+.input:hover .b-mc {background-color: #F1F2DE;}
+.input:hover .b-mr {background-image: url(../img/rtl/button-mr-hover.png);}
+.input:hover .b-bl {background-image: url(../img/rtl/button-bl-hover.png);}
+.input:hover .b-bc {background-image: url(../img/rtl/button-bc-hover.png);}
+.input:hover .b-br {background-image: url(../img/rtl/button-br-hover.png);}
+
+/* Input Button IE6 */
+.ie6 .input .b-tl {font-size: 0; line-height: 0;}
+
+/* IE6 Super Hack*/
+.ie6 .panel {background: transparent url(../img/rtl/ie6/panel.gif) no-repeat right top;}
+.ie6 .panel .l-tl, 
+.ie6 .panel .l-tc,
+.ie6 .panel .l-tr,
+.ie6 .panel .l-ml,
+.ie6 .panel .l-mc,
+.ie6 .panel .l-mr,
+.ie6 .panel .l-bl,
+.ie6 .panel .l-bc,
+.ie6 .panel .l-br,
+.ie6 .input .i-tl,
+.ie6 .input .i-tc,
+.ie6 .input .i-tr,
+.ie6 .input .i-ml,
+.ie6 .input .i-mr,
+.ie6 .input .i-bl,
+.ie6 .input .i-bc,
+.ie6 .input .i-br,
+.ie6 .input .b-tl,
+.ie6 .input .b-tc,
+.ie6 .input .b-tr,
+.ie6 .input .b-ml,
+.ie6 .input .b-mr,
+.ie6 .input .b-bl,
+.ie6 .input .b-bc,
+.ie6 .input .b-br,
+.ie6 .input:hover .b-tl,
+.ie6 .input:hover .b-tc,
+.ie6 .input:hover .b-tr,
+.ie6 .input:hover .b-ml,
+.ie6 .input:hover .b-mc,
+.ie6 .input:hover .b-mr,
+.ie6 .input:hover .b-bl,
+.ie6 .input:hover .b-bc,
+.ie6 .input:hover .b-br {background-image: none;}
+
+.ie6 .panel .l-tl, 
+.ie6 .panel .l-tc,
+.ie6 .panel .l-tr,
+.ie6 .panel .l-ml,
+.ie6 .panel .l-mc,
+.ie6 .panel .l-mr,
+.ie6 .panel .l-bl,
+.ie6 .panel .l-bc,
+.ie6 .panel .l-br,
+.ie6 .input .i-tl,
+.ie6 .input .i-tc,
+.ie6 .input .i-tr,
+.ie6 .input .i-ml,
+.ie6 .input .i-mr,
+.ie6 .input .i-bl,
+.ie6 .input .i-bc,
+.ie6 .input .i-br {margin: 0;}
+
+.ie6 .input .b-tl,
+.ie6 .input .b-tc,
+.ie6 .input .b-tr,
+.ie6 .input .b-ml,
+.ie6 .input .b-mr,
+.ie6 .input .b-bl,
+.ie6 .input .b-bc,
+.ie6 .input .b-br {padding-right: 4px; padding-left: 2px;}

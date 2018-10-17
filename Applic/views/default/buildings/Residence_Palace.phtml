@@ -1,0 +1,275 @@
+{function="load_lang('ui/custbuilds')"}
+<div id="textmenu">
+  <a href="build?id={$buildingIndex}" {if="($selectedTabIndex == 0)"} class="selected" {/if}>
+      {#LANGUI_CUSTBU_RPLC_p1}
+  </a>
+  |
+  <a href="build?id={$buildingIndex}&t=1" {if="($selectedTabIndex == 1)"} class="selected" {/if}>
+      {#LANGUI_CUSTBU_RPLC_p2}
+  </a>
+  |
+  <a href="build?id={$buildingIndex}&t=2" {if="($selectedTabIndex == 2)"} class="selected" {/if}>
+      {#LANGUI_CUSTBU_RPLC_p3}
+  </a>
+  |
+  <a href="build?id={$buildingIndex}&t=3" {if="($selectedTabIndex == 3)"} class="selected" {/if}>
+  {#LANGUI_CUSTBU_RPLC_p4}
+  </a>
+</div>
+
+{if="($selectedTabIndex == 0)"}
+    {if="($showBuildingForm)"}
+<form method="post" name="snd" action="build?id={$buildingIndex}">
+  <table cellpadding="1" cellspacing="1" class="build_details">
+    <thead>
+      <tr>
+        <td>{#LANGUI_CUSTBU_RPLC_p1_t1}</td>
+        <td>{#LANGUI_CUSTBU_RPLC_p1_t2}</td>
+        <td>{#LANGUI_CUSTBU_RPLC_p1_t3}</td>
+      </tr>
+    </thead>
+    <tbody>
+
+      {loop="$troopsUpgrade"}
+      <tr>
+        <td class="desc">
+          <div class="tit">
+            <img class="unit u{$value.tid}" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{function="constant('troop_' . $value.tid)"}" title="{function="constant('troop_' . $value.tid)"}">
+            <a href="#" onclick="return showManual(3,{$value.tid});">{function="constant('troop_' . $value.tid)"}</a>
+            <span class="info">
+              ( {#LANGUI_CUSTBU_RPLC_p1_t4} : {$value.troop} )
+            </span>
+          </div>
+          <div class="details">
+            <img class="r1" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#item_title_1}" title="{#item_title_1}">
+            <span class="little_res">
+              {$value.training_resources_1}
+            </span>
+            |
+            <img class="r2" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#item_title_2}" title="{#item_title_2}">
+            <span class="little_res">
+              {$value.training_resources_2}
+            </span>
+            |
+            <img class="r3" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#item_title_3}" title="{#item_title_3}">
+            <span class="little_res">
+              {$value.training_resources_3}
+            </span>
+            |
+            <img class="r4" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#item_title_4}" title="{#item_title_4}">
+            <span class="little_res">
+              {$value.training_resources_4}
+            </span>
+            |
+            <img class="clock" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#text_period_lang}" title="{#text_period_lang}">
+              {$value.lvlTime|secondstostring}
+              {$value.getResourceGoldExchange}
+          </div>
+        </td>
+        <td class="val">
+          <input type="text" class="text" id="_tf{$value.tid}" name="tf[{$value.tid}]" value="0" maxlength="4"></td>
+        <td class="max">
+          <a href="#" onclick="_('_tf{$value.tid}').value={$value.maxNumber}; return false;">
+            ( {$value.maxNumber} )
+          </a>
+        </td>
+      </tr>
+      {/loop}
+    </tbody>
+  </table>
+  <p>
+    <input type="image" id="btn_train" class="dynamic_img" value="ok" name="s1" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#LANGUI_CUSTBU_RPLC_p1_t5}">
+  </p>
+</form>
+{else}
+  {if="(3 <= $childVillagesCount && $data['is_capital'] || 2 <= $childVillagesCount && !$data['is_capital'])"}
+    <div class="c">
+      {#LANGUI_CUSTBU_RPLC_p1_t6} .
+    </div>
+    {elseif="($childVillagesCount == 1)"}
+
+        {if="$check_build_exists"}
+          <div class="c">
+            {#LANGUI_CUSTBU_RPLC_p1_t7}
+            {if="$data['is_capital']"}15{else}20{/if} .
+          </div>
+          {else}
+          <div class="c">
+            {#LANGUI_CUSTBU_RPLC_p1_t8} .
+          </div>
+          {/if}
+        {else}
+
+        {if="($childVillagesCount == 2 && $data['is_capital'])"}
+          {if="($building_level_20)"}
+        <div class="c">
+          {#LANGUI_CUSTBU_RPLC_p1_t7} 20.
+        </div>
+        {else}
+        <div class="c">
+          {#LANGUI_CUSTBU_RPLC_p1_t8} .
+        </div>
+        {/if}
+        {else}
+        {if="($building_level_10)"}
+        <div class="c">
+          {#LANGUI_CUSTBU_RPLC_p1_t9} .
+        </div>
+        {else}
+        <div class="c">
+          {#LANGUI_CUSTBU_RPLC_p1_t8} .
+        </div>
+        {/if}
+      {/if}
+    {/if}
+  {/if}
+
+    {if="$tasksInQueue_building_upgrade"}
+    <table cellpadding="1" cellspacing="1" class="under_progress">
+      {if="(!$data['is_special_village'] && $gameMetadata['plusTable'][7]['cost'] <= $data['gold_num'])"}
+        <thead>
+          <tr>
+            <th colspan="2">
+              {$costTip = sprintf(LANGUI_CUSTBU_TRP_t15, $gameMetadata['plusTable'][7]['cost'])}
+              {#LANGUI_CUSTBU_TRP_t16} :
+              <a href="?id={$_GET['id']}&bfs=7&k={$data.update_key}" title="{$costTip}">
+                <img class="clock" alt="{$costTip}" src="{function="add_style('x.gif', ASSETS_DIR)"}"></a>
+            </th>
+          </tr>
+        </thead>
+        {/if}
+        <thead>
+          <tr>
+            <td>{#LANGUI_CUSTBU_RPLC_p1_t10}</td>
+            <td>{#text_period_lang}</td>
+          </tr>
+        </thead>
+        <tbody>
+          {loop="$qts"}
+          <tr>
+            <td class="desc">
+              <img class="unit u{$value.tid}" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{function="constant('troop_' . $value.tid)"}" title="{function="constant('troop_' . $value.tid)"}">
+              {$value.threads}
+              {function="constant('troop_' . $value.tid)"}
+            </td>
+            <td class="dur">
+              <span id="timer1">{$value.remainingSeconds}</span>
+            </td>
+          </tr>
+          {/loop}
+          <tr class="next">
+            <td colspan="2">
+              {#LANGUI_CUSTBU_RPLC_p1_t11}
+              <span id="timer1">{$nextTroopTime|secondstostring}</span>
+            </td>
+          </tr>
+        </tbody>
+    </table>
+    {/if}
+
+      {if="$if_building_id_26"}
+          {if="($VillageData['is_capital'])"}
+          <p class="none">{#LANGUI_CUSTBU_RPLC_p1_t12}</p>
+          {elseif="(!$data['is_special_village'])"}
+          <p>
+            <a href="build?id={$buildingIndex}&mc">
+              {#LANGUI_CUSTBU_RPLC_p1_t13}
+            </a>
+          </p>
+          {/if}
+      {/if}
+      {elseif="($selectedTabIndex == 1)"}
+          <p>
+            <p>
+              {#LANGUI_CUSTBU_RPLC_p2_t1} .
+            </p>
+          </p>
+          <table cellpadding="1" cellspacing="1" id="build_value">
+            <tr>
+              <th>
+                {#LANGUI_CUSTBU_RPLC_p2_t2} :
+              </th>
+              <td> <b>{$cpRate}</b>
+                {#LANGUI_CUSTBU_RPLC_p2_t3}
+              </td>
+            </tr>
+            <tr>
+              <th>
+                {#LANGUI_CUSTBU_RPLC_p2_t4} :
+              </th>
+              <td> <b>{$totalCpRate}</b>
+                {#LANGUI_CUSTBU_RPLC_p2_t3}
+              </td>
+            </tr>
+          </table>
+          <p>
+            <p>
+              {#LANGUI_CUSTBU_RPLC_p2_t5}
+              <b>{$totalCpValue}</b>
+              {#LANGUI_CUSTBU_RPLC_p2_t6} .
+              <br/>
+              {#LANGUI_CUSTBU_RPLC_p2_t7}
+              <b>{$neededCpValue}</b>
+              {#LANGUI_CUSTBU_RPLC_p2_t8} .
+            </p>
+          </p>
+          <br/>
+          {elseif="($selectedTabIndex == 2)"}
+          <p>
+            {#LANGUI_CUSTBU_RPLC_p3_t1} .
+            <br/>
+            <br/>
+            {#LANGUI_CUSTBU_RPLC_p3_t2}
+            <b>{$data.allegiance_percent}</b>
+            %.
+          </p>
+          <br/>
+          {elseif="($selectedTabIndex == 3)"}
+          <table cellpadding="1" cellspacing="1" id="expansion">
+            <thead>
+              <tr>
+                <th colspan="4">
+                  <a name="h2"></a>
+                  {#LANGUI_CUSTBU_RPLC_p4_t1}
+                </th>
+              </tr>
+              <tr>
+                <td>{#LANGUI_CUSTBU_RPLC_p4_t2}</td>
+                <td>{#LANGUI_CUSTBU_RPLC_p4_t3}</td>
+                <td>{#LANGUI_CUSTBU_RPLC_p4_t4}</td>
+                <td>{#LANGUI_CUSTBU_RPLC_p4_t5}</td>
+              </tr>
+            </thead>
+            <tbody>
+              {loop="$childVillages"}
+              <tr>
+                <td class="nam">
+                  <a href="village3?id={$value.id}">{$value.village_name}</a>
+                </td>
+                <td class="zp">{$value.people_count}</td>
+                <td class="aligned_coords">
+                  <div class="cox">
+                    ( {$value.rel_x}
+                  </div>
+                  <div class="pi">|</div>
+                  <div class="coy">
+                    {$value.rel_y}
+                    )
+                  </div>
+                </td>
+                <td class="res">{$value.creation_date}</td>
+              </tr>
+              {/loop}
+
+            {if="($counter1 == -1)"}
+              <tr>
+                <td colspan="4" class="none">
+                  {#LANGUI_CUSTBU_RPLC_p4_t6} .
+                </td>
+              </tr>
+              {/if}
+            </tbody>
+          </table>
+          <br />
+          <br />
+          {/if}

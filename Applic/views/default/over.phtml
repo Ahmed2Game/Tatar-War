@@ -1,0 +1,23 @@
+{function="load_lang('ui/over')"}
+  <h2>{#LANGUI_OVER_T1}</h2>
+  <br />
+  <br />
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><img src="{function="add_style('default/img/ww_start.jpg', ASSETS_DIR)"}" border="0" alt="{#LANGUI_OVER_T2}"></td>
+      <td>
+        <p class="custDir">{#LANGUI_OVER_T3}
+        <a href="profile?uid={$playerData.id}">{$playerData.name}</a>
+        <br />
+        {if="(0 < intval($playerData['alliance_id']))"}
+            {#LANGUI_OVER_T4}
+             <a href="alliance?id={$playerData.alliance_id}">{$playerData.alliance_name}</a>
+        {/if}
+        </p>
+      </td>
+    </tr>
+  </table>
+  <br />
+  <br />
+  <br />
+  <p class="f16" align="center"><a href="village1">{#text_gotonext_lang}</a></p>

@@ -1,0 +1,748 @@
+{function="load_lang('ui/index')"}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>{$title}</title>
+    <!-- Bootstrap -->
+    <link href="{function="add_style('bootstrap.min.css', ASSETS_DIR.'indx/css/')"}" rel="stylesheet">
+    <link href="{function="add_style('index-'.$lang.'.css', ASSETS_DIR.'indx/css/')"}" rel="stylesheet">
+    <link href="{function="add_style('bootstrap-social.css', ASSETS_DIR.'indx/css/')"}" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- Magnific Popup core CSS file -->
+    <link href="{function="add_style('magnific-popup.css', ASSETS_DIR.'indx/css/')"}" rel="stylesheet">
+
+<body>
+
+<!--overlay-->
+<div class="overlay"></div>
+
+<!--Header-->
+
+<header role="banner" class="main-header">
+    <div id="navbar-primary" class="navbar" role="navigation">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <a href="index">
+                    <img class="visible-md visible-sm visible-xs" src="{function="add_style('tatar_logo.png', ASSETS_DIR.'indx/images/')"}" />
+
+                </a>
+                <button type="button" class="navbar-toggle open-menu"  data-menu="#navbar-primary-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <nav class="desktop">
+                <div class="navbar-collapse side-collapse">
+                    <a href="#" class="mobile-close-btn mobile-top-btn">
+                        <div class="close-container">
+                            <span>Close</span>
+                        </div>
+                    </a>
+                    <ul class="nav navbar-nav">
+                        <li class="active">
+                        <span class="visible-xs">
+                            <i class="fa fa-eercast" aria-hidden="true"></i>
+                        </span>
+                            <a href="/index">{#LANGUI_INDX_T4}</a>
+                        </li>
+                        <li>
+                        <span class="visible-xs">
+                            <i class="fa fa-eercast" aria-hidden="true"></i>
+                        </span>
+                            <a href="#" data-toggle="modal" data-target="#login">{#PLAY_NOW}</a>
+                        </li>
+                        <li>
+                        <span class="visible-xs">
+                            <i class="fa fa-eercast" aria-hidden="true"></i>
+                        </span>
+                            <a href="/news">{#LANGUI_INDX_T17}</a>
+                        </li>
+                        <li class="has-img">
+                            <a href="index">
+                                <img src="{function="add_style('tatar_logo.png', ASSETS_DIR.'indx/images/')"}" />
+                            </a>
+                        </li>
+                        <li>
+                        <span class="visible-xs">
+                            <i class="fa fa-eercast" aria-hidden="true"></i>
+                        </span>
+                            <a href="#">{#LANGUI_INDX_T19}</a>
+                        </li>
+                        <li>
+                        <span class="visible-xs">
+                            <i class="fa fa-eercast" aria-hidden="true"></i>
+                        </span>
+                            <a href="/contact">{#LANGUI_INDX_T37}</a>
+                        </li>
+                        <li class="dropdown call-manual-box">
+                        <span class="visible-xs">
+                            <i class="fa fa-eercast" aria-hidden="true"></i>
+                        </span>
+                            <!-- <a href="#" class="open-menu" data-menu="#navbar-primary-collapse-manual">Manual</a>-->
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">{if="$lang == 'ar' "}{#LANGUI_INDX_T35}{else}{#LANGUI_INDX_T36}{/if}</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="" onclick="setLang('en')">{#LANGUI_INDX_T35}</a></li>
+                                <li><a href="" onclick="setLang('ar')">{#LANGUI_INDX_T36}</a></li>
+                            </ul>
+                        </li>
+                        <li class="visible-xs">
+                            <a href="#" class="btn btn-small">
+                                <button class="mobile-btn" data-toggle="modal" data-target="#register">
+                                    {#CLICK_HERE}
+                                </button>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </nav>
+            <nav class="mobile">
+                <div class="navbar-collapse side-collapse closed" id="navbar-primary-collapse">
+                    <a href="#" class=" mobile-close-btn mobile-top-btn">
+                        <div class="close-container">
+                            <span>{#LANGUI_INDX_T40}</span>
+                        </div>
+                    </a>
+                    <ul class="nav navbar-nav">
+                        <li class="active">
+                        <span class="">
+                            <i class="fa fa-eercast" aria-hidden="true"></i>
+                        </span>
+                            <a href="/index">{#LANGUI_INDX_T4}</a>
+                        </li>
+                        <li>
+                        <span class="">
+                            <i class="fa fa-eercast" aria-hidden="true"></i>
+                        </span>
+                            <a href="#" data-toggle="modal" data-target="#login">{#PLAY_NOW}</a>
+                        </li>
+                        <li>
+                        <span class="">
+                            <i class="fa fa-eercast" aria-hidden="true"></i>
+                        </span>
+                            <a href="/news">{#LANGUI_INDX_T17}</a>
+                        </li>
+                        <li class="has-img">
+                            <a href="#">
+                                <img src="{function="add_style('tatar_logo.png', ASSETS_DIR.'indx/images/')"}" /></a>
+                        </li>
+                        <li>
+                        <span class="">
+                            <i class="fa fa-eercast" aria-hidden="true"></i>
+                        </span>
+                            <a href="#">{#LANGUI_INDX_T19}</a>
+                        </li>
+                        <li>
+                        <span class="">
+                            <i class="fa fa-eercast" aria-hidden="true"></i>
+                        </span>
+                            <a href="/contact">{#LANGUI_INDX_T37}</a>
+                        </li>
+                         <li class="dropdown call-manual-box">
+                        <span class="">
+                            <i class="fa fa-eercast" aria-hidden="true"></i>
+                        </span>
+                            <a href="#" class="open-menu" data-menu="#navbar-primary-collapse-manual">{if="$lang == 'ar' "}{#LANGUI_INDX_T35}{else}{#LANGUI_INDX_T36}{/if}</a>
+                        </li>
+                        <li class="">
+                            <a href="#" class="btn btn-small">
+                                <button class="mobile-btn" data-toggle="modal" data-target="#register">
+                                    {#CLICK_HERE}
+                                </button>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+                <div class="navbar-collapse side-collapse closed" id="navbar-primary-collapse-manual">
+                    <a href="#" class="mobile-back-btn mobile-top-btn">
+                        <div class="close-container">
+                            <span >{#LANGUI_INDX_T40}</span>
+                        </div>
+
+                    </a>
+                    <ul class="nav navbar-nav">
+                        <li class="active">
+                        <span class="">
+                            <i class="fa fa-eercast" aria-hidden="true"></i>
+                        </span>
+                            <a href="" onclick="setLang('en')">{#LANGUI_INDX_T35}</a>
+                        </li>
+                        <li>
+                        <span class="">
+                            <i class="fa fa-eercast" aria-hidden="true"></i>
+                        </span>
+                            <a href="" onclick="setLang('ar')">{#LANGUI_INDX_T36}</a>
+                        </li>
+                    </ul>
+                </div>
+
+            </nav>
+        </div>
+        <!-- /.container-fluid -->
+    </div>
+</header>
+
+<!--/Header-->
+        {$content}
+<div class="clearfix"></div>
+
+<!--Footer-->
+<footer class="footer">
+    <div class="footerInnerWrapper">
+        <h2>
+            <span>{#LANGUI_INDX_T38}</span>
+        </h2>
+        <a href="#" data-toggle="modal" data-target="#register" class="btn-unic-block">
+            <button id="id" class="button default">
+                <span>{#CLICK_HERE}</span>
+            </button>
+        </a>
+    </div>
+    <nav class="social">
+        <ul>
+            <li>
+                <a href="https://www.facebook.com/TatarWar/" target="_blank">
+                    <img src="{function="add_style('facebook-logo-button.png', ASSETS_DIR.'indx/images/')"}" alt="">
+                    <!-- /react-text --><span><span>{#LANGUI_INDX_T42}</span></span>
+                </a>
+            </li>
+            <li>
+                <a href="#" target="_blank">
+                    <img src="{function="add_style('twitter.png', ASSETS_DIR.'indx/images/')"}" alt="">
+                    <!-- /react-text --><span><span>{#LANGUI_INDX_T43}</span></span>
+                </a>
+            </li>
+            <li>
+                <a href="#" target="_blank">
+                    <img src="{function="add_style('google-plus-logo-button.png', ASSETS_DIR.'indx/images/')"}" alt="">
+                    <!-- /react-text --><span><span>{#LANGUI_INDX_T44}</span></span>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.youtube.com/channel/UCbH1Ra8NQwXIjpEIV6VdVjQ" target="_blank">
+                    <img src="{function="add_style('youtube-logotype.png', ASSETS_DIR.'indx/images/')"}" alt="">
+                    <!-- /react-text --><span><span>{#LANGUI_INDX_T45}</span></span>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.g2a.com/?reflink=user-579208bfbad2b" target="_blank">
+                    <img src="{function="add_style('rules.png', ASSETS_DIR.'indx/images/')"}" height="40"/>
+
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <div class="footerInnerWrapper">
+        <div class="legal">
+            <div class="travianGamesLogo"></div>
+            <div class="rightOfLogo">
+                <nav>
+                    <ul>
+                        <li><a href="terms" target="_blank"><span>{#LANGUI_INDX_T12}</span></a></li>
+                        <li><a href="privacy"><span>{#LANGUI_INDX_T16}</span></a></li>
+                        <li><a href="secret"><span>{#LANGUI_INDX_T19}</span></a></li>
+                        <li><a href="contact"><span>{#LANGUI_INDX_T37}</span></a></li>
+                    </ul>
+                </nav>
+
+                <p>
+                    <span class="reg-address">{#LANGUI_INDX_T41}</span>
+                    <br>
+                    {#LANGUI_INDX_T34}
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+<!--/Footer-->
+
+
+
+
+<div class="clearfix"></div>
+
+<div class="modal fade" id="login" tabindex="-1" role="dialog"  >
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="myModalLabel">{#LANGUI_INDX_T3}</h2>
+            </div>
+            <div class="modal-body">
+                <div class="register">
+                    <a data-toggle="modal" data-target="#register" data-dismiss="modal">{#REGISTER}</a>
+                </div>
+
+                <form id="loginform"  class="validation-form">
+                    <div class="form-group textField username-field">
+                        <input type="text" name="name" class="form-control" id="name">
+                        <span class="form-highlight"></span>
+                        <span class="form-bar"></span>
+                        <label class="float-label" >{#LANGUI_INDX_T1}</label>
+                        <div class="validation">
+                        </div>
+                    </div>
+                    <div class="form-group textField password-field">
+                        <input type="password" name="password" class="form-control " aria-describedby="forgetpass">
+                        <span class="form-highlight"></span>
+                        <span class="form-bar"></span>
+                        <label class="float-label">{#LANGUI_INDX_T2}</label>
+                        <div class="validation">
+                        </div>
+                    </div>
+                    <div class="form-group textField server-field" >
+                        <select  id="selectServer" name="server" class="form-control ">
+                            <option value="">{#CHOOSE_WORLD}</option>
+                            {$_c = 0}
+                            {loop="$servers"}
+                            {$_c = $_c + 1}
+                            <option value="{$key}">{#WORLD} {$key}</option>
+                            {/loop}
+                        </select>
+                        <div class="validation"> </div>
+                        <div id="server-data-content" class="speechBubble-green text-left">
+                            <svg class="arrow" viewBox="-0.5 0 13 24">
+                                <polyline class="arrowBorder" points="12,0 12,2 2,12 12,22 12,24"></polyline>
+                                <polyline class="arrowCover" points="13,2 3,12 13,22"></polyline>
+                            </svg>
+                            <ul id="server-data">
+                            </ul>
+                        </div>
+                    </div>
+
+
+                    <a data-toggle="modal" data-target="#backpass" data-dismiss="modal">{#LANGUI_INDX_T5}</a>
+                    <button id="loginbtn" class="btn default btn-lg btn-block" data-loading-text="Loading...">{#LANGUI_INDX_T7}</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="register"  tabindex="-1" role="dialog"  aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="myModalLabel">{#LANGUI_INDX_T10}</h2>
+            </div>
+            <div class="modal-body">
+                <div class="login">
+
+                    <a data-toggle="modal" data-target="#login" data-dismiss="modal">{#LOGIN}</a>
+
+                </div>
+
+                <form id="registerform"  class="validation-form">
+                    <input class="text" name="server"  type="hidden" value="1" />
+                    <div  class="form-group textField username-field" >
+                            <input type="text" name="name" class="form-control" id="name" >
+                            <span class="form-highlight"></span>
+                            <span class="form-bar"></span>
+                            <label class="float-label">{#LANGUI_INDX_T13}</label>
+                            <div class="validation"> </div>
+                    </div>
+                    <div class="form-group textField email-field">
+                            <input type="text" name="email" class="form-control" id="email" >
+                            <span class="form-highlight"></span>
+                            <span class="form-bar"></span>
+                            <label class="float-label">{#LANGUI_INDX_T14}</label>
+                            <div class="validation"> </div>
+
+                    </div>
+                    <div class="form-group last-child textField password-field">
+                            <input type="password" name="pwd" class="form-control" id="pwd" >
+                            <span class="form-highlight"></span>
+                            <span class="form-bar"></span>
+                            <label class="float-label">{#LANGUI_INDX_T2}</label>
+                            <div class="validation"> </div>
+
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="form-check textField terms-field">
+                        <div class="form-check-label text-left">
+                            <div class="block-terms">
+                                <label for="terms-privacy" class="label-cbx">
+                                    <input id="terms-privacy" type="checkbox" class="form-check-input invisible">
+                                    <div class="checkbox">
+                                        <svg width="20px" height="20px" viewBox="0 0 20 20">
+                                            <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
+                                            <polyline points="4 11 8 15 16 6"></polyline>
+                                        </svg>
+                                    </div>
+                                </label>
+                                <span class="accept-rules">
+                                        {#LANGUI_INDX_T11} <a href="terms" target="_blank">{#LANGUI_INDX_T12}</a> {#LANGUI_AND}  <a href="privacy" target="_blank">{#LANGUI_INDX_T16}</a>.
+                                    </span>
+                            </div>
+                        </div>
+                        <div class="speechBubble text-left hidden">
+                            <svg class="arrow" viewBox="-0.5 0 13 24">
+                                <polyline class="arrowBorder" points="12,0 12,2 2,12 12,22 12,24"></polyline>
+                                <polyline class="arrowCover" points="13,2 3,12 13,22"></polyline>
+                            </svg>
+                            <span>{#LANGUI_INDX_T39}</span>
+                        </div>
+
+                    </div>
+                    <button id="registerbtn" type="submit" data-loading-text="Loading..." class="btn default btn-lg btn-block" >{#LANGUI_INDX_T15}</button>
+                </form>
+                <div id="registerSuccess" class="alert alert-success" role="alert">{#LANGUI_REG_T18} <span id="ruser"></span><br><br>{#LANGUI_REG_T19} :<span id="remail"></span></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="loginmodel"  role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">{#LANGUI_INDX_T8}</h4>
+            </div>
+            <div class="modal-body">
+                <form id="loginform2" >
+                    <input class="text" id="dr" name="dr"  type="hidden" value="" />
+                    <input class="text" id="server" name="server"  type="hidden" value="" />
+                    <div class="form-group">
+                        <label for="tid">{#LANGUI_REG_T9}</label>
+                        <select name="tid" id="tid" class="form-control rtl">
+                            <option value="7">{#tribe_7}</option>
+                            <option value="2">{#tribe_2}</option>
+                            <option value="3">{#tribe_3}</option>
+                            <option value="1">{#tribe_1}</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="kid">{#LANGUI_REG_T10}</label>
+                        <select name="kid" id="kid" class="form-control rtl">
+                            <option value="0">{#LANGUI_REG_T11}</option>
+                            <option value="1">{#LANGUI_REG_T12}</option>
+                            <option value="2">{#LANGUI_REG_T13}</option>
+                            <option value="3">{#LANGUI_REG_T14}</option>
+                            <option value="4">{#LANGUI_REG_T15}</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="fid">{#LANGUI_INDX_T9}</label>
+                        <select name="fid" id="fid" class="form-control rtl">
+                            <option value="1">3-{#item_title_1} 3-{#item_title_2} 3-{#item_title_3} 9-{#item_title_4}</option>
+                            <option value="2">3-{#item_title_1} 4-{#item_title_2} 5-{#item_title_3} 6-{#item_title_4}</option>
+                            <option value="3">4-{#item_title_1} 4-{#item_title_2} 4-{#item_title_3} 6-{#item_title_4}</option>
+                            <option value="4">4-{#item_title_1} 5-{#item_title_2} 3-{#item_title_3} 6-{#item_title_4}</option>
+                            <option value="5">5-{#item_title_1} 3-{#item_title_2} 4-{#item_title_3} 6-{#item_title_4}</option>
+                            <option value="6">1-{#item_title_1} 1-{#item_title_2} 1-{#item_title_3} 15-{#item_title_4}</option>
+                            <option value="7">4-{#item_title_1} 4-{#item_title_2} 3-{#item_title_3} 7-{#item_title_4}</option>
+                            <option value="8">3-{#item_title_1} 4-{#item_title_2} 4-{#item_title_3} 7-{#item_title_4}</option>
+                            <option value="9">4-{#item_title_1} 3-{#item_title_2} 4-{#item_title_3} 7-{#item_title_4}</option>
+                            <option value="10">3-{#item_title_1} 5-{#item_title_2} 4-{#item_title_3} 6-{#item_title_4}</option>
+                            <option value="11">4-{#item_title_1} 3-{#item_title_2} 5-{#item_title_3} 6-{#item_title_4}</option>
+                            <option value="12">5-{#item_title_1} 4-{#item_title_2} 3-{#item_title_3} 6-{#item_title_4}</option>
+                        </select>
+                    </div>
+                    <button id="loginbtn2" type="submit" class="btn default btn-lg btn-block">{#PLAY_NOW}</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="backpass"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="myModalLabel">{#LANGUI_INDX_T26}</h2>
+            </div>
+            <div class="modal-body">
+                {if="isset($_GET['key']) and isset($_GET['key2'])"}
+                <form id="userpass">
+                    <div class="form-group">
+                        <div id="changesuccess" class="alert alert-success" role="alert">{#LANGUI_INDX_T31}</div>
+                        <input type="password" name="password" class="form-control  mb-2 mr-sm-2 mb-sm-0" placeholder="{#LANGUI_INDX_T28}">
+                    </div>
+                    <button type="submit" class="btn default btn-block">{#LANGUI_INDX_T27}</button>
+                </form>
+                {else}
+                <div id="sendsuccess" class="alert alert-success" role="alert">{#LANGUI_INDX_T29}</div>
+                <form id="useremail" class="validation-form" method="post" >
+                    <div class="form-group textField">
+                        <input type="email" name="email" class="form-control" id="email" >
+                        <span class="form-highlight"></span>
+                        <span class="form-bar"></span>
+                        <label class="float-label" >{#LANGUI_INDX_T14}</label>
+                        <div class="validation"></div>
+                    </div>
+                    <button type="submit" class="btn btn-lg default btn-block">{#LANGUI_INDX_T27}</button>
+                </form>
+                {/if}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="guide"  tabindex="-1" role="dialog"  aria-hidden="true">
+    <div class="modal-dialog " role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title single-news-title" id="myModalLabel">
+                    Guide
+                </h2>
+            </div>
+            <div class="modal-body">
+                
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+
+<script src="{function="add_style('bootstrap.min.js', ASSETS_DIR.'indx/js/')"}"></script>
+<script src="{function="add_style('text-effect.js', ASSETS_DIR.'indx/js/')"}"></script>
+<!-- Magnific Popup core JS file -->
+<script src="{function="add_style('jquery.magnific-popup.min.js', ASSETS_DIR.'indx/js/')"}"></script>
+
+
+
+<!--  Init Global Variable  -->
+<script>
+    var register_form_url = "{if="is_get('ref')"}register?ref={function="get('ref')"}{else}register{/if}";
+    var server = {function="json_encode($servers)"};
+    var LANGUI_INDX_T20 = "{#LANGUI_INDX_T20}";
+    var LANGUI_INDX_T21 = "{#LANGUI_INDX_T21}";
+    var LANGUI_INDX_T22 = "{#LANGUI_INDX_T22}";
+    var LANGUI_INDX_T23 = "{#LANGUI_INDX_T23}";
+    var LANGUI_ERROR_T1 = "{#LANGUI_INDX_T53}";
+    var LANGUI_ERROR_T2 = "{#LANGUI_INDX_T54}";
+    var LANGUI_ERROR_T3 = "{#LANGUI_INDX_T55}";
+    var LANGUI_ERROR_T4 = "{#LANGUI_INDX_T56}";
+</script>
+<script src="{function="add_style('custom.js', ASSETS_DIR.'indx/js/')"}"></script>
+
+
+<script>
+
+    $("#content").css("height", $(window).height());
+    $(function(){
+        if($(window).width() < 767){
+            $('#logo').remove();
+            $('.btn-social').addClass('btn-sm');
+        }
+    });
+    $(window).resize(function() {
+        if($(window).width() < 767){
+            $('#logo').css("display", "none");
+            $('.btn-social').addClass('btn-sm');
+        }else{
+            $('#logo').css("display", "inline-block");
+        }
+    });
+
+    //Navbar drowpdown on hover
+    $('ul.nav li.dropdown').hover(function() {
+        $(this).find('.dropdown-menu').stop(true, true).delay(100).fadeIn(300);
+    }, function() {
+        $(this).find('.dropdown-menu').stop(true, true).delay(100).fadeOut(300);
+    });
+
+
+    $(".navbar-toggle").click(function() {
+        $(".overlay").toggleClass('show');
+
+    });
+    $(".open-menu").click(function () {
+        var menu  = $(this).data('menu');
+        $(menu).toggleClass('closed opened')
+    })
+    $('.mobile-close-btn').click(function(){
+        $(".navbar-toggle").trigger('click');
+    })
+    $('.mobile-back-btn').click(function(){
+        var $menu  = $(this).closest('.navbar-collapse');
+        $menu.toggleClass('closed opened');
+    })
+
+
+
+    $('.overlay ').click(function () {
+        $(".overlay").toggleClass('show');
+        $(".navbar-collapse.opened").toggleClass('closed opened');
+    })
+
+
+    $(document).scroll(function(e) {
+        if ($(document).scrollTop() > 100) {
+            $('.main-header').addClass('fixed-header');
+        } else {
+            $('.main-header').removeClass('fixed-header');
+        }
+    });
+
+
+    $("#selectServer").change(function() {
+        if ($(this).val()) {
+            var server = {function="json_encode($servers)"};
+            var server_data = "<lu><li><span style='color:#964646;'>{#LANGUI_INDX_T20}: </span>" + server[$('#selectServer').val()]["start_date"] + "</li><li><span style='color:#964646'>{#LANGUI_INDX_T21}: </span>" + server[$('#selectServer').val()]["players_count"] + "</li><li><span style='color:#964646'>{#LANGUI_INDX_T22}: </span>" + server[$('#selectServer').val()]["speed"][0] + "</li><li><span style='color:#964646'>{#LANGUI_INDX_T23}: </span>" + server[$('#selectServer').val()]["end"] + "</li></lu>";
+            $('#server-data').html(server_data);
+            $("#server-data-content").fadeIn(200);
+        }else{
+            $("#server-data-content").fadeOut(0);
+        }
+    });
+    $("#loginform2").click(function() {
+        $("#loginform2").popover("dispose");
+    });
+    $("#loginform2").submit(function(e) {
+        var $btn = $("#loginbtn2").button('loading');
+        var url = "login?reg";
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: $("#loginform2").serialize(),
+            dataType: 'json',
+            encode: true,
+        }).done(function(data) {
+            $btn.button('reset');
+            if (data["errorState"] > 0) {
+
+                $("#loginform2").popover({
+                    title: "<span style='font-weight:bold;color:#9c0622'>{#LANGUI_INDX_T25}</span>",
+                    content: data["error"],
+                    html: true,
+                    trigger: "hover",
+                    placement: "top"
+                });
+                $("#loginform2").popover("show");
+            } else {
+                if (data["errorState"] == "-1") {
+                    window.location.replace(data["url"]);
+                }
+
+            }
+        });
+
+        e.preventDefault();
+    });
+
+    {if="isset($_GET['key']) and isset($_GET['key2'])"}
+    $(function() {
+        $("#backpass").modal("show");
+    });
+
+    $("#userpass").submit(function(e) {
+        var url = "password?key={$_GET['key']}&key2={$_GET['key2']}";
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: $("#userpass").serialize(),
+            dataType: 'json',
+            encode: true,
+        }).done(function(data) {
+
+            if (data["success"] == false ) {
+                if(data["error"] == null) {
+                    $("#userpass").popover({
+                        title: "<span style='font-weight:bold;color:#9c0622'>{#LANGUI_INDX_T25}</span>",
+                        content: "{#LANGUI_INDX_T30}",
+                        html: true,
+                        trigger: "hover",
+                        placement: "top"
+                    });
+
+                }else{
+                    $("#userpass").popover({
+                        title: "<span style='font-weight:bold;color:#9c0622'>{#LANGUI_INDX_T25}</span>",
+                        content: data["error"],
+                        html: true,
+                        trigger: "hover",
+                        placement: "top"
+                    });
+                }
+
+                $("#userpass").popover("show");
+            }
+            else{
+                if (data["success"] == true) {
+                    $("#changesuccess").css("display", "block");
+                }
+
+            }
+        });
+        e.preventDefault();
+    });
+    {/if}
+        
+        
+    {if="isset($_GET['active'])"}
+    $(function() {
+        $("#activate").modal("show");
+    });
+    {/if}
+
+    //Menu header nAvbar/
+
+    var sideslider = $('[data-toggle=collapse-side]');
+    var sel = sideslider.attr('data-target');
+    var sel2 = sideslider.attr('data-target-2');
+    sideslider.click(function(event){
+        $(sel).toggleClass('in');
+
+    });
+
+
+    $('.modal').on('show.bs.modal', function () {
+        if ($(document).height() > $(window).height()) {
+            // no-scroll
+            $('body').addClass("modal-open-noscroll");
+        }
+        else {
+            $('body').removeClass("modal-open-noscroll");
+        }
+    });
+    $('.modal').on('hide.bs.modal', function () {
+        $('body').removeClass("modal-open-noscroll");
+    });
+
+
+
+
+
+
+
+$('.parent-container').magnificPopup({
+    delegate: 'a', // child items selector, by clicking on it popup will open
+    type: 'image',
+    // other options
+    gallery:{enabled:true},
+    zoom: {
+        enabled: true, // By default it's false, so don't forget to enable it
+
+        duration: 300, // duration of the effect, in milliseconds
+        easing: 'ease-in-out', // CSS transition easing function
+
+        // The "opener" function should return the element from which popup will be zoomed in
+        // and to which popup will be scaled down
+        // By defailt it looks for an image tag:
+        opener: function(openerElement) {
+            // openerElement is the element on which popup was initialized, in this case its <a> tag
+            // you don't need to add "opener" option if this code matches your needs, it's defailt one.
+            return openerElement.is('img') ? openerElement : openerElement.find('img');
+        }
+    }
+});
+
+
+
+
+
+</script>
+</body>
+</html>

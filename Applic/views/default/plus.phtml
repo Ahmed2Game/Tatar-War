@@ -1,0 +1,479 @@
+{function="load_lang('ui/plus')"}
+    <h1>
+        <p>
+		    <b>{#LANGUI_PLUS_T1} <font color="#FF6F0F">{#LANGUI_PLUS_T2}</font></b>
+		</p>
+	</h1>
+	<div id="textmenu">
+	    <a href="plus"{if="($selectedTabIndex == 0)"} class="selected" {/if}>{#LANGUI_PLUS_T3}</a> |
+		<a href="plus?t=1"{if="($selectedTabIndex == 1)"} class="selected" {/if}>{#LANGUI_PLUS_T4}</a> |
+		<a href="plus?t=2"{if="($selectedTabIndex == 2)"} class="selected" {/if}>{#LANGUI_PLUS_T5}</a> |
+		<a href="plus?t=3"{if="($selectedTabIndex == 3)"} class="selected" {/if}>{#LANGUI_INVITE_T1}</a> |
+		<a href="plus?t=4"{if="($selectedTabIndex == 4)"} class="selected" {/if}>{#LANGUI_TRANS_T11}</a> |
+		<a href="plus?t=5"{if="($selectedTabIndex == 5)"} class="selected" {/if}>{#LANGUI_BAY_T10}</a>
+	</div>
+{if="($selectedTabIndex == 0)"}
+            <h2>لم يعد هناك شراء ذهب في اللعبه حتي يتم اغلاقها نهاية الشهر</h2>
+
+  {elseif="($selectedTabIndex == 1)"}
+    <table id="plus_features" class="features" cellpadding="1" cellspacing="1">
+	    <thead>
+		    <tr>
+			    <th colspan="2">
+				    <p class="custDir">{#LANGUI_PLUS_T8}</p>
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+		    <tr>
+			    <td colspan="2" class="empty"></td>
+			</tr>
+			<tr>
+			    <th colspan="2">{#LANGUI_PLUS_T9}</th>
+			</tr>
+			<tr>
+			    <td class="preview">
+				    <img class="p1" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#LANGUI_PLUS_T9}" title="{#LANGUI_PLUS_T9}">
+				</td>
+				<td class="text">{#LANGUI_PLUS_T10}</td>
+			</tr>
+			<tr>
+			    <td colspan="2" class="empty"></td>
+			</tr>
+			<tr>
+			    <th colspan="2">{#LANGUI_PLUS_T11}</th>
+			</tr>
+			<tr>
+			    <td class="preview">
+				    <img class="xxl_map" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#LANGUI_PLUS_T11}" title="{#LANGUI_PLUS_T11}">
+				</td>
+				<td class="text">{#LANGUI_PLUS_T12}</td>
+			</tr>
+			<tr>
+			    <td colspan="2" class="empty"></td>
+			</tr>
+			<tr>
+			    <th colspan="2">{#LANGUI_PLUS_T13}</th>
+			</tr>
+			<tr>
+			    <td class="preview">
+				    <img class="p7" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#LANGUI_PLUS_T13}" title="{#LANGUI_PLUS_T13}">
+				</td>
+				<td class="text">{#LANGUI_PLUS_T14}</td>
+			</tr>
+			<tr>
+			    <td colspan="2" class="empty"></td>
+			</tr>
+			<tr>
+			    <th colspan="2">{#LANGUI_PLUS_T15}</th>
+			</tr>
+			<tr>
+			    <td class="preview">
+				    <img class="p8" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#LANGUI_PLUS_T15}" title="{#LANGUI_PLUS_T15}">
+		        </td>
+				<td class="text">{#LANGUI_PLUS_T16}</td>
+			</tr>
+		</tbody>
+	</table>
+	<table id="gold_features" class="features" cellpadding="1" cellspacing="1">
+	    <thead>
+		    <tr>
+			    <th colspan="2">{#LANGUI_PLUS_T17}</th>
+			</tr>
+		</thead>
+		<tbody>
+		    <tr>
+			    <td colspan="2" class="empty"></td>
+			</tr>
+			<tr>
+			    <th colspan="2">{#LANGUI_PLUS_T18}</th>
+			</tr>
+			<tr>
+			    <td class="preview">
+				    <img class="p1_25" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#LANGUI_PLUS_T18}" title="{#LANGUI_PLUS_T18}">
+				</td>
+				<td class="text">{#LANGUI_PLUS_T19}</td>
+			</tr>
+			<tr>
+			    <td colspan="2" class="empty"></td>
+			</tr>
+			<tr>
+			    <th colspan="2">{#LANGUI_PLUS_T20}</th>
+			</tr>
+			<tr>
+			    <td class="preview">
+				    <img class="p2_25" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#LANGUI_PLUS_T20}" title="{#LANGUI_PLUS_T20}">
+				</td>
+				<td class="text">{#LANGUI_PLUS_T21}</td>
+			</tr>
+			<tr>
+			    <td colspan="2" class="empty"></td>
+			</tr>
+			<tr>
+			    <th colspan="2">{#LANGUI_PLUS_T22}</th>
+			</tr>
+			<tr>
+			    <td class="preview">
+				    <img class="p3_25" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#LANGUI_PLUS_T22}" title="{#LANGUI_PLUS_T22}">
+				</td>
+				<td class="text">{#LANGUI_PLUS_T23}</td>
+			</tr>
+			<tr>
+			    <td colspan="2" class="empty"></td>
+			</tr>
+			<tr>
+			    <th colspan="2">{#LANGUI_PLUS_T24}</th>
+		    </tr>
+			<tr>
+			    <td class="preview">
+				    <img class="p4_25" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#LANGUI_PLUS_T24}" title="{#LANGUI_PLUS_T24}">
+				</td>
+				<td class="text">{#LANGUI_PLUS_T25}</td>
+			</tr>
+			<tr>
+			    <td colspan="2" class="empty"></td>
+			</tr>
+			<tr>
+			    <th colspan="2">{#LANGUI_PLUS_T26}</th>
+			</tr>
+			<tr>
+			    <td class="preview">
+				    <img class="bau0" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#LANGUI_PLUS_T26}" title="{#LANGUI_PLUS_T26}">
+				</td>
+			    <td class="text">{#LANGUI_PLUS_T27}</td>
+			</tr>
+			<tr>
+			    <td colspan="2" class="empty"></td>
+			</tr>
+			<tr>
+			    <th colspan="2">{#LANGUI_PLUS_T45}</th>
+			</tr>
+			<tr>
+			    <td class="preview">
+				    <img class="gid19" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#LANGUI_PLUS_T45}" title="{#LANGUI_PLUS_T45}">
+			    </td>
+				<td class="text">{#LANGUI_PLUS_T46}</td>
+			</tr>
+			<tr>
+			    <td colspan="2" class="empty"></td>
+			</tr>
+			<tr>
+			    <th colspan="2">{#LANGUI_PLUS_T28}</th>
+			</tr>
+			<tr>
+			    <td class="preview">
+				    <img class="npc" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#LANGUI_PLUS_T28}" title="{#LANGUI_PLUS_T28}">
+				</td>
+				<td class="text">{#LANGUI_PLUS_T29}</td>
+		    </tr>
+		</tbody>
+	</table>
+{elseif="($selectedTabIndex == 2)"}
+    <script type="text/javascript">
+		function payResources(id)
+		{
+			var txt = _(id);
+			if (txt != null)
+			{
+				window.location = "plus?t=2&a=9&k={$data.update_key}&gold=" + txt.value;
+			}
+		}
+	</script>
+    <p>{if="(0 < $data.gold_num)"} {#LANGUI_PLUS_T30} {$data.gold_num} {#LANGUI_PLUS_T31} {else} {#LANGUI_PLUS_T32} {/if}</p>
+	<table class="plusFunctions" cellpadding="1" cellspacing="1">
+	    <thead>
+		    <tr>
+			    <th colspan="5">{#LANGUI_PLUS_T33}</th>
+		    </tr>
+			<tr>
+			    <td></td>
+				<td>{#LANGUI_PLUS_T34}</td>
+				<td>{#text_period_lang}</td>
+				<td>{#LANGUI_PLUS_T2}</td>
+				<td>{#LANGUI_PLUS_T35}</td>
+			</tr>
+		</thead>
+		<tbody>
+		    <tr>
+			    <td class="man">
+				    <a href="#" onclick="return showManual(5,0);">
+					    <img class="help" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="" title="">
+					</a>
+				</td>
+				<td class="desc">
+				    <p>
+					    <b>
+						    <font color="#71D000">{#LANGUI_PLUS_T36}</font>
+						</p>
+					<br>
+					<span class="run"> {$PlusTime0}</span>
+				</td>
+				<td class="dur">{if="($plusTable.0.time == 0)"} {#LANGUI_PLUS_T37} {else} {$plusTable.0.time} {#LANGUI_PLUS_T38} {/if}</td>
+				<td class="cost"><img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="gold" alt="{#LANGUI_PLUS_T6}" title="{#LANGUI_PLUS_T6}">{$plusTable.0.cost}</td>
+			    <td class="act">{$PlusAction0}</td>
+			</tr>
+			<tr>
+			    <td colspan="5" class="empty"></td>
+			</tr>
+			<tr>
+			    <td class="man">
+				    <a href="#" onclick="return showManual(5,1);"><img class="help" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="" title=""></a>
+				</td>
+				<td class="desc">+<b>1000</b>% <img class="r1" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#item_title_1}" title="{#item_title_1}">{#LANGUI_PLUS_T39}
+                <br>
+				<span class="run"> {$PlusTime1}</span>
+				</td>
+				<td class="dur">{if="($plusTable.1.time == 0)"} {#LANGUI_PLUS_T37} {else} {$plusTable.1.time} {#LANGUI_PLUS_T38} {/if}</td>
+				<td class="cost"><img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="gold" alt="{#LANGUI_PLUS_T6}" title="{#LANGUI_PLUS_T6}">{$plusTable.1.cost}</td>
+				<td class="act">{$PlusAction1}</td>
+			</tr>
+			<tr>
+			    <td class="man">
+				    <a href="#" onclick="return showManual(5,2);"><img class="help" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="" title=""></a>
+				</td>
+				<td class="desc">+<b>1000</b>% <img class="r2" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#item_title_2}" title="{#item_title_2}">{#LANGUI_PLUS_T40}
+                <br>
+                <span class="run"> {$PlusTime2}</span>
+				</td>
+				<td class="dur">{if="($plusTable.2.time == 0)"} {#LANGUI_PLUS_T37} {else} {$plusTable.2.time} {#LANGUI_PLUS_T38} {/if}</td>
+				<td class="cost"><img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="gold" alt="{#LANGUI_PLUS_T6}" title="{#LANGUI_PLUS_T6}">{$plusTable.2.cost}</td>
+				<td class="act">{$PlusAction2}</td>
+			</tr>
+			<tr>
+			    <td class="man">
+				    <a href="#" onclick="return showManual(5,3);"><img class="help" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="" title=""></a>
+				</td>
+				<td class="desc">+<b>1000</b>% <img class="r3" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#item_title_3}" title="{#item_title_3}">{#LANGUI_PLUS_T41}
+                <br>
+                <span class="run"> {$PlusTime3}</span>
+				</td>
+				<td class="dur">{if="($plusTable.3.time == 0)"} {#LANGUI_PLUS_T37} {else} {$plusTable.3.time} {#LANGUI_PLUS_T38} {/if}</td>
+				<td class="cost"><img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="gold" alt="{#LANGUI_PLUS_T6}" title="{#LANGUI_PLUS_T6}">{$plusTable.3.cost}</td>
+				<td class="act">{$PlusAction3}</td>
+			</tr>
+			<tr>
+			    <td class="man">
+				    <a href="#" onclick="return showManual(5,4);"><img class="help" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="" title=""></a>
+				</td>
+				<td class="desc">+<b>1000</b>% <img class="r4" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#item_title_4}" title="{#item_title_4}">{#LANGUI_PLUS_T42}
+                <br>
+                <span class="run"> {$PlusTime4}</span>
+				</td>
+				<td class="dur">{if="($plusTable.4.time == 0)"} {#LANGUI_PLUS_T37} {else} {$plusTable.4.time} {#LANGUI_PLUS_T38} {/if}</td>
+				<td class="cost"><img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="gold" alt="{#LANGUI_PLUS_T6}" title="{#LANGUI_PLUS_T6}">{$plusTable.4.cost}</td>
+				<td class="act">{$PlusAction4}</td>
+			</tr>
+			<tr>
+			    <td colspan="5" class="empty"></td>
+			</tr>
+			<tr>
+			    <td class="man">
+				    <a href="#" onclick="return showManual(5,5);"><img class="help" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="" title=""></a>
+			    </td>
+			    <td class="desc">{#LANGUI_PLUS_T43}</td>
+			    <td class="dur">{if="($plusTable.5.time == 0)"} {#LANGUI_PLUS_T37} {else} {$plusTable.5.time} {#LANGUI_PLUS_T38} {/if}</td>
+			    <td class="cost"><img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="gold" alt="{#LANGUI_PLUS_T6}" title="{#LANGUI_PLUS_T6}">{$plusTable.5.cost}</td>
+			    <td class="act">{$PlusAction5}</td>
+			</tr>
+			<tr>
+			    <td class="man">
+				    <a href="#" onclick="return showManual(5,7);"><img class="help" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="" title=""></a>
+				</td>
+				<td class="desc">{#LANGUI_PLUS_T44}</td>
+				<td class="dur">{if="($plusTable.6.time == 0)"} {#LANGUI_PLUS_T37} {else} {$plusTable.6.time} {#LANGUI_PLUS_T38} {/if}</td>
+	            <td class="cost"><img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="gold" alt="{#LANGUI_PLUS_T6}" title="{#LANGUI_PLUS_T6}">{$plusTable.6.cost}</td>
+				<td class="act">{$PlusAction6}</td>
+			</tr>
+			<tr>
+			    <td class="man">
+				    <a href="#" onclick="return showManual(5,8);"><img class="help" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="" title=""></a>
+				</td>
+				<td class="desc">{#LANGUI_PLUS_T45}</td>
+				<td class="dur">{if="($plusTable.7.time == 0)"} {#LANGUI_PLUS_T37} {else} {$plusTable.7.time} {#LANGUI_PLUS_T38} {/if}</td>
+	            <td class="cost"><img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="gold" alt="{#LANGUI_PLUS_T6}" title="{#LANGUI_PLUS_T6}">{$plusTable.7.cost}</td>
+				<td class="act">{$PlusAction7}</td>
+			</tr>
+			<tr>
+			    <td class="man">
+				    <a href="#" onclick="return showManual(5,9);"><img class="help" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="" title=""></a>
+				</td>
+				<td class="desc">{#LANGUI_PLUS_T57}</td>
+				<td class="dur">{if="($plusTable.8.time == 0)"} {#LANGUI_PLUS_T37} {else} {$plusTable.8.time} {#LANGUI_PLUS_T38} {/if}</td>
+	            <td class="cost"><img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="gold" alt="{#LANGUI_PLUS_T6}" title="{#LANGUI_PLUS_T6}">{$plusTable.8.cost}</td>
+				<td class="act">{$PlusAction8}</td>
+			</tr>
+			<tr>
+			    <td class="man">
+				    <a href="#" onclick="return showManual(5,10);"><img class="help" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="" title=""></a>
+				</td>
+				<td class="desc">{#LANGUI_PLUS_T58}</td>
+				<td class="dur">{#LANGUI_PLUS_T37}</td>
+	            <td class="cost"><img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="gold" alt="{#LANGUI_PLUS_T6}" title="{#LANGUI_PLUS_T6}">{$plusTable.9.cost}</td>
+				<td class="act">{if="$data.gold_num >= $plusTable.9.cost"}<img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="gold" alt="{#LANGUI_PLUS_T6}" title="{#LANGUI_PLUS_T6}"><input type="text" style="width:25px;" id="gold" name="gold" value="{$plusTable.9.cost}" title="{#LANGUI_TRANS_T4}" maxlength="4" class="text year">{/if} {$PlusAction9}</td>
+			</tr>
+        </tbody>
+	</table>
+{elseif="($selectedTabIndex == 3)"}
+    <h1>{#LANGUI_INVITE_T1}</h1>
+    <br>
+    <h3 style="clear:both;">{#LANGUI_INVITE_T2}</h3>
+    <span class="notice">{#LANGUI_INVITE_T3}</span><br>
+    <span class="link">https://www.xtatar.com/index?ref={$playerId}</span>
+    <h3 style="clear:both;">{#LANGUI_INVITE_T4}</h3>
+    {#LANGUI_INVITE_T5}
+    <br>
+<table class="rate_details lang_rtl lang_ar" cellpadding="1" cellspacing="1">
+    <thead>
+        <tr>
+		    <th colspan="6"> {#LANGUI_INVITE_T6} </th>
+        </tr>
+        <tr>
+		    <td>{#LANGUI_INVITE_T7}</td>
+		    <td>{#LANGUI_INVITE_T8}</td>
+		    <td>{#LANGUI_INVITE_T9}</td>
+		    <td>{#LANGUI_INVITE_T10}</td>
+        </tr>
+    </thead>
+    <tbody>
+	{loop="$dataList"}
+        <tr>
+            <td><center>{$value.id}</center></td>
+            <td><center>{$value.name}</center></td>
+            <td><center>{$value.total_people_count}</center></td>
+            <td><center>{$value.villages_count}</center></td>
+        </tr>
+	{/loop}
+    {if="(!$found)"}
+        <tr>
+		    <td class="none" colspan="6">{#LANGUI_INVITE_T11}</td>
+		</tr>
+	{/if}
+    </tbody>
+</table>
+{elseif="($selectedTabIndex == 4)"}
+<br>
+<form action="plus?t=4" method="post">
+    <table class="rate_details lang_rtl lang_ar" cellpadding="1" cellspacing="1">
+        <thead>
+            <tr>
+		        <th colspan="2">{#LANGUI_TRANS_T1}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+			    <td colspan="2"><center>{#LANGUI_TRANS_T2}{$goldCantrans} {#text_gold_lang}</center></td>
+			</tr>
+            <tr class="top">
+		        <td>{#LANGUI_TRANS_T3}</td>
+		        <td><input class="text" type="text" name="name" maxlength="20" value=""></td>
+            </tr>
+            <tr>
+		        <td>{#LANGUI_TRANS_T4}</td>
+		        <td><input class="text" type="text" name="gold" maxlength="10" value=""></td>
+            </tr>
+            <tr class="btm">
+		        <td>{#LANGUI_TRANS_T5}</td>
+		        <td><input class="text" type="password" name="pass" maxlength="25" value=""></td>
+            </tr>
+        </tbody>
+    </table>
+    <p class="btn"><center>
+        <input type="image" value="" name="s1" id="btn_send" class="dynamic_img" src="{function="add_style('x.gif', ASSETS_DIR)"}">
+    </center></p>
+</form>
+{if="( isset($errorTable) and $errorTable != NULL )"}
+    <p class="error">{$errorTable}</p>
+{/if}
+<br>
+<table id="brought_in" cellpadding="3" cellspacing="1">
+	<thead>
+		<tr>
+			<th colspan="5">{#LANGUI_PLUS_T49}</th>
+		</tr>
+		<tr>
+		    <td>#</td>
+		    <td>{#LANGUI_PLUS_T59}</td>
+			<td>{#LANGUI_PLUS_T51}</td>
+			<td>{#LANGUI_PLUS_T52}</td>
+			<td>{#LANGUI_PLUS_T53}</td>
+		</tr>
+	</thead>
+	{loop="$dataList"}
+	    <tr>
+	        <td><center>{$key}</center></td>
+	        <td><center><a href="profile?uid={$value.fromid}">{$value.fromnam}</a></center></td>
+		    <td><center><a href="profile?uid={$value.userid}">{$value.usernam}</a></center></td>
+		    <td><center>{$value.golds}</center></td>
+		    <td><center>{$value.date}</center></td>
+	    </tr>
+    {/loop}
+    {if="(!$found)"}
+        <tr>
+		    <td class="none" colspan="5"><center>{#LANGUI_PLUS_T54}</center></td>
+		</tr>
+    {/if}
+</table>
+<table cellpadding="1" cellspacing="1" id="search_navi">
+	<tbody>
+		<tr>
+			<td>
+			<div class="navi">{$getPreviousLink}|{$getNextLink}</div>
+			</td>
+		</tr>
+
+	</tbody>
+</table>
+{elseif="($selectedTabIndex == 5)"}
+<table id="brought_in" cellpadding="3" cellspacing="1">
+	<thead>
+		<tr>
+			<th colspan="6">{#LANGUI_BAY_T4}</th>
+		</tr>
+		<tr>
+			<td>#</td>
+			<td>{#LANGUI_BAY_T5}</td>
+			<td>{#LANGUI_BAY_T6}</td>
+			<td>{#LANGUI_BAY_T7}</td>
+			<td>{#LANGUI_BAY_T8}</td>
+			<td>{#LANGUI_BAY_T9}</td>
+		</tr>
+	</thead>
+	{loop="dataList"}
+	<tr>
+		<td>
+			<center>{$key}</center>
+		</td>
+		<td>
+			<center>{$value.transID}</center>
+		</td>
+		<td>
+			<center>{$value.type}</center>
+		</td>
+		<td>
+			<center>{$value.golds}</center>
+		</td>
+		<td>
+			<center>{$value.money} {$value.currency}</center>
+		</td>
+		<td>
+			<center>{$value.time}</center>
+		</td>
+	</tr>
+	{/loop}{if="(!$found)"}
+	<tr>
+		<td class="none" colspan="6">
+			<center>{#LANGUI_BAY_T3}</center>
+		</td>
+	</tr>
+	{/if}
+</table>
+<table cellpadding="1" cellspacing="1" id="search_navi">
+	<tbody>
+		<tr>
+			<td>
+				<div class="navi">{$getPreviousLink}|{$getNextLink}</div>
+			</td>
+		</tr>
+	</tbody>
+</table>
+{/if}

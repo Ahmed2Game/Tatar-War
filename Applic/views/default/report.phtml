@@ -1,0 +1,951 @@
+{function="load_lang('ui/report')"}
+<h1>{#LANGUI_RPT_T1}</h1>
+<div id="textmenu">
+    <a href="report" {if="( $selectedTabIndex == 0 )"} class="selected" {/if} >{#LANGUI_RPT_T2}</a>
+    |
+    <a href="report?t=1" {if="( $selectedTabIndex == 1 )"} class="selected" {/if} >{#LANGUI_RPT_T3}</a>
+    |
+    <a href="report?t=2" {if="( $selectedTabIndex == 2 )"} class="selected" {/if} >{#LANGUI_RPT_T4}</a>
+    |
+    <a href="report?t=3" {if="( $selectedTabIndex == 3 )"}class="selected"{/if} >{#LANGUI_RPT_T5}</a>
+    |
+    <a href="report?t=4" {if="( $selectedTabIndex == 4 )"}class="selected"{/if} >{#LANGUI_RPT_T6}</a>
+</div>
+{if="( $showList )"}
+<form method="post" action="report?p={$pageIndex}{if="( 0 < $selectedTabIndex )"}&t={$selectedTabIndex}{/if}" name="msg">
+    <table cellpadding="1" cellspacing="1" id="overview" class="row_table_data">
+        <thead>
+            <tr>
+                <th colspan="2">{#LANGUI_RPT_T7}</th>
+                <th class="sent">{#LANGUI_RPT_T8}</th>
+            </tr>
+        </thead>
+        <tbody>
+            {loop="$dataListArray"}
+                <tr>
+                    <td class="sel">
+                        <input class="check" type="checkbox" name="dr[]" value="{$value.id}">
+                    </td>
+                    <td class="sub">
+                        <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="iReport iReport{$value._rptResultCss}" alt="{$value.btext}" title="{$value.btext}">
+                        <div>
+                            <a href="report?id={$value.id}">
+                                {$value.rpt_cat}
+                            </a>
+                            {if="( !$value['is_readed'] )"}
+                                 {#LANGUI_RPT_T9}
+                            {/if}
+                        </div>
+                    </td>
+                    <td class="dat">{$value.mdate}</td>
+                </tr>
+            {/loop}
+            {if="( $counter1 == -1 )"}
+                <tr>
+                    <td colspan="3" class="none">{#LANGUI_RPT_T10}</td>
+                </tr>
+            {/if}
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>
+                    {if="$counter1 > -1"}
+                    <input class="check"  type="checkbox" id="s10" name="s10" onclick="Allmsg(this.form);">{/if}</th>
+                    <th class="buttons">
+                    {if="$counter1 > -1"}
+                        <input name="delmsg" value="{#LANGUI_RPT_T11}" type="image" id="btn_delete" class="dynamic_img" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#LANGUI_RPT_T11}">
+                    {/if}
+                    </th>
+                    <th class="navi">
+                        {$getPreviousLink}
+                        {$getNextLink}
+                    </th>
+                </tr>
+            </tfoot>
+        </table>
+</form>
+{elseif="( $reportData['rpt_cat'] == 1 )"}
+<table cellpadding="1" cellspacing="1" id="report_surround">
+        <thead>
+            <tr>
+                <th>{#LANGUI_RPT_T7}:</th>
+                <th>
+                    {$getVillageName}
+                    {$getreportactiontext}
+                    {$getVillageName_to}
+                </th>
+            </tr>
+            <tr>
+                <td class="sent">{#LANGUI_RPT_T8}:</td>
+                <td>
+                    {#text_in_lang} {$reportData.mdate}
+                    <span>{#time_hour_lang2} {$reportData.mtime}</span>
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td colspan="2" class="empty"></td>
+            </tr>
+            <tr>
+                <td colspan="2" class="report_content">
+                    <table cellpadding="1" cellspacing="1" id="trade">
+                        <thead>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td>
+                                    {if="( 0 < intval( $reportData['from_player_id'] ) )"}
+                                        <a href="profile?uid={$reportData.from_player_id}">
+                                            {$reportData.from_player_name}
+                                        </a>
+                                        {#LANGUI_RPT_T12}
+                                        <a href="village3?id={$reportData.from_village_id}">
+                                            {$getVillageName}
+                                        </a>
+                                        {else}
+                                            <span class="none">{$reportData.from_player_name}</span>
+                                            {#LANGUI_RPT_T12}
+                                            <span class="none">[?]</span>
+                                        {/if}
+                                    </td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th>{#LANGUI_RPT_T13}</th>
+                                    <td>
+                                        <img class="r1" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#item_title_1}" title="{#item_title_1}">
+                                        {$reportData.resources.0} |
+                                        <img class="r2" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#item_title_2}" title="{#item_title_2}">
+                                        {$reportData.resources.1} |
+                                        <img class="r3" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#item_title_3}" title="{#item_title_3}">
+                                        {$reportData.resources.2} |
+                                        <img class="r4" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#item_title_4}" title="{#item_title_4}">
+                                        {$reportData.resources.3}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+            </tbody>
+</table>
+{elseif="( $reportData['rpt_cat'] == 3 )"}
+    <table cellpadding="1" cellspacing="1" id="report_surround">
+        <thead>
+            <tr>
+                <th>{#LANGUI_RPT_T7}: </th>
+                <th>
+                    {$getVillageName}
+                    {$getreportactiontext}
+                    {$getVillageName_to}
+                </th>
+            </tr>
+            <tr>
+                <td class="sent">{#LANGUI_RPT_T8}:</td>
+                <td>
+                    {#text_in_lang} {$reportData.mdate}
+                    <span>{#time_hour_lang2} {$reportData.mtime}</span>
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td colspan="2" class="empty"></td>
+            </tr>
+            <tr>
+                <td colspan="2" class="report_content">
+                    <table cellpadding="1" cellspacing="1" id="attacker">
+                        <thead>
+                            <tr>
+                                <td class="role">{#LANGUI_RPT_T17}</td>
+                                <td colspan="{if="0 < $reportData['attackTroopsTable']['heros']['number']"} 11 {else} 10 {/if}" >
+                                    {if="( 0 < intval( $reportData['from_player_id'] ) )"}
+                                    <a href="profile?uid={$reportData.from_player_id}">
+                                        {$reportData.from_player_name}
+                                    </a>
+                                    {#LANGUI_RPT_T12}
+                                    <a href="village3?id={$reportData.from_village_id}">
+                                        {$getVillageName}
+                                    </a>
+                                    {else}
+                                        <span class="none">{$reportData.from_player_name}</span>
+                                        {#LANGUI_RPT_T12}
+                                        <span class="none">[?]</span>
+                                    {/if}
+                                </td>
+                            </tr>
+                        </thead>
+                        <tbody class="units">
+                            <tr>
+                                <td>&nbsp;</td>
+
+                                {loop="$reportData['attackTroopsTable']['troops']"}
+                                    {if="( $key > 0 )"}
+                                        <td>
+                                            <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="unit u{$key}" title="{function="constant('troop_'.$key )"}" alt="{function="constant('troop_'.$key )"}">
+                                        </td>
+                                    {/if}
+                                {/loop}
+                                {if="( 0 < $reportData['attackTroopsTable']['heros']['number'] )"}
+                                    <td>
+                                        <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="unit uhero" title="{#troop_hero}" alt="{#troop_hero}">
+                                    </td>
+                                {/if}
+                            </tr>
+                            <tr>
+                                <th>{#LANGUI_RPT_T14}</th>
+                                {loop="$reportData['attackTroopsTable']['troops']"}
+                                    {if="( $key > 0 )"}
+                                        {$tnum = $value['number']}
+
+                                        {if="( $tnum <= 0 )"}
+                                            <td class="none">0</td>
+                                        {else}
+                                            <td>{$tnum}</td>
+                                        {/if}
+                                    {/if}
+                                {/loop}
+
+                                {if="( 0 < $reportData['attackTroopsTable']['heros']['number'] )"}
+                                    <td {if="( $reportData['attackTroopsTable']['heros']['number'] == 0 )"}class="none"{/if}>
+                                        {$reportData.attackTroopsTable.heros.number}
+                                    </td>
+                                {/if}
+                            </tr>
+                            <tr>
+                                <th>{#LANGUI_RPT_T18}</th>
+                                {loop="$reportData['attackTroopsTable']['troops']"}
+                                    {if="( $key > 0 )"}
+                                        {$tnum = $value['dead_number']}
+
+                                        {if="( $tnum <= 0 )"}
+                                            <td class="none">0</td>
+                                        {else}
+                                            <td>{$tnum}</td>
+                                        {/if}
+                                    {/if}
+                                {/loop}
+                                {if="( 0 < $reportData['attackTroopsTable']['heros']['number'] )"}
+                                    <td {if="( $reportData['attackTroopsTable']['heros']['dead_number'] == 0 )"}class="none"{/if}>
+                                        {$reportData.attackTroopsTable.heros.dead_number}
+                                    </td>
+                                {/if}
+                            </tr>
+                        </tbody>
+
+                        {if="( !$reportData['all_attackTroops_dead'] )"}
+                        <tbody class="goods">
+                                    <tr>
+                                        <th>{#LANGUI_RPT_T24}</th>
+                                        <td colspan="{if="0 < $reportData['attackTroopsTable']['heros']['number']"} 11 {else} 10{/if}">
+                                            <div class="res">
+                                                <img class="r1" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#item_title_1}" title="{#item_title_1}">
+                                                {$reportData.harvest_resources.0} |
+                                                <img class="r2" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#item_title_2}" title="{#item_title_2}">
+                                                {$reportData.harvest_resources.1} |
+                                                <img class="r3" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#item_title_3}" title="{#item_title_3}">
+                                                {$reportData.harvest_resources.2} |
+                                                <img class="r4" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#item_title_4}" title="{#item_title_4}">
+                                                {$reportData.harvest_resources.3}
+                                            </div>
+                                            <div class="carry">
+                                                <img class="car" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#LANGUI_RPT_T19}" title="{#LANGUI_RPT_T19}">
+                                                {$reportData.total_carry_load} / {$reportData.total_harvest_carry_load}
+                                            </div>
+                                        </td>
+                                    </tr>
+                        </tbody>
+                        {/if}
+                        {if="( $reportData['all_attackTroops_dead'] )"}
+                            <tbody class="infos">
+                                <tr>
+                                    <th>{#LANGUI_RPT_T20}</th>
+                                    <td colspan="{if="0 < $reportData['attackTroopsTable']['heros']['number']"} 11 {else} 10{/if}">
+                                        {#LANGUI_RPT_T21}
+                                    </td>
+                                </tr>
+                            </tbody>
+                            {else}
+                                {if="( isset( $reportData['captureResult'] ) )"}
+                                    <tbody class="infos">
+                                        <tr>
+                                            <th>{#LANGUI_RPT_T20}</th>
+                                            <td colspan="{if="0 < $reportData['attackTroopsTable']['heros']['number']"} 11 {else} 10 {/if}">
+                                                {$reportData.captureResult}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                {/if}
+
+                                {if="( isset( $reportData['oasisResult'] ) )"}
+                                    <tbody class="infos">
+                                        <tr>
+                                            <th>{#LANGUI_RPT_T20}</th>
+                                            <td colspan="{if="0 < $reportData['attackTroopsTable']['heros']['number']"} 11 {else} 10{/if}">
+                                                {$reportData.oasisResult}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                {/if}
+
+                                {if="( isset( $reportData['wallDestructionResult'] ) )"}
+                                    <tbody class="infos">
+                                        <tr>
+                                            <th>{#LANGUI_RPT_T20}</th>
+                                            <td colspan="{if="0 < $reportData['attackTroopsTable']['heros']['number']"}  11 {else} 10{/if}">
+                                                {$reportData.wallDestructionResult}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                {/if}
+
+                                {if="( isset( $reportData['buildingDestructionResult'] ) )"}
+                                    {loop="$reportData['buildingDestructionResult']"}
+                                        <tbody class="infos">
+                                            <tr>
+                                                <th>{#LANGUI_RPT_T20}</th>
+                                                <td colspan="{if="0 < $reportData['attackTroopsTable']['heros']['number']"}11{else}10{/if}">
+                                                    {$value}
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    {/loop}
+                                {/if}
+                        {/if}
+                    </table>
+                    {if="( $data['player_type'] == PLAYERTYPE_ADMIN || $data['player_type'] == PLAYERTYPE_HUNTER || $reportData['deadRate'] >= 90 ||(!$reportData['all_attackTroops_dead']
+                        || intval( $reportData['to_player_id'] ) == $player->playerId
+                        || $playerRie == $player->playerId || $reportData['to_player_alliance_id'] == $data['alliance_id']
+                        && 0 < intval( $data['alliance_id'] )) )"}
+
+                            {loop="$reportData['defenseTroopsTable']"}
+                                <table cellpadding="1" cellspacing="1" class="defender">
+                                    <thead>
+                                        <tr>
+                                            <td class="role">{#LANGUI_RPT_T22}</td>
+                                            <td colspan="{if="0 < $value['heros']['number']"} 11 {else} 10{/if}">
+                                                    {if="( $counter1 == 0 )"}
+                                                        {if="( 0 < intval( $reportData['to_player_id'] ) )"}
+                                                            <a href="profile?uid={$reportData.to_player_id}">{$reportData.to_player_name}</a>
+                                                            {#LANGUI_RPT_T12}
+                                                            <a href="village3?id={$reportData.to_village_id}">
+                                                                {$getVillageName_to}
+                                                            </a>
+                                                        {else}
+                                                            <span class="none">{$reportData.to_player_name}</span>
+                                                            {#LANGUI_RPT_T12}
+                                                            <span class="none">[?]</span>
+                                                        {/if}
+                                                    {else}
+                                                        {#LANGUI_RPT_T4}
+                                                    {/if}
+                                            </td>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="units">
+                                            <tr>
+                                                <td>&nbsp;</td>
+                                                {loop="$value['troops']"}
+                                                    {if="( $key2 > 0 )"}
+                                                        <td>
+                                                            <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="unit u{$key2}" title="{function="constant('troop_'.$key2 )"}" alt="{function="constant('troop_'.$key2 )"}">
+                                                        </td>
+                                                    {/if}
+                                                {/loop}
+
+                                                {if="( 0 < $value['heros']['number'] )"}
+                                                    <td>
+                                                        <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="unit uhero" title="{#troop_hero}" alt="{#troop_hero}"></td>
+                                                {/if}
+                                            </tr>
+                                            <tr>
+                                                <th>{#LANGUI_RPT_T14}</th>
+                                                {loop="$value['troops']"}
+                                                    {if="( $key2 > 0 )"}
+                                                    {$tnum = $value2['number']}
+                                                        {if="( $tnum <= 0 )"}
+                                                            <td class="none">0</td>
+                                                        {else}
+                                                            <td>{$tnum}</td>
+                                                        {/if}
+                                                    {/if}
+                                                {/loop}
+
+                                                {if="( 0 < $value['heros']['number'] )"}
+                                                    <td {if="( $value['heros']['number'] == 0 )"} class="none" {/if}>{$value.heros.number}</td>
+                                                {/if}
+                                            </tr>
+                                            <tr>
+                                                <th>{#LANGUI_RPT_T18}</th>
+                                                {loop="$value['troops']"}
+                                                    {if="( $key2 > 0 )"}
+                                                        {$tnum = $value2['dead_number']}
+
+                                                        {if="( $tnum <= 0 )"}
+                                                            <td class="none">0</td>
+                                                        {else}
+                                                            <td>{$tnum}</td>
+                                                        {/if}
+                                                    {/if}
+                                                {/loop}
+
+                                                {if="( 0 < $value['heros']['number'] )"}
+                                                    <td {if="( $value['heros']['dead_number'] == 0 )"}class="none"{/if}>{$value.heros.dead_number}</td>
+                                                {/if}
+                                            </tr>
+                                    </tbody>
+                                </table>
+                            {/loop}
+                    {/if}
+                        </td>
+                    </tr>
+                </tbody>
+    </table>
+    <p></p>
+{elseif="( $reportData['rpt_cat'] == 2 )"}
+        <table cellpadding="1" cellspacing="1" id="report_surround">
+            <thead>
+                <tr>
+                    <th>
+                        {#LANGUI_RPT_T7} :
+                    </th>
+                    <th>
+                        {$getVillageName}
+                        {$getreportactiontext}
+                        {$getVillageName_to}
+                    </th>
+                </tr>
+                <tr>
+                    <td class="sent">{#LANGUI_RPT_T8}:</td>
+                    <td>
+                        {#text_in_lang} {$reportData.mdate}
+                        <span>{#time_hour_lang2} {$reportData.mtime}</span>
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="2" class="empty"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="report_content">
+                        <table cellpadding="1" cellspacing="1" id="reinforcement">
+                            <thead>
+                                <tr>
+                                    <td class="role">{#LANGUI_RPT_T23}</td>
+                                    <td colspan="{if="$reportData['troopsTable']['hasHero']"} 11 {else} 10 {/if}">
+                                        {if="( 0 < intval( $reportData['from_player_id'] ) )"}
+                                                <a href="profile?uid={$reportData.from_player_id}">
+                                                    {$reportData.from_player_name}
+                                                </a>
+                                                {#LANGUI_RPT_T12}
+                                                <a href="village3?id={$reportData.from_village_id}">
+                                                    {$getVillageName}
+                                                </a>
+                                            {else}
+                                                <span class="none">{$reportData.from_player_name}</span>
+                                                {#LANGUI_RPT_T12}
+                                                <span class="none">[?]</span>
+                                            {/if}
+                                        </td>
+                                    </tr>
+                                </thead>
+                                <tbody class="units">
+                                    <tr>
+                                        <td>&nbsp;</td>
+                                        {loop="$reportData['troopsTable']['troops']"}
+                                            {if="( $key > 0 )"}
+                                                <td>
+                                                    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="unit u{$key}" title="{function="constant('troop_'.$key )"}" alt="{function="constant('troop_'.$key )"}">
+                                                </td>
+                                            {/if}
+                                        {/loop}
+
+                                        {if="( $reportData['troopsTable']['hasHero'] )"}
+                                            <td>
+                                                <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="unit uhero" title="{#troop_hero}" alt="{#troop_hero}">
+                                            </td>
+                                        {/if}
+                                    </tr>
+                                    <tr>
+                                        <th>{#LANGUI_RPT_T14}</th>
+
+                                        {loop="$reportData['troopsTable']['troops']"}
+                                            {if="( $key > 0 )"}
+                                                {if="( $value <= 0 )"}
+                                                    <td class="none">0</td>
+                                                {else}
+                                                    <td>{$value}</td>
+                                                {/if}
+                                            {/if}
+                                        {/loop}
+
+                                        {if="( $reportData['troopsTable']['hasHero'] )"}
+                                            <td>1</td>
+                                        {/if}
+                                    </tr>
+                                </tbody>
+                                <tbody class="infos">
+                                    <tr>
+                                        <th>{#LANGUI_RPT_T15}</th>
+                                        <td colspan="{if="$reportData['troopsTable']['hasHero']"} 11 {else} 10 {/if} ">
+                                            {$reportData.cropConsume}
+                                            <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="r4" title="{#item_title_4}" alt="{#item_title_4}">
+                                            {#LANGUI_RPT_T16}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                </tbody>
+        </table>
+{elseif="( $reportData['rpt_cat'] == 4 )"}
+    <table cellpadding="1" cellspacing="1" id="report_surround">
+        <thead>
+            <tr>
+                <th>
+                    {#LANGUI_RPT_T7} :
+                </th>
+                <th>
+                    {$getVillageName}
+                    {$getreportactiontext}
+                    {$getVillageName_to}
+                </th>
+            </tr>
+            <tr>
+                <td class="sent">{#LANGUI_RPT_T8} : </td>
+                <td>
+                    {#text_in_lang} {$reportData.mdate}
+                    <span>
+                        {#time_hour_lang2} {$reportData.mtime}
+                    </span>
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td colspan="2" class="empty"></td>
+            </tr>
+            <tr>
+                <td colspan="2" class="report_content">
+                    <table cellpadding="1" cellspacing="1" id="attacker">
+                        <thead>
+                            <tr>
+                                <td class="role">{#LANGUI_RPT_T17}</td>
+                                <td colspan="{if="0 < $reportData['attackTroopsTable']['heros']['number']"} 11 {else} 10{/if}">
+                                {if="( 0 < intval( $reportData['from_player_id'] ) )"}
+                                    <a href="profile?uid={$reportData.from_player_id}">{$reportData.from_player_name}</a>
+                                        {#LANGUI_RPT_T12}
+                                    <a href="village3?id={$reportData.from_village_id}">
+                                        {$getVillageName}
+                                    </a>
+                                {else}
+                                    <span class="none">{$reportData.from_player_name}</span>
+                                    {#LANGUI_RPT_T12}
+                                    <span class="none">[?]</span>
+                                {/if}
+                                </td>
+                                </tr>
+                            </thead>
+                            <tbody class="units">
+                                <tr>
+                                    <td>&nbsp;</td>
+                                    {loop="$reportData['attackTroopsTable']['troops']"}
+                                        {if="( $key > 0 )"}
+                                            <td>
+                                                <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="unit u{$key}" title="{function="constant('troop_'.$key )"}" alt="{function="constant('troop_'.$key )"}">
+                                            </td>
+                                        {/if}
+                                    {/loop}
+
+                                        {if="( 0 < $reportData['attackTroopsTable']['heros']['number'] )"}
+                                            <td>
+                                                <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="unit uhero" title="{#troop_hero}" alt="{#troop_hero}">
+                                            </td>
+                                        {/if}
+                                    </tr>
+                                    <tr>
+                                        <th>{#LANGUI_RPT_T14}</th>
+                                        {loop="$reportData['attackTroopsTable']['troops']"}
+                                            {if="( $key > 0 )"}
+                                                {$tnum = $value['number']}
+
+                                                {if="( $tnum <= 0 )"}
+                                                    <td class="none">0</td>
+                                                {else}
+                                                    <td>{$tnum}</td>
+                                                {/if}
+                                            {/if}
+                                        {/loop}
+
+                                        {if="( 0 < $reportData['attackTroopsTable']['heros']['number'] )"}
+                                            <td {if="( $reportData['attackTroopsTable']['heros']['number'] == 0 )"} class="none" {/if}>
+                                                    {$reportData.attackTroopsTable.heros.number}
+                                            </td>
+                                        {/if}
+                                        </tr>
+                                        <tr>
+                                            <th>{#LANGUI_RPT_T18}</th>
+                                            {loop="$reportData['attackTroopsTable']['troops']"}
+                                                {if="( $key > 0 )"}
+                                                    {$tnum = $value['dead_number']}
+
+                                                    {if="( $tnum <= 0 )"}
+                                                        <td class="none">0</td>
+                                                    {else}
+                                                        <td>{$tnum}</td>
+                                                    {/if}
+                                                {/if}
+                                            {/loop}
+
+                                            {if="( 0 < $reportData['attackTroopsTable']['heros']['number'] )"}
+                                                <td {if="( $reportData['attackTroopsTable']['heros']['dead_number'] == 0 )"}class="none"{/if}>
+                                                    {$reportData.attackTroopsTable.heros.dead_number}
+                                                </td>
+                                            {/if}
+                                            </tr>
+                                    </tbody>
+
+                                        {if="( isset( $reportData['harvest_resources'] ) )"}
+                                        <tbody class="goods">
+                                            <tr>
+                                                <th>{#LANGUI_RPT_T13}</th>
+                                                <td colspan="{if="0 < $reportData['attackTroopsTable']['heros']['number']"} 11 {else} 10 {/if}">
+                                                    <div class="res">
+                                                        <img class="r1" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#item_title_1}" title=" {#item_title_1}">
+                                                        {$reportData.harvest_resources.0}
+                                                        <img class="r2" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#item_title_2}" title="{#item_title_2}">
+                                                        {$reportData.harvest_resources.1} |
+                                                        <img class="r3" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#item_title_3}" title="{#item_title_3}">
+                                                        {$reportData.harvest_resources.2} |
+                                                        <img class="r4" src="{function="add_style('x.gif', ASSETS_DIR)"}" alt="{#item_title_4}" title="{#item_title_4}">
+                                                        {$reportData.harvest_resources.3}</div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                        {/if}
+
+                                        {if="( isset( $reportData['harvest_info'] ) )"}
+                                        <tbody class="infos">
+                                            <tr>
+                                                <th>{#LANGUI_RPT_T20}</th>
+                                                <td colspan="10">{$reportData.harvest_info}</td>
+                                            </tr>
+                                        </tbody>
+                                        {/if}
+                                </table>
+
+                                    {if="( !$reportData['all_spy_dead'] || intval( $reportData['to_player_id'] ) == $player->playerId
+                                    || $reportData['to_player_alliance_id'] == $data['alliance_id'] && 0 < intval( $data['alliance_id'] ) )"}
+
+                                            {loop="$reportData['defenseTroopsTable']"}
+                                                <table cellpadding="1" cellspacing="1" class="defender">
+                                                    <thead>
+                                                        <tr>
+                                                            <td class="role">{#LANGUI_RPT_T22}</td>
+                                                            <td colspan="{if="0 < $value['heros']['number']"} 11 {else} 10{/if}">
+                                                                {if="( $counter1 == 0 )"}
+                                                                    {if="( 0 < intval( $reportData['to_player_id'] ) )"}
+                                                                        <a href="profile?uid={$reportData.to_player_id}">{$reportData.to_player_name}</a>
+                                                                        {#LANGUI_RPT_T12}
+                                                                        <a href="village3?id={$reportData.to_village_id}">
+                                                                            {$getVillageName_to}
+                                                                        </a>
+                                                                    {else}
+                                                                        <span class="none">{$reportData.to_player_name}</span>
+                                                                        {#LANGUI_RPT_T12}
+                                                                        <span class="none">[?]</span>
+                                                                    {/if}
+                                                                {else}
+                                                                    {#LANGUI_RPT_T4}
+                                                                {/if}
+                                                                </td>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody class="units">
+                                                            <tr>
+                                                                <td>&nbsp;</td>
+                                                                {loop="$value['troops']"}
+                                                                   {if="( $key2 > 0 )"}
+                                                                        <td>
+                                                                            <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="unit u{$key2}" title="{function="constant('troop_'.$key2 )"}" alt="{function="constant('troop_'.$key2 )"}">
+                                                                        </td>
+                                                                    {/if}
+                                                                {/loop}
+
+                                                                {if="( 0 < $value['heros']['number'] )"}
+                                                                    <td>
+                                                                        <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="unit uhero" title="{#troop_hero}" alt="{#troop_hero}">
+                                                                    </td>
+                                                                {/if}
+                                                            </tr>
+                                                            <tr>
+                                                                <th>{#LANGUI_RPT_T14}</th>
+                                                                {loop="$value['troops']"}
+                                                                    {if="( $key2 > 0 )"}
+                                                                        {$tnum = $value2['number']}
+
+                                                                        {if="( $tnum <= 0 )"}
+                                                                            <td class="none">0</td>
+                                                                        {else}
+                                                                            <td>{$tnum}</td>
+                                                                        {/if}
+                                                                    {/if}
+                                                                {/loop}
+
+                                                                {if="( 0 < $value['heros']['number'] )"}
+                                                                    <td {if="( $value['heros']['number'] == 0 )"} class="none" {/if}>
+                                                                        {$value.heros.number}
+                                                                    </td>
+                                                                {/if}
+                                                            </tr>
+                                                            <tr>
+                                                                <th>{#LANGUI_RPT_T18}</th>
+                                                                {loop="$value['troops']"}
+                                                                    {if="( $key2 > 0 )"}
+                                                                        {$tnum = $value2['dead_number']}
+
+                                                                        {if="( $tnum <= 0 )"}
+                                                                            <td class="none">0</td>
+                                                                        {else}
+                                                                            <td>{$tnum}</td>
+                                                                        {/if}
+                                                                    {/if}
+                                                                {/loop}
+
+                                                                {if="( 0 < $value['heros']['number'] )"}
+                                                                    <td {if="( $value['heros']['dead_number'] == 0 )"}class="none"{/if}>
+                                                                        {$value.heros.dead_number}
+                                                                    </td>
+                                                                {/if}
+                                                            </tr>
+                                                        </tbody>
+                                                </table>
+                                            {/loop}
+                                        {/if}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+{elseif="( $reportData['rpt_cat'] == 5 )"}
+    <table cellpadding="1" cellspacing="1" id="report_surround">
+        <thead>
+            <tr>
+                <th>
+                    {#LANGUI_RPT_T7} :
+                </th>
+                <th>
+                    {$getreportactiontext}
+                    {$tovillg}
+                </th>
+            </tr>
+            <tr>
+                <td class="sent">
+                    {#LANGUI_RPT_T8} :
+                </td>
+                <td>
+                    {#text_in_lang}
+                    {$reportData.mdate}
+                    <span>
+                        {#time_hour_lang2}
+                        {$reportData.mtime}
+                    </span>
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td colspan="2" class="empty"></td>
+            </tr>
+            <tr>
+                <td class="role">{#LANGUI_RPT_T17}</td>
+                <td colspan="2">
+                    <a href="profile?uid={$reportData.from_player_id}">
+                        {$reportData.from_player_name}
+                    </a>
+                    {#LANGUI_RPT_T12}
+                    <a href="village3?id={$reportData.from_village_id}">
+                        {$getVillageName}
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" class="empty"></td>
+            </tr>
+            <table cellpadding="1" cellspacing="1" class="defender">
+                <thead>
+                    <tr>
+                        <td class="role">{#LANGUI_RPT_T22}</td>
+                        <td colspan="{if="$hasHero"}11 {else} 10{/if}">
+                            <a href="profile?uid={$reportData.to_player_id}">
+                                {$reportData.to_player_name}
+                            </a>
+                            {#LANGUI_RPT_T12}
+                            <a href="village3?id={$reportData.to_village_id}">
+                                {$getVillageName_to}
+                            </a>
+                        </td>
+                    </tr>
+                </thead>
+                <tbody class="units">
+                    <tr>
+                        <td>&nbsp;</td>
+                        {$a_arr = explode(',', $toorp)}
+                        {loop="$a_arr"}
+                            {$p =explode(' ', $value)} {$tid = $p[0]}
+
+                            {if="($tid == 0 - 1)"}
+                                {$tid = 'hero'}
+                            {/if}
+                                <td>
+                                    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="unit u{$tid}" title="constant('troop_'.$tid )"}" alt="constant('troop_'.$tid )"}">
+                                </td>
+                        {/loop}
+                    </tr>
+                    <tr>
+                        <th>{#LANGUI_RPT_T14}</th>
+                        {loop="$a_arr"}
+                            {$p =explode(' ', $value)} {$tnum = $p[1]}
+
+                            {if="( $tnum <= 0 )"}
+                                <td class="none">0</td>
+                            {else}
+                                 <td>{$tnum}</td>
+                            {/if}
+
+                        {/loop}
+                    </tr>
+                    <tr>
+                        <th>{#LANGUI_RPT_T18}</th>
+                        {loop="$a_arr"}
+                            {$p =explode(' ', $value)}
+                            {$deadNum = $p[2]}
+
+                            {if="( $deadNum <= 0 )"}
+                                <td class="none">0</td>
+                            {else}
+                                <td>{$deadNum}</td>
+                            {/if}
+                        {/loop}
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+    </tr>
+</tbody>
+</table>
+<p></p>
+{elseif="$reportData['rpt_cat'] == 6"}
+    <table cellpadding="1" cellspacing="1" id="report_surround">
+        <thead>
+            <tr>
+                <th>
+                    {#LANGUI_RPT_T7} :
+                </th>
+                <th>
+                    {$getreportactiontext}
+                    {$reportData.from_village_name}
+                </th>
+            </tr>
+            <tr>
+                <td class="sent">
+                    {#LANGUI_RPT_T8} :
+                </td>
+                <td>
+                    {#text_in_lang}
+                    {$reportData.mdate}
+                    <span>
+                        {#time_hour_lang2}
+                        {$reportData.mtime}
+                    </span>
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td colspan="2" class="empty"></td>
+            </tr>
+            {if="$reportData.from_village_id != $reportData.to_village_id"}
+            <tr>
+                <td class="role">{#LANGUI_RPT_T25}</td>
+                <td colspan="2">
+                    <a href="profile?uid={$reportData.from_player_id}">
+                        {$reportData.from_player_name}
+                    </a>
+                    {#LANGUI_RPT_T12}
+                    <a href="village3?id={$reportData.from_village_id}">
+                        {$getVillageName}
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" class="empty"></td>
+            </tr>
+            {/if}
+            <table cellpadding="1" cellspacing="1" class="defender">
+                <thead>
+                    <tr>
+                        <td class="role">{#LANGUI_RPT_T26}</td>
+                        <td colspan="{if="$hasHero"}11 {else} 10{/if}">
+                            <a href="profile?uid={$reportData.to_player_id}">
+                                {$reportData.to_player_name}
+                            </a>
+                            {#LANGUI_RPT_T12}
+                            <a href="village3?id={$reportData.to_village_id}">
+                                {$getVillageName_to}
+                            </a>
+                        </td>
+                    </tr>
+                </thead>
+                <tbody class="units">
+                    <tr>
+                        <td>&nbsp;</td>
+                        {$a_arr = explode(',', $toorp)}
+                        {loop="$a_arr"}
+                            {$p =explode(' ', $value)} {$tid = $p[0]}
+
+                            {if="($tid == 0 - 1)"}
+                                {$tid = 'hero'}
+                            {/if}
+                                <td>
+                                    <img src="{function="add_style('x.gif', ASSETS_DIR)"}" class="unit u{$tid}" title="constant('troop_'.$tid )"}" alt="constant('troop_'.$tid )"}">
+                                </td>
+                        {/loop}
+                    </tr>
+                    <tr>
+                        <th>{#LANGUI_RPT_T14}</th>
+                        {loop="$a_arr"}
+                            {$p =explode(' ', $value)} {$tnum = $p[1]}
+
+                            {if="( $tnum <= 0 )"}
+                                <td class="none">0</td>
+                            {else}
+                                 <td>{$tnum}</td>
+                            {/if}
+
+                        {/loop}
+                    </tr>
+                    <tr>
+                        <th>{#LANGUI_RPT_T18}</th>
+                        {loop="$a_arr"}
+                            {$p =explode(' ', $value)}
+                            {$deadNum = $p[2]}
+
+                            {if="( $deadNum <= 0 )"}
+                                <td class="none">0</td>
+                            {else}
+                                <td>{$deadNum}</td>
+                            {/if}
+                        {/loop}
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+    </tr>
+</tbody>
+</table>
+<p></p>
+{/if}
