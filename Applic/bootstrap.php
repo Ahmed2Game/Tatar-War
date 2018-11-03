@@ -1,8 +1,4 @@
 <?php
-if(!preg_match('/knightswar.com|xtatar.com|localhost/i',$_SERVER['HTTP_HOST']))
-{
-    exit(0);
-}
 ob_start();
 
 // set page header
