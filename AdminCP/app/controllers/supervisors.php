@@ -1,20 +1,5 @@
 <?php
-/**
- * supervisors class file.
- *
- * @author Abdulrahman Mohamed <abdokamal15@gmail.com>
- * @copyright Copyright 2013
- * @license http://www.xtatar.com
- */
 
-/**
- * Dashboard supervisors page
- *
- * @author Abdulrahman Mohamed <abdokamal15@gmail.com>
- * @version $Id$
- * @package app.controllers
- * @since 1.0
- */
 load_core('Admin');
 class Supervisors_Controller extends AdminController
 {
