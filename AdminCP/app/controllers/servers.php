@@ -1,7 +1,7 @@
 <?php
 load_core('Admin');
 require_once LIBRARY_DIR . "Cpanel.php";
-require CONFIG_DIR . '/db.php';
+require SERVER_DIR . '/db.php';
 
 class Servers_Controller extends AdminController
 {
