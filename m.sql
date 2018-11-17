@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `email`, `resetkey`, `permissions`, `active`) VALUES
-(1, 'احمد عليوة', 'd968a03cd3697cde39a1fbe48c443ce44e1ecf516ce0d54a8112b804ad941dd028a652d89c662c3da9917faa7b41025daf88ad53209ddf780128a15b04ff5805', 'elamlhost@gmail.com', '0', 'all', 1);
+(1, 'Ahmed Elywa', 'c382cb3a87ada5e9243657622c32a6bf6517ea3e5f4ff661150ea27901ff7ba61a225d68cbb7a702ebfe65c9fa6b09836ce5047217b4bddaa0a84ef4f6617468', 'ahmed2game@gmail.com', '0', 'all', 1);
 
 CREATE TABLE `gold_trans` (
   `from_player` varchar(15) DEFAULT NULL,
