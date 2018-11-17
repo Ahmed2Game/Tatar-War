@@ -45,6 +45,7 @@ $gameConfig['plus'] = json_decode($gameConfig['plus'], true);
 $gameConfig['troop'] = json_decode($gameConfig['troop'], true);
 $gameConfig['page'] = json_decode($m->GetSettings("page"), true);
 $gameConfig['system'] = json_decode($m->GetSettings("system"), true);
+    // TODO you need to change xtatar_ to your user name 
 $loader->init_db('xtatar_'.$_SESSION['server_selected']); // connect database
 
 

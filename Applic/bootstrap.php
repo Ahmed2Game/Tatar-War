@@ -36,6 +36,7 @@ if(isset($_POST['server'])||isset($_COOKIE['server']))
 {
 
     $serv = isset($_POST['server'])  ? $_POST['server'] : $_COOKIE['server'];
+    // TODO you need to change xtatar_ to your user name 
     $loader->init_db('xtatar_'.$serv);
     $gameConfig = $m->Serverdata($serv);
     $gameConfig['settings'] = json_decode($gameConfig['settings'], true);
