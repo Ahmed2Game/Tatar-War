@@ -3,7 +3,7 @@
 
 سكربت حرب التتار لموقع اكس تتار xtatar.com لعبت المتصفح الشبيهه بترافيان
 
-# How install game ?
+# How to install game ?
 1- you need to make new database with user then change (setting/db.php) with you data
 
 
