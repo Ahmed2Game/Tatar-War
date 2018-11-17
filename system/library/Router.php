@@ -6,7 +6,7 @@
 class Router
 {
 
- private static $__config_dir = CONFIG_DIR, // config directory
+ private static $config_dir = CONFIG_DIR, // config directory
  $config_route, // config route
  $route, // defined route
  $controller_dir, // controller dir
@@ -72,7 +72,7 @@ class Router
   return self::$params;
  }
 
- private function __init()
+ private function _init()
  {
   $route = $this->_set_route();
   $route = substr($route, -1, 1) == "/" ? substr($route, 0, -1) : $route;
@@ -115,7 +115,7 @@ class Router
 
  }
 
- private function __set_route()
+ private function _set_route()
  {
   if (isset($_SERVER["ORIG_PATH_INFO"])) {
    $route = substr($_SERVER["ORIG_PATH_INFO"], 1);

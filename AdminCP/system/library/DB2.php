@@ -6,7 +6,7 @@
 class DB2
 {
  public static $link;
- protected static $_db, // database configurations
+ protected static $db, // database configurations
  $fetch_mode = PDO::FETCH_ASSOC, // define the type of results
  $statement, // the PDO object variable
  $nquery      = 0,
