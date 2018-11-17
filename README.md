@@ -13,6 +13,7 @@
 3- now open your game admin http://yourSite/AdminCP/login
 
 username: ahmed2game@gmail.com
+
 password: 123456
 
 4- you can edit admin data in (المشرفين) 
