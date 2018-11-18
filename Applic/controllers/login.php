@@ -143,7 +143,6 @@ class Login_Controller extends PublicController
                 $this->cookie->uname = $userData[1];
                 $this->cookie->upwd  = $userData[2];
                 $this->cookie->save();
-                setcookie('cc_data', $userData[0], time()+60*60*24*365, '/');
                 $this->is_redirect = TRUE;
                 redirect("village1");
             }else{
