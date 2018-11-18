@@ -3,6 +3,13 @@
 
 سكربت حرب التتار لموقع اكس تتار xtatar.com لعبت المتصفح الشبيهه بترافيان
 
+# System Requirement 
+
+1- Need php >= 7.1 
+
+2- Activate .htaccess files from httpd.conf file (AllowOverride All)
+
+
 # How to install game ?
 1- you need to make new database with user then change (setting/db.php) with you data
 
