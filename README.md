@@ -21,3 +21,7 @@ password: 123456
 5- if you are work in Cpanel panel you can add server auto from game admin in (السيرفرات)
 
 but you need change cpanel url in (settings/db.php) 
+
+# Send mail settings 
+
+Go to file (system/library/functions.php) in line 429 431 432 change server and user name and password with your data
