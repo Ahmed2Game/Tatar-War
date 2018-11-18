@@ -41,7 +41,7 @@ class Plus_Controller extends AdminController
        'plus9'  => post('plus9'),
        'plus10' => post('plus10'),
       );
-      $this->S->UpdatePlus($_SESSION['server_selected'], json_encode($plus, JSON_FORCE_OBJECT));
+      $this->S->UpdatePlus($_COOKIE['server_selected'], json_encode($plus, JSON_FORCE_OBJECT));
       header("Location: plus?page=config");
       break;
 

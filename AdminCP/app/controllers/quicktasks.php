@@ -89,7 +89,7 @@ class Quicktasks_Controller extends AdminController
        'buytroop'     => post('buytroop'),
       );
 
-      $this->S->UpdateSettings($_SESSION['server_selected'], json_encode($settings, JSON_FORCE_OBJECT));
+      $this->S->UpdateSettings($_COOKIE['server_selected'], json_encode($settings, JSON_FORCE_OBJECT));
       header("Location: quicktasks?page=game_config");
       break;
 
@@ -101,7 +101,7 @@ class Quicktasks_Controller extends AdminController
        'inArtef'   => post('inArtef'),
       );
 
-      $this->S->UpdateTroop($_SESSION['server_selected'], json_encode($troop, JSON_FORCE_OBJECT));
+      $this->S->UpdateTroop($_COOKIE['server_selected'], json_encode($troop, JSON_FORCE_OBJECT));
       header("Location: quicktasks?page=troop");
       break;
 

@@ -73,12 +73,6 @@ class Players_Controller extends AdminController
        $this->viewData['sc'] = true;
       }
       break;
-     case 'email':
-      $count = $this->m->AddEmail(post('email'));
-      if ($count) {
-       $this->viewData['sc'] = true;
-      }
-      break;
      case 'activate':
       $result  = $this->m->GetPlayerDataByName2(post('name'));
       $link    = $gameConfig['system']['server_url'] . "index?active=" . $result['activation_code'];
@@ -114,12 +108,6 @@ class Players_Controller extends AdminController
     $this->viewData['page'] = 'gold';
    } elseif (get('page') == 'activate') {
     $this->viewData['page'] = 'activate';
-   } elseif (get('page') == 'email' and $_SESSION['server_selected'] == 'serv6') {
-    if (is_get('id')) {
-     $this->m->DeleteEmail(get('id'));
-    }
-    $this->viewData['emails'] = $this->m->GetAllEmail();
-    $this->viewData['page']   = 'email';
    } else {
     return header("Location: index.php");
    }

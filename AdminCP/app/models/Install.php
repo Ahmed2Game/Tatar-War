@@ -51,7 +51,7 @@ class Install_Model extends Model
     public function restserver()
     {
         db2::query("UPDATE servers SET players_count=1, start_date=NOW() WHERE id=:id", array(
-            'id' => $_SESSION['server_selected']
+            'id' => $_COOKIE['server_selected']
         ));
     }
 
