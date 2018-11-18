@@ -91,7 +91,7 @@
                                        
                                       <select class="input-medium" name="change_server" onchange="form.submit()">
                                         {loop="$servers_list"}
-                                            <option {if="$_SESSION['server_selected'] == $value"}selected="selected"{/if} value="{$value}">{$value}</option>
+                                            <option {if="$_COOKIE['server_selected'] == $value"}selected="selected"{/if} value="{$value}">{$value}</option>
                                         {/loop}
                                       </select>
                                    </div>

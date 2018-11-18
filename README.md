@@ -20,7 +20,17 @@ password: 123456
 
 5- if you are work in Cpanel panel you can add server auto from game admin in (السيرفرات)
 
-but you need change cpanel url in (settings/db.php) 
+but you need change cpanel url in (settings/db.php)
+
+--Or if you on {localhost} or any other places you need to add database manual
+
+Important database name must have prefix aaaa_m for master and for servers database must be same prefix aaaa_1 or 2 this server number 
+
+you can change aaaa to any prefix you want
+
+after add server from (السيرفرات) then change server number in the top of menu go to (اعدادات سريعه ثم اعدادات اللعبه وقم بالتعديل علي السيرفر )
+
+then go to (السيرفرات ثم اعداة سيرفر ثم تثبيت سيرفر جديد )
 
 # Send mail settings 
 

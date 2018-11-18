@@ -37,7 +37,8 @@ class Servers_Controller extends AdminController
       $plus = '{"plus1":"5","plus2":"2","plus3":"20","plus4":"5","plus5":"1","plus6":"1","plus7":"35","plus8":"35","plus9":"1","plus10":"30000"}';
 
       $id  = $this->m->CreateNewServer($settings, $troops, $plus);
-      $api = new CPANEL(['url' => $cpanel_url, 'username' => post('user'), 'password' => post('password')]);
+      if (post('user')) {
+        $api = new CPANEL(['url' => $cpanel_url, 'username' => post('user'), 'password' => post('password')]);
 
       $Creatdb = $api->makeRequest('MysqlFE', 'createdb', ['db' => post('user') . '_' . $id]);
 
@@ -50,6 +51,7 @@ class Servers_Controller extends AdminController
        }
       } else {
        $this->viewData['flash_message'] = array('error', $Creatdb->cpanelresult->event->reason);
+      }
       }
       break;
 
