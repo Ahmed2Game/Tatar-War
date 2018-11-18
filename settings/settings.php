@@ -5,7 +5,7 @@ $debug = false;	// set true for debug mode on
 global $settings;
 
 date_default_timezone_set("Asia/Riyadh");  // server timezone
-$settings['url'] 		= str_replace( basename( $_SERVER['PHP_SELF'] ), '', 'https://'.$_SERVER['HTTP_HOST'].dirname($_SERVER['SCRIPT_NAME']) );
+$settings['url'] 		= str_replace( basename( $_SERVER['PHP_SELF'] ), '', 'http://'.$_SERVER['HTTP_HOST'].dirname($_SERVER['SCRIPT_NAME']) );
 define( "URL", $settings['url'] ); // base url
 
 

@@ -21,13 +21,13 @@ class AdminController extends Controller
    $this->viewData['servers_list'] = $servers_list;
 
    // Check server connection
-   if (db::is_connected() == 0) {
+   /* if (db::is_connected()) {
     $this->viewData['flash_message'] = array(
      'error',
      'خطأ فى الاتصال بقاعدة البيانات',
      1,
     );
-   }
+   } */
    $this->viewData['sessioninfo'] = $this->Auth->sessioninfo($_COOKIE['auth_session']);
 
    // Check user permissions

@@ -447,7 +447,7 @@ class Auth
   * @param int $length
   * @return string $key
   */
- private function __randomkey($length = 10)
+ private function randomkey($length = 10)
  {
   $chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
   $key   = "";
@@ -843,7 +843,7 @@ class Auth
   * @return string $password
   */
 
- private function __hashpass($password)
+ private function hashpass($password)
  {
   $password = hash("SHA512", base64_encode(str_rot13(hash("SHA512", str_rot13($this->hash_salt_1 . $password . $this->hash_salt_2)))));
   return $password;

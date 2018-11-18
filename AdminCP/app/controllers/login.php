@@ -28,7 +28,6 @@ class Login_Controller extends AdminController
    $password = post("password");
 
    $login = $this->Auth->login($email, $password);
-
    if ($login) {
     $this->is_redirect = true;
     redirect('index.php');

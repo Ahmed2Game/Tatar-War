@@ -25,7 +25,7 @@ class Index_Controller extends AdminController
   // change server + admin change pass email
   if (is_post('change_server')) {
    $new_server_name             = post('change_server');
-   $_SESSION['server_selected'] = $new_server_name;
+   setcookie('server_selected', $new_server_name, time()+60*60*24*365, '/');
    $this->is_redirect           = true;
    redirect('index.php');
   } elseif (get('page') == 'logout') {

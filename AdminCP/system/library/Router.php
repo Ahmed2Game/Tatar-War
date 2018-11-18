@@ -124,7 +124,7 @@ class Router
   } else {
    $route = null;
   }
-  // $route = isset( $_SERVER["ORIG_PATH_INFO"] ) ? substr($_SERVER["ORIG_PATH_INFO"],1) : null;
+  // $route = isset( $_SERVER["PATH_INFO"] ) ? substr($_SERVER["PATH_INFO"],1) : null;
   $config_route = self::$config_route;
 
   foreach ($config_route as $key => $value) {

@@ -28,21 +28,20 @@ foreach ($servers as $key => $value) {
  $servers_list[$i] = $value['id'];
  $i++;
 }
-if (!isset($_SESSION['server_selected'])) {
- $_SESSION['server_selected'] = current($servers_list);
+if (!isset($_COOKIE['server_selected'])) {
+ setcookie('server_selected', 1, time()+60*60*24*365, '/');
 }
-
 // Load server configurations
-$gameConfig             = $m->Serverdata($_SESSION['server_selected']);
+$gameConfig             = $m->Serverdata($_COOKIE['server_selected']);
 $gameConfig['settings'] = json_decode($gameConfig['settings'], true);
 $gameConfig['plus']     = json_decode($gameConfig['plus'], true);
 $gameConfig['troop']    = json_decode($gameConfig['troop'], true);
 $gameConfig['page']     = json_decode($m->GetSettings("page"), true);
 $gameConfig['system']   = json_decode($m->GetSettings("system"), true);
 require SERVER_DIR . '/db.php';
-$user = explode('_', $username);
-$loader->init_db($user[0] . $serv);
-$loader->init_db('xtatar_' . $_SESSION['server_selected']); // connect database
+$user = explode('_', $database);
+$db = $user[0] .'_'. $_COOKIE['server_selected'];
+$loader->init_db($db); // connect database
 
 #--------------------------------
 # Auto Load the Controller
