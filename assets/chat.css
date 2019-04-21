@@ -1,289 +1,305 @@
 .chatbox {
-	position: fixed;
-	position:expression("absolute");
-	width: 225px;
-	display:none;
+    position: fixed;
+    position: expression("absolute");
+    width: 225px;
+    display: none;
 }
 
 .chatboxhead {
-	background-color: #f99d39;
-	padding:7px;
-	color: #ffffff;
+    background-color: #f99d39;
+    padding: 7px;
+    color: #ffffff;
 
-	border-right:1px solid #f99d39;
-	border-left:1px solid #f99d39;
+    border-right: 1px solid #f99d39;
+    border-left: 1px solid #f99d39;
 }
 
 .chatboxblink {
-	background-color: #176689;
-	border-right:1px solid #176689;
-	border-left:1px solid #176689;
+    background-color: #176689;
+    border-right: 1px solid #176689;
+    border-left: 1px solid #176689;
 }
 
 .chatboxcontent {
-	font-family: arial,sans-serif;
-	font-size: 13px;
-	color: #333333;
-	height:200px;
-	width:209px;
-	overflow-y:auto;
-	overflow-x:auto;
-	padding:7px;
-	border-left:1px solid #cccccc;
-	border-right:1px solid #cccccc;
-	border-bottom:1px solid #eeeeee;
-	background-color: #ffffff;
-	line-height: 1.3em;
+    font-family: arial, sans-serif;
+    font-size: 13px;
+    color: #333333;
+    height: 200px;
+    width: 209px;
+    overflow-y: auto;
+    overflow-x: auto;
+    padding: 7px;
+    border-left: 1px solid #cccccc;
+    border-right: 1px solid #cccccc;
+    border-bottom: 1px solid #eeeeee;
+    background-color: #ffffff;
+    line-height: 1.3em;
 }
 
 .chatboxinput {
-	padding: 5px;
-	background-color: #ffffff;
-	border-left:1px solid #cccccc;
-	border-right:1px solid #cccccc;
-	border-bottom:1px solid #cccccc;
+    padding: 5px;
+    background-color: #ffffff;
+    border-left: 1px solid #cccccc;
+    border-right: 1px solid #cccccc;
+    border-bottom: 1px solid #cccccc;
 }
 
 .chatboxtextarea {
-	width: 206px;
-	height:44px;
-	padding:3px 0pt 3px 3px;
-	border: 1px solid #eeeeee;
-	margin: 1px;
-	overflow:hidden;
+    width: 206px;
+    height: 44px;
+    padding: 3px 0pt 3px 3px;
+    border: 1px solid #eeeeee;
+    margin: 1px;
+    overflow: hidden;
 }
 
 .chatboxtextareaselected {
-	border: 2px solid #f99d39;
-	margin:0;
+    border: 2px solid #f99d39;
+    margin: 0;
 }
 
 .chatboxmessage {
-	margin-left:1em;
+    margin-left: 1em;
 }
 
 .chatboxinfo {
-	margin-left:-1em;
-	color:#666666;
+    margin-left: -1em;
+    color: #666666;
 
 }
 
 .chatboxmessagefrom {
-	margin-left:-1em;
-	font-weight: bold;
+    margin-left: -1em;
+    font-weight: bold;
 }
 
 .chatboxmessagecontent {
 }
 
 .chatboxoptions {
-	float: right;
+    float: right;
 }
 
 .chatboxoptions a {
-	text-decoration: none;
-	color: white;
-	font-weight:bold;
-	font-family:Verdana,Arial,"Bitstream Vera Sans",sans-serif;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-family: Verdana, Arial, "Bitstream Vera Sans", sans-serif;
 }
 
 .chatboxtitle {
-	float: left;
-}
-.onlineWidget,.panel{
-	
-	/* Styling the widget and the sliding panel at once */
-	
-	background-color:#F9F9F9;
-	border:2px solid #FFFFFF;
-	height:25px;
-	padding:4px 8px;
-	position:relative;
-	width:130px;
-	
-	cursor:pointer;
-	
-	/* CSS3 rules for rounded corners, box and text shadows: */
-	
-	-moz-border-radius:6px;
-	-webkit-border-radius:6px;
-	border-radius:6px;
-	
-	-moz-box-shadow:0 0 3px #CCCCCC;
-	-webkit-box-shadow:0 0 3px #CCCCCC;
-	box-shadow:0 0 3px #CCCCCC;
-	
-	text-shadow:0 2px 0 white;
+    float: left;
 }
 
-.onlineWidget:hover{
-	background-color:#fcfcfc;
+.onlineWidget, .panel {
+
+    /* Styling the widget and the sliding panel at once */
+
+    background-color: #F9F9F9;
+    border: 2px solid #FFFFFF;
+    height: 25px;
+    padding: 4px 8px;
+    position: relative;
+    width: 130px;
+
+    cursor: pointer;
+
+    /* CSS3 rules for rounded corners, box and text shadows: */
+
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+
+    -moz-box-shadow: 0 0 3px #CCCCCC;
+    -webkit-box-shadow: 0 0 3px #CCCCCC;
+    box-shadow: 0 0 3px #CCCCCC;
+
+    text-shadow: 0 2px 0 white;
 }
 
-.onlineWidget:hover .arrow{
-	/* Changing the background image for the green arrow on hover: */
-	background-position:bottom center;
+.onlineWidget:hover {
+    background-color: #fcfcfc;
 }
 
-.count{
-	/* The total number of people online div */
-	
-	color:#777777;
-	float:left;
-	font-size:26px;
-	font-weight:bold;
-	margin-top:-3px;
-	text-align:center;
-	width:30px;
+.onlineWidget:hover .arrow {
+    /* Changing the background image for the green arrow on hover: */
+    background-position: bottom center;
 }
 
-.label{
-	/* The online label */
-	
-	float:left;
-	font-size:10px;
-	padding:7px 0 0 7px;
-	text-transform:uppercase;
+.count {
+    /* The total number of people online div */
+
+    color: #777777;
+    float: left;
+    font-size: 26px;
+    font-weight: bold;
+    margin-top: -3px;
+    text-align: center;
+    width: 30px;
 }
 
-.arrow{
-	/* The green arrow on the right */
-	
-	background:url(assets/default/img/arrow.png) no-repeat top center;
-	position:absolute;
-	right:6px;
-	
-	width:25px;
-	height:25px;
+.label {
+    /* The online label */
+
+    float: left;
+    font-size: 10px;
+    padding: 7px 0 0 7px;
+    text-transform: uppercase;
 }
 
-.panel{
-	/* The slideout panel */
-	
-	position:absolute;
-	cursor:default;
-	
-	bottom:50px;
-	left:0;
-	height:auto;
-	display:none;
-	margin:-2px;
-	z-index:1000;
+.arrow {
+    /* The green arrow on the right */
+
+    background: url(assets/default/img/arrow.png) no-repeat top center;
+    position: absolute;
+    right: 6px;
+
+    width: 25px;
+    height: 25px;
 }
 
-.preloader{
-	/* The rotating gif preloader image */
-	display:block;
-	margin:10px auto;
+.panel {
+    /* The slideout panel */
+
+    position: absolute;
+    cursor: default;
+
+    bottom: 50px;
+    left: 0;
+    height: auto;
+    display: none;
+    margin: -2px;
+    z-index: 1000;
 }
 
-.geoRow{
-	/* The div that contains each country */
-	
-	height:16px;
-	overflow:hidden;
-	padding:2px 0;
+.preloader {
+    /* The rotating gif preloader image */
+    display: block;
+    margin: 10px auto;
+}
+
+.geoRow {
+    /* The div that contains each country */
+
+    height: 16px;
+    overflow: hidden;
+    padding: 2px 0;
 }
 
 
-.country, .people{
-	float:left;
-	font-size:10px;
-	padding:2px;
+.country, .people {
+    float: left;
+    font-size: 10px;
+    padding: 2px;
 }
 
-.people{
-	font-weight:bold;
+.people {
+    font-weight: bold;
 }
 
-.onlineWidget{
-	margin:30px auto 0;
+.onlineWidget {
+    margin: 30px auto 0;
 }
 
-.clear{
-	clear:both;
+.clear {
+    clear: both;
 }
+
 /*****************************/
 
-.panel{
-	/* The slideout panel */
-	
-	position:absolute;
-	cursor:default;
-	border:1px solid  #666;
-	bottom:50px;
-	left:0;
-	height:auto;
-	display:none;
-	margin:-2px;
-	z-index:1000;
+.panel {
+    /* The slideout panel */
+
+    position: absolute;
+    cursor: default;
+    border: 1px solid #666;
+    bottom: 50px;
+    left: 0;
+    height: auto;
+    display: none;
+    margin: -2px;
+    z-index: 1000;
 }
 
 
 #footpanel {
-	position: fixed;
-	bottom: 0; left: 0;
-/*	z-index: 9999; --Keeps the panel on top of all other elements--*/
-	background: #e3e2e2;
-	border: 1px solid #c3c3c3;
-	border-bottom: none;
-	width: 13%;
-	margin: 0 86%;
-	z-index:9;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    /*	z-index: 9999; --Keeps the panel on top of all other elements--*/
+    background: #e3e2e2;
+    border: 1px solid #c3c3c3;
+    border-bottom: none;
+    width: 13%;
+    margin: 0 86%;
+    z-index: 9;
 }
 
-*html #footpanel { /*--IE6 Hack - Fixed Positioning to the Bottom--*/
-	margin-top: -1px; /*--Prevents IE6 from having an infinity scroll bar - due to 1px border on #footpanel--*/
-	position: absolute;
-	top:expression(eval(document.compatMode &&document.compatMode=='CSS1Compat') ?documentElement.scrollTop+(documentElement.clientHeight-this.clientHeight) : document.body.scrollTop +(document.body.clientHeight-this.clientHeight));
+* html #footpanel { /*--IE6 Hack - Fixed Positioning to the Bottom--*/
+    margin-top: -1px; /*--Prevents IE6 from having an infinity scroll bar - due to 1px border on #footpanel--*/
+    position: absolute;
+    top: expression(eval(document.compatMode &&document.compatMode=='CSS1Compat') ?documentElement.scrollTop+(documentElement.clientHeight-this.clientHeight) : document.body.scrollTop +(document.body.clientHeight-this.clientHeight));
 }
 
 #footpanel ul {
-	padding: 0; margin: 0;
-	float: left;
-	width: 100%;
-	list-style: none;
-	border-top: 1px solid #fff; /*--Gives the bevel feel on the panel--*/
-	font-size: 1.1em;
-}
-#footpanel ul li{
-	padding: 0; margin: 0;
-	float: left;
-	position: relative;
-}
-#footpanel ul li a{
-	padding: 5px;
-	float: left;
-	text-indent: -9999px; /*--For text replacement - Shove text off of the page--*/
-	height: 16px; width: 16px;
-	text-decoration: none;
-	color: #333;
-	position: relative;
-}
-html #footpanel ul li a:hover{	background-color: #fff; }
-html #footpanel ul li a.active { /*--Active state when sub-panel is open--*/
-	background-color: #fff;
-	height: 17px;
-	margin-top: -2px; /*--Push it up 2px to attach the active button to sub-panel--*/
-	border: 1px solid #555;
-	border-top: none;
-	z-index: 200; /*--Keeps the active link on top of the sub-panel--*/
-	position: relative;
+    padding: 0;
+    margin: 0;
+    float: left;
+    width: 100%;
+    list-style: none;
+    border-top: 1px solid #fff; /*--Gives the bevel feel on the panel--*/
+    font-size: 1.1em;
 }
 
-#footpanel a.home{
-	background: url(../images/home.png) no-repeat 15px center;
-	width: 50px;
-	padding-left: 40px;
-	border-right: 1px solid #bbb;
-	text-indent: 0; /*--Reset text indent since there will be a combination of both text and image--*/
+#footpanel ul li {
+    padding: 0;
+    margin: 0;
+    float: left;
+    position: relative;
 }
-#footpanel a.chat{
-	/*background: url(../images/balloon.png) no-repeat 15px center;*/
-	width: 126px;
-	border-left: 0px solid #bbb;
-	border-right: 0px solid #bbb;
-	padding-left: 40px;
-	text-indent: 0; /*--Reset text indent since there will be a combination of both text and image--*/
+
+#footpanel ul li a {
+    padding: 5px;
+    float: left;
+    text-indent: -9999px; /*--For text replacement - Shove text off of the page--*/
+    height: 16px;
+    width: 16px;
+    text-decoration: none;
+    color: #333;
+    position: relative;
 }
-#footpanel li#chatpanel, #footpanel li#alertpanel {	float: right; }
+
+html #footpanel ul li a:hover {
+    background-color: #fff;
+}
+
+html #footpanel ul li a.active { /*--Active state when sub-panel is open--*/
+    background-color: #fff;
+    height: 17px;
+    margin-top: -2px; /*--Push it up 2px to attach the active button to sub-panel--*/
+    border: 1px solid #555;
+    border-top: none;
+    z-index: 200; /*--Keeps the active link on top of the sub-panel--*/
+    position: relative;
+}
+
+#footpanel a.home {
+    background: url(../images/home.png) no-repeat 15px center;
+    width: 50px;
+    padding-left: 40px;
+    border-right: 1px solid #bbb;
+    text-indent: 0; /*--Reset text indent since there will be a combination of both text and image--*/
+}
+
+#footpanel a.chat {
+    /*background: url(../images/balloon.png) no-repeat 15px center;*/
+    width: 126px;
+    border-left: 0px solid #bbb;
+    border-right: 0px solid #bbb;
+    padding-left: 40px;
+    text-indent: 0; /*--Reset text indent since there will be a combination of both text and image--*/
+}
+
+#footpanel li#chatpanel, #footpanel li#alertpanel {
+    float: right;
+}

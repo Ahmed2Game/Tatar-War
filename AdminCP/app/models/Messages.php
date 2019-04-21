@@ -1,4 +1,5 @@
 <?php
+
 class Messages_Model extends Model
 {
 

@@ -1,4 +1,5 @@
 <?php
+
 class Players_Model extends Model
 {
     public function GetPlayerDataByName($playerName)
@@ -14,6 +15,7 @@ class Players_Model extends Model
             'playerid' => $playerID
         ));
     }
+
     public function GetMplayerData($playerID)
     {
         return db2::get_row("SELECT * FROM p_players  WHERE id=:playerid", array(
@@ -35,24 +37,25 @@ class Players_Model extends Model
 
     public function GetPlayerDataByAlliance($allianceName)
     {
-        return db::get_all("SELECT p.id, p.name, p.alliance_id, p.alliance_name FROM p_players p WHERE p.alliance_name=:all",array(
+        return db::get_all("SELECT p.id, p.name, p.alliance_id, p.alliance_name FROM p_players p WHERE p.alliance_name=:all", array(
             'all' => $allianceName
         ));
     }
 
     public function GetPlayerDataByType($type)
     {
-        return db::get_all("SELECT p.id, p.name, p.alliance_id, p.alliance_name FROM p_players p WHERE p.player_type=:pty",array(
+        return db::get_all("SELECT p.id, p.name, p.alliance_id, p.alliance_name FROM p_players p WHERE p.player_type=:pty", array(
             'pty' => $type
         ));
     }
 
     public function GetPlayerDataByGold($gold)
     {
-        return db2::get_all("SELECT p.id, p.name, p.gold_num FROM p_players p WHERE p.gold_num>:gold",array(
+        return db2::get_all("SELECT p.id, p.name, p.gold_num FROM p_players p WHERE p.gold_num>:gold", array(
             'gold' => $gold
         ));
     }
+
     public function GetMPlayerDataByName($playerName)
     {
         return db2::get_all("SELECT p.id, p.name, p.gold_buy FROM p_players p WHERE p.name=:playername", array(
@@ -100,9 +103,10 @@ class Players_Model extends Model
             'week_thief_points' => $week_thief_points,
             'id' => $playerId
         ));
-        
+
     }
-    public function UpdateMplayer($Id,$name,$pwd,$email,$is_active,$invite_by,$house_name,$gold_num)
+
+    public function UpdateMplayer($Id, $name, $pwd, $email, $is_active, $invite_by, $house_name, $gold_num)
     {
         db2::query("UPDATE p_players p SET p.name=:name, p.pwd=:pwd, p.email=:email, p.is_active=:is_active, p.invite_by=:invite_by, p.house_name=:house_name, p.gold_num=:gold_num WHERE p.id=:id", array(
             'id' => $Id,
@@ -115,18 +119,17 @@ class Players_Model extends Model
             'gold_num' => $gold_num
         ));
     }
+
     public function deletePlayer($playerId)
     {
         $playerId = intval($playerId);
-        if ($playerId <= 0)
-        {
+        if ($playerId <= 0) {
             return;
         }
         $row = db::get_row("SELECT p.alliance_id, p.villages_id, p.tribe_id, p.is_active FROM p_players p WHERE id=:id", array(
             'id' => $playerId
         ));
-        if ($row == NULL)
-        {
+        if ($row == NULL) {
             return;
         }
         db::query("UPDATE p_msgs m SET m.to_player_id=IF(m.to_player_id=:id, NULL, m.to_player_id), m.from_player_id=IF(m.from_player_id=:id, NULL, m.from_player_id)", array(
@@ -135,35 +138,27 @@ class Players_Model extends Model
         db::query("UPDATE p_rpts r SET r.to_player_id=IF(r.to_player_id=:id, NULL, r.to_player_id), r.from_player_id=IF(r.from_player_id=:id, NULL, r.from_player_id)", array(
             'id' => $playerId
         ));
-        if (0 < intval($row['alliance_id']))
-        {
+        if (0 < intval($row['alliance_id'])) {
             db::query("UPDATE p_alliances SET player_count=player_count-1 WHERE id=:id", array(
                 'id' => intval($row['alliance_id'])
             ));
             $_aRow = db::get_row("SELECT a.players_ids, a.player_count FROM p_alliances a WHERE a.id=:id", array(
                 'id' => intval($row['alliance_id'])
             ));
-            if ($_aRow['player_count'] <= 0)
-            {
+            if ($_aRow['player_count'] <= 0) {
                 db::query("DELETE FROM p_alliances WHERE id=:id", array(
                     'id' => intval($row['alliance_id'])
                 ));
-            }
-            else
-            {
+            } else {
                 $aplayers_ids = $_aRow['players_ids'];
-                if (trim($aplayers_ids) != "")
-                {
-                    $newPlayers_ids  = "";
+                if (trim($aplayers_ids) != "") {
+                    $newPlayers_ids = "";
                     $aplayers_idsArr = explode(",", $aplayers_ids);
-                    foreach ($aplayers_idsArr as $pid)
-                    {
-                        if ($pid == $playerId)
-                        {
+                    foreach ($aplayers_idsArr as $pid) {
+                        if ($pid == $playerId) {
                             continue;
                         }
-                        if ($newPlayers_ids != "")
-                        {
+                        if ($newPlayers_ids != "") {
                             $newPlayers_ids .= ",";
                         }
                         $newPlayers_ids .= $pid;
@@ -193,19 +188,19 @@ class Players_Model extends Model
         ));
     }
 
-    public function GivePlayerGold( $name, $goldNumber )
+    public function GivePlayerGold($name, $goldNumber)
     {
         db2::query("INSERT INTO gold_trans (from_player, to_player, trans_date,gold)
                     VALUES (:from_player,:to_player, NOW(), :goldNumber)",
-                    array(
-                        'from_player' => 'الادارة',
-                        'to_player'   => $name,
-                        'goldNumber'  => $goldNumber
-                ));
+            array(
+                'from_player' => 'الادارة',
+                'to_player' => $name,
+                'goldNumber' => $goldNumber
+            ));
         return db2::count("UPDATE p_players p SET p.gold_num=p.gold_num+:goldNumber, p.gold_buy=p.gold_buy+:goldNumber WHERE p.name=:name", array(
             'goldNumber' => $goldNumber,
-            'name'   => $name
-        ) );
+            'name' => $name
+        ));
     }
 
     public function AddEmail($email)
@@ -226,8 +221,8 @@ class Players_Model extends Model
     {
         return db2::get_all("SELECT uemail FROM email");
     }
-	
-	public function GetPlayerDataByName2($playerName)
+
+    public function GetPlayerDataByName2($playerName)
     {
         return db2::get_row("SELECT p.id, p.email, p.activation_code FROM p_players p WHERE p.name=:playername", array(
             'playername' => $playerName

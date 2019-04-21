@@ -1,6 +1,7 @@
 <?php
 
 load_core('Admin');
+
 class Supervisors_Controller extends AdminController
 {
 
@@ -22,10 +23,8 @@ class Supervisors_Controller extends AdminController
      */
     public function index()
     {
-        if($_POST)
-        {
-            if(is_post('post_type'))
-            {
+        if ($_POST) {
+            if (is_post('post_type')) {
                 switch (post('post_type')) {
                     case 'register':
                         $username = post('username');
@@ -40,7 +39,7 @@ class Supervisors_Controller extends AdminController
                             'control_villages' => post('control_villages'),
                             'control_alliances' => post('control_alliances'),
                             'control_payment' => post('control_payment'),
-                            'control_ban_players' =>post('control_ban_players'),
+                            'control_ban_players' => post('control_ban_players'),
                             'control_support' => post('control_support')
                         );
 
@@ -51,26 +50,21 @@ class Supervisors_Controller extends AdminController
                             'cat_4' => post('cat_4')
                         );
 
-                        if($this->Auth->register($username, $password, $password, $email, $permissions))
-                        {
+                        if ($this->Auth->register($username, $password, $password, $email, $permissions)) {
                             $successmsg = '';
-                            foreach($this->Auth->successmsg as $suc)
-                            {
-                                $successmsg.=$suc .'<br />';
+                            foreach ($this->Auth->successmsg as $suc) {
+                                $successmsg .= $suc . '<br />';
                             }
                             $this->viewData['flash_message'] = array('success', $successmsg);
-                        }
-                        else
-                        {
+                        } else {
                             $errormsg = '';
-                            foreach($this->Auth->errormsg as $err)
-                            {
-                                $errormsg.=$err .'<br />';
+                            foreach ($this->Auth->errormsg as $err) {
+                                $errormsg .= $err . '<br />';
                             }
                             $this->viewData['flash_message'] = array('error', $errormsg);
                         }
                         $this->viewData['page'] = 'register';
-                    break;
+                        break;
 
                     case 'update' :
                         $userid = post('userid');
@@ -78,8 +72,7 @@ class Supervisors_Controller extends AdminController
                         $password = post('password');
                         $email = post('email');
 
-                        if($userid != '1')
-                        {
+                        if ($userid != '1') {
                             $active = post('active');
 
                             $permissions['allow'] = array(
@@ -89,7 +82,7 @@ class Supervisors_Controller extends AdminController
                                 'control_villages' => post('control_villages'),
                                 'control_alliances' => post('control_alliances'),
                                 'control_payment' => post('control_payment'),
-                                'control_ban_players' =>post('control_ban_players'),
+                                'control_ban_players' => post('control_ban_players'),
                                 'control_support' => post('control_support')
                             );
 
@@ -101,88 +94,68 @@ class Supervisors_Controller extends AdminController
                             );
 
                             $update = $this->Auth->update($username, $password, $email, $active, $permissions, $userid);
-                        }
-                        else
-                        {
+                        } else {
                             $update = $this->Auth->update($username, $password, $email, 1, 'all', 1);
                         }
 
 
-                        if($update)
-                        {
+                        if ($update) {
                             $this->Auth->updatesession($username, $userid);
 
 
                             $successmsg = '';
-                            foreach($this->Auth->successmsg as $suc)
-                            {
-                                $successmsg.=$suc .'<br />';
+                            foreach ($this->Auth->successmsg as $suc) {
+                                $successmsg .= $suc . '<br />';
                             }
                             $this->viewData['flash_message'] = array('success', $successmsg);
-                        }
-                        else
-                        {
+                        } else {
                             $errormsg = '';
-                            foreach($this->Auth->errormsg as $err)
-                            {
-                                $errormsg.=$err .'<br />';
+                            foreach ($this->Auth->errormsg as $err) {
+                                $errormsg .= $err . '<br />';
                             }
                             $this->viewData['flash_message'] = array('error', $errormsg);
                         }
                         $this->viewData['supervisors'] = $this->Auth->getAll();
                         $this->viewData['page'] = 'show';
-                    break;
+                        break;
 
                     default:
                         redirect('index.php');
-                    break;
+                        break;
                 }
             }
-        }
-        else
-        {
-            if(is_get('page'))
-            {
-                if(get('page') == 'register') {
+        } else {
+            if (is_get('page')) {
+                if (get('page') == 'register') {
                     $this->viewData['page'] = 'register';
-                }
-                elseif(get('page') == 'show') {
+                } elseif (get('page') == 'show') {
                     $this->viewData['supervisors'] = $this->Auth->getAll();
                     $this->viewData['page'] = 'show';
-                }
-                elseif(get('page') == 'edit') {
+                } elseif (get('page') == 'edit') {
                     $this->viewData['supervisor'] = $this->Auth->getOne(get('id'));
                     $this->viewData['page'] = 'edit';
-                }
-                elseif(get('page') == 'delete')
-                {
-                    if($this->Auth->deleteaccount(get('id')))
-                    {
+                } elseif (get('page') == 'delete') {
+                    if ($this->Auth->deleteaccount(get('id'))) {
                         $this->viewData['flash_message'] = array('success', "تم حذف المشرف بنجاح .");
-                    }
-                    else
-                    {
+                    } else {
                         $errormsg = '';
-                        foreach($this->Auth->errormsg as $err)
-                        {
-                            $errormsg.=$err .'<br />';
+                        foreach ($this->Auth->errormsg as $err) {
+                            $errormsg .= $err . '<br />';
                         }
                         $this->viewData['flash_message'] = array('error', $errormsg);
                     }
                     $this->viewData['supervisors'] = $this->Auth->getAll();
                     $this->viewData['page'] = 'show';
-                }
-                else {
+                } else {
                     redirect('index.php');
                 }
-            }
-            else
-            {
+            } else {
                 redirect('index.php');
             }
         }
     }
 
 }
+
 //end file
 ?>

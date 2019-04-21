@@ -1,5 +1,5 @@
 <?php
- load_game_engine('Auth');
+load_game_engine('Auth');
 
 class Shownew_Controller extends AuthController
 {
@@ -16,19 +16,17 @@ class Shownew_Controller extends AuthController
 
     public function index()
     {
-        if ( intval( $this->data['new_gnews'] ) == 0 || $this->player->isSpy )
-        {
+        if (intval($this->data['new_gnews']) == 0 || $this->player->isSpy) {
             $this->is_redirect = TRUE;
             redirect('village1');
-        }
-        else
-        {
+        } else {
             $this->load_model('Global', 'm');
             $this->siteNews = $this->m->getGlobalSiteNews();
-			$this->viewData['siteNews'] = nl2br($this->siteNews);
-            
+            $this->viewData['siteNews'] = nl2br($this->siteNews);
+
         }
     }
 
 }
+
 ?>

@@ -13,7 +13,85 @@
 		<a href="plus?t=5"{if="($selectedTabIndex == 5)"} class="selected" {/if}>{#LANGUI_BAY_T10}</a>
 	</div>
 {if="($selectedTabIndex == 0)"}
-            <h2>لم يعد هناك شراء ذهب في اللعبه حتي يتم اغلاقها نهاية الشهر</h2>
+{if="($packageIndex == '')"}
+    <table class="rate_details lang_rtl lang_ar" cellpadding="1" cellspacing="1">
+        <thead>
+		    <tr>
+			    <th colspan="2">{$G2A.name}</th>
+			</tr>
+		</thead>
+		<tbody>
+		    <tr>
+              	<td class="desc">
+	              {function="constant('payments_' . $G2A.name . '_description')"}
+	              <br />
+	              <a href="plus?id={$G2A.name}">
+	              	<img src="{function="add_style($G2A.image, ASSETS_DIR.'default/plus/')"}" style="width:255px; height:79px;" alt="{$G2A.name}" >
+	              </a>
+	              <br />
+	          </td>
+      		</tr>
+  		</tbody>
+	</table>
+<!--    <table class="rate_details lang_rtl lang_ar" cellpadding="1" cellspacing="1">
+        <thead>
+		    <tr>
+			    <th colspan="2">2 . التحويل البنكي</th>
+			</tr>
+		</thead>
+		<tbody>
+		    <tr>
+              	<td class="desc">
+	              التحويل البنكي داخل السعودية اسهل بكثير من الطرق الالكترونية يوجد قائمة بكل البنوك السعوديه يمكنك اختيار الافضل
+				  <br />
+				  <br />
+	              <a href="bank" onclick="window.open('bank','tgpay','scrollbars=yes,status=yes,resizable=yes,toolbar=yes,width=800,height=600');return false;">قائمة بالاسعار والحسابات البنكية
+	              </a>
+				  
+	              <br />
+	          </td>
+      		</tr>
+  		</tbody>
+	</table> -->
+   {else}
+   <div id="products">
+       {loop="$packages"}
+            <table class="product lang_rtl lang_ar" cellpadding="1" cellspacing="1">
+			    <thead>
+				    <tr>
+					    <th>{$value.name}</th>
+					</tr>
+				</thead>
+				<tbody>
+				    <tr>
+					    <td class="pic">
+							<a href="#" onclick="window.open('payment?pg={$value.id}','tgpay','scrollbars=yes,status=yes,resizable=yes,toolbar=yes,width=800,height=600');return false;">
+						    	<img src="{function="add_style($value.image, ASSETS_DIR.'/default/plus/')"}" style="width:100px;height:100px;" alt="{$value.name}">
+						    </a>
+						</td>
+					</tr>
+					<tr>
+					    <td><s>{$value.gold} {#LANGUI_PLUS_T6}</s></td>
+					</tr>
+					<tr>
+					    <td>{$value.gold + ($value.gold*($value.bonus + $G2A.bonus))/100} {#LANGUI_PLUS_T6}</td>
+					</tr>
+					<tr>
+					    <td>{$value.cost} {$G2A.currency}</td>
+					</tr>
+					<tr>
+					    <td>
+						    <a href="#" onclick="window.open('payment?pg={$value.id}','tgpay','scrollbars=yes,status=yes,resizable=yes,toolbar=yes,width=800,height=600');return false;">{#LANGUI_PLUS_T7}</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+        {/loop}
+		
+        <div class="clear"></div>
+	</div>
+	
+{/if}
 
   {elseif="($selectedTabIndex == 1)"}
     <table id="plus_features" class="features" cellpadding="1" cellspacing="1">

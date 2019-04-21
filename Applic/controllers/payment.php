@@ -1,5 +1,6 @@
 <?php
- load_game_engine('Lite');
+load_game_engine('Lite');
+
 class Payment_Controller extends LiteController
 {
 
@@ -9,7 +10,7 @@ class Payment_Controller extends LiteController
     public $payment = NULL;
     public $secureId = NULL;
     public $Domain = NULL;
-	public $gold = NULL;
+    public $gold = NULL;
 
     public function __construct()
     {
@@ -21,50 +22,43 @@ class Payment_Controller extends LiteController
     {
         $this->load_model('Payment', 'P');
         $this->load_model('Servers', 'S');
-        if (is_get('pg') )
-        {
+        if (is_get('pg')) {
             $G2A = json_decode($this->S->GetSettings("G2A"), true);
             $package = $this->S->GetPackage(get('pg'));
-            
-            if( isset( $G2A, $package))
-            {
+
+            if (isset($G2A, $package)) {
                 $playerName = $this->P->getPlayerDataById($this->player->playerId);
                 $goldNumber = $package['gold'] + (($package['gold'] * ($package['bonus'] + $G2A['bonus'])) / 100);
                 $order_id = $this->P->InsertMoneyLog("", $playerName, $goldNumber, $package['cost'], $G2A['currency'], "G2A", 0);
-                $hash = hash('SHA256', $order_id.$package['cost'].$G2A['currency'].'=?sh2dINaXA4ASIZl6L*PPye1@Du+l$tknOnFg&o28sCZ&l94@7TJ!$Kz81qs^XR');
+                $hash = hash('SHA256', $order_id . $package['cost'] . $G2A['currency'] . '=?sh2dINaXA4ASIZl6L*PPye1@Du+l$tknOnFg&o28sCZ&l94@7TJ!$Kz81qs^XR');
                 $items = array();
                 $items[] = array(
-                   	"sku" => $package['name'],
-                   	"name" => $goldNumber.text_gold_lang,
-                   	"amount" => $package['cost'],
-                   	"qty" => "1",
-                   	"price" => $package['cost'],
-                   	"id" => get('pg'),
-                   	"url" => URL."plus"
+                    "sku" => $package['name'],
+                    "name" => $goldNumber . text_gold_lang,
+                    "amount" => $package['cost'],
+                    "qty" => "1",
+                    "price" => $package['cost'],
+                    "id" => get('pg'),
+                    "url" => URL . "plus"
                 );
                 $data = array(
-                    'api_hash'    => $G2A['merchant_id'],
-                    'hash'        => $hash,
-                    'order_id'    => $order_id,
-                    'amount'      => $package['cost'],
-                    'currency'    => $G2A['currency'],
-                    'url_failure' => URL."plus",
-                    'url_ok'      => URL."plus?t=5",
-                    'items'       => $items
+                    'api_hash' => $G2A['merchant_id'],
+                    'hash' => $hash,
+                    'order_id' => $order_id,
+                    'amount' => $package['cost'],
+                    'currency' => $G2A['currency'],
+                    'url_failure' => URL . "plus",
+                    'url_ok' => URL . "plus?t=5",
+                    'items' => $items
                 );
                 $obj = $this->request($data);
-                if ($obj['status'] == "ok") 
-                {
-                   	$geturl = "https://checkout.pay.g2a.com/index/gateway?token=";
-                   	header('Location: ' .$geturl.$obj['token']);
+                if ($obj['status'] == "ok") {
+                    $geturl = "https://checkout.pay.g2a.com/index/gateway?token=";
+                    header('Location: ' . $geturl . $obj['token']);
+                } else {
+                    echo "<script type=\"text/javascript\">self.close();</script>";
                 }
-                else
-                {
-                   	echo "<script type=\"text/javascript\">self.close();</script>";
-                }
-            }
-            else
-            {
+            } else {
                 echo "<script type=\"text/javascript\">self.close();</script>";
             }
         }
@@ -82,7 +76,7 @@ class Payment_Controller extends LiteController
         curl_setopt($curl, CURLOPT_POST, true);
 
         if (!empty($data)) {
-            $fields = is_array($data) ? http_build_query($data) : (string) $data;
+            $fields = is_array($data) ? http_build_query($data) : (string)$data;
             curl_setopt($curl, CURLOPT_POSTFIELDS, $fields);
         }
 
@@ -92,4 +86,5 @@ class Payment_Controller extends LiteController
     }
 
 }
+
 ?>

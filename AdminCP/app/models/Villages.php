@@ -1,4 +1,5 @@
 <?php
+
 class Villages_Model extends Model
 {
     public function GetVillagesDataByName($playerName)
@@ -11,7 +12,7 @@ class Villages_Model extends Model
 
     public function GetVillagesDataByCrop($crop)
     {
-        $crop = is_numeric($crop) ? '<'.$crop : $crop;
+        $crop = is_numeric($crop) ? '<' . $crop : $crop;
         $ex = 'v.crop_consumption';
         $ex .= $crop;
         return db::get_all("SELECT v.id, v.village_name, v.is_capital, v.is_special_village, v.people_count, v.crop_consumption FROM p_villages v
@@ -21,8 +22,8 @@ class Villages_Model extends Model
     public function GetVillagesDataByTroops($crop)
     {
         return db::get_all("SELECT v.id, v.village_name, v.player_id, v.player_name, v.people_count, v.crop_consumption, v.troops_num, v.troops_out_num  FROM p_villages v
-            WHERE v.crop_consumption>:crop",array(
-                'crop' => $crop));
+            WHERE v.crop_consumption>:crop", array(
+            'crop' => $crop));
     }
 
     public function GetVillageDataById($VillageId)
@@ -65,4 +66,5 @@ class Villages_Model extends Model
         ));
     }
 }
+
 ?>

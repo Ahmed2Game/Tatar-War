@@ -8,7 +8,7 @@ $app = "app";
 #--------------------------------
 # Base server directory
 #--------------------------------
-define( "CONFIG_DIR",  "config/" );
+define("CONFIG_DIR", "config/");
 
 
 #--------------------------------

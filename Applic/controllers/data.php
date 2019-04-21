@@ -1,5 +1,6 @@
-<?php 
+<?php
 load_game_engine('Public');
+
 class Data_Controller extends PublicController
 {
     public function __construct()
@@ -9,11 +10,12 @@ class Data_Controller extends PublicController
         $this->layoutViewFile = null;
         echo json_encode($this->viewData);
     }
-    
-    public function index ()
+
+    public function index()
     {
-        
-        
+
+
     }
 }
+
 ?>

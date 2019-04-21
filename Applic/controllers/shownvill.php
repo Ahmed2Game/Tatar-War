@@ -1,5 +1,5 @@
 <?php
- load_game_engine('Auth');
+load_game_engine('Auth');
 
 class Shownvill_Controller extends AuthController
 {
@@ -16,18 +16,16 @@ class Shownvill_Controller extends AuthController
 
     public function index()
     {
-        if ( intval( $this->data['create_nvil'] ) == 0 || $this->player->isSpy )
-        {
+        if (intval($this->data['create_nvil']) == 0 || $this->player->isSpy) {
             $this->is_redirect = TRUE;
             redirect('village1');
-        }
-        else
-        {
-		    $this->load_model('Global', 'globalModel');
-            $this->globalModel->resetNewVillageFlag( $this->player->playerId );
-			$this->viewData['getFlashContent'] = $this->getFlashContent(ASSETS_DIR.'anm/war/nvil.swf', 500, 350);
+        } else {
+            $this->load_model('Global', 'globalModel');
+            $this->globalModel->resetNewVillageFlag($this->player->playerId);
+            $this->viewData['getFlashContent'] = $this->getFlashContent(ASSETS_DIR . 'anm/war/nvil.swf', 500, 350);
         }
     }
 
 }
+
 ?>

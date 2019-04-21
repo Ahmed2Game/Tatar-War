@@ -1,6 +1,6 @@
 #wowwindow {
     position: absolute;
-    left: 50%;/*margins are adjusted by plugin to place window at center center*/
+    left: 50%; /*margins are adjusted by plugin to place window at center center*/
     top: 50%;
     -moz-box-shadow: 0 0 15px #252525;
     -webkit-box-shadow: 0 0 15px #252525;
@@ -39,7 +39,7 @@
 .wowwindow-title {
     font-weight: bold;
     font-size: 11px;
-    font-family: Verdana,Arial,Helvetica,sans-serif;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
     color: #bfbfbf;
     cursor: default;
     /*IE6 rules*/

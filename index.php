@@ -8,12 +8,12 @@ $app = "Applic";
 #--------------------------------
 # Base server directory
 #--------------------------------
-define( "CONFIG_DIR",  "settings/" );
+define("CONFIG_DIR", "settings/");
 
 #--------------------------------
 # Load the class
 #--------------------------------
-require_once CONFIG_DIR."directory.php";
+require_once CONFIG_DIR . "directory.php";
 
 
 #--------------------------------

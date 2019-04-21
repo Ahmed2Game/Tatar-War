@@ -1,4 +1,5 @@
 <?php
+
 class Quicktasks_Model extends Model
 {
     public function UpdatePlayergold($goldnum)
@@ -18,7 +19,7 @@ class Quicktasks_Model extends Model
 
     public function GetGsummaryData()
     {
-        return db::get_row( "SELECT gs.truce_reason, TIMESTAMPDIFF(HOUR, NOW(), gs.truce_time) truce_hour FROM g_summary gs ");
+        return db::get_row("SELECT gs.truce_reason, TIMESTAMPDIFF(HOUR, NOW(), gs.truce_time) truce_hour FROM g_summary gs ");
     }
 
     public function GetGsummaryData2()
@@ -71,4 +72,5 @@ class Quicktasks_Model extends Model
         return db::get_field("SELECT g.gnews_text FROM g_summary g");
     }
 }
+
 ?>

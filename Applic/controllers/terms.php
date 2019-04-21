@@ -1,5 +1,5 @@
 <?php
- load_game_engine('Public');
+load_game_engine('Public');
 
 class Terms_Controller extends PublicController
 {
@@ -8,7 +8,7 @@ class Terms_Controller extends PublicController
     {
         parent::__construct();
         $this->viewFile = 'terms';
-		$this->viewData['contentCssClass'] = 'login';
+        $this->viewData['contentCssClass'] = 'login';
     }
 
     public function index()
@@ -16,4 +16,5 @@ class Terms_Controller extends PublicController
     }
 
 }
+
 ?>

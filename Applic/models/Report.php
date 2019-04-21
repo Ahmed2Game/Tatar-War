@@ -14,32 +14,28 @@ class Report_Model extends Model
     public function getReportListCount($playerId, $cat, $isSpy)
     {
         $expr = ($cat == 0 ? '' : ' AND r.rpt_cat=' . $cat);
-		if ($isSpy)
-        {
-    		return db::get_field("SELECT COUNT(*)
+        if ($isSpy) {
+            return db::get_field("SELECT COUNT(*)
     			FROM p_rpts r
     			WHERE
     				( (r.to_player_id=:playerId) OR (r.from_player_id=:playerId) ) $expr", array(
                 'playerId' => $playerId
             ));
-		}
-        else
-        {
+        } else {
             return db::get_field("SELECT COUNT(*)  FROM p_rpts r WHERE
     				( (r.to_player_id=:playerId AND r.delete_status!=1) OR (r.from_player_id=:playerId AND r.delete_status!=2) ) $expr",
-                    array(
-                    'playerId'  => $playerId
-            ));
-		}
+                array(
+                    'playerId' => $playerId
+                ));
+        }
     }
 
     public function getReportList($playerId, $cat, $pageIndex, $pageSize, $isSpay)
     {
         $pageindexsize = $pageIndex * $pageSize;
         $expr = ($cat == 0 ? '' : ' AND r.rpt_cat=' . $cat);
-		if ($isSpay)
-        {
-    		return db::get_all("SELECT
+        if ($isSpay) {
+            return db::get_all("SELECT
     				r.id,
     				r.to_player_id,
     				r.from_player_id,
@@ -55,11 +51,9 @@ class Report_Model extends Model
     			ORDER BY r.creation_date DESC
     			LIMIT $pageindexsize,$pageSize",
                 array(
-                    'playerId'      => $playerId,
-            ));
-		}
-        else
-        {
+                    'playerId' => $playerId,
+                ));
+        } else {
             $pageindexsize = $pageIndex * $pageSize;
             return db::get_all("SELECT
 				r.id,
@@ -77,10 +71,10 @@ class Report_Model extends Model
 				( (r.to_player_id=:playerId AND r.delete_status!=1) OR (r.from_player_id=:playerId AND r.delete_status!=2 AND r.rpt_cat!=5) ) $expr
 			ORDER BY r.creation_date DESC
 			LIMIT $pageindexsize,$pageSize",
-            array(
-                    'playerId'      => $playerId
+                array(
+                    'playerId' => $playerId
                 ));
-		}
+        }
     }
 
     public function deleteReport($playerId, $reportId)
@@ -94,45 +88,39 @@ class Report_Model extends Model
                 'playerId' => $playerId
             )
         );
-        if (!$result)
-        {
+        if (!$result) {
             return FALSE;
         }
         $deleteStatus = $result['delete_status'];
-        $toPlayerId   = $result['to_player_id'];
+        $toPlayerId = $result['to_player_id'];
         $fromPlayerId = $result['from_player_id'];
-        $readStatus   = $result['read_status'];
+        $readStatus = $result['read_status'];
 
-   
-            db::query('UPDATE p_rpts r
+
+        db::query('UPDATE p_rpts r
 				SET
 					r.delete_status=:status
 				WHERE
 					r.id=:reportId AND (r.from_player_id=:playerId OR r.to_player_id=:playerId)',
-                array(
-                        'status'    => ($toPlayerId == $playerId ? 1 : 2),
-                        'reportId'  => $reportId,
-                        'playerId'  => $playerId
-                    )
-            );
-        
+            array(
+                'status' => ($toPlayerId == $playerId ? 1 : 2),
+                'reportId' => $reportId,
+                'playerId' => $playerId
+            )
+        );
 
-        if ($toPlayerId == $playerId)
-            {
-            if (($readStatus == 0 || $readStatus == 2))
-                {
+
+        if ($toPlayerId == $playerId) {
+            if (($readStatus == 0 || $readStatus == 2)) {
                 $this->markReportAsReaded($playerId, $toPlayerId, $reportId, $readStatus);
                 return TRUE;
-                }
             }
-        else
-            {
-            if (($readStatus == 0 || $readStatus == 1))
-                {
+        } else {
+            if (($readStatus == 0 || $readStatus == 1)) {
                 $this->markReportAsReaded($playerId, $toPlayerId, $reportId, $readStatus);
                 return TRUE;
-                }
             }
+        }
         return FALSE;
     }
 
@@ -141,12 +129,12 @@ class Report_Model extends Model
         $newReadStatus = ($playerId == $rtoPlayerId ? 1 : 2) + $read_status;
         db::query('UPDATE p_rpts r SET r.read_status=:newReadStatus WHERE r.id=:reportId', array(
             'newReadStatus' => $newReadStatus,
-            'reportId'      => $reportId
+            'reportId' => $reportId
         ));
 
         db::query('UPDATE p_players p
 			SET p.new_report_count=IF(p.new_report_count-1<0, 0, p.new_report_count-1)
-			WHERE p.id=:playerId', array('playerId' => $playerId) );
+			WHERE p.id=:playerId', array('playerId' => $playerId));
     }
 
     public function getReport($reportId)
@@ -195,16 +183,16 @@ class Report_Model extends Model
     }
 
     public function createReport($fromPlayerId, $toPlayerId, $fromVillageId, $toVillageId, $reportCategory,
-        $reportResult, $body, $timeInSeconds)
+                                 $reportResult, $body, $timeInSeconds)
     {
-        $fromPlayerId    = intval($fromPlayerId);
-        $toPlayerId      = intval($toPlayerId);
-        $fromVillageId   = intval($fromVillageId);
-        $toVillageId     = intval($toVillageId);
-		$fromPlayerName  = $this->getPlayerName($fromPlayerId);
-        $toPlayerName    = $this->getPlayerName($toPlayerId);
+        $fromPlayerId = intval($fromPlayerId);
+        $toPlayerId = intval($toPlayerId);
+        $fromVillageId = intval($fromVillageId);
+        $toVillageId = intval($toVillageId);
+        $fromPlayerName = $this->getPlayerName($fromPlayerId);
+        $toPlayerName = $this->getPlayerName($toPlayerId);
         $fromVillageName = $this->getVillageName($fromVillageId);
-        $toVillageName   = $this->getVillageName($toVillageId);
+        $toVillageName = $this->getVillageName($toVillageId);
 
         db::query('INSERT INTO p_rpts SET
 
@@ -223,28 +211,26 @@ class Report_Model extends Model
 				read_status=0,
 				delete_status=0',
             array(
-                'fromPlayerId'      => $fromPlayerId,
-                'fromPlayerName'    => $fromPlayerName,
-                'toPlayerId'        => $toPlayerId,
-                'toPlayerName'      => $toPlayerName,
-                'fromVillageId'     => $fromVillageId,
-                'fromVillageName'   => $fromVillageName,
-                'toVillageId'       => $toVillageId,
-                'toVillageName'     => $toVillageName,
-                'reportCategory'    => $reportCategory,
-                'reportResult'      => $reportResult,
-                'body'              => $body,
-                'timeInSeconds'     => $timeInSeconds
-        ));
+                'fromPlayerId' => $fromPlayerId,
+                'fromPlayerName' => $fromPlayerName,
+                'toPlayerId' => $toPlayerId,
+                'toPlayerName' => $toPlayerName,
+                'fromVillageId' => $fromVillageId,
+                'fromVillageName' => $fromVillageName,
+                'toVillageId' => $toVillageId,
+                'toVillageName' => $toVillageName,
+                'reportCategory' => $reportCategory,
+                'reportResult' => $reportResult,
+                'body' => $body,
+                'timeInSeconds' => $timeInSeconds
+            ));
         $reportId = intval(db::get_field('SELECT LAST_INSERT_ID() FROM p_rpts'));
-		if ($reportCategory != 5)
-		{
+        if ($reportCategory != 5) {
             db::query('UPDATE p_players p SET p.new_report_count=p.new_report_count+1 WHERE p.id=:fromPlayerId', array(
                 'fromPlayerId' => $fromPlayerId
             ));
-		}
-        if ($fromPlayerId != $toPlayerId)
-        {
+        }
+        if ($fromPlayerId != $toPlayerId) {
             db::query('UPDATE p_players p SET p.new_report_count=p.new_report_count+1 WHERE p.id=:toPlayerId', array(
                 'toPlayerId' => $toPlayerId
             ));
@@ -278,19 +264,19 @@ class Report_Model extends Model
                 OR (r.from_player_id=:playerId AND r.delete_status!=2 AND r.rpt_cat!=5))
 				AND
 				(IF(r.to_player_id=:playerId, r.read_status=1 OR r.read_status=3, r.read_status=2 OR r.read_status=3) = FALSE)',
-                array('playerId' => $playerId)));
+            array('playerId' => $playerId)));
 
-        if ($newCount < 0)
-        {
+        if ($newCount < 0) {
             $newCount = 0;
         }
 
         db::query('UPDATE p_players p SET p.new_report_count=:newCount WHERE p.id=:playerId', array(
             'newCount' => $newCount,
-            'playerId' =>$playerId
+            'playerId' => $playerId
         ));
         return $newCount;
     }
 
 }
+
 ?>

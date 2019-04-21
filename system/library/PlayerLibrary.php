@@ -8,12 +8,12 @@ class PlayerLibrary
     public $isAgent = NULL;
     public $isSpy = FALSE;
     public $gameStatus = NULL;
-    
+
     public function getInstance()
     {
         session_start();
         $key = getPlayerKey();
-        return isset( $_SESSION[$key] ) ? $_SESSION[$key] : NULL;
+        return isset($_SESSION[$key]) ? $_SESSION[$key] : NULL;
     }
 
     public function save()
@@ -24,7 +24,7 @@ class PlayerLibrary
     public function logout()
     {
         $_SESSION[getPlayerKey()] = NULL;
-        unset( $_SESSION );
+        unset($_SESSION);
         session_destroy();
     }
 

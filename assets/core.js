@@ -8,10 +8,12 @@ var ld, gt, mreq = !0,
 function _(a) {
     return document.getElementById(a)
 }
+
 function _tcls(a, b) {
     for (var c = !1, d = "", e = a.getAttribute("class").split(" "), f = 0, i = e.length; f < i; f++) e[f] != b ? (d != "" && (d += " "), d += e[f]) : c = !0;
     a.setAttribute("class", d + (c ? "" : " " + b))
 }
+
 function _rcls(a, b) {
     for (var c = "", d = a.getAttribute("class").split(" "), e = 0, f = d.length; e < f; e++) d[e] != b && (c != "" && (c += " "), c += d[e]);
     a.setAttribute("class", c)
@@ -86,6 +88,7 @@ function render() {
 function setLang(a) {
     document.cookie = "lng=" + a + "; expires=Wed, 1 Jan 2250 00:00:00 GMT"
 }
+
 function toggleLevels() {
     var a = _("lswitch"),
         b = _("levels"),
@@ -99,6 +102,7 @@ function showManual(a, b) {
     if (p != null) p.innerHTML = '<div id="_pwin" class="popup3"><div id="drag" onmousedown="dragStart(event, \'_pwin\')"></div><a href="#" onClick="hideManual(); return false;"><img src="assets/x.gif" border="1" class="popup4" alt="Move"></a><iframe frameborder="0" id="Frame" src="help?c=' + a + '&id=' + b + '" width="412" height="440" border="0"></iframe></div>';
     return !1
 }
+
 function hideManual() {
     p = document.getElementById("ce");
     if (p != null) p.innerHTML = ""
@@ -122,6 +126,7 @@ function hideInfo() {
     _("mbx_12").innerHTML = "-";
     _("mbx_13").innerHTML = "-"
 }
+
 function createRequestObject() {
     var a = null;
     try {
@@ -173,16 +178,20 @@ function renderMap(a, b) {
     c.send(null);
     return !1
 }
+
 function slm() {
     window.open("map?l&id=" + _mp.mtx[3][3][0], "map", "top=100,left=25,width=1007,height=585").focus();
     return !1
 }
+
 function add_res(a) {
     set_res(a, _("r" + a).value + carry)
 }
+
 function upd_res(a, b) {
     set_res(a, b ? merchNum * carry : isNaN(_("r" + a).value) ? 0 : _("r" + a).value)
 }
+
 function set_res(a, b) {
     b > felems[4 - a].cv && (b = felems[4 - a].cv);
     b > merchNum * carry && (b = merchNum * carry);
@@ -200,6 +209,7 @@ function Browser() {
     else if (b = "Netscape6/", (c = a.indexOf(b)) >= 0) this.isNS = !0, this.version = parseFloat(a.substr(c + b.length));
     else if (a.indexOf("Gecko") >= 0) this.isNS = !0, this.version = 6.1
 }
+
 var browser = new Browser,
     dragObj = {
         zIndex: 0
@@ -235,10 +245,12 @@ function dragGo(a) {
     if (browser.isIE) window.event.cancelBubble = !0, window.event.returnValue = !1;
     browser.isNS && a.preventDefault()
 }
+
 function dragStop() {
     browser.isIE && (document.detachEvent("onmousemove", dragGo), document.detachEvent("onmouseup", dragStop));
     browser.isNS && (document.removeEventListener("mousemove", dragGo, !0), document.removeEventListener("mouseup", dragStop, !0))
 }
+
 function showTask() {
     if (_tt == null) {
         _("anm").style.visibility = "visible";
@@ -295,12 +307,14 @@ function goto_guide(a) {
         c.send(null)
     }
 }
+
 function hightlight_guide(a) {
     var b = _("qgei").className,
         c = b[b.length - 1] == "g";
     if (a) c || (_("qgei").className += "g");
     else if (c) _("qgei").className = b.substring(0, b.length - 1)
 }
+
 function free_guide() {
     _vflag = !0;
     showTask()

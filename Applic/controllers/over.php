@@ -1,5 +1,5 @@
 <?php
- load_game_engine('Public');
+load_game_engine('Public');
 
 class Over_Controller extends PublicController
 {
@@ -14,18 +14,16 @@ class Over_Controller extends PublicController
 
     public function index()
     {
-        if ( !$this->global_model->isGameOver() )
-        {
-            exit( 0 );
-        }
-        else
-        {
+        if (!$this->global_model->isGameOver()) {
+            exit(0);
+        } else {
             $this->load_model('Profile', 'm');
             $this->playerData = $this->m->getWinnerPlayer();
-            
+
             $this->viewData['playerData'] = $this->playerData;
         }
     }
 
 }
+
 ?>

@@ -1,108 +1,449 @@
 @CHARSET "UTF-8";
 
 /* Allgemeines */
-html, body {height: 100%;}
-body {background-color: #FFFFFF; direction: ltr; font-size: 13px; line-height: 19px; margin: 0; text-align: right;}
-body, button, input, select, textarea {font-family: Arial, Verdana, Helvetica, sans-serif;}
-a {color: #FF8000; font-size: 1em; text-decoration: none;}
-a:hover {text-decoration: underline;}
-ul {padding-right: 20px;}
-.ie6 ul {padding-right: 0;}
-img {border: 0;}
-.clear {clear: both; display: block; font-size: 0; height: 0; line-height: 0; visibility: hidden;}
+html, body {
+    height: 100%;
+}
+
+body {
+    background-color: #FFFFFF;
+    direction: ltr;
+    font-size: 13px;
+    line-height: 19px;
+    margin: 0;
+    text-align: right;
+}
+
+body, button, input, select, textarea {
+    font-family: Arial, Verdana, Helvetica, sans-serif;
+}
+
+a {
+    color: #FF8000;
+    font-size: 1em;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+ul {
+    padding-right: 20px;
+}
+
+.ie6 ul {
+    padding-right: 0;
+}
+
+img {
+    border: 0;
+}
+
+.clear {
+    clear: both;
+    display: block;
+    font-size: 0;
+    height: 0;
+    line-height: 0;
+    visibility: hidden;
+}
 
 /* Layout */
-.wrapper {height: auto !important; /* Important Regel f?¼r moderne Browser */ height: 100%; /* Mindesth?¶he f?¼r den IE */ min-height: 100%; position: relative;}
-.wrapper {}
-.ie6 .wrapper {text-align: center;} /* IE6 Heack damit das alles zentriert wird */ 
-.ie6 .wrapper .content {text-align: right;} /* IE6 Hack im Content r?¼ckg?¤ngig machgen */
+.wrapper {
+    height: auto !important; /* Important Regel f?ï¿½r moderne Browser */
+    height: 100%; /* Mindesth?ï¿½he f?ï¿½r den IE */
+    min-height: 100%;
+    position: relative;
+}
+
+.wrapper {
+}
+
+.ie6 .wrapper {
+    text-align: center;
+}
+
+/* IE6 Heack damit das alles zentriert wird */
+.ie6 .wrapper .content {
+    text-align: right;
+}
+
+/* IE6 Hack im Content r?ï¿½ckg?ï¿½ngig machgen */
 
 /* Header */
-.header {background: transparent url(../img/header-bg.png) no-repeat center top; height: 360px;}
-.header .banner {margin: 0 auto; position: relative; width: 822px;}
-.header .browsergames {background: transparent url(../img/header-browsergames.png) no-repeat right top; height: 20px; right: 345px; position: absolute; top: 115px; width: 128px;}
-.header .banner-bg {background: transparent url(../img/header-banner.png) no-repeat right top; height: 113px; right: 181px; position: absolute; top: 49px; width: 447px;}
-.header .logo {background: transparent url(../img/header-logo.png) no-repeat right top; height: 113px; right: 288px; position: absolute; top: 21px; width: 447px;}
-.header .vip {background: transparent url(../img/header-vip.png) no-repeat right top; height: 31px; right: 524px; position: absolute; top: 44px; width: 51px;}
+.header {
+    background: transparent url(../img/header-bg.png) no-repeat center top;
+    height: 360px;
+}
+
+.header .banner {
+    margin: 0 auto;
+    position: relative;
+    width: 822px;
+}
+
+.header .browsergames {
+    background: transparent url(../img/header-browsergames.png) no-repeat right top;
+    height: 20px;
+    right: 345px;
+    position: absolute;
+    top: 115px;
+    width: 128px;
+}
+
+.header .banner-bg {
+    background: transparent url(../img/header-banner.png) no-repeat right top;
+    height: 113px;
+    right: 181px;
+    position: absolute;
+    top: 49px;
+    width: 447px;
+}
+
+.header .logo {
+    background: transparent url(../img/header-logo.png) no-repeat right top;
+    height: 113px;
+    right: 288px;
+    position: absolute;
+    top: 21px;
+    width: 447px;
+}
+
+.header .vip {
+    background: transparent url(../img/header-vip.png) no-repeat right top;
+    height: 31px;
+    right: 524px;
+    position: absolute;
+    top: 44px;
+    width: 51px;
+}
 
 /* Content */
-.content {margin: -27px auto 25px auto; position: relative; width: 772px;}
-.content .shadow {background-color: transparent; background-position: right center; background-repeat: no-repeat; bottom: 0px; position: absolute; top: 0px; width: 14px;}
-.content .shadow.left {background-image: url(../img/rtl/shadow-a.png); right: -14px;}
-.content .shadow.right { background-image: url(../img/rtl/shadow-b.png); left: -14px;}
-.content .information, .content .action {position: relative;}
-.ie6 .content .information, .ie6 .content .action, .ie6 .content .shadow {height: 100%;} /* IE6 Hack um den Schatten vol aufzuziehen */
-	
+.content {
+    margin: -27px auto 25px auto;
+    position: relative;
+    width: 772px;
+}
+
+.content .shadow {
+    background-color: transparent;
+    background-position: right center;
+    background-repeat: no-repeat;
+    bottom: 0px;
+    position: absolute;
+    top: 0px;
+    width: 14px;
+}
+
+.content .shadow.left {
+    background-image: url(../img/rtl/shadow-a.png);
+    right: -14px;
+}
+
+.content .shadow.right {
+    background-image: url(../img/rtl/shadow-b.png);
+    left: -14px;
+}
+
+.content .information, .content .action {
+    position: relative;
+}
+
+.ie6 .content .information, .ie6 .content .action, .ie6 .content .shadow {
+    height: 100%;
+}
+
+/* IE6 Hack um den Schatten vol aufzuziehen */
+
 /* Informationsbereich mit Was ist, About, Stats, Forum */
-.content .information {background: transparent url(../img/rtl/content-bg.png) no-repeat right top; float: right; padding: 0 10px; width: 330px;}
-.content .information.standalone {background: none; float: none; padding: 10px; width: 732px;}
-.content .information .layer {margin-top: 25px; padding: 0 20px;}
-.content .information .what h1 {color: #71d000; font-size: 1.61em; margin: 0 0 5px; padding: 0;}
-.content .information .gamerules ul {list-style-type: none;} 
-.content .information .stats, .content .information .forum {border-bottom: 1px solid #D0D0D0; border-top: 1px solid #D0D0D0; padding-top: 5px; padding-bottom: 5px;}
-.content .information .stats {background-color: #EFF1F0; padding-right: 137px; position: relative;}
-.content .information .stats .characters {background: transparent url(../img/characters.png) no-repeat right top; height: 75px; right: 20px; position: absolute; top: -12px; width: 112px;}
-.ie6 .content .information .stats .characters {right: -117px;}
-.content .information .about h1 {color: #000000; font-size: 1.15em; margin: 0 0 5px; padding: 0;}
-.content .information .forum a {font-weight: bold;}
+.content .information {
+    background: transparent url(../img/rtl/content-bg.png) no-repeat right top;
+    float: right;
+    padding: 0 10px;
+    width: 330px;
+}
+
+.content .information.standalone {
+    background: none;
+    float: none;
+    padding: 10px;
+    width: 732px;
+}
+
+.content .information .layer {
+    margin-top: 25px;
+    padding: 0 20px;
+}
+
+.content .information .what h1 {
+    color: #71d000;
+    font-size: 1.61em;
+    margin: 0 0 5px;
+    padding: 0;
+}
+
+.content .information .gamerules ul {
+    list-style-type: none;
+}
+
+.content .information .stats, .content .information .forum {
+    border-bottom: 1px solid #D0D0D0;
+    border-top: 1px solid #D0D0D0;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.content .information .stats {
+    background-color: #EFF1F0;
+    padding-right: 137px;
+    position: relative;
+}
+
+.content .information .stats .characters {
+    background: transparent url(../img/characters.png) no-repeat right top;
+    height: 75px;
+    right: 20px;
+    position: absolute;
+    top: -12px;
+    width: 112px;
+}
+
+.ie6 .content .information .stats .characters {
+    right: -117px;
+}
+
+.content .information .about h1 {
+    color: #000000;
+    font-size: 1.15em;
+    margin: 0 0 5px;
+    padding: 0;
+}
+
+.content .information .forum a {
+    font-weight: bold;
+}
 
 /* News und Login */
-.content .action {float: left; width: 402px;}
+.content .action {
+    float: left;
+    width: 402px;
+}
 
 /* Login Bereich */
-.content .action .error {color: #FFCCCC; font-size: 0.77em; font-weight: bold; position:absolute; top: -34px; text-align: center; width: 401px;}
-.content .action .login {margin-bottom: 25px;}
-.content .action .login .input {float: right; margin-right: 15px;}
-.ie6 .content .action .login .input {height: 50px; margin-right: 11px; overflow: hidden; width: 118px;}
+.content .action .error {
+    color: #FFCCCC;
+    font-size: 0.77em;
+    font-weight: bold;
+    position: absolute;
+    top: -34px;
+    text-align: center;
+    width: 401px;
+}
 
-.content .action .login .input .iInput {border: 2px solid transparent;}
-.ie6 .content .action .login .input .iInput {border-width: 0; font-size: 0; line-height: 0; margin: 2px 5px;}
-.content .action .login .input.iError .iInput {border: 2px solid #E84E3E;}
-.ie6 .content .action .login .input.iError .iInput {border-width: 2px; margin: 1px 0;}
+.content .action .login {
+    margin-bottom: 25px;
+}
 
-.content .action .login .input.text {width: 120px;}
-.content .action .login .input.text label {color: #403120; font-size: 0.8em; font-weight: bold; padding-right: 2px;}
-.content .action .login .input.button {margin-top: 19px; width: 102px;}
-.content .action .login .input.button input {font-size: 0.9em; font-weight: bold;}
+.content .action .login .input {
+    float: right;
+    margin-right: 15px;
+}
+
+.ie6 .content .action .login .input {
+    height: 50px;
+    margin-right: 11px;
+    overflow: hidden;
+    width: 118px;
+}
+
+.content .action .login .input .iInput {
+    border: 2px solid transparent;
+}
+
+.ie6 .content .action .login .input .iInput {
+    border-width: 0;
+    font-size: 0;
+    line-height: 0;
+    margin: 2px 5px;
+}
+
+.content .action .login .input.iError .iInput {
+    border: 2px solid #E84E3E;
+}
+
+.ie6 .content .action .login .input.iError .iInput {
+    border-width: 2px;
+    margin: 1px 0;
+}
+
+.content .action .login .input.text {
+    width: 120px;
+}
+
+.content .action .login .input.text label {
+    color: #403120;
+    font-size: 0.8em;
+    font-weight: bold;
+    padding-right: 2px;
+}
+
+.content .action .login .input.button {
+    margin-top: 19px;
+    width: 102px;
+}
+
+.content .action .login .input.button input {
+    font-size: 0.9em;
+    font-weight: bold;
+}
 
 /* News Bereich */
-.content .action .news {min-height: 340px; padding: 0 11px;}
-.content .action .news h1 {color: #662504; font-size: 1.61em; margin: 0 0 15px; padding: 0;}
-.content .action .news p {border-top: 1px dashed #C2C2C2; font-size: 0.92em; margin-bottom: 0px; margin-top: 10px; padding-top: 15px;}
-.content .action .news p img {float: right; margin-bottom: 15px; margin-left: 5px;}
-	
+.content .action .news {
+    min-height: 340px;
+    padding: 0 11px;
+}
+
+.content .action .news h1 {
+    color: #662504;
+    font-size: 1.61em;
+    margin: 0 0 15px;
+    padding: 0;
+}
+
+.content .action .news p {
+    border-top: 1px dashed #C2C2C2;
+    font-size: 0.92em;
+    margin-bottom: 0px;
+    margin-top: 10px;
+    padding-top: 15px;
+}
+
+.content .action .news p img {
+    float: right;
+    margin-bottom: 15px;
+    margin-left: 5px;
+}
+
 /* Footer */
-.footer-stopper {float: right; margin-bottom: 90px;} /* Stoppt den Footer beim nach obenschieben */
-.ie6 .footer-stopper, .ie7 .footer-stopper {height: 90px;} /* IE 6 und IE7 Hack damit Footer nicht ?¼ber dem Content steht */
-.footer {background: #F1F1F1 url(../img/footer-line.png) repeat-x center top; bottom: 0px; color: #797979; font-size: 0.8em; height: 50px; right: 0; position: absolute; left: 0;}
-.ie6 .footer {width: 100%;} /* IE6 Footer komplett aufziehen */
-.footer .container {margin: 0 auto; position: relative; width: 820px;}
+.footer-stopper {
+    float: right;
+    margin-bottom: 90px;
+}
+
+/* Stoppt den Footer beim nach obenschieben */
+.ie6 .footer-stopper, .ie7 .footer-stopper {
+    height: 90px;
+}
+
+/* IE 6 und IE7 Hack damit Footer nicht ?ï¿½ber dem Content steht */
+.footer {
+    background: #F1F1F1 url(../img/footer-line.png) repeat-x center top;
+    bottom: 0px;
+    color: #797979;
+    font-size: 0.8em;
+    height: 50px;
+    right: 0;
+    position: absolute;
+    left: 0;
+}
+
+.ie6 .footer {
+    width: 100%;
+}
+
+/* IE6 Footer komplett aufziehen */
+.footer .container {
+    margin: 0 auto;
+    position: relative;
+    width: 820px;
+}
 
 /* Footer Logo */
-.footer .logo {height: 34px; left: 0; position: absolute; top: 20px; width: 179px;}
+.footer .logo {
+    height: 34px;
+    left: 0;
+    position: absolute;
+    top: 20px;
+    width: 179px;
+}
 
 /* Footer Menu */
-.footer ul.menu {list-style-type: none; margin: 0; padding: 0; position: absolute; top: 10px;}
-.footer ul.menu.menu2 {left: 0px;}
-.footer ul.menu li {float: left; margin: 0 5px;}
-.footer ul.menu li a {color: #797979; margin: 0 3px;}
-.footer ul.menu li.copyright {direction: ltr;}
+.footer ul.menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 10px;
+}
+
+.footer ul.menu.menu2 {
+    left: 0px;
+}
+
+.footer ul.menu li {
+    float: left;
+    margin: 0 5px;
+}
+
+.footer ul.menu li a {
+    color: #797979;
+    margin: 0 3px;
+}
+
+.footer ul.menu li.copyright {
+    direction: ltr;
+}
 
 /* IE6 Images */
-.ie6 .header .browsergames {background-image: url(../img/ie6/header-browsergames.gif);}
-.ie6 .header .banner-bg {background-image: url(../img/ie6/header-banner.gif);}
-.ie6 .header .logo {background-image: url(../img/ie6/header-logo.gif);}
-.ie6 .header .vip {background-image: url(../img/ie6/header-vip.gif);}
-.ie6 .content .shadow.left {background-image: url(../img/rtl/ie6/shadow-a.gif);}
-.ie6 .content .shadow.right { background-image: url(../img/rtl/ie6/shadow-b.gif);}
-.ie6 .content .information {background-image: url(../img/rtl/ie6/content-bg.gif);}
-.ie6 .content .information .stats .characters {background-image: url(../img/ie6/characters.gif);}
-.ie6 .footer {background-color: url(../img/ie6/footer-line.gif);} 
-.ie6 .footer .logo {background-image: url(../img/ie6/footer-logo.gif);}
+.ie6 .header .browsergames {
+    background-image: url(../img/ie6/header-browsergames.gif);
+}
+
+.ie6 .header .banner-bg {
+    background-image: url(../img/ie6/header-banner.gif);
+}
+
+.ie6 .header .logo {
+    background-image: url(../img/ie6/header-logo.gif);
+}
+
+.ie6 .header .vip {
+    background-image: url(../img/ie6/header-vip.gif);
+}
+
+.ie6 .content .shadow.left {
+    background-image: url(../img/rtl/ie6/shadow-a.gif);
+}
+
+.ie6 .content .shadow.right {
+    background-image: url(../img/rtl/ie6/shadow-b.gif);
+}
+
+.ie6 .content .information {
+    background-image: url(../img/rtl/ie6/content-bg.gif);
+}
+
+.ie6 .content .information .stats .characters {
+    background-image: url(../img/ie6/characters.gif);
+}
+
+.ie6 .footer {
+    background-color: url(../img/ie6/footer-line.gif);
+}
+
+.ie6 .footer .logo {
+    background-image: url(../img/ie6/footer-logo.gif);
+}
 
 /* Bruno will alles im Header BG */
-.header {background-image: url(../img/header-bg-complete.png);}
+.header {
+    background-image: url(../img/header-bg-complete.png);
+}
+
 .header .browsergames, .ie6 .header .browsergames,
 .header .banner-bg, .ie6 .header .banner-bg,
 .header .logo, .ie6 .header .logo,
-.header .vip, .ie6 .header .vip {background-image: none;}
+.header .vip, .ie6 .header .vip {
+    background-image: none;
+}

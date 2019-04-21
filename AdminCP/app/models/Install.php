@@ -1,53 +1,53 @@
 <?php
+
 class Install_Model extends Model
 {
 
-    public function processSetup( $map_size )
+    public function processSetup($map_size)
     {
-    	global $gameConfig;
+        global $gameConfig;
         $this->restserver();
-	    try {
-	        $result = db::query("SELECT 1 FROM p_players LIMIT 1");
-	    } catch (Exception $e) {
-	        // We got an exception == table not found
-	        return FALSE;
-	    }
+        try {
+            $result = db::query("SELECT 1 FROM p_players LIMIT 1");
+        } catch (Exception $e) {
+            // We got an exception == table not found
+            return FALSE;
+        }
 
 
         $this->_createTables();
-        $this->_createMap( $map_size );
-        
-        if ( $this->_createAdminPlayer( $map_size, $gameConfig['system']['admin_email'] ) )
-        {
-            $raiseTime = ($gameConfig['settings']['over']*24*60*60);
-            $Crop = $gameConfig['settings']['Crop']*60;
-            $Artefacts = ($gameConfig['settings']['Artefacts']*24*60*60);
+        $this->_createMap($map_size);
+
+        if ($this->_createAdminPlayer($map_size, $gameConfig['system']['admin_email'])) {
+            $raiseTime = ($gameConfig['settings']['over'] * 24 * 60 * 60);
+            $Crop = $gameConfig['settings']['Crop'] * 60;
+            $Artefacts = ($gameConfig['settings']['Artefacts'] * 24 * 60 * 60);
             $this->load_model('Queue', 'queueModel');
             $this->load_library('QueueTask', 'newTask',
-                array(  'taskType'      => QS_TATAR_RAISE,
-                        'playerId'      => 0,
-                        'executionTime' =>  $raiseTime
-                    )
+                array('taskType' => QS_TATAR_RAISE,
+                    'playerId' => 0,
+                    'executionTime' => $raiseTime
+                )
             );
             $this->queueModel->addTask($this->newTask);
             $this->load_library('QueueTask', 'newTask',
-                array(  'taskType'      => QS_CROP_DELETE,
-                        'playerId'      => 0,
-                        'executionTime' =>  $Crop
-                    )
+                array('taskType' => QS_CROP_DELETE,
+                    'playerId' => 0,
+                    'executionTime' => $Crop
+                )
             );
             $this->queueModel->addTask($this->newTask);
             $this->load_library('QueueTask', 'newTask',
-                array(  'taskType'      => QS_ARTEFACTS_RAISE,
-                        'playerId'      => 0,
-                        'executionTime' =>  $Artefacts
-                    )
+                array('taskType' => QS_ARTEFACTS_RAISE,
+                    'playerId' => 0,
+                    'executionTime' => $Artefacts
+                )
             );
             $this->queueModel->addTask($this->newTask);
-            
+
         }
     }
-    
+
     public function restserver()
     {
         db2::query("UPDATE servers SET players_count=1, start_date=NOW() WHERE id=:id", array(
@@ -58,7 +58,7 @@ class Install_Model extends Model
 
     public function _createTables()
     {
-        db::query( "
+        db::query("
 		DROP TABLE IF EXISTS `g_settings`;
 		DROP TABLE IF EXISTS `g_summary`;
 		DROP TABLE IF EXISTS `money_log`;
@@ -333,140 +333,121 @@ class Install_Model extends Model
 		ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 		INSERT INTO `g_settings`(`start_date`,`license_key`) VALUES (NOW(),NULL);
-		INSERT INTO `g_summary`(`players_count`,`active_players_count`,`Arab_players_count`,`Roman_players_count`,`Teutonic_players_count`,`Gallic_players_count`,`news_text`) VALUES ( '0','0','0','0','0','0',NULL);" );
+		INSERT INTO `g_summary`(`players_count`,`active_players_count`,`Arab_players_count`,`Roman_players_count`,`Teutonic_players_count`,`Gallic_players_count`,`news_text`) VALUES ( '0','0','0','0','0','0',NULL);");
 
-  }
+    }
 
-    public function _createMap( $map_size )
+    public function _createMap($map_size)
     {
-        $maphalf_size = floor( $map_size / 2 );
-        $oasis_troop_ids = array( );
-        foreach ( $GLOBALS['GameMetadata']['troops'] as $k => $v )
-        {
-            if ( $v['for_tribe_id'] == 4 )
-            {
+        $maphalf_size = floor($map_size / 2);
+        $oasis_troop_ids = array();
+        foreach ($GLOBALS['GameMetadata']['troops'] as $k => $v) {
+            if ($v['for_tribe_id'] == 4) {
                 $oasis_troop_ids[] = $k;
             }
         }
         $i = 0;
-        while ( $i < $map_size )
-        {
-            $queryBatch = array( );
+        while ($i < $map_size) {
+            $queryBatch = array();
             $j = 0;
-            while ( $j < $map_size )
-            {
+            while ($j < $map_size) {
                 $rel_x = $maphalf_size < $i ? $i - $map_size : $i;
                 $rel_y = $maphalf_size < $j ? $j - $map_size : $j;
                 $troops_num = "";
                 $field_maps_id = 0;
                 $rand_num = "NULL";
                 $creation_date = "NULL";
-                if ( $rel_x == 0 && $rel_y == 0 )
-                {
+                if ($rel_x == 0 && $rel_y == 0) {
                     $r = 1;
+                } else {
+                    $r_arr = array(0, 1, 1, 1, 1, 1, 0, 1, mt_rand(0, 1), mt_rand(0, 1), 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, mt_rand(0, 1));
+                    $r = $r_arr[mt_rand(0, 48)];
                 }
-                else
-                {
-                    $r_arr = array(0,1,1,1,1,1,0,1,mt_rand( 0, 1 ),mt_rand( 0, 1 ),1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,0,1,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,1,0,1,1,mt_rand( 0, 1 ));
-                    $r = $r_arr[mt_rand( 0, 48 )];
-                }
-                if ( $r == 1 )
-                {
-                    $image_num = mt_rand( 0, 9 );
+                if ($r == 1) {
+                    $image_num = mt_rand(0, 9);
                     $is_oasis = 0;
                     $tribe_id = 0;
-                    if ( $rel_x == 0 && $rel_y == 0 )
-                    {
+                    if ($rel_x == 0 && $rel_y == 0) {
                         $field_maps_id = 3;
-                    }
-                    else
-                    {
+                    } else {
                         $fr_arr = array(
                             3,
-                            mt_rand( 1, 12 ),
+                            mt_rand(1, 12),
                             3,
-                            mt_rand( 1, 4 ),
-                            mt_rand( 1, 5 ),
+                            mt_rand(1, 4),
+                            mt_rand(1, 5),
                             3,
-                            mt_rand( 1, 12 ),
+                            mt_rand(1, 12),
                             3,
-                            mt_rand( 7, 11 ),
-                            mt_rand( 7, 12 ),
+                            mt_rand(7, 11),
+                            mt_rand(7, 12),
                             3,
                             3,
-                            mt_rand( 1, 12 )
+                            mt_rand(1, 12)
                         );
-                        $field_maps_id = $fr_arr[mt_rand( 0, 12 )];
+                        $field_maps_id = $fr_arr[mt_rand(0, 12)];
                     }
-                    if ( $field_maps_id == 3 )
-                    {
+                    if ($field_maps_id == 3) {
                         $pr_arr = array(
                             0,
                             1,
                             0,
                             0,
-                            mt_rand( 0, 1 )
+                            mt_rand(0, 1)
                         );
-                        $pr = $pr_arr[mt_rand( 0, 4 )];
-                        $rand_num = $pr == 1 ? abs( $rel_x ) + abs( $rel_y ) : 310;
+                        $pr = $pr_arr[mt_rand(0, 4)];
+                        $rand_num = $pr == 1 ? abs($rel_x) + abs($rel_y) : 310;
                     }
-                }
-                else
-                {
-                    $image_num = mt_rand( 1, 12 );
+                } else {
+                    $image_num = mt_rand(1, 12);
                     $is_oasis = 1;
                     $tribe_id = 4;
                     $creation_date = "NOW()";
-                    $troops_num = $oasis_troop_ids[mt_rand( 0, 2 )]." ".mt_rand( 1, 5 );
-                    $troops_num .= ",".$oasis_troop_ids[mt_rand( 3, 5 )]." ".mt_rand( 2, 6 );
-                    $troops_num .= ",".$oasis_troop_ids[mt_rand( 6, 8 )]." ".mt_rand( 3, 7 );
-                    if ( mt_rand( 0, 1 ) == 1 )
-                    {
-                        $troops_num .= ",".$oasis_troop_ids[9]." ".mt_rand( 2, 8 );
+                    $troops_num = $oasis_troop_ids[mt_rand(0, 2)] . " " . mt_rand(1, 5);
+                    $troops_num .= "," . $oasis_troop_ids[mt_rand(3, 5)] . " " . mt_rand(2, 6);
+                    $troops_num .= "," . $oasis_troop_ids[mt_rand(6, 8)] . " " . mt_rand(3, 7);
+                    if (mt_rand(0, 1) == 1) {
+                        $troops_num .= "," . $oasis_troop_ids[9] . " " . mt_rand(2, 8);
                     }
-                    $troops_num = "-1:".$troops_num;
+                    $troops_num = "-1:" . $troops_num;
                 }
-                $queryBatch[] = "(".$rel_x.",".$rel_y.",".$image_num.",".$rand_num.",".$field_maps_id.",".$tribe_id.",".$is_oasis.",'".$troops_num."',".$creation_date.")";
+                $queryBatch[] = "(" . $rel_x . "," . $rel_y . "," . $image_num . "," . $rand_num . "," . $field_maps_id . "," . $tribe_id . "," . $is_oasis . ",'" . $troops_num . "'," . $creation_date . ")";
                 ++$j;
             }
-            db::query( "INSERT INTO p_villages (rel_x,rel_y,image_num,rand_num,field_maps_id,tribe_id,is_oasis,troops_num,creation_date) VALUES".implode( ",", $queryBatch ) );
-            unset( $queryBatch );
+            db::query("INSERT INTO p_villages (rel_x,rel_y,image_num,rand_num,field_maps_id,tribe_id,is_oasis,troops_num,creation_date) VALUES" . implode(",", $queryBatch));
+            unset($queryBatch);
             $queryBatch = NULL;
             ++$i;
         }
     }
 
 
-    public function _createAdminPlayer( $map_size, $adminEmail )
+    public function _createAdminPlayer($map_size, $adminEmail)
     {
-    	global $gameConfig;
+        global $gameConfig;
 
         $this->load_model('Register', 'm');
-		$admin = db2::get_row("SELECT  p.id, p.name, p.servers FROM p_players p  WHERE  p.name=:name",
+        $admin = db2::get_row("SELECT  p.id, p.name, p.servers FROM p_players p  WHERE  p.name=:name",
             array('name' => $gameConfig['system']['adminName'])
         );
-		if($admin === FALSE)
-		{
-			$result = $this->m->createMaster( $gameConfig['system']['adminName'], $adminEmail, $gameConfig['system']['adminPassword'], 0, 1);
-			$playerId = $result['result'] > 0 ? db2::get_field( "SELECT LAST_INSERT_ID() FROM p_players" ) : 1;
-			$result = $this->m->createNewPlayer( $playerId, $gameConfig['system']['adminName'], 7, 1, $gameConfig['system']['adminName'], $map_size, PLAYERTYPE_ADMIN, 1, get_ip());
-		}
-		else
-		{
-			$result = $this->m->createNewPlayer( $admin['id'], $admin['name'], 7, 0, $admin['name'], $map_size, PLAYERTYPE_ADMIN, 1, get_ip());
-		}
+        if ($admin === FALSE) {
+            $result = $this->m->createMaster($gameConfig['system']['adminName'], $adminEmail, $gameConfig['system']['adminPassword'], 0, 1);
+            $playerId = $result['result'] > 0 ? db2::get_field("SELECT LAST_INSERT_ID() FROM p_players") : 1;
+            $result = $this->m->createNewPlayer($playerId, $gameConfig['system']['adminName'], 7, 1, $gameConfig['system']['adminName'], $map_size, PLAYERTYPE_ADMIN, 1, get_ip());
+        } else {
+            $result = $this->m->createNewPlayer($admin['id'], $admin['name'], 7, 0, $admin['name'], $map_size, PLAYERTYPE_ADMIN, 1, get_ip());
+        }
 
-        $cstorge = 1200*$gameConfig['settings']['capacity'];
-        $mstorge = 1500*$gameConfig['settings']['capacity'];
-        $poasis = 8*$GLOBALS['GameMetadata']['game_speed'];
+        $cstorge = 1200 * $gameConfig['settings']['capacity'];
+        $mstorge = 1500 * $gameConfig['settings']['capacity'];
+        $poasis = 8 * $GLOBALS['GameMetadata']['game_speed'];
         $pplus = 25;
 
-        $resources_osias = "1 ".$cstorge." ".$mstorge." ".$mstorge." ".$poasis." ".$pplus.",2 ".$cstorge." ".$mstorge." ".$mstorge." ".$poasis." ".$pplus.",3 ".$cstorge." ".$mstorge." ".$mstorge." ".$poasis." ".$pplus.",4 ".$cstorge." ".$mstorge." ".$mstorge." ".$poasis." ".$pplus;
+        $resources_osias = "1 " . $cstorge . " " . $mstorge . " " . $mstorge . " " . $poasis . " " . $pplus . ",2 " . $cstorge . " " . $mstorge . " " . $mstorge . " " . $poasis . " " . $pplus . ",3 " . $cstorge . " " . $mstorge . " " . $mstorge . " " . $poasis . " " . $pplus . ",4 " . $cstorge . " " . $mstorge . " " . $mstorge . " " . $poasis . " " . $pplus;
 
         db::query(" UPDATE p_villages set resources='$resources_osias', cp='0 2' where is_oasis=1 ");
 
-        if ( $result['hasErrors'] )
-        {
+        if ($result['hasErrors']) {
             return FALSE;
         }
         return TRUE;
