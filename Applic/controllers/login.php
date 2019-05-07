@@ -53,8 +53,8 @@ class Login_Controller extends PublicController
                         $this->setError(login_result_msg_wrongpwd, 2);
                     } elseif (isset($result['data']['is_blocked']) and $result['data']['is_blocked']) {
                         $this->setError(login_result_msg_block, 1);
-                    } elseif (!$result['data']['is_active']) {
-                        $this->setError(login_result_msg_notactive, 1);
+                    // } elseif (!$result['data']['is_active']) {
+                    //     $this->setError(login_result_msg_notactive, 1);
                     } elseif ($result['inserver'] == 1) {
 
                         $udata = base64_encode($result['data']['id'] . "," . $result['data']['name'] . "," . $this->password . "," . $result['gameStatus'] . "," . $result['data']['is_agent'] . "," . time());

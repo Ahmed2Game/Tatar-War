@@ -1,0 +1,1 @@
+<?php if(!class_exists('raintpl')){exit;}?><h3> مرحبا في لوحة تحكم حرب التتار لموقع www.xtatar.com</h3>

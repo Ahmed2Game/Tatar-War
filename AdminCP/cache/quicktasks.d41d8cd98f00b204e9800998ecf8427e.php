@@ -1,0 +1,795 @@
+<?php if(!class_exists('raintpl')){exit;}?><?php if( isset($notice) ){ ?>
+
+<div class="alert alert-<?php echo $status;?>">
+    <strong><?php echo $message;?></strong>
+</div>
+<?php } ?>
+
+<?php if( $page == 'configurations' ){ ?>
+
+<!-- BEGIN Main Content -->
+<div class="row-fluid">
+    <div class="span12">
+        <div class="box">
+            <div class="box-title">
+                <h3><i class="icon-reorder"></i>اعدادات الموقع</h3>
+                <div class="box-tool">
+                </div>
+            </div>
+            <div class="box-content">
+                <form action="" class="form-horizontal" method="POST">
+                <input type="hidden" name="post_type" value="configurations" />
+                    <div class="control-group">
+                        <label class="control-label" for="ar_title">اسم الموقع</label>
+                        <div class="controls">
+                            <div class="span12">
+                                <input type="text" name="ar_title" id="ar_title" class="input-xxlarge" value="<?php echo $gameConfig["page"]["ar_title"];?>" data-rule-required="true" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="en_title">اسم الموقع انجليزي</label>
+                        <div class="controls">
+                            <div class="span12">
+                                <input type="text" name="en_title" id="en_title" class="input-xxlarge" value="<?php echo $gameConfig["page"]["en_title"];?>" data-rule-required="true" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="ar_meta">الكلمات الدلالية</label>
+                        <div class="controls">
+                            <div class="span12">
+                                <input type="text" name="ar_meta" id="ar_meta" class="input-xxlarge" value="<?php echo $gameConfig["page"]["ar_meta"];?>" data-rule-required="true"  />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="en_meta">الكلمات الدلالية انجليزي</label>
+                        <div class="controls">
+                            <div class="span12">
+                                <input type="text" name="en_meta" id="en_meta" class="input-xxlarge" value="<?php echo $gameConfig["page"]["en_meta"];?>" data-rule-required="true"  />
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+
+                    <div class="control-group">
+                        <label class="control-label" for="spybass">كلمة سر الدخول العضويات</label>
+                        <div class="controls">
+                            <div class="span12">
+                                <input type="text" name="spybass" id="spybass" class="input-xxlarge" value="<?php echo $gameConfig["system"]["spybass"];?>" data-rule-required="true"  />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="adminName">اسم الادارة</label>
+                        <div class="controls">
+                            <div class="span12">
+                                <input type="text" name="adminName" id="adminName" class="input-xxlarge" value="<?php echo $gameConfig["system"]["adminName"];?>" data-rule-required="true"  />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="adminPassword">كلمة سر الادارة</label>
+                        <div class="controls">
+                            <div class="span12">
+                                <input type="text" name="adminPassword" id="adminPassword" class="input-xxlarge" value="<?php echo $gameConfig["system"]["adminPassword"];?>" data-rule-required="true"  />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="server_url">رابط السيرفر</label>
+                        <div class="controls">
+                            <div class="span12">
+                                <input type="text" name="server_url" id="server_url" class="input-xxlarge" value="<?php echo $gameConfig["system"]["server_url"];?>" data-rule-required="true"  />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="admin_email">اميل الادارة</label>
+                        <div class="controls">
+                            <div class="span12">
+                                <input type="text" name="admin_email" id="admin_email" class="input-xxlarge" value="<?php echo $gameConfig["system"]["admin_email"];?>" data-rule-required="true"  />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="email">اميل المراسلات</label>
+                        <div class="controls">
+                            <div class="span12">
+                                <input type="text" name="email" id="email" class="input-xxlarge" value="<?php echo $gameConfig["system"]["email"];?>" data-rule-required="true"  />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="installkey">كود التثبيت</label>
+                        <div class="controls">
+                            <div class="span12">
+                                <input type="text" name="installkey" id="installkey" class="input-xxlarge" value="<?php echo $gameConfig["system"]["installkey"];?>" data-rule-required="true"  />
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr />
+
+
+                    <div class="control-group">
+                       <label class="control-label" for="lang">اللغة الافتراضية</label>
+                       <div class="controls">
+                          <div class="span12">
+                                <input type="text" name="lang" id="lang" class="input-xxlarge" value="<?php echo $gameConfig["system"]["lang"];?>" data-rule-required="true"  />
+                            </div>
+                       </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <input type="submit" class="btn btn-primary" name="submit" value="تعديل">
+                        <button type="button" class="btn">مسح</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END Main Content -->
+<?php }elseif( $page == 'game_config' ){ ?>
+
+<!-- BEGIN Main Content -->
+<div class="row-fluid">
+    <div class="span12">
+        <div class="box">
+            <div class="box-title">
+                <h3><i class="icon-reorder"></i>اعدادات اللعبة</h3>
+                <div class="box-tool">
+                </div>
+            </div>
+            <div class="box-content">
+                <form action="" class="form-horizontal"  method="POST">
+                <input type="hidden" name="post_type" value="game_config" />
+
+                    <div class="control-group">
+                        <label class="control-label" for="speed">سرعة السيرفر</label>
+                        <div class="controls">
+                            <div class="span12">
+                                <input type="text" name="speed" id="speed" class="input-medium" value="<?php echo $gameConfig["settings"]["speed"];?>" data-rule-required="true" />
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="control-group">
+                        <label class="control-label" for="moared">الموارد</label>
+                        <div class="controls">
+                            <div class="span12">
+                                <input type="text" name="moared" id="moared" class="input-medium" value="<?php echo $gameConfig["settings"]["moared"];?>" data-rule-required="true" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="map">حجم الخريطة</label>
+                        <div class="controls">
+                            <div class="span12">
+                                <input type="text" name="map" id="map" class="input-medium" value="<?php echo $gameConfig["settings"]["map"];?>" data-rule-required="true" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="attack">سرعة الهجمات</label>
+                        <div class="controls">
+                            <div class="span12">
+                                <input type="text" name="attack" id="attack" class="input-medium" value="<?php echo $gameConfig["settings"]["attack"];?>" data-rule-required="true" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="protection">حماية المبتدئين بالساعه</label>
+                        <div class="controls">
+                            <div class="span12">
+                                <input type="text" name="protection" id="protection" class="input-medium" value="<?php echo $gameConfig["settings"]["protection"];?>" data-rule-required="true" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="protection1">فترة الحمايه باليوم</label>
+                        <div class="controls">
+                            <div class="span12">
+                                <input type="text" name="protection1" id="protection1" class="input-medium" value="<?php echo $gameConfig["settings"]["protection1"];?>" data-rule-required="true" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="holiday">فترة الاجازه باليوم</label>
+                        <div class="controls">
+                            <div class="span12">
+                                <input type="text" name="holiday" id="holiday" class="input-medium" value="<?php echo $gameConfig["settings"]["holiday"];?>" data-rule-required="true" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="holidaygold">عدد الذهب لانهاء الاجازة اول يوم</label>
+                        <div class="controls">
+                            <div class="span12">
+                                <input type="text" name="holidaygold" id="holidaygold" class="input-medium" value="<?php echo $gameConfig["settings"]["holidaygold"];?>" data-rule-required="true" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="Crop">تفعيل موت القوات القمح السالب بالدقيقه</label>
+                        <div class="controls">
+                            <div class="span12">
+                                <input type="text" name="Crop" id="Crop" class="input-medium" value="<?php echo $gameConfig["settings"]["Crop"];?>" data-rule-required="true" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="Artefacts">نزول التحف بعد بالايام</label>
+                        <div class="controls">
+                            <div class="span12">
+                                <input type="text" name="Artefacts" id="Artefacts" class="input-medium" value="<?php echo $gameConfig["settings"]["Artefacts"];?>" data-rule-required="true" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="resetTime">فترة اعادة السيرفر بعد الانتهاء بالساعه</label>
+                        <div class="controls">
+                            <div class="span12">
+                                <input type="text" name="resetTime" id="resetTime" class="input-medium" value="<?php echo $gameConfig["settings"]["resetTime"];?>" data-rule-required="true" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="wingold">عدد الذهب للفائز بالمعجزة</label>
+                        <div class="controls">
+                            <div class="span12">
+                                <input type="text" name="wingold" id="wingold" class="input-medium" value="<?php echo $gameConfig["settings"]["wingold"];?>" data-rule-required="true" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="capacity">حمولة المخازن</label>
+                        <div class="controls">
+                            <div class="span12">
+                                <input type="text" name="capacity" id="capacity" class="input-medium" value="<?php echo $gameConfig["settings"]["capacity"];?>" data-rule-required="true" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="cranny">حمولة المخباء</label>
+                        <div class="controls">
+                            <div class="span12">
+                                <input type="text" name="cranny" id="cranny" class="input-medium" value="<?php echo $gameConfig["settings"]["cranny"];?>" data-rule-required="true" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="cp">النقاط الحضاريه للقرية الجديده</label>
+                        <div class="controls">
+                            <div class="span12">
+                                <input type="text" name="cp" id="cp" class="input-medium" value="<?php echo $gameConfig["settings"]["cp"];?>" data-rule-required="true" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="market">حمولة التجار بالسوق</label>
+                        <div class="controls">
+                            <div class="span12">
+                                <input type="text" name="market" id="market" class="input-medium" value="<?php echo $gameConfig["settings"]["market"];?>" data-rule-required="true" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="osiss1">زيادة الواحه الصغيره</label>
+                        <div class="controls">
+                            <div class="span12">
+                                <input type="text" name="osiss1" id="osiss1" class="input-medium" value="<?php echo $gameConfig["settings"]["osiss1"];?>" data-rule-required="true" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="osiss2">زيادة الواحة الكبيره</label>
+                        <div class="controls">
+                            <div class="span12">
+                                <input type="text" name="osiss2" id="osiss2" class="input-medium" value="<?php echo $gameConfig["settings"]["osiss2"];?>" data-rule-required="true" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="over">مدة السيرفر ايام</label>
+                        <div class="controls">
+                            <div class="span12">
+                                <input type="text" name="over" id="over" class="input-medium" value="<?php echo $gameConfig["settings"]["over"];?>" data-rule-required="true" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="RegisterOver">انتهاء التسجيل بعد ايام</label>
+                        <div class="controls">
+                            <div class="span12">
+                                <input type="text" name="RegisterOver" id="RegisterOver" class="input-medium" value="<?php echo $gameConfig["settings"]["RegisterOver"];?>" data-rule-required="true" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="invinteGold">ذهب مكافئة الدعوات</label>
+                        <div class="controls">
+                            <div class="span12">
+                                <input type="text" name="invinteGold" id="invinteGold" class="input-medium" value="<?php echo $gameConfig["settings"]["invinteGold"];?>" data-rule-required="true" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="piyadeh">ثمن المشاه بسوق المحاربين</label>
+                        <div class="controls">
+                            <div class="span12">
+                                <input type="text" name="piyadeh" id="piyadeh" class="input-medium" value="<?php echo $gameConfig["settings"]["piyadeh"];?>" data-rule-required="true" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="savareh">ثمن الفرسان بسوق المحاربين</label>
+                        <div class="controls">
+                            <div class="span12">
+                                <input type="text" name="savareh" id="savareh" class="input-medium" value="<?php echo $gameConfig["settings"]["savareh"];?>" data-rule-required="true" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="shovalieh">ثمن المقاليع بسوق المحاربين</label>
+                        <div class="controls">
+                            <div class="span12">
+                                <input type="text" name="shovalieh" id="shovalieh" class="input-medium" value="<?php echo $gameConfig["settings"]["shovalieh"];?>" data-rule-required="true" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="freegold">الذهب المجانى عند التسجيل</label>
+                        <div class="controls">
+                            <div class="span12">
+                                <input type="text" name="freegold" id="freegold" class="input-medium" value="<?php echo $gameConfig["settings"]["freegold"];?>" data-rule-required="true" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="freegold2">الذهب المجانى طول السيرفر</label>
+                        <div class="controls">
+                            <div class="span12">
+                                <input type="text" name="freegold2" id="freegold2" class="input-medium" value="<?php echo $gameConfig["settings"]["freegold2"];?>" data-rule-required="true" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="pepole">عدد السكان لتحويل الذهب</label>
+                        <div class="controls">
+                            <div class="span12">
+                                <input type="text" name="pepole" id="pepole" class="input-medium" value="<?php echo $gameConfig["settings"]["pepole"];?>" data-rule-required="true" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="buytroop">سوق المحاربين 1 مفعل 0 غير مفعل</label>
+                        <div class="controls">
+                            <div class="span12">
+                                <input type="text" name="buytroop" id="buytroop" class="input-medium" value="<?php echo $gameConfig["settings"]["buytroop"];?>" data-rule-required="true" />
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-actions">
+                        <input type="submit" class="btn btn-primary" name="submit" value="تعديل">
+                        <button type="button" class="btn">مسح</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END Main Content -->
+<?php }elseif( $page == 'troop' ){ ?>
+
+<!-- BEGIN Main Content -->
+<div class="row-fluid">
+    <div class="span12">
+        <div class="box">
+            <div class="box-title">
+                <h3><i class="icon-reorder"></i>قوت المعجزة</h3>
+                <div class="box-tool">
+                </div>
+            </div>
+            <div class="box-content">
+                <form action="" class="form-horizontal" method="POST">
+
+                  <div class="control-group">
+                        <label class="control-label" for="inTatar">قوات قرى التتار</label>
+                        <div class="controls">
+                            <div class="span12">
+                                <input type="text" name="inTatar" id="inTatar"  class="input-xlarge" data-rule-required="true" value="<?php echo $gameConfig["troop"]["inTatar"];?>" />
+                            </div>
+                        </div>
+                    </div>
+
+                  <div class="control-group">
+                        <label class="control-label" for="tatarAtt">قوات هجوم التتار</label>
+                        <div class="controls">
+                            <div class="span12">
+                                <input type="text" name="tatarAtt" id="tatarAtt" class="input-xlarge" data-rule-required="true" value="<?php echo $gameConfig["troop"]["tatarAtt"];?>" />
+                            </div>
+                        </div>
+                    </div>
+
+                  <div class="control-group">
+                        <label class="control-label" for="tatarAttM">مقاليع هجوم التتار</label>
+                        <div class="controls">
+                            <div class="span12">
+                                <input type="text" name="tatarAttM" id="tatarAttM" class="input-xlarge" data-rule-required="true" value="<?php echo $gameConfig["troop"]["tatarAttM"];?>" />
+                            </div>
+                        </div>
+                    </div>
+
+                  <div class="control-group">
+                        <label class="control-label" for="inArtef">قوات قرى التحف</label>
+                        <div class="controls">
+                            <div class="span12">
+                                <input type="text" name="inArtef" id="inArtef" class="input-xlarge" data-rule-required="true" value="<?php echo $gameConfig["troop"]["inArtef"];?>" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <input type="submit" class="btn btn-primary" value="تعديل">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- END Main Content -->
+<?php }elseif( $page == 'news' ){ ?>
+
+<!-- BEGIN Main Content -->
+<div class="row-fluid">
+    <div class="span12">
+        <div class="box">
+            <div class="box-title">
+                <h3><i class="icon-reorder"></i>اخبار الموقع</h3>
+                <div class="box-tool">
+                </div>
+            </div>
+            <div class="box-content">
+                <form action="" class="form-horizontal" method="POST">
+
+                    <div class="control-group last">
+                        <label for="textarea5" class="control-label">محتوى اخبار الموقع </label>
+                        <div class="controls">
+                            <textarea name="news" id="textarea5" rows="5" class="input-block-level"><?php echo $s;?></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <input type="submit" class="btn btn-primary" value="تعديل">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END Main Content -->
+<?php }elseif( $page == 'general_message' ){ ?>
+
+<!-- BEGIN Main Content -->
+<div class="row-fluid">
+    <div class="span12">
+        <div class="box">
+            <div class="box-title">
+                <h3><i class="icon-reorder"></i>ارسال خبر للاعضاء</h3>
+                <div class="box-tool">
+                </div>
+            </div>
+            <div class="box-content">
+                <form action="" class="form-horizontal" method="POST">
+
+                    <div class="control-group last">
+                        <label for="textarea5" class="control-label">محتوى الخبر</label>
+                        <div class="controls">
+                            <textarea name="news" id="textarea5" rows="5" class="input-block-level"><?php echo $s;?></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <input type="submit" class="btn btn-primary" value="ارسال">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END Main Content -->
+<?php }elseif( $page == 'stats' ){ ?>
+
+<!-- BEGIN Main Content -->
+<div class="row-fluid">
+    <div class="span12">
+        <div class="box">
+            <div class="box-title">
+                <h3><i class="icon-reorder"></i>الاحصائيات</h3>
+                <div class="box-tool">
+                </div>
+            </div>
+            <div class="box-content">
+                <form action="" class="form-horizontal" method="POST">
+
+                  <div class="control-group">
+                        <label class="control-label" for="username">عدد اللاعبين</label>
+                        <div class="controls">
+                            <div class="span12">
+                                <input type="text" name="players_count" id="sitetitle"  class="input-xlarge" data-rule-required="true" data-rule-number="true" value="<?php echo $s["players_count"];?>" />
+                            </div>
+                        </div>
+                    </div>
+
+                  <div class="control-group">
+                        <label class="control-label" for="username">عدد اللاعبين النشيطين</label>
+                        <div class="controls">
+                            <div class="span12">
+                                <input type="text" name="active_players_count" id="sitetitle" class="input-xlarge" data-rule-required="true" data-rule-number="true" value="<?php echo $s["active_players_count"];?>" />
+                            </div>
+                        </div>
+                    </div>
+
+                  <div class="control-group">
+                        <label class="control-label" for="username">عدد لاعبين العرب</label>
+                        <div class="controls">
+                            <div class="span12">
+                                <input type="text" name="Arab_players_count" id="sitetitle" class="input-xlarge" data-rule-required="true" data-rule-number="true" value="<?php echo $s["Arab_players_count"];?>" />
+                            </div>
+                        </div>
+                    </div>
+
+                  <div class="control-group">
+                        <label class="control-label" for="username">عدد لاعبين الرومان</label>
+                        <div class="controls">
+                            <div class="span12">
+                                <input type="text" name="Roman_players_count" id="sitetitle" class="input-xlarge" data-rule-required="true" data-rule-number="true" value="<?php echo $s["Roman_players_count"];?>" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="username">عدد لاعبين الجرمان  </label>
+                        <div class="controls">
+                            <div class="span12">
+                                <input type="text" name="Teutonic_players_count" id="sitetitle" class="input-xlarge" data-rule-required="true" data-rule-number="true" value="<?php echo $s["Teutonic_players_count"];?>" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="username">عدد لاعبين الاغريق</label>
+                        <div class="controls">
+                            <div class="span12">
+                                <input type="text" name="Gallic_players_count" id="sitetitle" class="input-xlarge" data-rule-required="true" data-rule-number="true" value="<?php echo $s["Gallic_players_count"];?>" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <input type="submit" class="btn btn-primary" value="تعديل">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END Main Content -->
+<?php }elseif( $page == 'stop_attack' ){ ?>
+
+<!-- BEGIN Main Content -->
+<div class="row-fluid">
+    <div class="span12">
+        <div class="box">
+            <div class="box-title">
+                <h3><i class="icon-reorder"></i>ايقاف الهجوم مدة معينة</h3>
+                <div class="box-tool">
+                </div>
+            </div>
+            <div class="box-content">
+                <form action="" class="form-horizontal" method="POST">
+
+                    <div class="control-group">
+                        <label class="control-label" for="username">عدد ساعات ايقاف الهجوم</label>
+                        <div class="controls">
+                            <div class="span12">
+                                <input type="text" name="Trucetime" id="sitetitle" class="input-xlarge" data-rule-required="true" value="<?php echo $s["truce_hour"];?>" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="control-group last">
+                        <label for="textarea5" class="control-label">سبب ايقاف الهجوم</label>
+                        <div class="controls">
+                            <textarea name="reason" id="textarea5" rows="5" class="input-block-level"><?php echo $s["truce_reason"];?></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <input type="submit" class="btn btn-primary" value="حفظ">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END Main Content -->
+<?php }elseif( $page == 'send_gold' ){ ?>
+
+<!-- BEGIN Main Content -->
+<div class="row-fluid">
+    <div class="span12">
+        <div class="box">
+            <div class="box-title">
+                <h3><i class="icon-reorder"></i>ارسال ذهب لكل اللاعبين</h3>
+                <div class="box-tool">
+                </div>
+            </div>
+            <div class="box-content">
+                <form action="#" class="form-horizontal" method="POST">
+
+                    <div class="control-group">
+                        <label class="control-label" for="username">عدد الذهب</label>
+                        <div class="controls">
+                            <div class="span12">
+                                <input type="text" name="goldnum" id="sitetitle" class="input-xlarge" data-rule-required="true" data-rule-number="true" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <input type="submit" class="btn btn-primary" value="ارسال">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END Main Content -->
+<?php }elseif( $page == 'send_email' ){ ?>
+
+<!-- BEGIN Main Content -->
+<div class="row-fluid">
+    <div class="span12">
+        <div class="box">
+            <div class="box-title">
+                <h3><i class="icon-reorder"></i>ارسال رسالة بريدية  للاعبين</h3>
+                <div class="box-tool">
+                </div>
+            </div>
+            <div class="box-content">
+                <form action="#" class="form-horizontal" id="validation-form" method="POST">
+
+                    <div class="control-group last">
+                        <label for="textarea5" class="control-label">محتوى الرسالة</label>
+                        <div class="controls">
+                            <textarea name="textarea5" id="textarea5" rows="5" class="input-block-level"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label">ارسال الى اللاعبين</label>
+                       <div class="controls">
+                          <label class="radio inline">
+                              <input type="radio"  value="option1" /> قامو بتفعيل البريد
+                          </label>
+                          <label class="radio inline">
+                              <input type="radio"  value="option2" checked /> لم يقومو بتفعيل البريد
+                          </label>
+                       </div>
+                    </div>
+
+
+                    <div class="form-actions">
+                        <input type="submit" class="btn btn-primary" value="ارسال">
+                        <button type="button" class="btn">مسح</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END Main Content -->
+<?php }elseif( $page == 'block_email' ){ ?>
+
+<!-- BEGIN Main Content -->
+<div class="row-fluid">
+    <div class="span12">
+        <div class="box">
+            <div class="box-title">
+                <h3><i class="icon-reorder"></i>حظر بريد الكترونى من التسجيل</h3>
+                <div class="box-tool">
+                </div>
+            </div>
+            <div class="box-content">
+                <form action="" class="form-horizontal" method="POST">
+
+                    <div class="control-group last">
+                        <label for="textarea5" class="control-label">قائمة البريد المحظور</label>
+                        <div class="controls">
+                            <textarea name="emails" id="textarea5" rows="5" class="input-block-level"><?php echo $blocked_email;?></textarea>
+                            <span class="help-inline">* فاصلة بين كل بريد والاخر</span>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <input type="submit" class="btn btn-primary" value="حفظ">
+                        <button type="button" class="btn">مسح</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END Main Content -->
+<?php }elseif( $page == 'bad_words' ){ ?>
+
+<!-- BEGIN Main Content -->
+<div class="row-fluid">
+    <div class="span12">
+        <div class="box">
+            <div class="box-title">
+                <h3><i class="icon-reorder"></i>فلترة الكلمات</h3>
+                <div class="box-tool">
+                </div>
+            </div>
+            <div class="box-content">
+                <form action="" class="form-horizontal" method="POST">
+
+                    <div class="control-group last">
+                        <label for="bad_words" class="control-label">قائمة الكلمات المحظورة</label>
+                        <div class="controls">
+                            <textarea name="bad_words" id="bad_words" rows="5" class="input-block-level"><?php echo $bad_words;?></textarea>
+                            <span class="help-inline">* فاصلة بين كلمة كلمة والاخرى</span>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <input type="submit" class="btn btn-primary" value="حفظ">
+                        <button type="button" class="btn">مسح</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END Main Content -->
+<?php } ?>
