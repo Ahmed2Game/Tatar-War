@@ -1,1 +1,8 @@
-.*
+
+AdminCP/cache/*
+cache/*
+system/log/*
+
+!cache/.gitkeep
+!AdminCP/cache/.gitkeep
+!system/log/.gitkeep
