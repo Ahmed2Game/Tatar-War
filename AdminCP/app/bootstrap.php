@@ -40,7 +40,8 @@ if (count($servers) >= 1) {
     $gameConfig['troop'] = json_decode($gameConfig['troop'], true);
     $gameConfig['page'] = json_decode($m->GetSettings("page"), true);
     $gameConfig['system'] = json_decode($m->GetSettings("system"), true);
-    require SERVER_DIR . '/db.php';
+    require SERVER_DIR . 'db.php';
+    require_once SERVER_DIR . 'metadata.php';
     $user = explode('_', $database);
     $db = $user[0] . '_' . $_COOKIE['server_selected'];
     $loader->init_db($db); // connect database
