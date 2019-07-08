@@ -59,7 +59,8 @@ function init() {
         s: e,
         f: d.getAttribute("id") == "timer1" ? -1 : 1
     })));
-    gt = window.setInterval(render, 1E3)
+    gt = window.setInterval(render, 1E3);
+    getPrayTime();
 }
 
 function render() {
@@ -318,11 +319,48 @@ function hightlight_guide(a) {
 function free_guide() {
     _vflag = !0;
     showTask()
-};
+}
 
 function Allmsg() {
     for (var x = 0; x < document.msg.elements.length; x++) {
         var y = document.msg.elements[x];
         if (y.name != 's10') y.checked = document.msg.s10.checked;
     }
+}
+
+function getPrayTime() {
+    let xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", 'https://api.aladhan.com/v1/timingsByCity?city=Riyadh&country=Saudi%20Arabia&method=4', false ); // false for synchronous request
+    xmlHttp.send( null );
+    let data = JSON.parse(xmlHttp.responseText);
+    checkPrayTime(data.data.timings);
+    setTimeout(() => checkPrayTime(data.data.timings),60000);
+}
+var deletePray;
+function checkPrayTime(timings) {
+    let now = new Date(new Date().toLocaleString('en-US', {timeZone: 'Asia/Riyadh'}));
+    let arTimings = {
+        Fajr: "الفجر",
+        Dhuhr: "الظهر",
+        Asr: "العصر",
+        Maghrib: "المغرب",
+        Isha: "العشاء"
+    };
+    Object.keys(timings).forEach(key => {
+        if (arTimings[key]){
+            let time = timings[key].split(':');
+            if (now.getHours() === Number(time[0]) && now.getMinutes() === Number(time[1])){
+                let dynamic_header = document.getElementById('dynamic_header');
+                let element = '<div id="prayTimes" style="position: fixed; right: 10px; top: 30px; padding: 10px; background: #0a568c; color: white; border-radius: 5px; transition: all 500ms ease-out; font-weight: bold;">حان الان موعد اذان ' + arTimings[key] + ' حسب التوقيت لمدينة الرياض </div>';
+                dynamic_header.insertAdjacentHTML('afterbegin', element);
+                deletePray = setTimeout(removePray,180000);
+            }
+        }
+    });
+}
+
+function removePray() {
+    let element = document.getElementById('prayTimes');
+    element.parentNode.removeChild(element);
+    clearTimeout(deletePray);
 }
