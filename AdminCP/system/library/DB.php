@@ -22,7 +22,7 @@ class DB
     static function init($name = null)
     {
 
-        require SERVER_DIR . '/db.php';
+        require SERVER_DIR . 'db.php';
 
         if ($name != null) {
             $database = $name;

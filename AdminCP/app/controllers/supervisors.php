@@ -110,8 +110,10 @@ class Supervisors_Controller extends AdminController
                             $this->viewData['flash_message'] = array('success', $successmsg);
                         } else {
                             $errormsg = '';
-                            foreach ($this->Auth->errormsg as $err) {
-                                $errormsg .= $err . '<br />';
+                            if (is_array($this->Auth->errormsg)) {
+                                foreach ($this->Auth->errormsg as $err) {
+                                    $errormsg .= $err . '<br />';
+                                }
                             }
                             $this->viewData['flash_message'] = array('error', $errormsg);
                         }
@@ -158,4 +160,3 @@ class Supervisors_Controller extends AdminController
 }
 
 //end file
-?>

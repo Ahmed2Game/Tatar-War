@@ -10,12 +10,12 @@ class Auth
     private $security_duration = '+30 minutes';
 
     private $db_conn;
-    public $errormsg;
+    public $errormsg = array();
     public $successmsg;
 
     public function __construct()
     {
-        include "../settings/db.php";
+        require SERVER_DIR . '/db.php';
         $this->db_conn = new pdo("$server:host=$hostname;dbname=$database", $username, $password);
         $this->db_conn->query("SET NAMES utf8");
         $this->db_conn->query("SET CHARACTER SET utf8");
@@ -136,7 +136,7 @@ class Auth
             $this->errormsg[] = $this->lang['register_email_invalid'];
         }
 
-        if (count($this->errormsg) == 0) {
+        if (is_array($this->errormsg) && count($this->errormsg) == 0) {
             // Input is valid
 
             $query = $this->db_conn->prepare("SELECT * FROM users WHERE username=?");
@@ -249,7 +249,7 @@ class Auth
             $this->errormsg[] = $this->lang['register_email_invalid'];
         }
 
-        if (count($this->errormsg) == 0) {
+        if (is_array($this->errormsg) && count($this->errormsg) == 0) {
             $permissions = $permissions == 'all' ? 'all' : json_encode($permissions);
             if (strlen($password) != 0) {
                 $password = $this->hashpass($password);
@@ -490,7 +490,7 @@ class Auth
             $this->errormsg[] = $this->lang['changepass_password_nomatch'];
         }
 
-        if (count($this->errormsg) == 0) {
+        if (is_array($this->errormsg) && count($this->errormsg) == 0) {
             $currpass = $this->hashpass($currpass);
             $newpass = $this->hashpass($newpass);
 
@@ -626,7 +626,7 @@ class Auth
                     $this->errormsg[] = $this->lang['resetpass_newpass_nomatch'];
                 }
 
-                if (count($this->errormsg) == 0) {
+                if (is_array($this->errormsg) && count($this->errormsg) == 0) {
                     $query = $this->db_conn->prepare("SELECT resetkey FROM users WHERE username=?");
                     $query->execute(array(
                         $username,
@@ -820,7 +820,7 @@ class Auth
             return false;
         }
 
-        if (count($this->errormsg) == 0) {
+        if (is_array($this->errormsg) && count($this->errormsg) == 0) {
             $ip = $_SERVER['REMOTE_ADDR'];
             $date = date("Y-m-d H:i:s");
 
